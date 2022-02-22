@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>11</zoom_level>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>253</x>
+      <y>473</y>
+      <w>154</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>Supprimer un
+QCM</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>484</x>
+      <y>154</y>
+      <w>154</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>Créer un
+QCM</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>539</x>
+      <y>341</y>
+      <w>154</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>Modifier un
+QCM</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>0</x>
+      <y>220</y>
+      <w>132</w>
+      <h>121</h>
+    </coordinates>
+    <panel_attributes>Administrateur</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>154</x>
+      <y>121</y>
+      <w>847</w>
+      <h>704</h>
+    </coordinates>
+    <panel_attributes>Gérer les QCM
+halign=left
+bg=#21c4cd</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>99</x>
+      <y>176</y>
+      <w>407</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;80.0;350.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>99</x>
+      <y>253</y>
+      <w>462</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;400.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>99</x>
+      <y>253</y>
+      <w>242</w>
+      <h>242</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;200.0;200.0</additional_attributes>
+  </element>
+</diagram>
