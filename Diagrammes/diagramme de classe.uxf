@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>12</zoom_level>
+  <zoom_level>6</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>216</x>
-      <y>72</y>
-      <w>228</w>
-      <h>240</h>
+      <x>276</x>
+      <y>666</y>
+      <w>114</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>Etudiant
 --
@@ -19,15 +19,15 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>924</x>
-      <y>72</y>
-      <w>372</w>
-      <h>240</h>
+      <x>630</x>
+      <y>666</y>
+      <w>186</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>Professeur
 --
 --
-+ creéerCours(nom: string, contenu: list&lt;string&gt;,
++ créerCours(nom: string, contenu: list&lt;string&gt;,
 tags: list&lt;string&gt;): Cours
 + modifierCours(Cours): void
 + supprimerCours(Cours): void</panel_attributes>
@@ -36,10 +36,10 @@ tags: list&lt;string&gt;): Cours
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>564</x>
-      <y>432</y>
-      <w>324</w>
-      <h>240</h>
+      <x>450</x>
+      <y>846</y>
+      <w>162</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>Cours
 --
@@ -57,10 +57,10 @@ tags: list&lt;string&gt;): Cours
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>264</x>
-      <y>732</y>
-      <w>336</w>
-      <h>240</h>
+      <x>300</x>
+      <y>996</y>
+      <w>168</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>Forum
 --
@@ -73,10 +73,10 @@ tags: list&lt;string&gt;): Cours
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1056</x>
-      <y>720</y>
-      <w>144</w>
-      <h>240</h>
+      <x>696</x>
+      <y>990</y>
+      <w>72</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>QCM
 --
@@ -87,10 +87,10 @@ tags: list&lt;string&gt;): Cours
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>612</x>
-      <y>72</y>
-      <w>168</w>
-      <h>240</h>
+      <x>474</x>
+      <y>666</y>
+      <w>84</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>Utilisateur
 --
@@ -105,10 +105,10 @@ tags: list&lt;string&gt;): Cours
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>432</x>
-      <y>180</y>
-      <w>204</w>
-      <h>36</h>
+      <x>384</x>
+      <y>720</y>
+      <w>102</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;</panel_attributes>
     <additional_attributes>10.0;10.0;150.0;10.0</additional_attributes>
@@ -116,10 +116,10 @@ tags: list&lt;string&gt;): Cours
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>768</x>
-      <y>180</y>
-      <w>180</w>
-      <h>36</h>
+      <x>552</x>
+      <y>720</y>
+      <w>90</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;</panel_attributes>
     <additional_attributes>130.0;10.0;10.0;10.0</additional_attributes>
@@ -127,12 +127,12 @@ tags: list&lt;string&gt;): Cours
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>216</x>
-      <y>432</y>
-      <w>216</w>
-      <h>240</h>
+      <x>276</x>
+      <y>846</y>
+      <w>108</w>
+      <h>120</h>
     </coordinates>
-    <panel_attributes>Etudiant - Cours
+    <panel_attributes>EtudiantCours
 --
 - avancement: StatusCours
 --
@@ -143,10 +143,10 @@ tags: list&lt;string&gt;): Cours
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>12</x>
-      <y>504</y>
-      <w>120</w>
-      <h>96</h>
+      <x>174</x>
+      <y>882</y>
+      <w>60</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>&lt;&lt;enum&gt;&gt;
 StatusCours
@@ -159,10 +159,10 @@ enCours
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>120</x>
-      <y>540</y>
-      <w>120</w>
-      <h>48</h>
+      <x>228</x>
+      <y>900</y>
+      <w>60</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;use&gt;&gt;</panel_attributes>
@@ -171,10 +171,10 @@ enCours
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>312</x>
-      <y>300</y>
-      <w>60</w>
-      <h>156</h>
+      <x>324</x>
+      <y>780</y>
+      <w>30</w>
+      <h>78</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1..*
@@ -184,10 +184,10 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>420</x>
-      <y>528</y>
-      <w>168</w>
-      <h>48</h>
+      <x>378</x>
+      <y>894</y>
+      <w>84</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1..*
@@ -197,15 +197,118 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>876</x>
-      <y>300</y>
-      <w>276</w>
-      <h>300</h>
+      <x>606</x>
+      <y>780</y>
+      <w>138</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes>lt=-
-&lt; créée
+&lt; crée
 m1=0..*
 m2=1..*</panel_attributes>
     <additional_attributes>10.0;220.0;190.0;220.0;190.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>144</x>
+      <y>636</y>
+      <w>744</w>
+      <h>546</h>
+    </coordinates>
+    <panel_attributes>Diagramme métier
+halign=left
+bg=#21c4cd</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>144</x>
+      <y>0</y>
+      <w>744</w>
+      <h>546</h>
+    </coordinates>
+    <panel_attributes>Diagramme modèle
+halign=left
+bg=#21c4cd</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>276</x>
+      <y>78</y>
+      <w>150</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>EtudiantDAO
+--
+--
++ getAllEtudiant() : list&lt;Etudiant&gt;
++ getEtudiantById(id : int) : Etudiant
++ createEtudiant(e : Etudiant) : void
++ updateEtudiant(e : Etudiant) : void
++ deleteEtudiant(e : Etudiant) : void
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>492</x>
+      <y>90</y>
+      <w>192</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>UtilisateurDAO
+
+--
+--
++ getAllUtilisateurs() : list&lt;Utilisateur&gt;
++ getUtilisateurById(id : int) : Utilisateur
++ createUtilisateur(u : Utilisateur) : void
++ updateUtilisateur(u : Utilisateur) : void
++ deleteUtilisateur(u : Utilisateur) : void
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>318</x>
+      <y>222</y>
+      <w>186</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>ProfesseurDAO
+--
+--
++ getAllProfesseur() : list&lt;Professeur&gt;
++ getProfesseurById(id : int) : Professeur
++ createProfesseur(p : Professeur) : void
++ updateProfesseur(p : Professeur) : void
++ deleteProfesseur(p : Professeur) : void
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>546</x>
+      <y>282</y>
+      <w>186</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>CoursDAO
+--
+--
++ getAllCours() : list&lt;Cours&gt;
++ getCoursById(id : int) : Cours
++ createCours(c : Cours) : void
++ updateCours(c : Cours) : void
++ deleteCours(c : Cours) : void
+layer=1</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
