@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>12</zoom_level>
+  <zoom_level>9</zoom_level>
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>72</x>
-      <y>180</y>
-      <w>144</w>
-      <h>132</h>
+      <x>54</x>
+      <y>162</y>
+      <w>108</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>Administrateur</panel_attributes>
     <additional_attributes/>
@@ -15,10 +15,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>120</x>
-      <y>288</y>
-      <w>48</w>
-      <h>144</h>
+      <x>90</x>
+      <y>243</y>
+      <w>27</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;</panel_attributes>
     <additional_attributes>20.0;10.0;19.0;100.0</additional_attributes>
@@ -26,10 +26,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>168</x>
-      <y>156</y>
-      <w>360</w>
-      <h>108</h>
+      <x>126</x>
+      <y>144</y>
+      <w>270</w>
+      <h>81</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;70.0;280.0;12.0</additional_attributes>
@@ -37,10 +37,10 @@
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>504</x>
-      <y>144</y>
-      <w>156</w>
-      <h>48</h>
+      <x>378</x>
+      <y>135</y>
+      <w>117</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>Gérer les cours</panel_attributes>
     <additional_attributes/>
@@ -48,10 +48,10 @@
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>960</x>
-      <y>240</y>
-      <w>156</w>
-      <h>48</h>
+      <x>720</x>
+      <y>207</y>
+      <w>117</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>Gérer les
 utilisateurs</panel_attributes>
@@ -60,10 +60,10 @@ utilisateurs</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>168</x>
-      <y>228</y>
-      <w>816</w>
-      <h>60</h>
+      <x>126</x>
+      <y>198</y>
+      <w>612</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>660.0;30.0;10.0;12.0</additional_attributes>
@@ -71,10 +71,10 @@ utilisateurs</panel_attributes>
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>96</x>
-      <y>636</y>
-      <w>96</w>
-      <h>132</h>
+      <x>72</x>
+      <y>504</y>
+      <w>72</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>Etudiant</panel_attributes>
     <additional_attributes/>
@@ -82,10 +82,10 @@ utilisateurs</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>804</x>
-      <y>384</y>
-      <w>156</w>
-      <h>48</h>
+      <x>603</x>
+      <y>315</y>
+      <w>117</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>Gérer les
 QCM</panel_attributes>
@@ -94,10 +94,10 @@ QCM</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>168</x>
-      <y>228</y>
-      <w>660</w>
-      <h>216</h>
+      <x>126</x>
+      <y>198</y>
+      <w>495</w>
+      <h>162</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;10.0;530.0;152.0</additional_attributes>
@@ -105,10 +105,10 @@ QCM</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>348</x>
-      <y>768</y>
-      <w>180</w>
-      <h>60</h>
+      <x>261</x>
+      <y>603</y>
+      <w>135</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>Construction du
 profil</panel_attributes>
@@ -117,10 +117,10 @@ profil</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>168</x>
-      <y>660</y>
-      <w>348</w>
-      <h>60</h>
+      <x>126</x>
+      <y>522</y>
+      <w>261</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;20.0;270.0;22.0</additional_attributes>
@@ -128,10 +128,10 @@ profil</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>180</x>
-      <y>432</y>
-      <w>144</w>
-      <h>60</h>
+      <x>135</x>
+      <y>351</y>
+      <w>108</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;20.0;100.0;22.0</additional_attributes>
@@ -139,10 +139,10 @@ profil</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>300</x>
-      <y>432</y>
-      <w>156</w>
-      <h>48</h>
+      <x>225</x>
+      <y>351</y>
+      <w>117</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>Se connecter</panel_attributes>
     <additional_attributes/>
@@ -150,10 +150,10 @@ profil</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>492</x>
-      <y>660</y>
-      <w>144</w>
-      <h>48</h>
+      <x>369</x>
+      <y>522</y>
+      <w>108</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>Faire un QCM</panel_attributes>
     <additional_attributes/>
@@ -161,10 +161,10 @@ profil</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>504</x>
-      <y>696</y>
-      <w>132</w>
-      <h>108</h>
+      <x>378</x>
+      <y>549</y>
+      <w>99</w>
+      <h>81</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 &lt;&lt;extends&gt;&gt;</panel_attributes>
@@ -173,10 +173,10 @@ profil</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>384</x>
-      <y>504</y>
-      <w>144</w>
-      <h>48</h>
+      <x>288</x>
+      <y>405</y>
+      <w>108</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>Suivre un
 cours</panel_attributes>
@@ -185,10 +185,10 @@ cours</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>168</x>
-      <y>528</y>
-      <w>252</w>
-      <h>180</h>
+      <x>126</x>
+      <y>423</y>
+      <w>189</w>
+      <h>135</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;130.0;190.0;12.0</additional_attributes>
@@ -196,10 +196,10 @@ cours</panel_attributes>
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>1200</x>
-      <y>600</y>
-      <w>96</w>
-      <h>132</h>
+      <x>900</x>
+      <y>477</y>
+      <w>72</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>Application</panel_attributes>
     <additional_attributes/>
@@ -207,10 +207,10 @@ cours</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>720</x>
-      <y>684</y>
-      <w>156</w>
-      <h>84</h>
+      <x>540</x>
+      <y>540</y>
+      <w>117</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>Recommande un
 cours</panel_attributes>
@@ -219,10 +219,10 @@ cours</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>660</x>
-      <y>492</y>
-      <w>144</w>
-      <h>48</h>
+      <x>495</x>
+      <y>396</y>
+      <w>108</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>Gestion du forum</panel_attributes>
     <additional_attributes/>
@@ -230,10 +230,10 @@ cours</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>864</x>
-      <y>648</y>
-      <w>372</w>
-      <h>96</h>
+      <x>648</x>
+      <y>513</y>
+      <w>279</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;60.0;290.0;10.0</additional_attributes>
@@ -241,10 +241,10 @@ cours</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>168</x>
-      <y>504</y>
-      <w>516</w>
-      <h>204</h>
+      <x>126</x>
+      <y>405</y>
+      <w>387</w>
+      <h>153</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;150.0;410.0;12.0</additional_attributes>
@@ -252,10 +252,10 @@ cours</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>168</x>
-      <y>228</y>
-      <w>516</w>
-      <h>312</h>
+      <x>126</x>
+      <y>198</y>
+      <w>387</w>
+      <h>234</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>410.0;240.0;10.0;12.0</additional_attributes>
@@ -263,10 +263,10 @@ cours</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>792</x>
-      <y>504</y>
-      <w>444</w>
-      <h>180</h>
+      <x>594</x>
+      <y>405</y>
+      <w>333</w>
+      <h>135</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;10.0;350.0;130.0</additional_attributes>
@@ -274,10 +274,10 @@ cours</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>252</x>
+      <x>189</x>
       <y>108</y>
-      <w>924</w>
-      <h>768</h>
+      <w>693</w>
+      <h>576</h>
     </coordinates>
     <panel_attributes>Site de formation
 halign=left
@@ -287,10 +287,10 @@ bg=#21c4cd</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>120</x>
-      <y>540</y>
-      <w>48</w>
-      <h>108</h>
+      <x>90</x>
+      <y>432</y>
+      <w>27</w>
+      <h>81</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;</panel_attributes>
     <additional_attributes>20.0;70.0;19.0;10.0</additional_attributes>
@@ -298,10 +298,10 @@ bg=#21c4cd</panel_attributes>
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>96</x>
-      <y>432</y>
-      <w>96</w>
-      <h>132</h>
+      <x>72</x>
+      <y>351</y>
+      <w>72</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>Utilisateur</panel_attributes>
     <additional_attributes/>
