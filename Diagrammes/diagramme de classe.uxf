@@ -1,27 +1,622 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>10</zoom_level>
+  <zoom_level>7</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>190</x>
-      <y>40</y>
-      <w>100</w>
-      <h>200</h>
+      <x>378</x>
+      <y>658</y>
+      <w>168</w>
+      <h>238</h>
     </coordinates>
-    <panel_attributes>Etudiant</panel_attributes>
+    <panel_attributes>Etudiant
+--
+- niveau: string
+- N°Dossier: integer
+- prenom: string
+- nom: string
+- dateNaissance: string
+- université: string
+- villeEtablissement: string
+//Etudiant en L3 par exemple
+- cycle: string
+- annéeEtude: string
+- baccalauréat: string
+- anneeBAC: string
+- mentionBac: string
+- etabissementBAC: string
+- numéroPortable: integer
+- matiereSuivies: list&lt;Matiere&gt;
+--
++ suivreCours(m: Matiere): void
++ écrireMessage(s: string): void
++ modifierMessage(m: Matiere): void
++ repondreQCM(q: QCM): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>560</x>
-      <y>40</y>
-      <w>100</w>
-      <h>200</h>
+      <x>826</x>
+      <y>658</y>
+      <w>238</w>
+      <h>175</h>
     </coordinates>
-    <panel_attributes>Apprenant
+    <panel_attributes>Professeur
+--
+--
++ creerMatiere(nom: string): Matiere
++ modifierMatiere(cours: Matiere): void
++ supprimerMatiere(cours: Matiere): void
++ creerEtudiant(login: string, mdp: string,
+mail: string)
++ modifierEtudiant(eleve: Etudiant): void
++ supprimerEtudiant(eleve: Etudiant): void
++ créerCanalDiscussion(c: Canal): void
++ supprimerCanalDiscussion(c: Canal): void
++ supprimerMessage(mes: string): void
++ afficherCanal(mes: string): void
++ créerQCM(question: string, réponse: list&lt;string&gt;,
+reponseEleve: list&lt;string&gt;): void
 </panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>609</x>
+      <y>1204</y>
+      <w>189</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>Matiere
+--
+- id: integer
+- nom: string
+- dateCreation: string
+- contenu: list&lt;string&gt;
+- créateur: Administrateur
+- tags: list&lt;string&gt;
+// Niveau scolaire (L3/6eme...)
+- niveau: Niveau
+--
++ getter/setter
++ getSimilar(list&lt;Cours&gt;) : Cours</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>532</x>
+      <y>959</y>
+      <w>196</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>Forum
+--
+- canaux: list&lt;Canal&gt;
+--
++ getter/setter</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>616</x>
+      <y>770</y>
+      <w>140</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>QCM
+--
+- question: string
+- reponse: Reponse
+--
++ getter/setter</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>644</x>
+      <y>658</y>
+      <w>98</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>Utilisateur
+--
+- id: integer
+- login: string
+- mdp: string
+- mail: string
+--
++ getter/setter</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>539</x>
+      <y>700</y>
+      <w>119</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;150.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>735</x>
+      <y>700</y>
+      <w>105</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;</panel_attributes>
+    <additional_attributes>130.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>420</x>
+      <y>1246</y>
+      <w>147</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>EtudiantMatiere
+--
+- avancement: StatusMatiere
+--
++ getter/setter
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>364</x>
+      <y>1148</y>
+      <w>70</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enum&gt;&gt;
+StatusCours
+--
+terminé
+enCours
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>378</x>
+      <y>1197</y>
+      <w>56</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;use&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0;60.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>441</x>
+      <y>889</y>
+      <w>35</w>
+      <h>371</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1..*
+m2=1</panel_attributes>
+    <additional_attributes>10.0;510.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>1260</y>
+      <w>63</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1..*
+m2=1</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>791</x>
+      <y>826</y>
+      <w>252</w>
+      <h>476</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..*
+m2=1..*</panel_attributes>
+    <additional_attributes>10.0;650.0;320.0;650.0;320.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>231</x>
+      <y>644</y>
+      <w>868</w>
+      <h>749</h>
+    </coordinates>
+    <panel_attributes>Diagramme métier
+halign=left
+bg=#21c4cd
+layer=-1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>238</x>
+      <y>0</y>
+      <w>868</w>
+      <h>637</h>
+    </coordinates>
+    <panel_attributes>Diagramme modèle
+halign=left
+bg=#21c4cd</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>364</x>
+      <y>84</y>
+      <w>175</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>EtudiantDAO
+--
+--
++ getAllEtudiant() : list&lt;Etudiant&gt;
++ getEtudiantById(id : int) : Etudiant
++ createEtudiant(e : Etudiant) : void
++ updateEtudiant(e : Etudiant) : void
++ deleteEtudiant(e : Etudiant) : void
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>616</x>
+      <y>98</y>
+      <w>224</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>UtilisateurDAO
+
+--
+--
++ getAllUtilisateurs() : list&lt;Utilisateur&gt;
++ getUtilisateurById(id : int) : Utilisateur
++ createUtilisateur(u : Utilisateur) : void
++ updateUtilisateur(u : Utilisateur) : void
++ deleteUtilisateur(u : Utilisateur) : void
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>413</x>
+      <y>252</y>
+      <w>217</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>ProfesseurDAO
+--
+--
++ getAllProfesseur() : list&lt;Professeur&gt;
++ getProfesseurById(id : int) : Professeur
++ createProfesseur(p : Professeur) : void
++ updateProfesseur(p : Professeur) : void
++ deleteProfesseur(p : Professeur) : void
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>679</x>
+      <y>322</y>
+      <w>217</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>CoursDAO
+--
+--
++ getAllCours() : list&lt;Cours&gt;
++ getCoursById(id : int) : Cours
++ createCours(c : Cours) : void
++ updateCours(c : Cours) : void
++ deleteCours(c : Cours) : void
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>371</x>
+      <y>413</y>
+      <w>161</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>BDD
+--
+- &lt;&lt;static&gt;&gt; instance : BDD = null
+--
++ &lt;&lt;static&gt;&gt; getInstance() : BDD
+- BDD()
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>427</y>
+      <w>105</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;instantiate&gt;&gt;</panel_attributes>
+    <additional_attributes>130.0;70.0;10.0;70.0;10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>504</x>
+      <y>889</y>
+      <w>42</w>
+      <h>119</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1..*</panel_attributes>
+    <additional_attributes>40.0;140.0;10.0;140.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>721</x>
+      <y>826</y>
+      <w>161</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1..*</panel_attributes>
+    <additional_attributes>10.0;210.0;190.0;210.0;190.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>742</x>
+      <y>1127</y>
+      <w>84</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>Message
+--
+- id: integer
+- contenu: string
+--
++ getter/setter</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>602</x>
+      <y>1036</y>
+      <w>133</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>Canal
+--
+- id: integer
+- nom: string
+- participant: list&lt;Etudiant&gt;
+--
++ getter/setter</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>728</x>
+      <y>826</y>
+      <w>196</w>
+      <h>287</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1..*
+m2=1</panel_attributes>
+    <additional_attributes>10.0;380.0;250.0;380.0;250.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>819</x>
+      <y>826</y>
+      <w>154</w>
+      <h>343</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>10.0;460.0;190.0;460.0;190.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>553</x>
+      <y>1001</y>
+      <w>63</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1..*
+m2=1</panel_attributes>
+    <additional_attributes>70.0;130.0;10.0;130.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>749</x>
+      <y>777</y>
+      <w>91</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m2=1..*
+m1=1</panel_attributes>
+    <additional_attributes>110.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>686</x>
+      <y>1106</y>
+      <w>70</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1..*
+m2=1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0;80.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>616</x>
+      <y>868</y>
+      <w>154</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>Reponse
+--
+- id: integer
+- reponse: hmap&lt;string, string&gt;
+--
++ getter/setter</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>749</x>
+      <y>826</y>
+      <w>70</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m2=1
+m1=1..*</panel_attributes>
+    <additional_attributes>30.0;130.0;80.0;130.0;80.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>567</x>
+      <y>735</y>
+      <w>91</w>
+      <h>182</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m2=1
+m1=1..*</panel_attributes>
+    <additional_attributes>70.0;230.0;10.0;230.0;10.0;10.0;110.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>329</x>
+      <y>1281</y>
+      <w>294</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;use&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0;400.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>308</x>
+      <y>1120</y>
+      <w>42</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enum&gt;&gt;
+Niveau
+--
+6EME
+5EME
+4EME
+3EME
+2ND
+1ERE
+TERM
+L1
+L2
+L3
+M1
+M2
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>329</x>
+      <y>868</y>
+      <w>63</w>
+      <h>266</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;use&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;360.0;10.0;10.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>861</x>
+      <y>161</y>
+      <w>217</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>CoursDAO
+--
+--
++ getAllCours() : list&lt;Cours&gt;
++ getCoursById(id : int) : Cours
++ createCours(c : Cours) : void
++ updateCours(c : Cours) : void
++ deleteCours(c : Cours) : void
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>462</x>
+      <y>889</y>
+      <w>294</w>
+      <h>301</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1..*</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;400.0;400.0;400.0</additional_attributes>
   </element>
 </diagram>
