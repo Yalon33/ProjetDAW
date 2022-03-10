@@ -12,13 +12,20 @@
         public static function getInstance() {
             if(self::$instance == null) {
                 self::$instance = new BDD();
-                self::$pdo = new PDO('mysql:host=localhost;dbname=test', "test", "test");
+                self::$pdo = new PDO('mysql:host=localhost', "root", "");
             }
             return self::$instance;
+        }
+        public function createBDD($nomBDD){
+            return self::$pdo->query("CREATE DATABASE $nomBDD");
+        }
+        public function deleteBDD($nomBDD){
+            return self::$pdo->query("DROP DATABASE $nomBDD");
         }
 
         public function query($string){
             return self::$pdo->query($string);
         }
     }
+    $db = BDD::getInstance();
 ?>
