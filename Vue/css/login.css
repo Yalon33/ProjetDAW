@@ -75,8 +75,6 @@ label
     padding-left: 5%;
     background-color: rgb(240, 197, 197);
     border: none;
-    
-
 }
 .option_form label
 {
@@ -112,7 +110,7 @@ button
 form section{
     padding-top: 9%;
 }
-img.image{
+img{
     max-width: 100%;
     object-fit:cover;
 }
@@ -144,4 +142,43 @@ img.image{
    text-align: center;
    text-decoration: underline;
    color: rgb(245, 110, 61) ;
+}
+
+/* Mobile: width < 740 */
+@media only screen and (max-width:739px){
+ 
+    div.login_image_right, div.login_image_left
+    {
+        display: none;
+    }
+    .login_footer
+    {
+        bottom: unset;
+        left: unset;
+        bottom: -15%;
+    }
+    div.login{
+        height: unset;
+        width: unset;
+        margin-top: 5em;
+        height: 20em;
+        width: 20em;
+    }
+}
+
+/* Tablet: width >=740px and width < 1024 px */
+@media only screen and (min-width:740px) and (max-width:1023px){
+
+
+    div.login_image_right, div.login_image_left
+    {
+        display: none;
+    }
+}
+
+/* PC: width >= 1024px */
+
+@media only screen and (min-width:1024px)
+{
+
 }

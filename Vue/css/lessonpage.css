@@ -1,0 +1,218 @@
+.lessonpage_contenu
+{
+    height: 100vh;
+    width: auto;
+    margin-top: 0.5em;
+    margin-right: 0.5em;
+    margin-left: 2.9em;
+    background-color: white;
+    border-radius: 25px;
+    padding: 0 3%;
+    overflow: none;
+    color:var(--primary-color);
+}
+
+.lessonpage_sub_sidebar
+{
+    height:7.6em;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content:space-between;
+    border-bottom: 2px solid var(--body-color);
+    
+}
+div.lessonpage_logo
+{
+    height: 100%;
+    width: 17em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+div.image_logo
+{
+    height: 80%;
+}
+img.image_logo{
+    max-width: 100%;
+    height:100%;
+    object-fit: cover;
+}
+.lessonpage_sub_sidebar .user a
+{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color:var(--primary-color);
+}
+
+.user_avatar
+{
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    background-color: var(--body-color);
+}
+img.image_avatar{
+    max-width: 100%;
+    border-radius: 25px;
+    object-fit: cover;
+}
+.lessonpage_sub_sidebar p.titre{
+    font-weight: bolder;
+    font-size: 30px;
+    font-family: "Apple Chancery";
+}
+p.titre_lesson
+{
+    margin-top: 0.5em;
+    font-size: 40px;
+    color:var(--body-color)
+}
+.nom_prof
+{
+    font-size: 20px;
+    color: rgb(199, 197, 197);
+}
+ul.list_diapos,ul.list_videos
+{
+    padding-top: 15px;
+    display: flex;
+    list-style-type: none;
+    overflow: hidden;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    scrollbar-color: var(--body-color) rgb(221, 221, 221);
+}
+
+.lesson_inner
+{
+    width: 100%;
+    height: 75% ;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+ul.list_diapos li div,ul.list_videos li div
+{
+    margin-right: 7em;
+    margin-bottom: 10px;
+    border: 1px solid red;
+    border-radius: 5px;
+    height: 12em;
+    width: 20em;
+}
+p.titre_item
+{
+    width: 20em;
+    text-align: center;
+    color: var(--body-color);
+    font-weight: bolder;
+}
+div.list_diapos,div.list_videos
+{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+div.list_diapos_inner,div.list_videos_inner
+{
+    margin-top: 2%;
+    width: 95%;
+    overflow: hidden;
+}
+div.list_diapos_inner p.titre_list_diapos, div.list_videos_inner p.titre_list_videos{
+    font-size: 20px;
+    margin-left: 30px;
+    text-decoration: underline;
+    font-weight: bolder;
+}
+button
+{
+    color:var(--body-color);
+    background-color: white;
+    border: none;
+}
+button i{
+    font-size: 25px;
+}
+
+.lessonpage_dark{
+    position: absolute;
+    top:0;
+    left:0;
+    display: none;
+    
+    height: 100vh;
+    width: 200vh;
+    background-color: lightgray;
+}
+
+/* Mobile: width < 740 */
+@media only screen and (max-width:739px)
+{   
+    div.image_logo
+    {
+        height:unset;
+        height:60%;
+    }
+    div.userpage_logo{
+        font-size: 15px;
+    }
+    div.user{
+        display: none;
+    }
+    p.titre_lesson
+    {
+     font-size: 25px;
+    }
+    span.nom_prof
+    {
+        font-size: 15px;
+    }
+    ul.list_diapos li div,ul.list_videos li div{
+        height: unset;
+        width: unset;
+        width: 15em;
+        height: 10em;
+    }
+    p.titre_item{
+        margin-left: unset;
+        width: 15em;
+
+    }
+    button{
+        display: none;
+    }
+
+}
+
+/* Tablet: width >=740px and width < 1024 px */
+@media only screen and (min-width:740px) and (max-width:1023px)
+{
+    ul.list_diapos li div,ul.list_videos li div{
+        height: unset;
+        width: unset;
+        width: 15em;
+        height: 10em;
+    }
+    p.titre_item{
+        margin-left: unset;
+        width: 15em;
+    }
+ 
+}
+
+/* PC: width >= 1024px */
+@media only screen and (min-width:1024px)
+{
+    div.lessonpage_contenu
+    {
+        height: auto;
+    }
+
+}
