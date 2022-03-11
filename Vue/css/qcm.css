@@ -1,0 +1,42 @@
+.qcm_contenu{
+    background-color: rgb(241, 172, 146);
+    border-radius: 25px;
+    line-height: 40px;
+    padding: 40px;
+    margin-top: 5%;
+}
+
+.homepage_contenu{
+    padding-bottom: 17%;
+}
+
+h2{
+    text-align: center;
+    margin-top: 5%;
+}
+
+.reponses{
+    display: flex;
+    justify-content: space-between;
+}
+
+li{
+    list-style-type: none;
+    
+}
+
+.labelQuestion{
+    display: flex;
+}
+
+i:hover{
+    cursor: pointer;
+}
+
+i[class='bx bxs-left-arrow']{
+    float: left;
+}
+
+i[class='bx bxs-right-arrow']{
+    float: right;
+}

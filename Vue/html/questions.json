@@ -1,0 +1,28 @@
+{
+    "Questions":[
+        {
+            "numero": 1,
+            "intitulee": "Comment s'appelle la fée de link dans zelda64 ?",
+            "reponse1": "Navi",
+            "reponse2": "Tamriel",
+            "reponse3": "nico nico niiiiiiiii",
+            "reponse4": "saria"
+        },
+        {
+            "numero": 2,
+            "intitulee": "Comment s'appel le fils de darunia dans zelda64 ?",
+            "reponse1": "sasha",
+            "reponse2": "link",
+            "reponse3": "rudania",
+            "reponse4": "granolax"
+        },
+        {
+            "numero": 3,
+            "intitulee": "Qui est le sage de l'eau dans zelda64 ?",
+            "reponse1": "zelda",
+            "reponse2": "ruto",
+            "reponse3": "peppa pig",
+            "reponse4": "caepora"
+        }
+    ]
+}
