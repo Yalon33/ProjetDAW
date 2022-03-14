@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>10</zoom_level>
+  <zoom_level>17</zoom_level>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>220</x>
-      <y>370</y>
-      <w>140</w>
-      <h>50</h>
+      <x>323</x>
+      <y>391</y>
+      <w>238</w>
+      <h>85</h>
     </coordinates>
     <panel_attributes>Supprimer un
 utilisateur</panel_attributes>
@@ -16,10 +16,10 @@ utilisateur</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>470</x>
-      <y>230</y>
-      <w>140</w>
-      <h>50</h>
+      <x>527</x>
+      <y>255</y>
+      <w>238</w>
+      <h>85</h>
     </coordinates>
     <panel_attributes>Modifier un
 utilisateur</panel_attributes>
@@ -28,10 +28,10 @@ utilisateur</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>540</x>
-      <y>90</y>
-      <w>140</w>
-      <h>50</h>
+      <x>493</x>
+      <y>85</y>
+      <w>238</w>
+      <h>85</h>
     </coordinates>
     <panel_attributes>Créer un
 utilisateur</panel_attributes>
@@ -40,10 +40,10 @@ utilisateur</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>170</x>
-      <y>20</y>
-      <w>770</w>
-      <h>640</h>
+      <x>255</x>
+      <y>0</y>
+      <w>561</w>
+      <h>527</h>
     </coordinates>
     <panel_attributes>Gérer les utilisateurs
 halign=left
@@ -53,10 +53,10 @@ bg=#21c4cd</panel_attributes>
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>20</x>
-      <y>80</y>
-      <w>120</w>
-      <h>110</h>
+      <x>0</x>
+      <y>102</y>
+      <w>204</w>
+      <h>187</h>
     </coordinates>
     <panel_attributes>Administrateur</panel_attributes>
     <additional_attributes/>
@@ -64,34 +64,34 @@ bg=#21c4cd</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>110</x>
-      <y>90</y>
-      <w>450</w>
-      <h>40</h>
+      <x>153</x>
+      <y>102</y>
+      <w>374</w>
+      <h>85</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;20.0;430.0;20.0</additional_attributes>
+    <additional_attributes>10.0;30.0;200.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>110</x>
-      <y>100</y>
-      <w>390</w>
-      <h>160</h>
+      <x>153</x>
+      <y>136</y>
+      <w>425</w>
+      <h>170</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;10.0;370.0;140.0</additional_attributes>
+    <additional_attributes>10.0;10.0;230.0;80.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>110</x>
-      <y>100</y>
-      <w>190</w>
-      <h>290</h>
+      <x>153</x>
+      <y>136</y>
+      <w>306</w>
+      <h>289</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;10.0;170.0;270.0</additional_attributes>
+    <additional_attributes>10.0;10.0;160.0;150.0</additional_attributes>
   </element>
 </diagram>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>10</zoom_level>
+  <zoom_level>9</zoom_level>
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>170</x>
-      <y>340</y>
-      <w>110</w>
-      <h>110</h>
+      <x>261</x>
+      <y>369</y>
+      <w>99</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>Administrateur</panel_attributes>
     <additional_attributes/>
@@ -15,10 +15,10 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>300</x>
-      <y>100</y>
-      <w>770</w>
-      <h>640</h>
+      <x>378</x>
+      <y>225</y>
+      <w>630</w>
+      <h>297</h>
     </coordinates>
     <panel_attributes>Gestion de Cours
 halign=left
@@ -28,10 +28,10 @@ bg=#21c4cd</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>410</x>
-      <y>210</y>
-      <w>140</w>
-      <h>50</h>
+      <x>477</x>
+      <y>252</y>
+      <w>126</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>Supprimer un
 cours</panel_attributes>
@@ -40,10 +40,10 @@ cours</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>670</x>
-      <y>330</y>
-      <w>140</w>
-      <h>50</h>
+      <x>711</x>
+      <y>360</y>
+      <w>126</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>Mettre en ligne
 un cours</panel_attributes>
@@ -52,10 +52,10 @@ un cours</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>620</x>
-      <y>230</y>
-      <w>140</w>
-      <h>50</h>
+      <x>666</x>
+      <y>270</y>
+      <w>126</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>Modifier un cours</panel_attributes>
     <additional_attributes/>
@@ -63,10 +63,10 @@ un cours</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>260</x>
-      <y>250</y>
-      <w>380</w>
-      <h>150</h>
+      <x>342</x>
+      <y>288</y>
+      <w>342</w>
+      <h>135</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;130.0;360.0;12.0</additional_attributes>
@@ -74,10 +74,10 @@ un cours</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>260</x>
-      <y>340</y>
-      <w>430</w>
-      <h>60</h>
+      <x>342</x>
+      <y>369</y>
+      <w>387</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;40.0;410.0;12.0</additional_attributes>
@@ -85,10 +85,10 @@ un cours</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>260</x>
-      <y>230</y>
-      <w>170</w>
-      <h>170</h>
+      <x>342</x>
+      <y>270</y>
+      <w>153</w>
+      <h>153</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;150.0;150.0;12.0</additional_attributes>
@@ -96,10 +96,10 @@ un cours</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>850</x>
-      <y>380</y>
-      <w>120</w>
-      <h>40</h>
+      <x>873</x>
+      <y>405</y>
+      <w>108</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>Cours vidéo</panel_attributes>
     <additional_attributes/>
@@ -107,10 +107,10 @@ un cours</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>800</x>
-      <y>350</y>
-      <w>70</w>
-      <h>70</h>
+      <x>828</x>
+      <y>378</y>
+      <w>63</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;</panel_attributes>
     <additional_attributes>50.0;50.0;10.0;10.0</additional_attributes>
@@ -118,10 +118,10 @@ un cours</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>870</x>
-      <y>310</y>
-      <w>120</w>
-      <h>40</h>
+      <x>891</x>
+      <y>342</y>
+      <w>108</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>Cours diapo</panel_attributes>
     <additional_attributes/>
@@ -129,10 +129,10 @@ un cours</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>800</x>
-      <y>320</y>
-      <w>90</w>
-      <h>50</h>
+      <x>828</x>
+      <y>351</y>
+      <w>81</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;</panel_attributes>
     <additional_attributes>70.0;10.0;10.0;30.0</additional_attributes>
@@ -140,10 +140,10 @@ un cours</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>720</x>
-      <y>440</y>
-      <w>120</w>
-      <h>40</h>
+      <x>756</x>
+      <y>459</y>
+      <w>108</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>Cours audio</panel_attributes>
     <additional_attributes/>
@@ -151,10 +151,10 @@ un cours</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>750</x>
-      <y>370</y>
-      <w>50</w>
-      <h>90</h>
+      <x>783</x>
+      <y>396</y>
+      <w>45</w>
+      <h>81</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;</panel_attributes>
     <additional_attributes>30.0;70.0;10.0;10.0</additional_attributes>
@@ -162,10 +162,10 @@ un cours</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>580</x>
-      <y>430</y>
-      <w>120</w>
-      <h>60</h>
+      <x>630</x>
+      <y>450</y>
+      <w>108</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>Cours en texte
 brut</panel_attributes>
@@ -174,10 +174,10 @@ brut</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>650</x>
-      <y>360</y>
-      <w>60</w>
-      <h>90</h>
+      <x>693</x>
+      <y>387</y>
+      <w>54</w>
+      <h>81</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;</panel_attributes>
     <additional_attributes>10.0;70.0;40.0;10.0</additional_attributes>

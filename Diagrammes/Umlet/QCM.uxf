@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>11</zoom_level>
+  <zoom_level>15</zoom_level>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>253</x>
-      <y>396</y>
-      <w>154</w>
-      <h>55</h>
+      <x>405</x>
+      <y>405</y>
+      <w>210</w>
+      <h>75</h>
     </coordinates>
     <panel_attributes>Supprimer un
 QCM</panel_attributes>
@@ -16,10 +16,10 @@ QCM</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>484</x>
-      <y>77</y>
-      <w>154</w>
-      <h>55</h>
+      <x>450</x>
+      <y>75</y>
+      <w>210</w>
+      <h>75</h>
     </coordinates>
     <panel_attributes>Créer un
 QCM</panel_attributes>
@@ -28,10 +28,10 @@ QCM</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>539</x>
-      <y>264</y>
-      <w>154</w>
-      <h>55</h>
+      <x>540</x>
+      <y>255</y>
+      <w>210</w>
+      <h>75</h>
     </coordinates>
     <panel_attributes>Modifier un
 QCM</panel_attributes>
@@ -41,9 +41,9 @@ QCM</panel_attributes>
     <id>UMLActor</id>
     <coordinates>
       <x>0</x>
-      <y>143</y>
-      <w>132</w>
-      <h>121</h>
+      <y>135</y>
+      <w>180</w>
+      <h>165</h>
     </coordinates>
     <panel_attributes>Administrateur</panel_attributes>
     <additional_attributes/>
@@ -51,10 +51,10 @@ QCM</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>154</x>
-      <y>44</y>
-      <w>847</w>
-      <h>704</h>
+      <x>210</x>
+      <y>0</y>
+      <w>585</w>
+      <h>570</h>
     </coordinates>
     <panel_attributes>Gestion de QCM
 halign=left
@@ -65,34 +65,34 @@ layer=-1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>99</x>
-      <y>99</y>
-      <w>407</w>
-      <h>110</h>
+      <x>135</x>
+      <y>105</y>
+      <w>345</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;80.0;350.0;10.0</additional_attributes>
+    <additional_attributes>10.0;60.0;210.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>99</x>
-      <y>176</y>
-      <w>462</w>
-      <h>132</h>
+      <x>135</x>
+      <y>180</y>
+      <w>435</w>
+      <h>135</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;10.0;400.0;100.0</additional_attributes>
+    <additional_attributes>10.0;10.0;270.0;70.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>99</x>
-      <y>176</y>
-      <w>242</w>
-      <h>242</h>
+      <x>135</x>
+      <y>180</y>
+      <w>390</w>
+      <h>255</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;10.0;200.0;200.0</additional_attributes>
+    <additional_attributes>10.0;10.0;240.0;150.0</additional_attributes>
   </element>
 </diagram>
