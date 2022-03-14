@@ -41,7 +41,4 @@
             }
         }
     }
-    $db = BDD::getInstance();
-    $test = $db->query("Wrong query");
-    //echo $test;
 ?>
