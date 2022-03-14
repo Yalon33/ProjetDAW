@@ -1,3 +1,76 @@
+.homepage_contenu
+{
+    height: 100%;
+    width: auto;
+    margin-top: 0.5em;
+    margin-right: 0.5em;
+    margin-left: 2.9em;
+    background-color: white;
+    border-radius: 25px;
+    padding: 0 3%;
+    overflow-y: scroll;
+    color:var(--primary-color);
+}
+
+.homepage_sub_sidebar
+{
+    height:7.6em;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content:space-between;
+    border-bottom: 2px solid var(--body-color);
+}
+div.homepage_logo
+{
+    height: 100%;
+    width: 17em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+div.image_logo
+{
+    height: 80%;
+
+}
+img.image_logo{
+    max-width: 100%;
+    height:100%;
+    object-fit: cover;
+}
+
+
+.homepage_sub_sidebar p.titre{
+ 
+    font-weight: bolder;
+    font-size: 30px;
+    font-family: "Apple Chancery";
+}
+
+.homepage_sub_sidebar .user a
+{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.user_avatar
+{
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    background-color: var(--body-color);
+}
+img.image_avatar{
+    max-width: 100%;
+    border-radius: 25px;
+    object-fit: cover;
+}
+
+
+
 ul.grid_card{
     display: flex;
     flex-direction: column;
@@ -23,8 +96,8 @@ ul.list_lesson
 }
 ul.list_lesson li.lesson
 {
-    height: 15em;
-    width: 20em;
+    height: 100%;
+    width: 100%;
     border: none;
     border-radius: 15px;
     background-color: rgb(183, 220, 252);
@@ -37,7 +110,7 @@ ul.list_lesson li.lesson:hover{
     height: 20em;
     width: 25em;
 }
-.header_card
+div.header_card
 {
     height: 5%;
 }
@@ -99,7 +172,7 @@ img.image_lesson{
 }
 div.descrip_lesson
 {
-    width: 17.5em;
+    width: 50%;
     height: 45%;
     overflow: hidden;
     transition: 0.5s;
@@ -157,12 +230,57 @@ ul.descrip_lesson
     flex-direction: column;
     justify-content: space-between;
 }
+.footer
+{
+    height: 5em;
+    width: 100%;
+}
 
 @media only screen and (min-height:100%)
 {
-    .homepage_contenu
+
+}
+
+
+/* Mobile: width < 740 */
+@media only screen and (max-width:739px)
+{   
+  
+   
+
+}
+
+/* Tablet: width >=740px and width < 1024 px */
+@media only screen and (min-width:740px) and (max-width:1023px)
+{
+    ul.list_lesson
     {
-        background-color: red;
+        grid-template-columns: 1fr 1fr;
     }
+    ul.grid_card li.homepage_card:nth-child(2)
+    {
+        margin-top: 20%;
+    }
+    .homepage_contenu{
+        height: auto;
+    }
+    ul.list_lesson li.lesson
+    {
+        width: 15em;
+        height: 13em;
+    }
+    ul.list_lesson li.lesson:hover{
+        height: 18em;
+        width: 23em;
+    }
+    li .date{
+        font-size:10px ;
+    }
+ 
+}
+
+/* PC: width >= 1024px */
+@media only screen and (min-width:1024px)
+{
 
 }

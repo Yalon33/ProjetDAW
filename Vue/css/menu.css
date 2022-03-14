@@ -14,6 +14,7 @@
     --value-primary-height : 100vh ;
     --value-primary-wight : 13em;
     --value-wight-submenu : 100%;
+    --value-display:visible;
 }
 
 body{
@@ -65,6 +66,7 @@ ul.menu_body li{
     height: 40px;
     border-radius: 5px;
     padding:0.5em;
+    width: var(--value-primary-wight) ;
 
 }
 ul.menu_body li a{
@@ -81,7 +83,7 @@ ul.menu_body li i{
 ul.menu_body li span
 {
     font-size:1em ;
-    opacity: var(--value-opacity);
+    display: var(--value-display) ;
     transform: translateY(10%);
 }
 
@@ -118,19 +120,12 @@ ul.menu_footer li i{
 }
 
 .text-mode{
-    opacity: var(--value-opacity);
+    display: var(--value-display);
     transform: translateY(10%);
     min-width:90px;
 }
 
-ul.menu_body li:hover{
-    background-color: var(--hover-color);
-    opacity: 1;
-}
 
-ul.menu_footer li:hover{
-    background-color: var(--hover-color);
-}
 
 header form
 {
@@ -172,7 +167,7 @@ form input
     min-width: 50px;
     background-color: rgb(173, 173, 173);
     border-radius: 15px;
-    opacity: var(--value-opacity);
+    display: var(--value-display);
     cursor: pointer;
     transition: 0.2s;
 }
@@ -207,100 +202,22 @@ nav.menu_sidebar
     --value-primary-height :100vh;
     --value-primary-wight :2.9em;
     --value-wight-submenu:10em;
+    --value-display:none;
 }
 
-ul.menu_body li:hover .text_opacity, ul.menu_footer li:hover .text_opacity
+ ul.menu_body li:hover .text_opacity, ul.menu_footer li:hover .text_opacity
 {
-    opacity: 1;
-   
+    display: inline;
 }
-
-.menu_home,.menu_like,.menu_cours,.menu_history,.menu_user,.menu_logout,.menu_notif
-{
+ul.menu_body li:hover,li.menu_logout:hover{
+    background-color: var(--hover-color);
     width: var(--value-wight-submenu);
-    transition: all 0.2s ease;
+}
 
-}
-.menu_mode
-{
+li.menu_mode:hover{
+    background-color: var(--hover-color);
     width: 12.5em;
-    transition: all 0.2s ease;
-}
+} 
 
 /*home page*/
 
-.homepage_contenu
-{
-    height: 100%;
-    width: auto;
-    margin-top: 0.5em;
-    margin-right: 0.5em;
-    margin-left: 2.9em;
-    background-color: white;
-    border-radius: 25px;
-    padding: 0 3%;
-    overflow: none;
-    color:var(--primary-color);
-}
-
-.homepage_sub_sidebar
-{
-    height:7.6em;
-    width: 100%;
-    align-items: center;
-    display: flex;
-    justify-content:space-between;
-    border-bottom: 2px solid var(--body-color);
-}
-div.homepage_logo
-{
-    height: 100%;
-    width: 17em;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-div.image_logo
-{
-    height: 80%;
-
-}
-img.image_logo{
-    max-width: 100%;
-    height:100%;
-    object-fit: cover;
-}
-
-
-.homepage_sub_sidebar p.titre{
- 
-    font-weight: bolder;
-    font-size: 30px;
-    font-family: "Apple Chancery";
-}
-
-.homepage_sub_sidebar .user a
-{
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: var(--primary-color);
-}
-
-.user_avatar
-{
-    height: 50px;
-    width: 50px;
-    border-radius: 25px;
-    background-color: var(--body-color);
-}
-img.image_avatar{
-    max-width: 100%;
-    border-radius: 25px;
-    object-fit: cover;
-}
-.footer
-{
-    height: 5em;
-    width: 100%;
-}

@@ -188,6 +188,10 @@ button i{
     button{
         display: none;
     }
+    ul.list_diapos li div,ul.list_videos li div
+    {
+        margin-right:3em ;
+    }
 
 }
 
