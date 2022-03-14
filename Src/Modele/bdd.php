@@ -1,16 +1,14 @@
 <?php
-// define($servername,"localhost");
-// define($username,"root");
-// define($password,"");
     class BDD {
         private static ?BDD $instance = null;
         private static ?PDO $pdo = null;
 
 
         private function __construct() {
-            // Le constructeur est privé pour éviter qu'une autre classe puisse appeller le constructeur
-            // Voir le patron de conception du singleton 
-            // https://fr.wikipedia.org/wiki/Singleton_(patron_de_conception)
+            /** Le constructeur est privé pour éviter qu'une autre classe puisse appeller le constructeur
+             *  Voir le patron de conception du singleton 
+             *  https://fr.wikipedia.org/wiki/Singleton_(patron_de_conception)
+             */
         }
 
 
@@ -37,7 +35,7 @@
             try{
                 return self::$pdo->query($string);
             } catch (PDOException $e){
-                echo "Error : La requête SQL \"$string\" est eronée.<br>";
+                echo "<br>Error : La requête SQL \"$string\" est eronée. Voir le message d'erreur suivant : <br><b>" . $e->getMessage() . "</b><br><br>";
             }
         }
     }
