@@ -1,9 +1,11 @@
-.qcm_contenu{
+.qcm_vue{
     background-color: rgb(241, 172, 146);
     border-radius: 25px;
     line-height: 40px;
     padding: 40px;
     margin-top: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .homepage_contenu{
@@ -15,7 +17,7 @@ h2{
     margin-top: 5%;
 }
 
-.reponses{
+.listeReponses{
     display: flex;
     justify-content: space-between;
 }
