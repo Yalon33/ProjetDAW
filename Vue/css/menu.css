@@ -8,7 +8,7 @@
     --body-color:rgb(43, 42, 42);
     --nav-color:rgb(32, 32, 32);
     --nav-primary-color:white;
-    --primary-color:black;
+    --primary-color:white;
     --hover-color: rgb(95, 94, 94);
     --value-opacity : 1;
     --value-primary-height : 100vh ;
@@ -190,6 +190,7 @@ body.dark
     --nav-color: rgb(241, 172, 146);
     --nav-primary-color: white;
     --hover-color: rgb(247, 206, 192);
+    --primary-color:black;
 }
 body.dark .switch
 {
@@ -222,7 +223,7 @@ li.menu_mode:hover{
 /*home page*/
 .homepage_contenu
 {
-    height: 100%;
+    height: 100vh;
     width: auto;
     margin-top: 0.5em;
     margin-right: 0.5em;
@@ -230,7 +231,7 @@ li.menu_mode:hover{
     background-color: white;
     border-radius: 25px;
     padding: 0 3%;
-    overflow-y: scroll;
+    overflow: hidden;
     color:var(--primary-color);
 }
 

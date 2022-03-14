@@ -18,7 +18,7 @@ function chargeQuestion(){
         $("#numQuestion").text(q.numero);
         $("#intituleQuestion").text(q.intitulee);
 
-        console.log(q.Reponses.length);
+        // console.log(q.Reponses.length);
 
         for(let i=0; i<q.Reponses.length; i++){
             const reponse = $(`<li class="reponses"><input type="checkbox">${i+1} : ${q.Reponses[i].reponse}</li>`);
