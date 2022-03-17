@@ -10,97 +10,13 @@
 <meta name="HandheldFriendly" content="true"> 
 </head>
 <body class="dark">
-        <nav class="menu_sidebar">
-                <header>
-                     <div class="menu_icon">
-                         <i class='bx bx-menu icon_toggle'></i>
-                     </div>
-                     <div class="menu_search">
-                         <form>
-                             <i class='bx bx-search-alt-2' ></i>
-                             <input type="text" name="menu_search" id="menu_search" placeholder="Search..">
-                         </form>
-                     </div>
-                </header>
- 
-                <div class="menu_body">
-                    <ul class="menu_body">
-                        <li class="menu_home">
-                            <a href="../html/homepage.html">
-                                 <i class='bx bx-home' ></i>
-                                 <span class="text_opacity">Home</span>
-                            </a>
-                        </li>
-                        <li class="menu_user">
-                            <a href="../html/userpage.html">
-                                 <i class='bx bx-user' ></i>
-                                 <span class="text_opacity">User</span>
-                            </a>
-                        </li>
-                        <li class="menu_notif">
-                            <a href="#">
-                                 <i class='bx bx-bell' ></i>
-                                 <span class="text_opacity">Notifications</span>
-                            </a>
-                        </li>
-                        <li class="menu_cours">
-                            <a href="../html/lessonpage.html">
-                                 <i class='bx bx-book' ></i>
-                                 <span class="text_opacity">Lesson</span>
-                            </a>
-                        </li>
-                         <li class="menu_like">
-                             <a href="#">
-                                 <i class='bx bx-heart' ></i>
-                                 <span class="text_opacity">Like</span>
-                             </a>
-                         </li>
-                         <li class="menu_history">
-                             <a href="#">
-                                 <i class='bx bx-history' ></i>
-                                 <span class="text_opacity">History</span>
-                             </a>
-                         </li>
-                    </ul>
-                </div>
-                 
-                <div class="menu_footer">
-                    <ul class="menu_footer">
-                         <li class="menu_logout">
-                             <a href="#">
-                                 <i class='bx bx-log-out' ></i>
-                                 <span class="text-mode text_opacity">Log out</span>
-                             </a>
-                         </li>
-                         <li class="menu_mode">
-                             <a href="#">
-                                 <i class='bx bx-moon'></i>
-                                 <span class="text-mode text_opacity">Dark Mode</span>
-                             </a>
-                             <div class="toggle-switch  text_opacity">
-                                 <span class="switch"></span>
-                             </div>
-                         </li>
-                    </ul>  
-                </div>
-        </nav>
-        <div class="lessonpage_contenu">
-            <div class="lessonpage_sub_sidebar">
-                <div class="lessonpage_logo">
-                    <div class="image_logo">
-                        <img src="../image/site_logo.png" alt="" class="image_logo">
-                    </div>
-                    <p class="titre">Prépa Cours</p>
-                </div>
-                <div class="user">
-                    <a href="../html/userpage.html">
-                        <div class="user_avatar">
-                            <img src="../image/tigercute.jpg" alt="" class="image_avatar"> 
-                        </div>
-                        <p class="user_name">Cute Tiger</p>
-                    </a>
-                </div>
-            </div>
+        
+        <?php include("./menu.html");?>
+
+        <div class="page_contenu">
+            
+            <?php include("./banderole.html");?>
+
             <div class="lesson_inner">
                 <p class="titre_lesson">Titre de cours <span class="nom_prof">Nom de prof</span> </p>
                 <div class="list_diapos">

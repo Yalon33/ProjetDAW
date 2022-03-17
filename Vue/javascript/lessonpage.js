@@ -1,22 +1,8 @@
-const icon_menu= document.querySelector(".icon_toggle"),
-        nav= document.querySelector("nav"),
-        body=document.querySelector("body"),
-        toggle_switch=document.querySelector("div.toggle-switch"),
-        btn_list_diapos_left=document.querySelector(".btn_list_diapos_left"),
+const   btn_list_diapos_left=document.querySelector(".btn_list_diapos_left"),
         btn_list_videos_left=document.querySelector(".btn_list_videos_left"),
         btn_list_diapos_right=document.querySelector(".btn_list_diapos_right"),
         btn_list_videos_right=document.querySelector(".btn_list_videos_right"),
         list_diapos=document.querySelector("div.list_diapos");
-
-icon_menu.addEventListener("click",() =>
-{
-    nav.classList.toggle("menu_sidebar");
-
-});
-toggle_switch.addEventListener("click",() =>
-{
-    body.classList.toggle("dark");
-});
 
 btn_list_diapos_left.addEventListener("click",() =>
 {
