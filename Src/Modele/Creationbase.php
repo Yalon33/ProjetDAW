@@ -3,12 +3,13 @@
     // Cette classe a pour rôle de créer la base de donnée pour qu'on travaille tous sur la même base et les mêmes tables.
     class Creationbase{
         public $nomBD;
+
         public function __construct(){
-            //Constructeur par defaut
+            self::createBDD("test");
         }
 
         function __destruct() {
-            //Destructeur par defaut
+            self::deleteBDD("test");
         }
 
 
@@ -17,15 +18,15 @@
                 BDD::getInstance()->query("CREATE DATABASE $nomBDD");
                 echo "Database created successfully<br>";
             } catch(PDOException $e) {
-                echo "Error" . $e->getMessage() . "<br>";
+                throw "Error" . $e->getMessage() . "<br>";
             }
         }
 
 
         public function deleteBDD($nomBDD){
-            $nomBD = $nomBDD;
+            self::$nomBD = $nomBDD;
             try{
-                BDD::getInstance()->query("DROP DATABASE $nomBD");
+                BDD::getInstance()->query("DROP DATABASE" . self::$nomBD);
                 echo "Database dropped successfully<br>";
             } catch(PDOException $e) {
                 echo "Error" . $e->getMessage() . "<br>";
@@ -35,7 +36,7 @@
 
         public function createTableTest()
         {
-            $sql="CREATE Table $nomBD.User(
+            $sql="CREATE Table " . self::$nomBD . ".User(
                 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                 firstname VARCHAR(30) NOT NULL,
                 lastname VARCHAR(30) NOT NULL
@@ -52,7 +53,5 @@
         }
     }
     $creation = new Creationbase();
-    $creation->createBDD("test");
     $creation->createTableTest();
-    $creation->deleteBDD("test");
 ?>
