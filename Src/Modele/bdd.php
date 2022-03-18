@@ -23,9 +23,9 @@
                 try{
                     self::$pdo = new PDO('mysql:host=localhost', "root", "");
                 } catch (PDOException $e){
-                    printf("Error: " . $e->getMessage() . "<br>");
+                    exit("Error: Impossible de se connecter au serveur sql, vérifier qu'il a bien été lancé et voir le message ci-dessous:<br>" . $e->getMessage() . "<br>");
                 }
-                echo "Connected successfully<br>";
+                echo "Connexion avec le serveur établie<br>";
             }
             return self::$instance;
         }
