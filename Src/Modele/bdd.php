@@ -35,7 +35,7 @@
             try{
                 return self::$pdo->query($string);
             } catch (PDOException $e){
-                throw "<br>Error : La requête SQL \"$string\" est eronée. Voir le message d'erreur suivant : <br><b>" . $e->getMessage() . "</b><br><br>";
+                echo "<br>Error : La requête SQL \"$string\" est eronée. Voir le message d'erreur suivant : <br><t><b>" . $e->getMessage() . "</b>";
             }
         }
     }
