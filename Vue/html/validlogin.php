@@ -9,6 +9,13 @@ echo ' document.location.href="login.html";';
 echo '</script>';
 }
 
+
+function redirectGoodLogin()
+{
+echo '<script type/javascript>  ';
+echo ' document.location.href="userpage.html";';
+echo '</script>';
+}
 //Recupration du contenu de l'item form avec le "name" = login_form(défini dans login.html); 
 $contenuLogin =$_POST['login_form'] ; 
 //Recuperation du contenu de l'item form avec le "name" password_form (défini dans login.html); 
@@ -24,16 +31,16 @@ function veriftest($nom, $password)
 {
     $contenuLogin =$_POST['login_form'] ; 
     $contenuMdp=$_POST['password_form']; 
-    $resultat=BDD::getinstance()->query("SELECT login, mdp FROM projet.eleve WHERE login='$nom' AND mdp='$password';");
+    $resultat=BDD::getinstance()->query("SELECT login, mdp FROM projet.utilisateur WHERE login='$nom' AND mdp='$password';");
  
    
     if($resultat->fetch())
     {
-        echo "ok";
+        redirectGoodLogin();
     }
     else
     {
-        echo "no";
+        redirectWrongLogin();
     }
  
 }
