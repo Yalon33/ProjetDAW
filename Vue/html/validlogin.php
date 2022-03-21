@@ -1,37 +1,48 @@
 <?php
-
+//setcookie('personne','etudiant', time() + 3600*24*365,null,null,true);
 include("../../Modele/bdd.php");
 
-
-$id=3;
-$password="test";
-
-function veriftest($nom, $password)
+function redirectWrongLogin()
 {
-    BDD::getinstance()->query("SELECT * FROM projet.eleve;");
-    echo "test effectuer";
-
+echo '<script type/javascript> alert("mdp/login incorrect"); ';
+echo ' document.location.href="login.html";';
+echo '</script>';
 }
 
-//$_POST car on a choisit la method form dans login.html; 
+$resultat;
+$id;
+function veriftest($nom, $password)
+{
+    $resultat=BDD::getinstance()->query("SELECT login, mdp FROM projet.eleve WHERE login='$nom' AND mdp='$password';");
+    echo "test effectuer";
+    while ($id = $resultat->fetch())
+    {
+       echo $id['login'] . '<br />';
+    }
+
+}
 //Recupration du contenu de l'item form avec le "name" = login_form(défini dans login.html); 
 $contenuLogin =$_POST['login_form'] ; 
 //Recuperation du contenu de l'item form avec le "name" password_form (défini dans login.html); 
 $contenuMdp=$_POST['password_form']; 
-echo $contenuLogin; 
-echo $contenuMdp; 
-//Faire une requête avec le contenu du login/password 
- 
-//Faire l'attribution des cookies en fonction de la connection / Et par défaut ? 
- 
- 
 
-veriftest($id, $password);
+//Partie attribution de cookie
+if($contenuLogin=="etudiant")
+{
+    setcookie('personne','etudiant', time() + 3600*24*365,null,null,true);
+    echo "Bienvenue a un etudiant";
+}
+else if($contenuLogin=="admin")
+{
+echo "bienvenue a un admin ";
+setcookie('personne','admin', time() + 3600*24*365,null,null,true);
+}
+else
+{
+    //redirectWrongLogin();
+    setcookie('personne','visiteur', time() + 3600*24*365,null,null,true);
+}
 
+veriftest($contenuLogin,$contenuMdp);
 
-
-
-//echo '<script type/javascript> alert("mdp incorrect donc ntm"); ';
-//echo ' document.location.href="login.html";';
-//echo '</script>';
 ?>
