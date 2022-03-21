@@ -28,8 +28,24 @@
             return is_null(BDD::getInstance()->query("CREATE Table IF NOT EXISTS $nomBDD.$nomTable($attributString);")) ? false : true;
         }
 
+        public function deleteTable($nomBDD, $nomTable){
+            return is_null(BDD::getInstance()->query("DROP TABLE IF EXISTS $nomBDD.$nomTable;")) ? false : true;
+        }
+
         public function insertData($nomBDD, $nomTable, $attributs, $values){
-            return is_null(BDD::getInstance()->query("INSERT INTO $nomBDD.$nomTable($attributs) VALUES($values);")) ? false : true;
+            foreach($values as $value){
+                if (is_null(BDD::getInstance()->query("INSERT INTO $nomBDD.$nomTable($attributs) VALUES($value);"))){
+                    return false;
+                }
+            } 
+        }
+        
+        public function deleteData($nomBDD, $nomTable, $conditions){
+            if (!is_null($conditions)){
+                return is_null(BDD::getInstance()->query("DELETE FROM $nomBDD.$nomTable WHERE $conditions;")) ? false : true;
+            } else {
+                return is_null(BDD::getInstance()->query("DELETE FROM $nomBDD.$nomTable;")) ? false : true;
+            }
         }
     }
 ?>
