@@ -7,14 +7,12 @@
       <x>231</x>
       <y>220</y>
       <w>264</w>
-      <h>374</h>
+      <h>341</h>
     </coordinates>
     <panel_attributes>Etudiant
 --
 - niveau: Niveau
 - N°Dossier: integer
-- prenom: string
-- nom: string
 - dateNaissance: string
 - université: string
 - villeEtablissement: string
@@ -121,13 +119,15 @@ reponseEleve: list&lt;string&gt;): void
       <x>649</x>
       <y>220</y>
       <w>176</w>
-      <h>143</h>
+      <h>165</h>
     </coordinates>
     <panel_attributes>Utilisateur
 --
 - login: string
 - mdp: string
 - mail: string
+- prenom: string
+- nom: string
 - type: TypeUtilisateur
 --
 + getter/setter</panel_attributes>
@@ -203,14 +203,14 @@ enCours
     <id>Relation</id>
     <coordinates>
       <x>330</x>
-      <y>583</y>
+      <y>550</y>
       <w>55</w>
-      <h>583</h>
+      <h>616</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1..*
 m2=1</panel_attributes>
-    <additional_attributes>10.0;510.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;540.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -256,14 +256,14 @@ layer=-1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>429</x>
-      <y>583</y>
+      <y>550</y>
       <w>66</w>
-      <h>187</h>
+      <h>220</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
 m2=1..*</panel_attributes>
-    <additional_attributes>40.0;140.0;10.0;140.0;10.0;10.0</additional_attributes>
+    <additional_attributes>40.0;170.0;10.0;170.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -460,26 +460,26 @@ M2
     <id>Relation</id>
     <coordinates>
       <x>154</x>
-      <y>550</y>
+      <y>495</y>
       <w>99</w>
-      <h>418</h>
+      <h>473</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;use&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;360.0;10.0;10.0;70.0;10.0</additional_attributes>
+    <additional_attributes>10.0;410.0;10.0;10.0;70.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>363</x>
-      <y>583</y>
+      <y>550</y>
       <w>462</w>
-      <h>473</h>
+      <h>506</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
 m2=1..*</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;400.0;400.0;400.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;430.0;400.0;430.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>

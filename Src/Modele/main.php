@@ -7,21 +7,18 @@
 </style>
 
 <?php
+    include("./creationbase.php");
     $SUCCES = 0;
     $ECHEC = 0;
-    define("ATTRIBUTS", "id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, firstname VARCHAR(30) NOT NULL, lastname VARCHAR(30) NOT NULL");
     define("BDD", "projet");
-    define("TABELEVE", "eleve");
-    define("COLELEVE", "login, mdp, mail, niveau, nDossier, prenom, nom, dateNaissance, universite, villeEtablissement, cycle, anneeEtude,
-        baccalaureat, anneeBAC, mentionBAC, etablissementBAC, numeroPortable, matiereSuivies");
-    define("DANIEL", "'monLogin', 'motDePasse', 'mail@mail.com', 'L2', '12345678', 'Daniel', 'Pinson', '05/10/2000', 'Dijon', 'Dijon',
-    'L3', 'L3', 'BAC', '2018', 'Bien', 'Eiffel', '0652435145', 'Math'");
+    define("SERVER", new Creationbase());
+    define("ATTRIBUTS", "id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, firstname VARCHAR(30) NOT NULL, lastname VARCHAR(30) NOT NULL");
 
     //A chaque instance de cette classe correspond une base de donnée, dans laquelle on peut créer des tables etc...
-    function testCreateDatabase($server){
+    function testCreateDatabase(){
         GLOBAL $SUCCES;
         GLOBAL $ECHEC;
-        if ($server->createBDD("testCreationDB")){
+        if (SERVER->createBDD("testCreationDB")){
             $SUCCES++;
             echo "<br>[<font color='blue'>SUCCES</font>] Création de la base de donnée";
         } else {
@@ -30,12 +27,12 @@
         }
     }
 
-    function testCreateTable($server){
+    function testCreateTable(){
         GLOBAL $SUCCES;
         GLOBAL $ECHEC;
         $nomBDD = "testTable";
         $nomTable = "maTable";
-        if ($server->createBDD($nomBDD) || $server->createTable($nomBDD, $nomTable, ATTRIBUTS)){
+        if (SERVER->createBDD($nomBDD) || SERVER->createTable($nomBDD, $nomTable, ATTRIBUTS)){
             $SUCCES++;
             echo "<br>[<font color='blue'>SUCCES</font>] Création de la table";
         } else {
@@ -44,14 +41,14 @@
         }
     }
 
-    function testInsertData($server, $nomBDD, $nomTest, $arrayData){
+    function testInsertData($nomBDD, $nomTest, $arrayData){
         GLOBAL $SUCCES;
         GLOBAL $ECHEC;
         $nomTable = "maTable";
         $column = "firstname, lastname";
-        if ($server->createBDD($nomBDD) && $server->createTable($nomBDD, $nomTable, ATTRIBUTS)){
+        if (SERVER->createBDD($nomBDD) && SERVER->createTable($nomBDD, $nomTable, ATTRIBUTS)){
             foreach ($arrayData as $data){
-                if (!$server->insertData($nomBDD, $nomTable, $column, $data)){
+                if (!SERVER->insertData($nomBDD, $nomTable, $column, $data)){
                     echo "<br>[<font color='red'>FAIL</font>] $nomTest";
                     $ECHEC++;
                     return;
@@ -65,44 +62,43 @@
         }
     }
 
-    function deleteAllTestTable($server){
-        $server->deleteBDD("testCreationDB");
-        $server->deleteBDD("testTable");
-        $server->deleteBDD("testInsertData");
-        $server->deleteBDD("testInsertMultipleData");
-        $server->deleteBDD("testInsertMultipleSameData");
+    function deleteAllTestTable(){
+        SERVER->deleteBDD("testCreationDB");
+        SERVER->deleteBDD("testTable");
+        SERVER->deleteBDD("testInsertData");
+        SERVER->deleteBDD("testInsertMultipleData");
+        SERVER->deleteBDD("testInsertMultipleSameData");
     }
 
-    function launchTestSuite($server){
-        deleteAllTestTable($server);
+    function launchTestSuite(){
+        deleteAllTestTable();
         GLOBAL $SUCCES;
         GLOBAL $ECHEC;
-        testCreateDatabase($server);
-        testCreateTable($server);
-        testInsertData($server, "testInsertData", "Insertion d'une personne", array("'Daniel', 'Pinson'"));
-        testInsertData($server, "testInsertMultipleData", "Insertion de plusieurs personnes différentes", array("'Daniel', 'Pinson'", "'Thomas', 'Aglos'"));
-        testInsertData($server, "testInsertMultipleSameData", "Insertion de plusieurs même personnes", array("'Daniel', 'Pinson'", "'Daniel', 'Pinson'"));
+        testCreateDatabase();
+        testCreateTable();
+        testInsertData("testInsertData", "Insertion d'une personne", array("'Daniel', 'Pinson'"));
+        testInsertData("testInsertMultipleData", "Insertion de plusieurs personnes différentes", array("'Daniel', 'Pinson'", "'Thomas', 'Aglos'"));
+        testInsertData("testInsertMultipleSameData", "Insertion de plusieurs même personnes", array("'Daniel', 'Pinson'", "'Daniel', 'Pinson'"));
         echo "<br><b>Synthèse de la testsuite: Testés: <font color='blue'>". $SUCCES + $ECHEC . "</font> 
         | Réussi: <font color='green'>$SUCCES</font> 
         | Échoués: <font color='red'>$ECHEC</font></b><br>";
     }
 
-    function insertEleve($server){
-        echo "Insertion d'élève dans la table<br>";
-        $server->insertData(BDD, TABELEVE, COLELEVE, DANIEL);
-    }
-
-    function createEtudiant($server){
-        $server->createBDD(BDD);
-        $attributsEtudiant = "
-        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        login VARCHAR(30) NOT NULL,
-        mdp VARCHAR(30) NOT NULL,
-        mail VARCHAR(30) NOT NULL,
-        niveau VARCHAR(30) NOT NULL, 
-        nDossier INT(20),
+    function createProjetTable(){
+        SERVER->createBDD("projet");
+        echo "Creation des tables pour le projet<br>";
+        $attributsUtilisateur = "
+        login VARCHAR(50),
+        mdp VARCHAR(50),
+        mail VARCHAR(50),
         prenom VARCHAR(60),
         nom VARCHAR(60),
+        typeUtilisateur ENUM('Etudiant', 'Professeur')
+        ";
+        $attributsEtudiant = "
+        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        niveau VARCHAR(30) NOT NULL, 
+        nDossier INT(20),
         dateNaissance VARCHAR(60),
         universite VARCHAR(60),
         villeEtablissement VARCHAR(60),
@@ -115,18 +111,24 @@
         numeroPortable INT(12),
         matiereSuivies VARCHAR(60)
         "; // A voir pour les données particulière telles que niveau ou les dates
-        $server->createTable(BDD, TABELEVE, $attributsEtudiant);
-        echo "Creation des tables du projet<br>";
-        insertEleve($server);
+        SERVER->createTable(BDD, "utilisateur", $attributsUtilisateur);
+        SERVER->createTable(BDD, "eleve", $attributsEtudiant);
+        echo "Creation des tables<br>";
+        SERVER->insertData(BDD, "utilisateur",
+        "login, mdp, mail, prenom, nom, typeUtilisateur",
+        "'Zokey', 'mdp', 'mail@mail.com', 'Daniel', 'Pinson', 'Etudiant'"
+        );
+        SERVER->insertData(BDD, "eleve",
+        "niveau, nDossier, dateNaissance, universite, villeEtablissement, cycle, anneeEtude, baccalaureat, anneeBAC, mentionBAC, etablissementBAC, numeroPortable, matiereSuivies",
+        "'L2', '12345678', '05/10/2000', 'Universite de Bourgogne-Franche-Comte', 'Dijon', 'License informatique', 'L3', 'BAC', '2018', 'Bien', 'Eiffel', '0652435145', 'Math'"
+        );
+        echo "Insertion d'un élève et d'un utilisateur<br>";
     }
 
-    function createProjetTable($server){
-        createEtudiant($server);
-    }
-
-    $serv = new Creationbase();
-    //launchTestSuite($serv);
-    createProjetTable($serv);
+    //launchTestSuite();
+    createProjetTable();
+    //SERVER->deleteBDD("projet");
+    //deleteAllTestTable();
 
 ?>
 </body>
