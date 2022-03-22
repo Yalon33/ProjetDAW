@@ -80,10 +80,6 @@ class Etudiant
     {
         $this->$bac = $var;
     }
-    public function setBac($var)
-    {
-        $this->$bac = $var;
-    }
     public function setAnneeBac($var)
     {
         $this->$anneeBac = $var;
@@ -99,6 +95,81 @@ class Etudiant
     public function setNumeroTelephone($var)
     {
         $this->$numeroPortable = $var;
+    }
+    //Setter de la liste
+
+    public function getNiveau($var)
+    {
+        return $this->$niveau;
+    }
+    public function getnDossier($var)
+    {
+        return $this->$nDossier;
+    }
+    public function getPrenom($var)
+    {
+        return $this->$prenom;
+    }
+    public function getNom($var)
+    {
+        return $this->$nom;
+    }
+    public function getDateNaissance($var)
+    {
+       return $this->$dateNaissance;
+    }
+    public function getUniversite($var)
+    {
+        return $this->$universite;
+    }
+    public function getVilleEtablissement($var)
+    {
+        return $this->$villeEtablissement;
+    }
+    public function getCycle($var)
+    {
+        return $this->$cycle;
+    }
+    public function getAnneeEtude($var)
+    {
+        return $this->$anneeEtude;
+    }
+    public function getBac($var)
+    {
+       return $this->$bac;
+    }
+    public function getAnneeBac($var)
+    {
+       return $this->$anneeBac;
+    }
+    public function getMentionBac($var)
+    {
+        return $this->$mentionBac;
+    }
+    public function getEtablissementBac($var)
+    {
+       return $this->$etablissementBac;
+    }
+    public function getNumeroTelephone($var)
+    {
+        return $this->$numeroPortable;
+    }
+    //Getter Matières
+
+    public function suivreCours($Matiere)
+    {
+    }
+
+    public function ecrireMessage($string)
+    {
+    }
+
+    public function modifierMessage($Matiere)
+    {
+    }
+
+    public function repondreQCM($qcm)
+    {
     }
 
 }
