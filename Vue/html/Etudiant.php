@@ -18,7 +18,7 @@ class Etudiant
     private $etablissementBac;
     private $numeroPortable;
     //liste
-    private $matiereSuivies;
+    private $matiereSuivies = list();
 
     //Constructeur avec paramètres
     private function __construct($id2,$login2,$mdp2,$mail2, $niveau,  $nDossier,  $prenom, $dateNaissance, $universite, $villeEtablissement, $cycle, $anneeEtude, $bac, $anneeBac, $mentionBac, $etablissementBac, $numeroPortable, $matiereSuivies)
