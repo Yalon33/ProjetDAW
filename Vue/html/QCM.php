@@ -16,14 +16,14 @@
             return $this->$reponse;
         }
         
-        public function setQuestion($question2)
+        public function setQuestion($question)
         {
-            $this->$question=$question2;
+            $this->$question=$question;
         }
 
-        public function setReponse($reponse2)
+        public function setReponse($reponse)
         {
-            $this->$reponse=$reponse2;
+            $this->$reponse=$reponse;
         }
     }
 
