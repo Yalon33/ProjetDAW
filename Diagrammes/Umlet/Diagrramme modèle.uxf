@@ -96,25 +96,6 @@ layer=1</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>792</x>
-      <y>224</y>
-      <w>248</w>
-      <h>160</h>
-    </coordinates>
-    <panel_attributes>CoursDAO
---
---
-+ getAllCours() : list&lt;Cours&gt;
-+ getCoursById(id : int) : Cours
-+ createCours(c : Cours) : void
-+ updateCours(c : Cours) : void
-+ deleteCours(c : Cours) : void
-layer=1</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>UMLGeneric</id>
     <coordinates>
       <x>80</x>

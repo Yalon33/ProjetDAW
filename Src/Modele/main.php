@@ -93,9 +93,10 @@
         mail VARCHAR(50),
         prenom VARCHAR(60),
         nom VARCHAR(60),
-        typeUtilisateur ENUM('Etudiant', 'Professeur')
+        typeUtilisateur ENUM('Etudiant', 'Professeur'),
+        PRIMARY KEY(login, mdp)
         ";
-        $attributsEtudiant = "
+        $attributsEleve = "
         id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         niveau VARCHAR(30) NOT NULL, 
         nDossier INT(20),
@@ -110,14 +111,17 @@
         etablissementBAC VARCHAR(60),
         numeroPortable INT(12),
         matiereSuivies VARCHAR(60)
-        "; // A voir pour les données particulière telles que niveau ou les dates
-        SERVER->createTable(BDD, "utilisateur", $attributsUtilisateur);
-        SERVER->createTable(BDD, "eleve", $attributsEtudiant);
-        echo "Creation des tables<br>";
+        ";
+        $hashTable = ["utilisateur" => $attributsUtilisateur,
+                 "eleve" => $attributsEleve];
+        foreach ($hashTable as $key => $val){
+            SERVER->createTable(BDD, $key, $val);
+            echo "Creation de la table $key<br>";
+        }
         SERVER->insertData(BDD, "utilisateur",
         "login, mdp, mail, prenom, nom, typeUtilisateur",
         array("'Zokey', 'mdp', 'mail@mail.com', 'Daniel', 'Pinson', 'Etudiant'",
-        "'Pseudo2', 'autreMDP', 'mail2@mail.com', 'Louis', 'CroixVBaton', 'Professeur'"
+        "'Pseudo2', 'autreMDP', 'mail2@mail.com', 'Louis', 'CroixVBaton', 'Etudiant'"
         )
         );
         SERVER->insertData(BDD, "eleve",
@@ -129,8 +133,8 @@
 
     //launchTestSuite();
     // Vider toutes les tables des informations qui sont dedans
-    SERVER->deleteData(BDD, "eleve", NULL);
-    SERVER->deleteData(BDD, "utilisateur", NULL);
+    SERVER->deleteData(BDD, "eleve");
+    SERVER->deleteData(BDD, "utilisateur");
 
     createProjetTable();
     //SERVER->deleteBDD("projet");
