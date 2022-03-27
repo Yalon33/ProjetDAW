@@ -5,7 +5,11 @@
         private $question;
         private $reponse;
 
-
+        private function __construct($question,$reponse)
+        {
+            $this->$question = $question;
+            $this->$reponse = $reponse;
+        }
         public function getQuestion()
         {
             return $this->$question;
