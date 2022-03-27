@@ -7,12 +7,12 @@
         private $mdp;
         private $mail;
 
-        private function __construct($id2, $login2, $mdp2, $mail2)
+        private function __construct($id, $login, $mdp, $mail)
         {
-            $this->$id=$id2;
-            $this->$login=$login2;
-            $this->$mdp=$mdp2;
-            $this->$mail=$mail2;
+            $this->$id=$id;
+            $this->$login=$login;
+            $this->$mdp=$mdp;
+            $this->$mail=$mail;
         }
 
         public function getId()
@@ -35,24 +35,24 @@
             return $mail;
         }
 
-        public function setId($id2)
+        public function setId($id)
         {
-            $this->$id=$id2;
+            $this->$id=$id;
         }
 
-        public function setLogin($login2)
+        public function setLogin($login)
         {
-            $this->$login=$login2;
+            $this->$login=$login;
         }
 
-        public function setMdp($mdp2)
+        public function setMdp($mdp)
         {
-            $this->$mdp=$mdp2;
+            $this->$mdp=$mdp;
         }
 
-        public function setMail($mail2)
+        public function setMail($mail)
         {
-            $this->$mail=$mail2;
+            $this->$mail=$mail;
         }
 
 
