@@ -14,7 +14,7 @@ class Reponse
     {
         return $this->$id;
     }
-    public function setId()
+    public function setId($id)
     {
         $this->$id = $id;
     }
@@ -22,7 +22,7 @@ class Reponse
     {
         return $this->$reponse;
     }
-    public function setId()
+    public function setReponse($reponse)
     {
         $this->$reponse = $reponse;
     }
