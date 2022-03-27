@@ -8,6 +8,7 @@ class Reponse
     {
         $this->$id = $id;
         $this->$reponse = $reponse;
+        $this->$participant=list();
     }
     public function getId()
     {
