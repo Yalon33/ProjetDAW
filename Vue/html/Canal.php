@@ -6,7 +6,13 @@
         private $nom;
         private $participant
 
-
+        private function __construct($id,$nom,$participant)
+        {
+            $this->$id = $id;
+            $this->$nom = $nom;
+            $this->$participant = $participant;
+        }
+        
         public function getId()
         {
             return $this->$id;
