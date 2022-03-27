@@ -21,9 +21,9 @@ class Etudiant
     private $matiereSuivies = list();
 
     //Constructeur avec paramètres
-    private function __construct($id2,$login2,$mdp2,$mail2, $niveau,  $nDossier,  $prenom, $dateNaissance, $universite, $villeEtablissement, $cycle, $anneeEtude, $bac, $anneeBac, $mentionBac, $etablissementBac, $numeroPortable, $matiereSuivies)
+    private function __construct($id,$login,$mdp,$mail, $niveau,  $nDossier,  $prenom, $dateNaissance, $universite, $villeEtablissement, $cycle, $anneeEtude, $bac, $anneeBac, $mentionBac, $etablissementBac, $numeroPortable, $matiereSuivies)
     {
-        parent::__construct($id2,$login2,$mdp2,$mail2);
+        parent::__construct($id,$login,$mdp,$mail);
         $this->$niveau = $niveau;
         $this->$nDossier = $nDossier;
         $this->$prenom = $prenom;
