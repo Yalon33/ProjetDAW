@@ -3,8 +3,8 @@
     class Professeur extends Utilisateur
     {
         
-        private function __construct($id2, $login2, $mdp2, $mail2) {
-            parent::__construct($id2, $login2, $mdp2, $mail2);
+        private function __construct($id, $login, $mdp, $mail) {
+            parent::__construct($id, $login, $mdp, $mail);
 
         }
         
