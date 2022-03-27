@@ -45,7 +45,7 @@ body
 .login
 {
     border: 1px solid red;
-    height:20em;
+    height:22em;
     width: 25em;
 }
 .login_inner
@@ -107,6 +107,15 @@ button
     color: white;
     font-size: 17px;
     border-radius:5px;
+}
+p.create
+{
+    padding-top:20px ;
+    font-size: 12px;
+    float: right;
+}
+p.create a{
+    color: rgb(240, 100, 49);
 }
 form section{
     padding-top: 9%;
