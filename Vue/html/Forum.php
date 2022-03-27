@@ -5,7 +5,7 @@ class Forum
 
     private function __construct($canaux)
     {
-        $this->$canaux=list();
+        $this->$canaux=$canaux;
     }
 
     public function getCanaux()
