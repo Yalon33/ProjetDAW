@@ -13,7 +13,7 @@ class Forum
         return $this->$canaux;
     }
 
-    public function setCanaux()
+    public function setCanaux($canaux)
     {
         $this->$canaux=$canaux;
     }
