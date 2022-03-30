@@ -1,22 +1,21 @@
-const icon_menu= document.querySelector(".icon_toggle"),
-        nav= document.querySelector("nav"),
-        body=document.querySelector("body"),
-        toggle_switch=document.querySelector("div.toggle-switch"),
-        btn_list_diapos_left=document.querySelector(".btn_list_diapos_left"),
+const   btn_list_diapos_left=document.querySelector(".btn_list_diapos_left"),
         btn_list_videos_left=document.querySelector(".btn_list_videos_left"),
         btn_list_diapos_right=document.querySelector(".btn_list_diapos_right"),
         btn_list_videos_right=document.querySelector(".btn_list_videos_right"),
-        list_diapos=document.querySelector("div.list_diapos");
-
-icon_menu.addEventListener("click",() =>
-{
-    nav.classList.toggle("menu_sidebar");
-
+        list_diapos=document.querySelector(".list_diapos_item"),
+        modal_pdf = document.querySelector("div.modal_pdf"),
+        icon_close_modal = document.querySelector("i.icon_close");
+list_diapos.addEventListener("click",(e)=>{
+    modal_pdf.classList.toggle("hidden");
+  
 });
-toggle_switch.addEventListener("click",() =>
+
+icon_close_modal.addEventListener("click",(e)=>
 {
-    body.classList.toggle("dark");
-});
+    modal_pdf.classList.toggle("hidden");
+    console.log(e.target);
+}
+);
 
 btn_list_diapos_left.addEventListener("click",() =>
 {
@@ -24,6 +23,7 @@ btn_list_diapos_left.addEventListener("click",() =>
     scroll.scrollLeft +=500;
     console.log(scroll.scrollLeft);
 });
+
 btn_list_videos_left.addEventListener("click",() =>
 {
     let scroll = document.querySelector("ul.list_videos");
@@ -40,6 +40,7 @@ btn_list_diapos_right.addEventListener("click",() =>
     scroll.scrollLeft -=500;
     console.log(scroll.scrollLeft);
 });
+
 btn_list_videos_right.addEventListener("click",() =>
 {
     let scroll = document.querySelector("ul.list_videos");

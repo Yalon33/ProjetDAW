@@ -5,14 +5,16 @@
 <meta charset="UTF-8">
 <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 <link rel="stylesheet" href="../css/login.css">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
 </head>
 <body>
-    <div class="logo_login">
-        <span class="p">P</span>
-        <span class="c">C</span>
-        <p>Prépa Cours</p>
-    </div>
+        <div class="logo_login">
+            <span class="p">P</span>
+            <span class="c">C</span>
+            <p>Prépa Cours</p>
+        </div>
+
     
         <div class="login_image_right">
 
@@ -27,7 +29,7 @@
     <div class="login">
         <div class="login_inner">
             <div class="login_form">
-                <form>
+                <form action="validlogin.php" method="post">
                     <section class="login_form">
                         <label for="login_form">Nom d'utilisateur: </label>
                         <input type="text" name="login_form" id="login_form">   
@@ -41,12 +43,16 @@
                         <a href="#">Mot de passe oublié.</a>
                     </section>
                     <button>Connexion</button>
+                    <p class="create">Vous n'avez pas encore un compte? <a href="">S'inscrire</a></p>
                 </form>
             </div>
         </div>
     </div>
-    <div class="login_footer">
-        <p>Une site de formation crée par un groupe du projet DAW en L3 Informatique</p>
+    <div class="modal_create">
+
     </div>
+    <!-- <div class="login_footer">
+        <p>Une site de formation crée par un groupe du projet DAW en L3 Informatique</p>
+    </div> -->
 </body>
 </html>

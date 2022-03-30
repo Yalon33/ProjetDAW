@@ -1,76 +1,3 @@
-.homepage_contenu
-{
-    height: auto;
-    width: auto;
-    margin-top: 0.5em;
-    margin-right: 0.5em;
-    margin-left: 2.9em;
-    background-color: white;
-    border-radius: 25px;
-    padding: 0 3%;
-    overflow-y: scroll;
-    color:var(--primary-color);
-}
-
-.homepage_sub_sidebar
-{
-    height:7.6em;
-    width: 100%;
-    align-items: center;
-    display: flex;
-    justify-content:space-between;
-    border-bottom: 2px solid var(--body-color);
-}
-div.homepage_logo
-{
-    height: 100%;
-    width: 17em;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-div.image_logo
-{
-    height: 80%;
-
-}
-img.image_logo{
-    max-width: 100%;
-    height:100%;
-    object-fit: cover;
-}
-
-
-.homepage_sub_sidebar p.titre{
- 
-    font-weight: bolder;
-    font-size: 30px;
-    font-family: "Apple Chancery";
-}
-
-.homepage_sub_sidebar .user a
-{
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: var(--primary-color);
-}
-
-.user_avatar
-{
-    height: 50px;
-    width: 50px;
-    border-radius: 25px;
-    background-color: var(--body-color);
-}
-img.image_avatar{
-    max-width: 100%;
-    border-radius: 25px;
-    object-fit: cover;
-}
-
-
-
 ul.grid_card{
     display: flex;
     flex-direction: column;
@@ -78,7 +5,10 @@ ul.grid_card{
     width: 100%;
 }
 ul.grid_card li{
-    padding-top:5% ;
+    padding:3% 0 ;
+    height: 80%;
+    align-items: center;
+
 }
 p.title_homepage_card
 {
@@ -94,19 +24,78 @@ ul.list_lesson
     grid-template-columns: 1fr 1fr 1fr ;
     grid-row-gap: 3%;
 }
-ul.list_lesson li.lesson
+ul.list_lesson li.lesson 
 {
     height: 15em;
     width: 20em;
     border: none;
     border-radius: 15px;
-    background-color: rgb(183, 220, 252);
-    padding: 20px;
+    background-color: rgb(53, 67, 80);
+    padding: 15px;
+    transition: 0.5s;
+    list-style-type: none;
+    
+}
+ul.list_lesson li.lesson  a{
+    width: 100%;
+    height: 100%;
+    color:white;
+    text-decoration: none;
     display: flex;
     flex-direction: column;
-    transition: 0.5s;
+    justify-content: space-between;
 }
 ul.list_lesson li.lesson:hover{
+    height: 16em;
+    width:21em;
+}
+span.date{
+    font-size:12px ;
+}
+
+img{
+    max-width: 100%;
+    object-fit: cover;
+}
+img.image
+{
+    width: 100%;
+    height: 100%;
+}
+div.image_lesson
+{
+    width: 100%;
+    height: 50%;
+}
+.titre_lesson
+{
+    font-size: 14px;
+    text-align: center;
+
+}
+.name_lesson{
+    text-align: center;
+    font-weight: bolder;
+    font-size: 20px;
+}
+.prof{
+    font-size: 12px;
+    padding-top: 5px;
+    text-align: center;
+    color: var(--body-color)
+}
+.card_icon
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 10%;
+    
+}
+.card_icon i{
+    font-size: 17px;
+}
+/* ul.list_lesson li.lesson:hover{
     height: 20em;
     width: 25em;
 }
@@ -229,7 +218,7 @@ ul.descrip_lesson
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
+} */
 .footer
 {
     height: 5em;
@@ -253,7 +242,7 @@ ul.descrip_lesson
 /* Tablet: width >=740px and width < 1024 px */
 @media only screen and (min-width:740px) and (max-width:1023px)
 {
-    ul.list_lesson
+    /* ul.list_lesson
     {
         grid-template-columns: 1fr 1fr;
     }
@@ -276,7 +265,7 @@ ul.descrip_lesson
     li .date{
         font-size:10px ;
     }
- 
+  */
 }
 
 /* PC: width >= 1024px */

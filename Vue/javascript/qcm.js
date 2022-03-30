@@ -1,5 +1,5 @@
-var numQuest = 0;
-var nbQuest = 0;
+let numQuest = 0;
+let nbQuest = 0;
 
 $(document).ready(() => {
     chargeQuestion();
@@ -15,6 +15,9 @@ function chargeQuestion(){
     $.getJSON('../javascript/questions.json', (data) => {
         nbQuest = data.Questions.length;
         let q = data.Questions[numQuest];
+
+        console.log(q);
+
         $("#numQuestion").text(q.numero);
         $("#intituleQuestion").text(q.intitulee);
 
@@ -48,17 +51,3 @@ function changeQuestion(){
         }
     });
 }
-
-const icon_menu= document.querySelector(".icon_toggle"),
-        nav= document.querySelector("nav"),
-        body=document.querySelector("body"),
-        toggle_switch=document.querySelector(".toggle-switch");
-
-icon_menu.addEventListener("click",() =>
-{
-    nav.classList.toggle("menu_sidebar");
-});
-toggle_switch.addEventListener("click",() =>
-{
-    body.classList.toggle("dark");
-});

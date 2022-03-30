@@ -1,107 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>User Page</title>
-<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 <link rel="stylesheet" href="../css/userpage.css">
-<link rel="stylesheet" href="../css/menu.css">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="HandheldFriendly" content="true"> 
-</head>
     <body class="dark">
-        <nav class="menu_sidebar">
-                <header>
-                     <div class="menu_icon">
-                         <i class='bx bx-menu icon_toggle'></i>
-                     </div>
-                     <div class="menu_search">
-                         <form>
-                             <i class='bx bx-search-alt-2' ></i>
-                             <input type="text" name="menu_search" id="menu_search" placeholder="Search..">
-                         </form>
-                     </div>
-                </header>
-
-                <div class="menu_body">
-                    <ul class="menu_body">
-                        <li class="menu_home">
-                            <a href="../html/homepage.html">
-                                 <i class='bx bx-home'   ></i>
-                                 <span class="text_opacity">Home</span>
-                            </a>
-                             
-                        </li>
-                        <li class="menu_user">
-                            <a href="../html/userpage.html">
-                                 <i class='bx bx-user  icon_hover' ></i>
-                                 <span class="text_opacity">User</span>
-                            </a>
-                        </li>
-                        <li class="menu_notif">
-                            <a href="#">
-                                 <i class='bx bx-bell' ></i>
-                                 <span class="text_opacity">Notifications</span>
-                            </a>
-                        </li>
-                        <li class="menu_cours">
-                            <a href="../html/lessonpage.html">
-                                 <i class='bx bx-book' ></i>
-                                 <span class="text_opacity">Lesson</span>
-                            </a>
-                        </li>
-                         <li class="menu_like">
-                             <a href="#">
-                                 <i class='bx bx-heart' ></i>
-                                 <span class="text_opacity">Like</span>
-                             </a>
-                         </li>
-                         <li class="menu_history">
-                             <a href="#">
-                                 <i class='bx bx-history' ></i>
-                                 <span class="text_opacity">History</span>
-                             </a>
-                         </li>
-                    </ul>
-                </div>
-                 
-                <div class="menu_footer">
-                    <ul class="menu_footer">
-                         <li class="menu_logout">
-                             <a href="#">
-                                 <i class='bx bx-log-out' ></i>
-                                 <span class="text-mode text_opacity">Log out</span>
-                             </a>
-                         </li>
-                         <li class="menu_mode">
-                             <a href="#">
-                                 <i class='bx bx-moon'></i>
-                                 <span class="text-mode text_opacity">Dark Mode</span>
-                             </a>
-                             <div class="toggle-switch  text_opacity">
-                                 <span class="switch"></span>
-                             </div>
-                         </li>
-                    </ul>  
-                </div>
-        </nav>
-        <div class="userpage_contenu">
-            <div class="userpage_sub_sidebar">
-                <div class="userpage_logo">
-                    <div class="image_logo">
-                        <img src="../image/site_logo.png" alt="" class="image_logo">
-                    </div>
-                    <p class="titre">Prépa Cours</p>
-                </div>
-                <div class="user">
-                    <a href="../html/userpage.html">
-                        <div class="user_avatar">
-                            <img src="../image/tigercute.jpg" alt="" class="image_avatar"> 
-                        </div>
-                        <p class="user_name">Cute Tiger</p>
-                    </a>
-                </div>
-            </div>
             <div class="userpage_contenu_inner">
                 <ul class="user_coordonne">
                     <li>
@@ -204,7 +102,6 @@
             </div>
             
             <button><i class='bx bx-sync'></i>Update</button>  
-        </div>
 
 </body>
 <script src="../javascript/userpage.js"></script>
