@@ -1,6 +1,7 @@
 p.titre_lesson
 {
     margin-top: 0.5em;
+    text-align: left;
     font-size: 40px;
     color:var(--body-color)
 }
@@ -29,7 +30,7 @@ ul.list_diapos,ul.list_videos
     justify-content: space-between;
 
 }
-ul.list_diapos li div,ul.list_videos li div
+div.list_diapos_item,div.list_videos_item
 {
     margin-right: 7em;
     margin-bottom: 10px;
@@ -72,6 +73,34 @@ button
 }
 button i{
     font-size: 25px;
+}
+.modal_pdf
+{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:rgba(11, 12, 29, 0.9);
+}
+.modal_pdf i
+{
+    float: right;
+    color:white;
+    font-size: 50px;
+    margin-right:5%;
+
+}
+.pdf
+{
+    margin:0 auto ;
+    margin-top: 2%;
+    width: 80%;
+    height: 90%;
+}
+.hidden
+{
+    display: none;
 }
 
 .lessonpage_dark{

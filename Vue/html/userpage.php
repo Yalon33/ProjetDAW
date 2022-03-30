@@ -1,22 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>User Page</title>
-<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 <link rel="stylesheet" href="../css/userpage.css">
-<link rel="stylesheet" href="../css/menu.css">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="HandheldFriendly" content="true"> 
-</head>
     <body class="dark">
-        
-        <?php include("./menu.html");?>
-
-        <div class="page_contenu">
-            
-            <?php include("./banderole.html");?>
-
             <div class="userpage_contenu_inner">
                 <ul class="user_coordonne">
                     <li>
@@ -119,7 +102,6 @@
             </div>
             
             <button><i class='bx bx-sync'></i>Update</button>  
-        </div>
 
 </body>
 <script src="../javascript/userpage.js"></script>

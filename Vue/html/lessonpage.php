@@ -1,22 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>Lesson Page</title>
-<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 <link rel="stylesheet" href="../css/lessonpage.css">
-<link rel="stylesheet" href="../css/menu.css">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="HandheldFriendly" content="true"> 
-</head>
 <body class="dark">
-        
-        <?php include("./menu.html");?>
-
-        <div class="page_contenu">
-            
-            <?php include("./banderole.html");?>
-
             <div class="lesson_inner">
                 <p class="titre_lesson">Titre de cours <span class="nom_prof">Nom de prof</span> </p>
                 <div class="list_diapos">
@@ -25,9 +8,15 @@
                         <ul class="list_diapos" id="diapos">
                             <li>
                                 <div class="list_diapos_item">
-                                    Diapo 1
+                                    <img src="../image/image_login_1.png" height="100%" width="100%" style="border-radius:5px ;">
                                 </div>
-                                <p class="titre_item">titre de diapo 1 </p>
+                                <p class="titre_item">Sujet du projet 2022 </p>
+                                <div class="modal_pdf hidden">
+                                    <i class='bx bx-x icon_close'></i>
+                                    <div class="pdf">
+                                        <iframe src="../image/Projet_DAW.pdf" height="100%" width="100%"></iframe> 
+                                    </div>
+                                </div>
                             </li>
                             <li>
                                 <div class="list_diapos_item">
@@ -77,7 +66,7 @@
                         <ul class="list_videos" id="videos">
                             <li>
                                 <div class="list_videos_item">
-                                    Video 1
+                                    <iframe src="https://www.youtube.com/watch?v=6AMZC3uIE4s&list=PLwLsbqvBlImHrYX8EKgp1st9vV04Cvymz" height="100%" width="100%"></iframe>
                                 </div>
                                 <p class="titre_item">titre de diapo 1 </p>
                             </li>
@@ -125,8 +114,7 @@
                 <div class="lessonpage_dark"></div>
             </div>
             <div class="footer"></div>
-        </div>
-       
+            <script src="../javascript/lessonpage.js"></script>
 </body>
-<script src="../javascript/lessonpage.js"></script>
+
 </html>

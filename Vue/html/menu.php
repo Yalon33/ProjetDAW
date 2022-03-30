@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="../css/menu.css">
-</head>
+<link rel="stylesheet" href="../css/menu.css">
 <body>
-    <nav class="menu_sidebar">
         <header>
              <div class="menu_icon">
                  <i class='bx bx-menu icon_toggle'></i>
@@ -23,14 +14,14 @@
         <div class="menu_body">
             <ul class="menu_body">
                 <li class="menu_home">
-                    <a href="../html/homepage.php">
+                    <a href="index.php?page=homepage">
                          <i class='bx bx-home' ></i>
                          <span class="text_opacity">Home</span>
                     </a>
                      
                 </li>
                 <li class="menu_user">
-                    <a href="../html/userpage.php">
+                    <a href="index.php?page=userpage">
                          <i class='bx bx-user' ></i>
                          <span class="text_opacity">User</span>
                     </a>
@@ -42,7 +33,7 @@
                     </a>
                 </li>
                 <li class="menu_cours">
-                    <a href="../html/lessonpage.php">
+                    <a href="index.php?page=lessonpage">
                          <i class='bx bx-book' ></i>
                          <span class="text_opacity">Lesson</span>
                     </a>
@@ -81,7 +72,5 @@
                  </li>
             </ul>  
         </div>
-    </nav>
+        <script src="../javascript/menu.js"></script>
 </body>
-<script src="../javascript/menu.js"></script>
-</html>

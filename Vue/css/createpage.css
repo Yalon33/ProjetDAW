@@ -3,16 +3,19 @@
     margin: 0;
     box-sizing: border-box;
 }
+
 body{
     font-family:"Poppins" ,sans-serif;
     width: 100%;
     height: 100vh;
     padding: 1%;
 }
+
 header
 {
     height: 5em;
 }
+
 .site_logo
 {
     height: 100%;
@@ -26,11 +29,13 @@ header
     font-family: "apple chancery";
 
 }
+
 img{
     max-width: 100%;
     object-fit: cover;
     height: 100%;
 }
+
 section.page_inner
 {
     height:70%;
@@ -39,12 +44,14 @@ section.page_inner
     display: flex;
     margin-top: 3%;
 }
+
 div.page_inner_left
 {
     width: 50%;
     height: 100%;
 
 }
+
 div.page_inner_right
 {
     width: 50%;
@@ -54,6 +61,7 @@ div.page_inner_right
     padding: 1%;
     font-size: 20px;
 }
+
 div.page_inner_right p
 {
     padding-top: 2%;
@@ -61,6 +69,7 @@ div.page_inner_right p
     font-size: 13px;
     text-align: center;
 }
+
 div.page_inner_left
 {
     background: url('https://images.unsplash.com/photo-1540800458874-73e6a5eed8ac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjZ8fGxvZ2lufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60');
@@ -76,6 +85,7 @@ div.form_page
     width: 70%;
  
 }
+
 form
 {
     display: flex;
@@ -84,6 +94,7 @@ form
     height: 100%;
     margin: 0 auto;
 }
+
 section.form,section.checkbox
 {
     
@@ -94,12 +105,14 @@ section.form,section.checkbox
     border-radius: 5px ;
     padding-left:2% ;
 }
+
 h3
 {
     padding-top: 2%;
     text-align: center;
     color: rgb(243, 92, 36) ;
 }
+
 section.form{
     border: 0.5px solid rgb(100, 98, 98) ;
 }
@@ -114,18 +127,22 @@ section.form input{
     color: white;
     padding: 0 10px ;
 }
+
 section i{
     color:white;
     font-size: 25px;
 }
+
 section span{
     font-size: 10px;
     padding-left: 5px;
     color: rgba(66, 101, 121, 0.911);
 }
+
 section.checkbox input{
     width: 10%;
 }
+
 button
 {
     height: 10%;
@@ -135,6 +152,7 @@ button
     border-radius: 5px;
     font-weight: bolder;
 }
+
 a{
     color:rgb(243, 92, 36) ;
 }
