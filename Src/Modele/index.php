@@ -10,16 +10,25 @@
             $stringAttributs .= $key . " " . $type . ", ";
         }
         $stringAttributs .= $conditionsFin;
-        SERVER->createTable(NOMBDD, "utilisateur", $stringAttributs);
+        SERVER->createTable(NOMBDD, $nomTable, $stringAttributs);
     }
 
+    /**
+     * creation des tables du projet qui sont, dans l'ordre, utilisateur, eleve, professeur, canal, forum, matiere, message, reponse
+     *
+     * @return void
+     */
     function createProjetTable(){
         SERVER->createBDD("projet");
-        echo "Creation des tables pour le projet<br>";
-        $arrayUtilisateur = ["login" => "VARCHAR(50)", "mdp" => "VARCHAR(50)", "mail" => "VARCHAR(50)", "prenom" => "VARCHAR(50)", "nom" => "VARCHAR(50)", "typeUtilisateur" => "ENUM('Etudiant', 'Professeur')"];
-        $arrayEleve = ["id" => "INT(6)", "niveau" => "VARCHAR(50)", "nDossier" => "INT(20)", "dateNaissance" => "VARCHAR(59)", "universite" => "VARCHAR(50)", "villeEtablissement" => "VARCHAR(50)", "cycle" => "VARCHAR(5)", "anneeEtude" => "VARCHAR(60)", "baccalaureat" => "VARCHAR(50)", "aneeBAC" => "VARCHAR(50)", "metionBAC" => "VARCHAR(50)", "etablissementBAC" => "VARCHAR(50)", "numeroPortable" => "INT(12)", "matiereSuivies" => "VARCHAR(50)"];
-        createTable($arrayUtilisateur, "utilisateur", "PRIMARY KEY(login, mdp)");
-        createTable($arrayEleve, "eleve", "PRIMARY KEY(id)");
+        createTable(["login" => "VARCHAR(64)", "mdp" => "VARCHAR(64)", "mail" => "VARCHAR(64)", "prenom" => "VARCHAR(64)", "nom" => "VARCHAR(64)", "typeUtilisateur" => "ENUM('Etudiant', 'Professeur')"], "utilisateur", "PRIMARY KEY(login, mdp)");
+        createTable(["id" => "INT(8)", "niveau" => "VARCHAR(64)", "nDossier" => "INT(20)", "dateNaissance" => "VARCHAR(59)", "universite" => "VARCHAR(64)", "villeEtablissement" => "VARCHAR(64)", "cycle" => "VARCHAR(5)", "anneeEtude" => "VARCHAR(60)", "baccalaureat" => "VARCHAR(64)", "aneeBAC" => "VARCHAR(64)", "metionBAC" => "VARCHAR(64)", "etablissementBAC" => "VARCHAR(64)", "numeroPortable" => "INT(12)", "matiereSuivies" => "VARCHAR(64)"], "eleve", "PRIMARY KEY(id)");
+        //createTable([], "professeur", "");
+        createTable(["id" => "INT(8)", "nom" => "VARCHAR(64)", "participant" => "INT(20)"], "canal", "PRIMARY KEY(id)");
+        createTable(["canaux" => "VARCHAR(50)"], "forum", "PRIMARY KEY(canaux)");
+        createTable(["id" => "INT(8)", "nom" => "VARCHAR(64)", "dateCreation" => "VARCHAR(64)", "contenu" => "VARCHAR(64)", "createur" => "VARCHAR(64)", "tags" => "VARCHAR(64)", "niveau" => "VARCHAR(64)"], "matiere", "PRIMARY KEY(id)");
+        createTable(["id" => "INT(8)", "contenu" => "VARCHAR(64)"], "message", "PRIMARY KEY(id)");
+        createTable(["id" => "INT(8)", "reponse" => "VARCHAR(1024)"], "reponse", "PRIMARY KEY(id)");
+        echo "Creation des tables pour le projet réussi!<br>";
         /*
         $Daniel = array("'Zokey', 'mdp', 'mail@mail.com', 'Daniel', 'Pinson', 'Etudiant'",
                 "'Pseudo2', 'autreMDP', 'mail2@mail.com', 'Louis', 'CroixVBaton', 'Etudiant'");
