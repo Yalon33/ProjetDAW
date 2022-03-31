@@ -4,9 +4,10 @@
     {
         
         private function __construct($id, $login, $mdp, $mail) {
-            parent::__construct($id, $login, $mdp, $mail);
+            //parent::__construct($id, $login, $mdp, $mail);
 
         }
+        /*
         
         public function creerMatiere($nom)
         {
@@ -64,9 +65,6 @@
         {
             
         }
+        */
     }
-
-
-
-
 ?>

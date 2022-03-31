@@ -9,57 +9,50 @@
 
         private function __construct($id, $login, $mdp, $mail)
         {
-            $this->$id=$id;
-            $this->$login=$login;
-            $this->$mdp=$mdp;
-            $this->$mail=$mail;
+            $this->id = $id;
+            $this->login = $login;
+            $this->mdp = $mdp;
+            $this->mail = $mail;
         }
 
         public function getId()
         {
-            return $id;
+            return $this->id;
         }
 
         public function getLogin()
         {
-            return $login;
+            return $this->login;
         }
 
         public function getMdp()
         {
-            return $mdp;
+            return $this->mdp;
         }
 
         public function getMail()
         {
-            return $mail;
+            return $this->mail;
         }
 
         public function setId($id)
         {
-            $this->$id=$id;
+            $this->id=$id;
         }
 
         public function setLogin($login)
         {
-            $this->$login=$login;
+            $this->login=$login;
         }
 
         public function setMdp($mdp)
         {
-            $this->$mdp=$mdp;
+            $this->mdp=$mdp;
         }
 
         public function setMail($mail)
         {
-            $this->$mail=$mail;
+            $this->mail=$mail;
         }
-
-
-
-
-
     }
-
-
 ?>
