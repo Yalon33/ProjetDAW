@@ -15,7 +15,8 @@
         public function createBDD($nomBDD){
             // Pas besoin de faire un try/catch comme la query le fait déjà
             // Les echos deviennent vites illisibles
-            return !is_null(BDD::getInstance()->query("CREATE DATABASE IF NOT EXISTS $nomBDD;"));
+            //return !is_null(BDD::query("CREATE DATABASE IF NOT EXISTS $nomBDD;"));
+            return !is_null(BDD::query("CREATE DATABASE IF NOT EXISTS $nomBDD;"));
         }
 
 
