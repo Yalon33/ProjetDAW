@@ -9,7 +9,7 @@
         private $tags;
         private $niveau;
 
-        private function __construct($id,$nom,$dateCreation,$contenu,$createur,$tags,$niveau)
+        public function __construct($id = null, $nom, $dateCreation, $contenu, $createur, $tags, $niveau)
         {
             $this->id = $id;
             $this->nom = $nom;
