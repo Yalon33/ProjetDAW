@@ -1,4 +1,5 @@
 <?php
+    include("message.php");
     class Canal
     {
         private $id;

@@ -1,4 +1,6 @@
 <?php
+    include("canal.php");
+
     class Forum 
     {
         private $canaux;
