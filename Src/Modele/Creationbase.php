@@ -33,7 +33,7 @@
             return !is_null(BDD::query("DROP TABLE IF EXISTS $nomBDD.$nomTable;"));
         }
 
-        public function insertPreparedData($stringQuery, $arrayHolder){
+        public function insertData($stringQuery, $arrayHolder){
             return BDD::prepAndExec($stringQuery, $arrayHolder) !==  false;
         }
         

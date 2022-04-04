@@ -6,21 +6,41 @@
 </style>
 <?php
     include("./creationbase.php");
+    include("../../Vue/html/Utilisateur.php");
     define("PROJET", "projet");
     define("SERVER", new Creationbase());
     define("TABLES", array(
-        ["nomTable" => "utilisateur", "conditionFin" => "PRIMARY KEY(login, mdp)", "attributs" => ["login" => "VARCHAR(64)", "mdp" => "VARCHAR(64)", "mail" => "VARCHAR(64)", "prenom" => "VARCHAR(64)", "nom" => "VARCHAR(64)", "typeUtilisateur" => "ENUM('Etudiant', 'Professeur')"]],
-        ["nomTable" => "eleve", "conditionFin" => "PRIMARY KEY(id)", "attributs" => ["id" => "INT(8)", "niveau" => "VARCHAR(64)", "nDossier" => "INT(20)", "dateNaissance" => "VARCHAR(59)", "universite" => "VARCHAR(64)", "villeEtablissement" => "VARCHAR(64)", "cycle" => "VARCHAR(5)", "anneeEtude" => "VARCHAR(60)", "baccalaureat" => "VARCHAR(64)", "aneeBAC" => "VARCHAR(64)", "metionBAC" => "VARCHAR(64)", "etablissementBAC" => "VARCHAR(64)", "numeroPortable" => "INT(12)", "matiereSuivies" => "VARCHAR(64)"]],
-        ["nomTable" => "forum", "conditionFin" => "PRIMARY KEY(canaux)", "attributs" => ["id" => "INT(8)", "nom" => "VARCHAR(64)", "participant" => "INT(20)"]],
-        ["nomTable" => "canal", "conditionFin" => "PRIMARY KEY(id)", "attributs" => ["canaux" => "VARCHAR(50)"]],
-        ["nomTable" => "matiere", "conditionFin" => "PRIMARY KEY(id)", "attributs" => ["id" => "INT(8)", "nom" => "VARCHAR(64)", "dateCreation" => "VARCHAR(64)", "contenu" => "VARCHAR(64)", "createur" => "VARCHAR(64)", "tags" => "VARCHAR(64)", "niveau" => "VARCHAR(64)"]],
-        ["nomTable" => "message", "conditionFin" => "PRIMARY KEY(id)", "attributs" => ["id" => "INT(8)", "contenu" => "VARCHAR(64)"]],
-        ["nomTable" => "reponse", "conditionFin" => "PRIMARY KEY(id)", "attributs" => ["id" => "INT(8)", "reponse" => "VARCHAR(1024)"]]
+        ["nomTable" => "utilisateur", "conditionFin" => "PRIMARY KEY(id)", "attributs" => ["id" => "INT UNSIGNED AUTO_INCREMENT", "login" => "VARCHAR(64)", "mdp" => "VARCHAR(64)", "mail" => "VARCHAR(64)", "prenom" => "VARCHAR(64)", "nom" => "VARCHAR(64)", "typeUtilisateur" => "ENUM('Etudiant', 'Professeur')"]],
+            ["nomTable" => "etudiants", "conditionFin" => "PRIMARY KEY(id)", "attributs" => ["id" => "INT", "niveau" => "ENUM('6EME', '5EME', '4EME', '2ND', '1ERE', 'TERM', 'L1', 'L2', 'L3', 'M1', 'M2')", "matiereSuivies" => "VARCHAR(64)"]],
+        //["nomTable" => "forum", "conditionFin" => "PRIMARY KEY(canaux)", "attributs" => ["id" => "INT(8)", "nom" => "VARCHAR(64)", "participant" => "INT(20)"]],
+        //["nomTable" => "canal", "conditionFin" => "PRIMARY KEY(id)", "attributs" => ["canaux" => "VARCHAR(50)"]],
+        //["nomTable" => "matiere", "conditionFin" => "PRIMARY KEY(id)", "attributs" => ["id" => "INT(8)", "nom" => "VARCHAR(64)", "dateCreation" => "VARCHAR(64)", "contenu" => "VARCHAR(64)", "createur" => "VARCHAR(64)", "tags" => "VARCHAR(64)", "niveau" => "VARCHAR(64)"]],
+        //["nomTable" => "message", "conditionFin" => "PRIMARY KEY(id)", "attributs" => ["id" => "INT(8)", "contenu" => "VARCHAR(64)"]],
+        //["nomTable" => "reponse", "conditionFin" => "PRIMARY KEY(id)", "attributs" => ["id" => "INT(8)", "reponse" => "VARCHAR(1024)"]]
+    ));
+    define("DATA", array(
+        "utilisateur" => [ 
+                            [":l" => "Zokey", ":mdp" => "1234", ":m" => "mail@mail.com", ":p" => "Daniel", ":n" => "Pinson", ":t" => "Etudiant"],
+                            [":l" => "xXSasukeXx", ":mdp" => "tropDark", ":m" => "noir@triste.com", ":p" => "Clément", ":n" => "Pouilly", ":t" => "Etudiant"],
+                            [":l" => "Zeus", ":mdp" => "toplane", ":m" => "zeus@mail.com", ":p" => "Woo-je", ":n" => "Choi", ":t" => "Etudiant"],
+                            [":l" => "Oner", ":mdp" => "jungle", ":m" => "oner@mail.com", ":p" => "Hyeon-joon", ":n" => "Moon", ":t" => "Etudiant"],
+                            [":l" => "Faker", ":mdp" => "midlane", ":m" => "faker@mail.com", ":p" => "Lee", ":n" => "Sang-hyeok", ":t" => "Etudiant"],
+                            [":l" => "Gumayushi", ":mdp" => "adc", ":m" => "Gumayushi@mail.com", ":p" => "Lee", ":n" => "Min-hyeong", ":t" => "Etudiant"],
+                            [":l" => "Keria", ":mdp" => "support", ":m" => "keria@mail.com", ":p" => "Ryu", ":n" => "Min-seok", ":t" => "Etudiant"],
+                            [":l" => "Wunder", ":mdp" => "danemark", ":m" => "wunder@mail.com", ":p" => "Martin", ":n" => "Nordahl Hansen", ":t" => "Etudiant"],
+                            [":l" => "Razork", ":mdp" => "espagne", ":m" => "Razork@mail.com", ":p" => "Ivan", ":n" => "Martin Diaz", ":t" => "Etudiant"],
+                            [":l" => "Humanoid", ":mdp" => "tcheque", ":m" => "humanoid@mail.com", ":p" => "marek", ":n" => "brazda", ":t" => "Etudiant"],
+                            [":l" => "Upset", ":mdp" => "allemagne", ":m" => "Guupsetail.com", ":p" => "Eliasee", ":n" => "Lipp", ":t" => "Etudiant"],
+                            [":l" => "Hylissang", ":mdp" => "bulgarie", ":m" => "hylissang@mail.com", ":p" => "Zdravets", ":n" => "Iliev Galabov", ":t" => "Etudiant"],
+                            [":l" => "Jupiter", ":mdp" => "McKinsey", ":m" => "jupiter@mail.com", ":p" => "Emmanuel", ":n" => "Macon", ":t" => "Professeur"],
+                            [":l" => "Flanby", ":mdp" => "Scotter", ":m" => "flanby@mail.com", ":p" => "François", ":n" => "Hollande", ":t" => "Professeur"],
+                            [":l" => "Tempete", ":mdp" => "Audible", ":m" => "tempete@mail.com", ":p" => "Nicolas", ":n" => "Sarcozy", ":t" => "Professeur"],
+                            [":l" => "Resistant", ":mdp" => "JeVousAiEntendu", ":m" => "resistant@mail.com", ":p" => "Charles", ":n" => "deGaulle", ":t" => "Professeur"],
+        ],
+        "etudiants" => []
     ));
 
     function createTable($nomTable, $conditionsFin, $array){
-        GLOBAL $SUCCES;
-        GLOBAL $ECHEC;
         $stringAttributs = "";
         foreach($array as $key => $type){
             $stringAttributs .= $key . " " . $type . ", ";
@@ -29,8 +49,9 @@
         SERVER->createTable(PROJET, $nomTable, $stringAttributs);
     }
 
-    function createData($nomTable, $values, $arrayData){
-
+    function createData($nomTable, $attributs, $arrayData){
+        foreach($arrayData as $data)
+        SERVER->insertData("INSERT INTO ".PROJET.".$nomTable($attributs) VALUES(:l, :mdp, :m, :p, :n, :t);", $data);
     }
 
     /**
@@ -38,34 +59,25 @@
      *
      * @return void
      */
-    function createProjetTable(){
+    function createProjet(){
+        SERVER->createBDD(PROJET);
+        $dataIndex = 0;
         foreach(TABLES as $table){
             createTable($table["nomTable"], $table["conditionFin"], $table["attributs"]);
+            $stringAttributs = "";
+            $arrayData = [];
+            $i = 0;
+            foreach($table["attributs"] as $key => $val){
+                $stringAttributs .= $key != "id" ? $key : "";
+                $stringAttributs .= $i != count($table["attributs"]) -1 && $i != 0? ", " : "";
+                $i++;
+            }
+            createData($table["nomTable"], $stringAttributs, DATA[$table["nomTable"]]);
         }
-        echo "Creation des tables pour le projet réussi!<br>";
-        /*
-        $Daniel = array("'Zokey', 'mdp', 'mail@mail.com', 'Daniel', 'Pinson', 'Etudiant'",
-                "'Pseudo2', 'autreMDP', 'mail2@mail.com', 'Louis', 'CroixVBaton', 'Etudiant'");
-        //SERVER->insertData(PROJET, );
-        SERVER->insertData(PROJET, "eleve",
-        "niveau, nDossier, dateNaissance, universite, villeEtablissement, cycle, anneeEtude, baccalaureat, anneeBAC, mentionBAC, etablissementBAC, numeroPortable, matiereSuivies",
-        array("'L2', '12345678', '05/10/2000', 'Universite de Bourgogne-Franche-Comte', 'Dijon', 'License informatique', 'L2', 'BAC', '2018', 'Bien', 'Eiffel', '0652435145', 'Math'",
-        "'L3', '12345679', '05/11/2000', 'Universite de Bourgogne-Franche-Comte', 'Dijon', 'License mathématique', 'L3', 'BAC', '2017', 'TBien', 'Carnot', '0652435144', 'Français'"));
-        echo "Insertion d'un élève et d'un utilisateur<br>";
-        */
+        echo "Creation des tables et insertions des données dans utilisateur réussie<br>";
     }
 
-    function createProjetData(){
-        //createData("utilisateur", "");
-    }
-
-    //echo BDD::query("SELECT COUNT(*) FROM projet.eleve;")->fetchAll()[0][0] == 0 ? true : false;
-    //createTable(["nom" => "VARCHAR(64)", "prenom" => "VARCHAR(64)"], "testEleve", "PRIMARY KEY(nom)");
-    //SERVER->insertData("projet", "testeleve", "nom, prenom", "'Pinson', 'Daniel'");
-    //$q = BDD::prepAndExec("SELECT COUNT(*) FROM projet.testeleve WHERE nom=:nom;", array("nom" => "Pinson"));
-    //print_r($q);
-    //SERVER->createBDD("projet");
-    createProjetTable();
-    createProjetData();
+    SERVER->deleteBDD(PROJET);
+    createProjet();
 ?>
 </body>
