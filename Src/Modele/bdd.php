@@ -28,7 +28,7 @@
                 } catch (PDOException $e){
                     exit("Error: Impossible de se connecter au serveur sql, vérifier qu'il a bien été lancé et voir le message ci-dessous:<br>" . $e->getMessage() . "<br>");
                 }
-                echo "Connexion avec le serveur établie<br>";
+                //echo "Connexion avec le serveur établie<br>";
             }
             return self::$instance;
         }
@@ -40,9 +40,9 @@
          */
         public static function query($string){
             try{
-                return self::$pdo->query($string);
+                return self::getInstance()::$pdo->query($string);
             } catch (PDOException $e){
-                echo "<br>Error : La requête SQL \"$string\" est eronée. Voir le message d'erreur suivant : <br><t><b>" . $e->getMessage() . "</b>";
+                echo "Error : La requête SQL \"$string\" est eronée. Voir le message d'erreur suivant : <br><t><b>" . $e->getMessage() . "</b><br>";
             }
         }
 
@@ -53,13 +53,13 @@
          */
         public static function prepAndExec($query, $array){
             try{
-                $q = self::$pdo->prepare($query);
+                $q = self::getInstance()::$pdo->prepare($query);
                 $q->execute($array);
                 return $q->fetchAll();
             } catch (PDOException $e){
-                echo "<br>Error : La requête SQL \"$query\" avec le tableau \"";
+                echo "Error : La requête SQL \"$query\" avec le tableau <pre>";
                 print_r($array);
-                echo "\" est eronée. Voir le message d'erreur suivant : <br><t><b>" . $e->getMessage() . "</b><br>";
+                echo "</pre>est eronée. Voir le message d'erreur suivant : <br><t><b>" . $e->getMessage() . "</b><br>";
             }
         }
     }
