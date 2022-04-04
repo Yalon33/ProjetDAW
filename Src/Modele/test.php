@@ -5,8 +5,8 @@
     }
 </style>
 <?php
-    include("./creationbase.php");
-    include("../../Vue/html/Etudiant.php");
+    include("creationbase.php");
+    include("../controlleur/etudiant.php");
     define("NOMBDD", "tests");
     define("SERVER", new Creationbase());
     $SUCCES = 0;
@@ -49,7 +49,7 @@
         $arrayData = array(array("n" => "'Pinson'", "p" => "'Daniel'"));
         if (SERVER->createBDD(NOMBDD) && SERVER->createTable(NOMBDD, $nomTable, $attributs)){
             foreach ($arrayData as $data){
-                if (SERVER->insertPreparedData($query, $data) == 0){
+                if (SERVER->insertData($query, $data) == 0){
                     echo "[<font color='red'>FAIL</font>] $nomTest : l'insertion du tableau { ";
                     print_r($data);
                     echo "} à échouée<br>";

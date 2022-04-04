@@ -5,8 +5,8 @@
     }
 </style>
 <?php
-    include("./creationbase.php");
-    include("../../Vue/html/Utilisateur.php");
+    include("creationbase.php");
+    include("../controlleur/utilisateur.php");
     define("PROJET", "projet");
     define("SERVER", new Creationbase());
     define("TABLES", array(

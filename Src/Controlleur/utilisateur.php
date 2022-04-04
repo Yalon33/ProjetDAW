@@ -1,5 +1,5 @@
 <?php
-    include("../../Src/Controlleur/TypeUtilisateur.php");
+    include("typeUtilisateur.php");
     class Utilisateur
     {
         private $id;

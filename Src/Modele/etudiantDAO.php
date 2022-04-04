@@ -1,6 +1,6 @@
 <?php
+    require_once("bdd.php");
     class EtudiantDAO {
-        require_once("bdd.php");
         /**
          * Retourne la liste de tous les etudiants de la base
          */
