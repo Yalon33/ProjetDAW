@@ -29,7 +29,6 @@
         public function __set($attr, $val){
             $this->$attr = $val;
         }
-
         public function getId()
         {
             return $this->id;
