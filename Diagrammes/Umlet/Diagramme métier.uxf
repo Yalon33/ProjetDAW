@@ -4,26 +4,15 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>230</x>
+      <x>210</x>
       <y>200</y>
       <w>240</w>
-      <h>310</h>
+      <h>150</h>
     </coordinates>
     <panel_attributes>Etudiant
 --
-- niveau: Niveau
-- N°Dossier: integer
-- dateNaissance: string
-- université: string
-- villeEtablissement: string
 //Etudiant en L3 par exemple
-- cycle: string
-- annéeEtude: string
-- baccalauréat: string
-- anneeBAC: string
-- mentionBac: string
-- etabissementBAC: string
-- numéroPortable: integer
+- niveau: Niveau
 - matiereSuivies: list&lt;Matiere&gt;
 --
 + suivreCours(m: Matiere): void
@@ -35,34 +24,21 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>870</x>
-      <y>200</y>
+      <x>850</x>
+      <y>260</y>
       <w>340</w>
-      <h>250</h>
+      <h>120</h>
     </coordinates>
     <panel_attributes>Professeur
 --
 --
-+ creerMatiere(nom: string): Matiere
-+ modifierMatiere(cours: Matiere): void
-+ supprimerMatiere(cours: Matiere): void
-+ creerEtudiant(login: string, mdp: string,
-mail: string)
-+ modifierEtudiant(eleve: Etudiant): void
-+ supprimerEtudiant(eleve: Etudiant): void
-+ créerCanalDiscussion(c: Canal): void
-+ supprimerCanalDiscussion(c: Canal): void
-+ supprimerMessage(mes: string): void
-+ afficherCanal(mes: string): void
-+ créerQCM(question: string, réponse: list&lt;string&gt;,
-reponseEleve: list&lt;string&gt;): void
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>560</x>
+      <x>540</x>
       <y>980</y>
       <w>270</w>
       <h>190</h>
@@ -85,7 +61,7 @@ reponseEleve: list&lt;string&gt;): void
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>450</x>
+      <x>430</x>
       <y>630</y>
       <w>280</w>
       <h>70</h>
@@ -100,7 +76,7 @@ reponseEleve: list&lt;string&gt;): void
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>570</x>
+      <x>550</x>
       <y>360</y>
       <w>200</w>
       <h>120</h>
@@ -116,7 +92,7 @@ reponseEleve: list&lt;string&gt;): void
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>610</x>
+      <x>590</x>
       <y>180</y>
       <w>160</w>
       <h>170</h>
@@ -137,7 +113,7 @@ reponseEleve: list&lt;string&gt;): void
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>460</x>
+      <x>440</x>
       <y>260</y>
       <w>170</w>
       <h>30</h>
@@ -148,7 +124,7 @@ reponseEleve: list&lt;string&gt;): void
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>760</x>
+      <x>740</x>
       <y>260</y>
       <w>130</w>
       <h>30</h>
@@ -159,14 +135,14 @@ reponseEleve: list&lt;string&gt;): void
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>290</x>
+      <x>270</x>
       <y>1040</y>
       <w>210</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>EtudiantMatiere
 --
-- avancement: StatusMatiere
+- avancement: StatusCours
 --
 + getter/setter
 </panel_attributes>
@@ -175,7 +151,7 @@ reponseEleve: list&lt;string&gt;): void
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>210</x>
+      <x>190</x>
       <y>900</y>
       <w>100</w>
       <h>80</h>
@@ -191,7 +167,7 @@ enCours
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>230</x>
+      <x>210</x>
       <y>970</y>
       <w>80</w>
       <h>140</h>
@@ -203,20 +179,20 @@ enCours
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>320</x>
-      <y>500</y>
+      <x>300</x>
+      <y>340</y>
       <w>50</w>
-      <h>560</h>
+      <h>720</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1..*
 m2=1</panel_attributes>
-    <additional_attributes>10.0;540.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;700.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>490</x>
+      <x>470</x>
       <y>1060</y>
       <w>90</w>
       <h>40</h>
@@ -229,20 +205,20 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>820</x>
-      <y>440</y>
+      <x>800</x>
+      <y>370</y>
       <w>360</w>
-      <h>680</h>
+      <h>750</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=0..*
 m2=1..*</panel_attributes>
-    <additional_attributes>10.0;650.0;320.0;650.0;320.0;10.0</additional_attributes>
+    <additional_attributes>10.0;720.0;320.0;720.0;320.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>20</x>
+      <x>0</x>
       <y>0</y>
       <w>1240</w>
       <h>1250</h>
@@ -256,33 +232,33 @@ layer=-1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>410</x>
-      <y>500</y>
+      <x>390</x>
+      <y>340</y>
       <w>60</w>
-      <h>200</h>
+      <h>360</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
 m2=1..*</panel_attributes>
-    <additional_attributes>40.0;170.0;10.0;170.0;10.0;10.0</additional_attributes>
+    <additional_attributes>40.0;330.0;10.0;330.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>720</x>
-      <y>440</y>
+      <x>700</x>
+      <y>370</y>
       <w>230</w>
-      <h>240</h>
+      <h>310</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
 m2=1..*</panel_attributes>
-    <additional_attributes>10.0;210.0;190.0;210.0;190.0;10.0</additional_attributes>
+    <additional_attributes>10.0;280.0;190.0;280.0;190.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>750</x>
+      <x>730</x>
       <y>870</y>
       <w>120</w>
       <h>90</h>
@@ -298,7 +274,7 @@ m2=1..*</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>550</x>
+      <x>530</x>
       <y>740</y>
       <w>190</w>
       <h>110</h>
@@ -315,33 +291,33 @@ m2=1..*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>730</x>
-      <y>440</y>
+      <x>710</x>
+      <y>370</y>
       <w>280</w>
-      <h>410</h>
+      <h>480</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1..*
 m2=1</panel_attributes>
-    <additional_attributes>10.0;380.0;250.0;380.0;250.0;10.0</additional_attributes>
+    <additional_attributes>10.0;450.0;250.0;450.0;250.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>860</x>
-      <y>440</y>
+      <x>840</x>
+      <y>370</y>
       <w>220</w>
-      <h>490</h>
+      <h>560</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
 m2=1</panel_attributes>
-    <additional_attributes>10.0;460.0;190.0;460.0;190.0;10.0</additional_attributes>
+    <additional_attributes>10.0;530.0;190.0;530.0;190.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
+      <x>460</x>
       <y>690</y>
       <w>90</w>
       <h>160</h>
@@ -354,7 +330,7 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>760</x>
+      <x>740</x>
       <y>370</y>
       <w>130</w>
       <h>40</h>
@@ -367,7 +343,7 @@ m1=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>670</x>
+      <x>650</x>
       <y>840</y>
       <w>100</w>
       <h>90</h>
@@ -380,7 +356,7 @@ m2=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>570</x>
+      <x>550</x>
       <y>500</y>
       <w>220</w>
       <h>100</h>
@@ -396,7 +372,7 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>760</x>
+      <x>740</x>
       <y>440</y>
       <w>100</w>
       <h>160</h>
@@ -409,7 +385,7 @@ m1=1..*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>500</x>
+      <x>480</x>
       <y>310</y>
       <w>130</w>
       <h>260</h>
@@ -422,7 +398,7 @@ m1=1..*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>160</x>
+      <x>140</x>
       <y>1090</y>
       <w>420</w>
       <h>70</h>
@@ -434,7 +410,7 @@ m1=1..*</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>130</x>
+      <x>110</x>
       <y>860</y>
       <w>60</w>
       <h>240</h>
@@ -460,32 +436,32 @@ M2
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>160</x>
-      <y>450</y>
+      <x>140</x>
+      <y>320</y>
       <w>90</w>
-      <h>430</h>
+      <h>560</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;use&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;410.0;10.0;10.0;70.0;10.0</additional_attributes>
+    <additional_attributes>10.0;540.0;10.0;10.0;70.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>350</x>
-      <y>500</y>
+      <x>330</x>
+      <y>340</y>
       <w>420</w>
-      <h>460</h>
+      <h>620</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
 m2=1..*</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;430.0;400.0;430.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;590.0;400.0;590.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>620</x>
+      <x>600</x>
       <y>50</y>
       <w>110</w>
       <h>80</h>
@@ -501,7 +477,7 @@ Professeur
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>670</x>
+      <x>650</x>
       <y>120</y>
       <w>70</w>
       <h>80</h>

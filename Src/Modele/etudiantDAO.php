@@ -1,12 +1,11 @@
 <?php
-    require_once("bdd.php");
-    class UtilisateurDAO {
-
+    class EtudiantDAO {
+        require_once("bdd.php");
         /**
-         * Retourne la liste de tous les utilisateurs de la base
+         * Retourne la liste de tous les etudiants de la base
          */
-        public static function getAllUtilisateurs() {
-            $data = BDD::query("SELECT * FROM UTILISATEURS");
+        public static function getAllEtudiants() {
+            $data = BDD::query("SELECT * FROM ETUDIANTS");
             $array = array();
             /*
             foreach($data as $row){
@@ -16,8 +15,8 @@
             return $array;
         }
 
-        public static function getUtilisateurByLogin($login){
-            $data = BDD::prepAndExec("SELECT * FROM UTILISATEURS WHERE login=:l", array('l' => $login));
+        public static function getEtudiantByLogin($login){
+            $data = BDD::prepAndExec("SELECT * FROM ETUDIANTS WHERE login=:l", array('l' => $login));
             $array = array();
             /*
             foreach($data as $row){
@@ -27,11 +26,11 @@
             return $array;
         }
 
-        public static function createUtilisateur(/* Utilisateur $u */){
+        public static function createEtudiant(/* Etudiant $u */){
             $array = array();
             /*
-            if(UtilisateurDAO::getUtilisateurByLogin($u->login)){
-                $data = BDD::prepAndExec("UPDATE UTILISATEURS SET login=:l, mdp=:mdp, mail=:ma, prenom=:pr, nom=:n, typeUtilisateur:tu  WHERE id=:i;", 
+            if(EtudiantDAO::getEtudiantByLogin($u->login)){
+                $data = BDD::prepAndExec("UPDATE ETUDIANTS SET login=:l, mdp=:mdp, mail=:ma, prenom=:pr, nom=:n, typeEtudiant:tu  WHERE id=:i;", 
                 array(
                     'i' => $u->getId(), 
                     'l' => $u->getLogin(),
@@ -39,11 +38,11 @@
                     'ma' => $u->getMail(),
                     'pr' => $u->getPrenom(),
                     'n' => $u->getNom(),
-                    'tu' => $u->getTypeUtilisateur()
+                    'tu' => $u->getTypeEtudiant()
                 ));
             }
             else{
-                $data = BDD::prepAndExec("INSERT INTO UTILISATEURS (id, login, mdp, mail, prenom, nom, typeUtilisateur) VALUES (:i, :l, :mdp, :ma, :pr, :n, :tu);", 
+                $data = BDD::prepAndExec("INSERT INTO ETUDIANTS (id, login, mdp, mail, prenom, nom, typeEtudiant) VALUES (:i, :l, :mdp, :ma, :pr, :n, :tu);", 
                 array(
                     'i' => $u->getId(), 
                     'l' => $u->getLogin(),
@@ -51,7 +50,7 @@
                     'ma' => $u->getMail(),
                     'pr' => $u->getPrenom(),
                     'n' => $u->getNom(),
-                    'tu' => $u->getTypeUtilisateur()
+                    'tu' => $u->getTypeEtudiant()
                 ));
             }
             
@@ -62,22 +61,22 @@
             return $array;
         }
 
-        public static function deleteUtilisateur($u){
-            //BDD::prepAndExec("DELETE FROM UTILISATEURS WHERE id=:i", array('i' => $u->getId()));
+        public static function deleteEtudiant($u){
+            //BDD::prepAndExec("DELETE FROM ETUDIANTS WHERE id=:i", array('i' => $u->getId()));
         }
 
         /**
-         * Fonction privée traduisant le retour de la BDD en utilisateur
+         * Fonction privée traduisant le retour de la BDD en etudiant
          * $row = le résultat de la requête BDD à traduire
          */
         private function fromRowToUser($row){
             /*
-            return new Utilisateur($row['login'],
+            return new Etudiant($row['login'],
             $row['mdp'],
             $row['mail'],
             $row['prenom'],
             $row['nom'],
-            $row["typeUtilisateur"]);
+            $row["typeEtudiant"]);
             */
         }
     }

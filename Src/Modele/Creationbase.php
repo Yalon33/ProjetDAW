@@ -21,31 +21,27 @@
 
 
         public function deleteBDD($nomBDD){
-            return !is_null(BDD::getInstance()->query("DROP DATABASE IF EXISTS $nomBDD;"));
+            return !is_null(BDD::query("DROP DATABASE IF EXISTS $nomBDD;"));
         }
 
 
         public function createTable($nomBDD, $nomTable, $attributString) {
-            return !is_null(BDD::getInstance()->query("CREATE Table IF NOT EXISTS $nomBDD.$nomTable($attributString);"));
+            return !is_null(BDD::query("CREATE Table IF NOT EXISTS $nomBDD.$nomTable($attributString);"));
         }
 
         public function deleteTable($nomBDD, $nomTable){
-            return !is_null(BDD::getInstance()->query("DROP TABLE IF EXISTS $nomBDD.$nomTable;"));
+            return !is_null(BDD::query("DROP TABLE IF EXISTS $nomBDD.$nomTable;"));
         }
 
-        public function insertData($nomBDD, $nomTable, $attributs, $values){
-            foreach($values as $value){
-                if (!is_null(BDD::getInstance()->query("INSERT INTO $nomBDD.$nomTable($attributs) VALUES($value);"))){
-                    return false;
-                }
-            } 
+        public function insertData($stringQuery, $arrayHolder){
+            return BDD::prepAndExec($stringQuery, $arrayHolder) !==  false;
         }
         
         public function deleteData($nomBDD, $nomTable, $conditions = NULL){
             if (!is_null($conditions)){
-                return !is_null(BDD::getInstance()->query("DELETE FROM $nomBDD.$nomTable WHERE $conditions;"));
+                return !is_null(BDD::query("DELETE FROM $nomBDD.$nomTable WHERE $conditions;"));
             } else {
-                return !is_null(BDD::getInstance()->query("DELETE FROM $nomBDD.$nomTable;"));
+                return !is_null(BDD::query("DELETE FROM $nomBDD.$nomTable;"));
             }
         }
     }

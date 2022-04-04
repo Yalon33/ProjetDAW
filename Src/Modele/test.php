@@ -5,74 +5,77 @@
     }
 </style>
 <?php
+    include("./creationbase.php");
+    include("../../Vue/html/Etudiant.php");
+    define("NOMBDD", "tests");
+    define("SERVER", new Creationbase());
     $SUCCES = 0;
     $ECHEC = 0;
+
+
     function testCreateDatabase(){
         GLOBAL $SUCCES;
         GLOBAL $ECHEC;
-        if (SERVER->createBDD("testCreationDB")){
+        if (SERVER->createBDD(NOMBDD)){
             $SUCCES++;
-            echo "<br>[<font color='blue'>SUCCES</font>] Création de la base de donnée";
+            echo "[<font color='blue'>SUCCES</font>] Création de la base de donnée<br>";
         } else {
             $ECHEC++;
-            echo "<br>[<font color='red'>FAIL</font>] Échec du test de création de la base de donnée";
+            echo "[<font color='red'>FAIL</font>] Échec du test de création de la base de donnée ".NOMBDD."<br>";
         }
     }
 
     function testCreateTable(){
         GLOBAL $SUCCES;
         GLOBAL $ECHEC;
-        $nomBDD = "testTable";
-        $nomTable = "maTable";
-        if (SERVER->createBDD($nomBDD) || SERVER->createTable($nomBDD, $nomTable, ATTRIBUTS)){
+        $nomTable = "maTable<br>";
+        $attributs = "nom VARCHAR(64), prenom VARCHAR(64)<br>";
+        if (SERVER->createBDD(NOMBDD) || SERVER->createTable(NOMBDD, $nomTable, $attributs)){
             $SUCCES++;
-            echo "<br>[<font color='blue'>SUCCES</font>] Création de la table";
+            echo "[<font color='blue'>SUCCES</font>] Création de la table<br>";
         } else {
-            echo "<br>[<font color='red'>FAIL</font>] Échec du test de création de la table";
+            echo "[<font color='red'>FAIL</font>] Échec du test de création de la table $nomTable<br>";
             $ECHEC++;
         }
     }
 
-    function testInsertData($nomBDD, $nomTest, $arrayData){
+    function testInsertPrepare($nomTest){
         GLOBAL $SUCCES;
         GLOBAL $ECHEC;
-        $nomTable = "maTable";
-        $column = "firstname, lastname";
-        if (SERVER->createBDD($nomBDD) && SERVER->createTable($nomBDD, $nomTable, ATTRIBUTS)){
+        $nomTable = "testInsertPreparedData";
+        $columns = "nom, prenom";
+        $query = "INSERT INTO ".NOMBDD.".$nomTable($columns) VALUES(:n, :p)";
+        $attributs = "nom VARCHAR(64), prenom VARCHAR(64)";
+        $arrayData = array(array("n" => "'Pinson'", "p" => "'Daniel'"));
+        if (SERVER->createBDD(NOMBDD) && SERVER->createTable(NOMBDD, $nomTable, $attributs)){
             foreach ($arrayData as $data){
-                if (!SERVER->insertData($nomBDD, $nomTable, $column, $data)){
-                    echo "<br>[<font color='red'>FAIL</font>] $nomTest";
+                if (SERVER->insertPreparedData($query, $data) == 0){
+                    echo "[<font color='red'>FAIL</font>] $nomTest : l'insertion du tableau { ";
+                    print_r($data);
+                    echo "} à échouée<br>";
                     $ECHEC++;
                     return;
                 }
             }
             $SUCCES++;
-            echo "<br>[<font color='blue'>SUCCES</font>] $nomTest";
+            echo "[<font color='blue'>SUCCES</font>] $nomTest<br>";
         } else {
-            echo "<br>[<font color='red'>FAIL</font>] $nomTest";
+            echo "[<font color='red'>FAIL</font>] $nomTest : creation de la table ou de la base de donnée à échouée<br>";
             $ECHEC++;
         }
     }
 
-    function deleteAllTestTable(){
-        SERVER->deleteBDD("testCreationDB");
-        SERVER->deleteBDD("testTable");
-        SERVER->deleteBDD("testInsertData");
-        SERVER->deleteBDD("testInsertMultipleData");
-        SERVER->deleteBDD("testInsertMultipleSameData");
-    }
-
     function launchTestSuite(){
-        deleteAllTestTable();
-        GLOBAL $SUCCES;
-        GLOBAL $ECHEC;
+        SERVER->deleteBDD(NOMBDD);
         testCreateDatabase();
         testCreateTable();
-        testInsertData("testInsertData", "Insertion d'une personne", array("'Daniel', 'Pinson'"));
-        testInsertData("testInsertMultipleData", "Insertion de plusieurs personnes différentes", array("'Daniel', 'Pinson'", "'Thomas', 'Aglos'"));
-        testInsertData("testInsertMultipleSameData", "Insertion de plusieurs même personnes", array("'Daniel', 'Pinson'", "'Daniel', 'Pinson'"));
-        echo "<br><b>Synthèse de la testsuite: Testés: <font color='blue'>". $SUCCES + $ECHEC . "</font> 
-        | Réussi: <font color='green'>$SUCCES</font> 
-        | Échoués: <font color='red'>$ECHEC</font></b><br>";
+        testInsertPrepare("Insertion d'une personne avec un prepare");
+        //testInsertData("testInsertMultipleData", "Insertion de plusieurs personnes différentes", array("'Daniel', 'Pinson'", "'Thomas', 'Aglos'"));
+        //testInsertData("testInsertMultipleSameData", "Insertion de plusieurs même personnes", array("'Daniel', 'Pinson'", "'Daniel', 'Pinson'"));
     }
+
+    launchTestSuite();
+    echo "<b>Synthèse de la testsuite: Testés: <font color='blue'>". $SUCCES + $ECHEC . "</font> 
+    | Réussi: <font color='green'>$SUCCES</font> 
+    | Échoués: <font color='red'>$ECHEC</font></b><br>";
 ?>
