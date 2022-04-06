@@ -68,8 +68,9 @@
         }
 
         /**
-         * Supprimer tous les utilisateurs de la table utilisateur
-         * renvoie un booléen qui est à vrai si la query s'est bien executée
+         * Supprime tous les utilisateurs de la table utilisateur
+         *
+         * @return bool Renvoie false si la suppression n'a pas eu lieu
          */
         public static function deleteUtilisateurs(){
             return BDD::query("DELETE FROM projet.utilisateur;") !== false;

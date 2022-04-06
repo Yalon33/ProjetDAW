@@ -34,17 +34,24 @@
     }
     */
     
+    function resetTests(){
+        UtilisateurDAO::deleteUtilisateurs();
+        MatiereDAO::deleteMatieres();
+        MessageDAO::deleteMessages();
+    }
 
     function failedTest($nomTest){
         GLOBAL $ECHEC;
         $ECHEC ++;
         echo "[<font color='red'>FAIL</font>] $nomTest<br>";
+        resetTests();
     }
 
     function succeededTest($nomTest){
         GLOBAL $SUCCES;
         $SUCCES++;
         echo "[<font color='blue'>SUCCES</font>] $nomTest<br>";
+        resetTests();
 
     }
 
@@ -53,31 +60,59 @@
         switch ($table){
             case("utilisateur"):
                 UtilisateurDAO::deleteUtilisateurs() ? succeededTest($nomTest) : failedTest($nomTest);
+                break;
             case("matiere"):
                 MatiereDAO::deleteMatieres() ? succeededTest($nomTest) : failedTest($nomTest);
+                break;
+            default:
+                echo "Nom de table '$table' est invalide";
         }
     }
 
     function testInsertUtilisateurUnique(){
-        UtilisateurDAO::deleteUtilisateurs();
         $nomTest = "Insertion d'un unique utilisateur dans la table utilisateur";
         $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "Professeur");
+        if (UtilisateurDAO::createUtilisateur($daniel) !== false){
+            $data = UtilisateurDAO::getAllUtilisateurs();
+            $daniel->compare($data[0]) ? succeededTest($nomTest) : failedTest($nomTest);
+        }
+        failedTest($nomTest);
+    }
+
+    function testInsertPlusieursUtilisateurs(){
+        $nomTest = "Insertion de plusieurs utilisateurs dans la table utilisateur";
+        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "Etudiant");
+        $sasuke = new Utilisateur(null, "xX-Sasuke-Xx", "tropDark", "noir@village.com", "Clément", "Pouilly", "Etudiant");
+        $arrayUtilisateur = [$daniel, $sasuke];
         UtilisateurDAO::createUtilisateur($daniel);
-        $data = UtilisateurDAO::getAllUtilisateurs();
-        return $daniel->compare($data[0]) ? succeededTest($nomTest) : failedTest($nomTest);
+        UtilisateurDAO::createUtilisateur($sasuke);
+        $utilisateurBDD = UtilisateurDAO::getAllUtilisateurs();
+        for($i = 0; $i < sizeof($arrayUtilisateur); $i++){
+            if (!$arrayUtilisateur[$i]->compare($utilisateurBDD[$i])){
+                failedTest("$nomTest, $utilisateurBDD[$i] n'est pas dans la BDD ou ne correspond pas à $arrayUtilisateur[$i]");
+                return;
+            }
+        }
+        succeededTest($nomTest);
+    }
+
+    function testUtilisateurDAO(){
+        testClearTable("utilisateur");
+        testInsertUtilisateurUnique();
+        testInsertPlusieursUtilisateurs();
     }
 
     function testInsertMatiereUnique(){
-        MatiereDAO::deleteMatieres();
         $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "Professeur");
         $calculMat = new Matiere(null, "calcul matriciel", "12/01/2022", "calculMat.txt", $daniel, "mathematique", "L3");
         $nomTest = "Insertion d'une unique matière dans la table matière";
+        UtilisateurDAO::createUtilisateur($daniel);
         if (MatiereDAO::insertMatiere($calculMat) === false){
             failedTest("$nomTest : L'insertion de $calculMat ne s'est pas effectuée correctement");
-            return false;
+            return;
         }
         $matiereBDD = MatiereDAO::getAll();
-        //return $matiereBDD[0]->compare($calculMat) ? succeededTest($nomTest) : failedTest($nomTest);
+        //$matiereBDD[0]->compare($calculMat) ? succeededTest($nomTest) : failedTest($nomTest);
     }
 
     function testInsertPlusieursMatieres(){
@@ -85,7 +120,9 @@
         $calculMat = new Matiere(null, "calcul matriciel", "12/01/2022", "calculMat.txt", $daniel, "mathematique", "L3");
         $algebre = new Matiere(null, "algebre", "11/12/2012", "algebreLineraire.txt", $daniel, "mathematique", "L1");
         $arrayMatiere = [$calculMat, $algebre];
-        MatiereDAO::insertMatieres($arrayMatiere);
+        foreach($arrayMatiere as $matiere){
+            MatiereDAO::insertMatiere($matiere);
+        }
         $matieresBDD = MatiereDAO::getAll();
         for($i = 0; $i < sizeof($arrayMatiere); $i++){
             if (!$arrayMatiere[$i]->compare($matieresBDD[$i])){
@@ -94,10 +131,6 @@
             }
         }
         return;
-    }
-
-    function testUtilisateurDAO(){
-        testInsertUtilisateurUnique();
     }
 
     function testMatiereDAO(){
@@ -114,7 +147,7 @@
         //echo MatiereDAO::deleteMatieres() ? "Suppression des éléments dans matières<br>" : "Impossible de supprimer les matières<br>";
         //echo MatiereDAO::insertMatieres($allMatiere) ? "Insertion des matières avec un identifiant en même temps réussie<br>" : "Impossible d'insérer les matières avec un identifiant en même temps<br>";
         testClearTable("matiere");
-        //testInsertMatiereUnique();
+        testInsertMatiereUnique();
     }
 
     function testMessageDAO(){
@@ -136,7 +169,7 @@
 
     function launchTestSuite(){
         testUtilisateurDAO();
-        //testMatiereDAO();
+        testMatiereDAO();
     }
 
     launchTestSuite();
