@@ -1,5 +1,5 @@
 <?php
-    include("bdd.php");
+    require_once("bdd.php");
 
     // Cette classe a pour rôle de créer la base de donnée pour qu'on travaille tous sur la même base et les mêmes tables.
     class Creationbase{

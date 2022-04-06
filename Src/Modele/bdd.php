@@ -55,7 +55,8 @@
             try{
                 $q = self::getInstance()::$pdo->prepare($query);
                 $q->execute($array);
-                return $q->fetchAll();
+                //return $q->fetchAll();
+                return $q;
             } catch (PDOException $e){
                 echo "Error : La requête SQL \"$query\" avec le tableau <pre>";
                 print_r($array);

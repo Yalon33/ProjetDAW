@@ -4,7 +4,7 @@
         private $id;
         private $contenu;
 
-        private function __construct($id,$contenu)
+        public function __construct($id = null,$contenu)
         {
             $this->id = $id;
             $this->contenu = $contenu;
