@@ -29,7 +29,6 @@
         public function __set($attr, $val){
             $this->$attr = $val;
         }
-
         public function getId()
         {
             return $this->id;
@@ -50,6 +49,11 @@
             return $this->mail;
         }
 
+        public function getType()
+        {
+            return $this->type;
+        }
+
         public function setId($id)
         {
             $this->id=$id;
@@ -67,6 +71,11 @@
         public function setMail($mail)
         {
             $this->mail=$mail;
+        }
+
+        public function setType($type)
+        {
+            $this->type = $type;
         }
     }
 ?>

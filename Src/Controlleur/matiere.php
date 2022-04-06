@@ -1,4 +1,7 @@
 <?php
+
+    include("Niveau.php");
+
     class Matiere 
     {
         private $id;
@@ -9,7 +12,7 @@
         private $tags;
         private $niveau;
 
-        private function __construct($id,$nom,$dateCreation,$contenu,$createur,$tags,$niveau)
+        public function __construct($id = null, $nom, $dateCreation, $contenu, $createur, $tags, $niveau)
         {
             $this->id = $id;
             $this->nom = $nom;
@@ -20,7 +23,7 @@
             $this->niveau = $niveau;
             
         }
-
+        //Setter
         public function setId($id)
         {
             $this->id = $id;
@@ -49,7 +52,7 @@
         {
             $this->niveau = $niveau;
         }
-
+        //Getter
         public function getId()
         {
             return $this->id;
@@ -78,7 +81,7 @@
         {
             return $this->niveau;
         }
-        public function getSimilar()
+        public function getSimilar($cours): Cours
         {
             
         }

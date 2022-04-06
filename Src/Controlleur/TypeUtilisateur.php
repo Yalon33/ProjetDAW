@@ -7,7 +7,12 @@
         case Professeur;
 
         public static function toType($string){
-            return $string=="Etudiant" ? TypeUtilisateur::Etudiant : TypeUtilisateur::Professeur;
+            if ($string === "Etudiant"){
+                return TypeUtilisateur::Etudiant;
+            } else if ($string === "Professeur"){
+                return TypeUtilisateur::Professeur;
+            }
+            //return $string=="Etudiant" ? TypeUtilisateur::Etudiant : TypeUtilisateur::Professeur;
         }
     }
 ?>
