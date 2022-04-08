@@ -3,7 +3,8 @@
     require_once("matiereDAO.php");
     require_once("messageDAO.php");
     require_once("utilisateurDAO.php");
-    define("PROJET", "projet");
+    require_once("index.php");
+    //define("PROJET", "projet");
     $SUCCES = 0;
     $ECHEC = 0;
     /*
@@ -33,25 +34,19 @@
         SERVER->insertData("INSERT INTO ".PROJET.".$nomTable($attributs) VALUES(:l, :mdp, :m, :p, :n, :t);", $data);
     }
     */
-    
-    function resetTests(){
-        UtilisateurDAO::deleteUtilisateurs();
-        MatiereDAO::deleteMatieres();
-        MessageDAO::deleteMessages();
-    }
 
     function failedTest($nomTest){
         GLOBAL $ECHEC;
         $ECHEC ++;
         echo "[<font color='red'>FAIL</font>] $nomTest<br>";
-        resetTests();
+        reCreateTableProjet();
     }
 
     function succeededTest($nomTest){
         GLOBAL $SUCCES;
         $SUCCES++;
         echo "[<font color='blue'>SUCCES</font>] $nomTest<br>";
-        resetTests();
+        reCreateTableProjet();
 
     }
 
@@ -74,9 +69,8 @@
         $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "Professeur");
         if (UtilisateurDAO::createUtilisateur($daniel) !== false){
             $data = UtilisateurDAO::getAllUtilisateurs();
-            $daniel->compare($data[0]) ? succeededTest($nomTest) : failedTest($nomTest);
+            $daniel->compareTo($data[0]) ? succeededTest($nomTest) : failedTest($nomTest);
         }
-        failedTest($nomTest);
     }
 
     function testInsertPlusieursUtilisateurs(){
@@ -88,18 +82,56 @@
         UtilisateurDAO::createUtilisateur($sasuke);
         $utilisateurBDD = UtilisateurDAO::getAllUtilisateurs();
         for($i = 0; $i < sizeof($arrayUtilisateur); $i++){
-            if (!$arrayUtilisateur[$i]->compare($utilisateurBDD[$i])){
+            if (!$arrayUtilisateur[$i]->compareTo($utilisateurBDD[$i])){
                 failedTest("$nomTest, $utilisateurBDD[$i] n'est pas dans la BDD ou ne correspond pas à $arrayUtilisateur[$i]");
-                return;
             }
         }
         succeededTest($nomTest);
+    }
+
+    /* 
+    Comme le serveur incrémente de lui même les identifiants, il est intéressant de voir comment il réagit si
+    on insère un identifiant qui n'est pas dans 'bon'
+    */
+    function testInsertUtilisateurMauvaisId(){
+        $nomTest = "Insertion d'un utilisateur avec un identifiant qui n'est pas dans l'ordre ne marche pas";
+        $daniel = new Utilisateur(2, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "Professeur");
+        $data = UtilisateurDAO::createUtilisateur($daniel);
+        if ($data === false){
+            succeededTest($nomTest);
+        } else{
+            failedTest($nomTest);
+        }
+    }
+
+    function testRecuperationUtilisateurParticulier(){
+        $nomTest = "Récupération d'un utilisateur dans la BDD qui en contient plusieurs";
+        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "Etudiant");
+        $sasuke = new Utilisateur(null, "xX-Sasuke-Xx", "tropDark", "noir@village.com", "Clément", "Pouilly", "Etudiant");
+        UtilisateurDAO::createUtilisateur($daniel);
+        UtilisateurDAO::createUtilisateur($sasuke);
+        $sasukeBDD = UtilisateurDAO::getUtilisateurByLogin("xX-Sasuke-Xx")[0];
+        $sasuke->compareTo($sasukeBDD) ? succeededTest($nomTest) : failedTest($nomTest);
+    }
+
+    function testUpdateUtilisateur(){
+        $nomTest = "Mise à jour d'un utilisateur dans la table";
+        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "Etudiant");
+        UtilisateurDAO::createUtilisateur($daniel);
+        $daniel->setId(1);
+        $daniel->setMail("nouveaumail@mail.com");
+        UtilisateurDAO::createUtilisateur($daniel);
+        $danielBDD = UtilisateurDAO::getAllUtilisateurs()[0];
+        $daniel->compareTo($danielBDD) ? succeededTest($nomTest) : failedTest($nomTest);
     }
 
     function testUtilisateurDAO(){
         testClearTable("utilisateur");
         testInsertUtilisateurUnique();
         testInsertPlusieursUtilisateurs();
+        testInsertUtilisateurMauvaisId();
+        testRecuperationUtilisateurParticulier();
+        testUpdateUtilisateur();
     }
 
     function testInsertMatiereUnique(){
@@ -112,7 +144,7 @@
             return;
         }
         $matiereBDD = MatiereDAO::getAll();
-        //$matiereBDD[0]->compare($calculMat) ? succeededTest($nomTest) : failedTest($nomTest);
+        //$matiereBDD[0]->compareTo($calculMat) ? succeededTest($nomTest) : failedTest($nomTest);
     }
 
     function testInsertPlusieursMatieres(){
@@ -125,7 +157,7 @@
         }
         $matieresBDD = MatiereDAO::getAll();
         for($i = 0; $i < sizeof($arrayMatiere); $i++){
-            if (!$arrayMatiere[$i]->compare($matieresBDD[$i])){
+            if (!$arrayMatiere[$i]->compareTo($matieresBDD[$i])){
                 failedTest("Insertion de plusieurs matières, $matieresBDD[$i] n'est pas dans la BDD");
                 return;
             }
@@ -157,11 +189,11 @@
         MessageDAO::insertMessage($reponse);
         $allMessage = MessageDAO::getAll();
         $reponseBDD = MessageDAO::getById(2);
-        echo "<pre>";
-        print_r($allMessage);
-        echo "Avec l'identifiant";
-        print_r($reponseBDD);
-        echo "</pre>";
+        //echo "<pre>";
+        //print_r($allMessage);
+        //echo "Avec l'identifiant";
+        //print_r($reponseBDD);
+        //echo "</pre>";
         echo MessageDAO::deleteMessages() ? "Suppression des éléments dans message<br>" : "Impossible de supprimer tous les messages";
         echo MessageDAO::insertMessages([$question, $reponse]) ? "Insertion des messages en même temps réussie<br>" : "Impossible d'insérer les messages en même temps<br>";
         echo MessageDAO::deleteMessages() ? "Suppression des éléments dans message<br>" : "Impossible de supprimer tous les messages";
@@ -173,7 +205,7 @@
     }
 
     launchTestSuite();
-    echo "<b>Synthèse de la testsuite: Testés: <font color='blue'>". $SUCCES + $ECHEC . "</font> 
+    echo "<br><b>Synthèse: Testés: <font color='blue'>". $SUCCES + $ECHEC . "</font> 
     | Réussi: <font color='green'>$SUCCES</font> 
     | Échoués: <font color='red'>$ECHEC</font></b><br>";
 ?>

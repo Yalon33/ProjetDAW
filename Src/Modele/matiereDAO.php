@@ -13,9 +13,6 @@
             $res = array();
             if ($data !== false){
                 foreach($data->fetchAll() as $row){
-                    echo "<pre>";
-                    print_r($row);
-                    echo "</pre>";
                     array_push($res, new Matiere($row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6]));
                }
             }

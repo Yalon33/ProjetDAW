@@ -21,7 +21,6 @@
             } else if ($type === TypeUtilisateur::Professeur){
                 return "Professeur";
             }
-
         }
     }
 ?>

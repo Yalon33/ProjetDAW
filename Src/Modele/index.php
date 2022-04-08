@@ -20,7 +20,7 @@
         $stringAttributs .= $conditionsFin;
         SERVER->createTable(PROJET, $nomTable, $stringAttributs);
     }
-    function createTableProjet(){
+    function reCreateTableProjet(){
         SERVER->deleteBDD(PROJET); // Pour éviter les doubles insertions
         SERVER->createBDD(PROJET);
         foreach(TABLES as $table){
@@ -28,5 +28,5 @@
         }
     }
 
-    createTableProjet();
+    reCreateTableProjet();
 ?>

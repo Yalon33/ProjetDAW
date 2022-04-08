@@ -22,15 +22,6 @@ class Utilisateur
         $this->type = TypeUtilisateur::toType($stringType);
     }
 
-    public function __get($attr)
-    {
-        return $this->$attr;
-    }
-
-    public function __set($attr, $val)
-    {
-        $this->$attr = $val;
-    }
     public function getId()
     {
         return $this->id;
@@ -97,9 +88,10 @@ class Utilisateur
         $this->type = $type;
     }
 
-    public function compare($user){
-        return ($this->getlogin() === $user->getLogin() && $this->getMdp() === $user->getMdp() && $this->getMail() === $user->getMail()
-                && $this->getPrenom() === $user->getPrenom() && $this->getNom() === $user->getNom() && $this->getType() === $user->getType());
+    public function compareTo($user){
+        $res = ($this->getlogin() == $user->getLogin() && $this->getMdp() == $user->getMdp() && $this->getMail() == $user->getMail()
+                && $this->getPrenom() == $user->getPrenom() && $this->getNom() == $user->getNom() && TypeUtilisateur::toString($this->getType()) == TypeUtilisateur::toString($user->getType()));
+        return $res;
     }
 }
 ?>
