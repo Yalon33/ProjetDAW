@@ -7,7 +7,12 @@
          * Retourne la liste de tous les utilisateurs de la base
          */
         public static function getAllUtilisateurs() {
-            $data = BDD::query("SELECT * FROM projet.UTILISATEUR");
+            try{
+                $data = BDD::query("SELECT * FROM projet.UTILISATEUR");
+            } catch (PDOException $e){
+                echo $e->getMessage()."<br>";
+                return false;
+            }
             $array = array();
             foreach($data as $row){
                 array_push($array, self::fromRowToUser($row));
@@ -20,7 +25,11 @@
          * $login = le login de l'utilisateur à rechercher
          */
         public static function getUtilisateurByLogin($login){
-            $data = BDD::prepAndExec("SELECT * FROM projet.UTILISATEUR WHERE login=:l", array('l' => $login));
+            try{
+                $data = BDD::prepAndExec("SELECT * FROM projet.UTILISATEUR WHERE login=:l", array('l' => $login));
+            } catch (PDOException $e){
+                echo $e->getMessage()."<br>";
+            }
             $array = array();
             foreach($data as $row){
                 array_push($array, self::fromRowToUser($row));
@@ -35,30 +44,40 @@
         public static function createUtilisateur($u){
             if(!is_null($u->getId())){
                 if (empty(BDD::prepAndExec("SELECT * FROM projet.utilisateur WHERE id=:i", [":i" => $u->getId()])->fetchAll())){
-                    return false;
+                    throw new Exception("Identifiant Incorrect");
                 } else {
-                    return BDD::prepAndExec("UPDATE projet.UTILISATEUR SET login=:l, mdp=:mdp, mail=:ma, prenom=:pr, nom=:n, typeUtilisateur=:tu  WHERE id=:i;", 
-                        array(
-                            'i' => $u->getId(), 
-                            'l' => $u->getLogin(),
-                            'mdp' => $u->getMdp(),
-                            'ma' => $u->getMail(),
-                            'pr' => $u->getPrenom(),
-                            'n' => $u->getNom(),
-                            'tu' => TypeUtilisateur::toString($u->getType())
-                        ));
+                    try{
+                        return BDD::prepAndExec("UPDATE projet.UTILISATEUR SET login=:l, mdp=:mdp, mail=:ma, prenom=:pr, nom=:n, typeUtilisateur=:tu  WHERE id=:i;", 
+                            array(
+                                'i' => $u->getId(), 
+                                'l' => $u->getLogin(),
+                                'mdp' => $u->getMdp(),
+                                'ma' => $u->getMail(),
+                                'pr' => $u->getPrenom(),
+                                'n' => $u->getNom(),
+                                'tu' => TypeUtilisateur::toString($u->getType())
+                            ));
+                    } catch (PDOException $e){
+                        echo $e->getMessage() . "<br>";
+                        return false;
+                    }
                 }
             }
             else{
-                return BDD::prepAndExec("INSERT INTO projet.UTILISATEUR (login, mdp, mail, prenom, nom, typeUtilisateur) VALUES (:l, :mdp, :ma, :pr, :n, :tu);", 
-                array( 
-                    'l' => $u->getLogin(),
-                    'mdp' => $u->getMdp(),
-                    'ma' => $u->getMail(),
-                    'pr' => $u->getPrenom(),
-                    'n' => $u->getNom(),
-                    'tu' => TypeUtilisateur::toString($u->getType())
-                ));
+                try{
+                    return BDD::prepAndExec("INSERT INTO projet.UTILISATEUR (login, mdp, mail, prenom, nom, typeUtilisateur) VALUES (:l, :mdp, :ma, :pr, :n, :tu);", 
+                    array( 
+                        'l' => $u->getLogin(),
+                        'mdp' => $u->getMdp(),
+                        'ma' => $u->getMail(),
+                        'pr' => $u->getPrenom(),
+                        'n' => $u->getNom(),
+                        'tu' => TypeUtilisateur::toString($u->getType())
+                    ));
+                } catch (PDOException $e){
+                    echo $e->getMessage() . "<br>";
+                    return false;
+                }
             }
         }
 
@@ -68,7 +87,11 @@
          */
         public static function deleteUtilisateur($u){
             if(!is_null($u->getId()))
-                BDD::prepAndExec("DELETE FROM projet.UTILISATEUR WHERE id=:i", array('i' => $u->getId()));
+                try{
+                    return BDD::prepAndExec("DELETE FROM projet.UTILISATEUR WHERE id=:i", array('i' => $u->getId()));
+                } catch (PDOException $e){
+                    echo $e->getMessage() . "<br>";
+                }
         }
 
         /**
@@ -77,7 +100,12 @@
          * @return bool Renvoie false si la suppression n'a pas eu lieu
          */
         public static function deleteUtilisateurs(){
-            return BDD::query("DELETE FROM projet.utilisateur;") !== false;
+            try{
+                return BDD::query("DELETE FROM projet.utilisateur;") !== false;
+            } catch (PDOException $e){
+                echo $e->getMessage() . "<br>";
+                return false;
+            }
         }
 
         /**

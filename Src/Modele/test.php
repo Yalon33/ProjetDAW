@@ -60,13 +60,18 @@
     * on insère un identifiant qui n'est pas dans 'bon'
     */
     function testInsertUtilisateurMauvaisId(){
-        $nomTest = "Insertion d'un utilisateur avec un identifiant qui n'est pas dans l'ordre ne marche pas";
+        $nomTest = "Mise à jour d'un utilisateur avec un identifiant qui n'est pas dans l'ordre ne marche pas";
         $daniel = new Utilisateur(2, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "Professeur");
-        UtilisateurDAO::createUtilisateur($daniel) === false ? succeededTest($nomTest) : failedTest($nomTest);
+        try {
+            UtilisateurDAO::createUtilisateur($daniel);
+            failedTest($nomTest);
+        } catch (Exception $e){
+            succeededTest($nomTest);
+        }
     }
 
     function testCreationUtilisateurMauvaisType(){
-        $nomTest = "Insertion d'un utilisateur avec un identifiant qui n'est pas dans l'ordre ne marche pas";
+        $nomTest = "Insertion d'un utilisateur avec un type qui n'existe pas";
         try{
             $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "Etudian");
             failedTest($nomTest);
