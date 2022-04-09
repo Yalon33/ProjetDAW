@@ -37,7 +37,7 @@
                 if (empty(BDD::prepAndExec("SELECT * FROM projet.utilisateur WHERE id=:i", [":i" => $u->getId()])->fetchAll())){
                     return false;
                 } else {
-                    BDD::prepAndExec("UPDATE projet.UTILISATEUR SET login=:l, mdp=:mdp, mail=:ma, prenom=:pr, nom=:n, typeUtilisateur=:tu  WHERE id=:i;", 
+                    return BDD::prepAndExec("UPDATE projet.UTILISATEUR SET login=:l, mdp=:mdp, mail=:ma, prenom=:pr, nom=:n, typeUtilisateur=:tu  WHERE id=:i;", 
                         array(
                             'i' => $u->getId(), 
                             'l' => $u->getLogin(),
@@ -50,7 +50,7 @@
                 }
             }
             else{
-                $data = BDD::prepAndExec("INSERT INTO projet.UTILISATEUR (login, mdp, mail, prenom, nom, typeUtilisateur) VALUES (:l, :mdp, :ma, :pr, :n, :tu);", 
+                return BDD::prepAndExec("INSERT INTO projet.UTILISATEUR (login, mdp, mail, prenom, nom, typeUtilisateur) VALUES (:l, :mdp, :ma, :pr, :n, :tu);", 
                 array( 
                     'l' => $u->getLogin(),
                     'mdp' => $u->getMdp(),
@@ -59,7 +59,7 @@
                     'n' => $u->getNom(),
                     'tu' => TypeUtilisateur::toString($u->getType())
                 ));
-            }      
+            }
         }
 
         /**

@@ -12,6 +12,30 @@
         ["nomTable" => "message", "conditionFin" => "PRIMARY KEY(id)", "attributs" => ["id" => "INT UNSIGNED AUTO_INCREMENT", "contenu" => "VARCHAR(64)"]],
         ["nomTable" => "reponse", "conditionFin" => "PRIMARY KEY(id)", "attributs" => ["id" => "INT UNSIGNED AUTO_INCREMENT", "reponse" => "VARCHAR(1024)"]]
     ));
+
+    define("DATA", array(
+        "utilisateur" => [ 
+                            new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "Etudiant"),
+                            new Utilisateur(null, "xXSasukeXx", "tropDark", "noir@triste.com", "Clément", "Pouilly", "Etudiant"),
+                            new Utilisateur(null, "Zeus", "SKTtoplane", "zeus@mail.com", "Choi", "Woo-je", "Etudiant"),
+                            new Utilisateur(null, "Oner", "SKTjungle", "oner@mail.com", "Moon", "Hyeon-joon",  "Etudiant"),
+                            new Utilisateur(null, "Faker", "SKTmidlane", "faker@mail.com", "Sang-hyeok", "Lee", "Etudiant"),
+                            new Utilisateur(null, "Gumayushi", "SKTadc", "Gumayushi@mail.com", "Min-hyeon", "Lee", "Etudiant"),
+                            new Utilisateur(null, "Keria", "SKTsuppoer", "keria@mail.com", "Min-seok", "Ryu", "Etudiant"),
+                            new Utilisateur(null, "Wunder", "FCtoplane", "wunder@mail.com", "Martin", "Nordahl Hansen", "Etudiant"),
+                            new Utilisateur(null, "Razork", "FCjungle", "razork@mail.com", "Ivan", "Martin Diaz", "Etudiant"),
+                            new Utilisateur(null, "Humanoid", "FCmidlane", "humanoid@mail.com", "Marek", "Brazda", "Etudiant"),
+                            new Utilisateur(null, "Upset", "FCadc", "upset@mail.com", "Eliasee", "Lipp", "Etudiant"),
+                            new Utilisateur(null, "Hylissang", "FCsupport", "hylissang@mail.com", "Zdravets", "Iliev Galabov", "Etudiant"),
+                            new Utilisateur(null, "Jupiter", "McKinsey", "jupier@mail.com", "Emmanuel", "Macron", "Professeur"),
+                            new Utilisateur(null, "Flanby", "Scooter", "flanby@mail.com", "Fançois", "Hollande", "Professeur"),
+                            new Utilisateur(null, "Tempete", "Audible", "tempete@mail.com", "Nicolas", "Sarcozy", "Professeur"),
+                            new Utilisateur(null, "Resistant", "JeBousAiEntendu", "resistant@mail.com", "Charles", "deGaulle", "Professeur")
+        ],
+        "etudiants" => [
+
+        ]
+    ));
     function createTable($nomTable, $conditionsFin, $array){
         $stringAttributs = "";
         foreach($array as $key => $type){

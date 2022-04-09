@@ -11,6 +11,8 @@
                 return TypeUtilisateur::Etudiant;
             } else if ($string === "Professeur"){
                 return TypeUtilisateur::Professeur;
+            } else {
+                throw new Exception("TypeUtilisateur incorrect");
             }
             //return $string=="Etudiant" ? TypeUtilisateur::Etudiant : TypeUtilisateur::Professeur;
         }

@@ -19,7 +19,11 @@ class Utilisateur
         $this->mail = $mail;
         $this->prenom = $prenom;
         $this->nom = $nom;
-        $this->type = TypeUtilisateur::toType($stringType);
+        try{
+            $this->type = TypeUtilisateur::toType($stringType);
+        } catch (Exception $e){
+            throw $e;
+        }
     }
 
     public function getId()

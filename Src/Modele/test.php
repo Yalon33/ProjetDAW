@@ -8,27 +8,6 @@
     $SUCCES = 0;
     $ECHEC = 0;
     /*
-    define("DATA", array(
-        "utilisateur" => [ 
-                            [":l" => "Zokey", ":mdp" => "1234", ":m" => "mail@mail.com", ":p" => "Daniel", ":n" => "Pinson", ":t" => "Etudiant"],
-                            [":l" => "xXSasukeXx", ":mdp" => "tropDark", ":m" => "noir@triste.com", ":p" => "Clément", ":n" => "Pouilly", ":t" => "Etudiant"],
-                            [":l" => "Zeus", ":mdp" => "toplane", ":m" => "zeus@mail.com", ":p" => "Woo-je", ":n" => "Choi", ":t" => "Etudiant"],
-                            [":l" => "Oner", ":mdp" => "jungle", ":m" => "oner@mail.com", ":p" => "Hyeon-joon", ":n" => "Moon", ":t" => "Etudiant"],
-                            [":l" => "Faker", ":mdp" => "midlane", ":m" => "faker@mail.com", ":p" => "Lee", ":n" => "Sang-hyeok", ":t" => "Etudiant"],
-                            [":l" => "Gumayushi", ":mdp" => "adc", ":m" => "Gumayushi@mail.com", ":p" => "Lee", ":n" => "Min-hyeong", ":t" => "Etudiant"],
-                            [":l" => "Keria", ":mdp" => "support", ":m" => "keria@mail.com", ":p" => "Ryu", ":n" => "Min-seok", ":t" => "Etudiant"],
-                            [":l" => "Wunder", ":mdp" => "danemark", ":m" => "wunder@mail.com", ":p" => "Martin", ":n" => "Nordahl Hansen", ":t" => "Etudiant"],
-                            [":l" => "Razork", ":mdp" => "espagne", ":m" => "Razork@mail.com", ":p" => "Ivan", ":n" => "Martin Diaz", ":t" => "Etudiant"],
-                            [":l" => "Humanoid", ":mdp" => "tcheque", ":m" => "humanoid@mail.com", ":p" => "marek", ":n" => "brazda", ":t" => "Etudiant"],
-                            [":l" => "Upset", ":mdp" => "allemagne", ":m" => "Guupsetail.com", ":p" => "Eliasee", ":n" => "Lipp", ":t" => "Etudiant"],
-                            [":l" => "Hylissang", ":mdp" => "bulgarie", ":m" => "hylissang@mail.com", ":p" => "Zdravets", ":n" => "Iliev Galabov", ":t" => "Etudiant"],
-                            [":l" => "Jupiter", ":mdp" => "McKinsey", ":m" => "jupiter@mail.com", ":p" => "Emmanuel", ":n" => "Macon", ":t" => "Professeur"],
-                            [":l" => "Flanby", ":mdp" => "Scooter", ":m" => "flanby@mail.com", ":p" => "François", ":n" => "Hollande", ":t" => "Professeur"],
-                            [":l" => "Tempete", ":mdp" => "Audible", ":m" => "tempete@mail.com", ":p" => "Nicolas", ":n" => "Sarcozy", ":t" => "Professeur"],
-                            [":l" => "Resistant", ":mdp" => "JeVousAiEntendu", ":m" => "resistant@mail.com", ":p" => "Charles", ":n" => "deGaulle", ":t" => "Professeur"],
-        ],
-        "etudiants" => []
-    ));
     function createData($nomTable, $attributs, $arrayData){
         foreach($arrayData as $data)
         SERVER->insertData("INSERT INTO ".PROJET.".$nomTable($attributs) VALUES(:l, :mdp, :m, :p, :n, :t);", $data);
@@ -50,19 +29,6 @@
 
     }
 
-    function testClearTable($table){
-        $nomTest = "Nettoyage de la table $table";
-        switch ($table){
-            case("utilisateur"):
-                UtilisateurDAO::deleteUtilisateurs() ? succeededTest($nomTest) : failedTest($nomTest);
-                break;
-            case("matiere"):
-                MatiereDAO::deleteMatieres() ? succeededTest($nomTest) : failedTest($nomTest);
-                break;
-            default:
-                echo "Nom de table '$table' est invalide";
-        }
-    }
 
     function testInsertUtilisateurUnique(){
         $nomTest = "Insertion d'un unique utilisateur dans la table utilisateur";
@@ -89,18 +55,23 @@
         succeededTest($nomTest);
     }
 
-    /* 
-    Comme le serveur incrémente de lui même les identifiants, il est intéressant de voir comment il réagit si
-    on insère un identifiant qui n'est pas dans 'bon'
+    /**
+    * Comme le serveur incrémente de lui même les identifiants, il est intéressant de voir comment il réagit si
+    * on insère un identifiant qui n'est pas dans 'bon'
     */
     function testInsertUtilisateurMauvaisId(){
         $nomTest = "Insertion d'un utilisateur avec un identifiant qui n'est pas dans l'ordre ne marche pas";
         $daniel = new Utilisateur(2, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "Professeur");
-        $data = UtilisateurDAO::createUtilisateur($daniel);
-        if ($data === false){
-            succeededTest($nomTest);
-        } else{
+        UtilisateurDAO::createUtilisateur($daniel) === false ? succeededTest($nomTest) : failedTest($nomTest);
+    }
+
+    function testCreationUtilisateurMauvaisType(){
+        $nomTest = "Insertion d'un utilisateur avec un identifiant qui n'est pas dans l'ordre ne marche pas";
+        try{
+            $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "Etudian");
             failedTest($nomTest);
+        } catch (Exception $e){
+            succeededTest($nomTest);
         }
     }
 
@@ -125,13 +96,43 @@
         $daniel->compareTo($danielBDD) ? succeededTest($nomTest) : failedTest($nomTest);
     }
 
+    function testClearTable($table){
+        $nomTest = "Nettoyage de la table $table";
+        switch ($table){
+            case("utilisateur"):
+                UtilisateurDAO::deleteUtilisateurs() ? succeededTest($nomTest) : failedTest($nomTest);
+                break;
+            case("matiere"):
+                MatiereDAO::deleteMatieres() ? succeededTest($nomTest) : failedTest($nomTest);
+                break;
+            default:
+                echo "Nom de table '$table' est invalide";
+        }
+    }
+
+    function testDeleteRow(){
+        $nomTest = "Suppression d'un utilisateur parmi les autres";
+        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "Etudiant");
+        $sasuke = new Utilisateur(null, "xX-Sasuke-Xx", "tropDark", "noir@village.com", "Clément", "Pouilly", "Etudiant");
+        UtilisateurDAO::createUtilisateur($daniel);
+        $daniel->setId(1);
+        UtilisateurDAO::createUtilisateur($sasuke);
+        $sasuke->setId(2);
+        if (UtilisateurDAO::deleteUtilisateur($daniel) !== false){
+            $data = UtilisateurDAO::getAllUtilisateurs();
+            $sasuke->compareTo($data[0]) ? succeededTest($nomTest) : failedTest($nomTest);
+        }
+    }
+
     function testUtilisateurDAO(){
         testClearTable("utilisateur");
         testInsertUtilisateurUnique();
         testInsertPlusieursUtilisateurs();
         testInsertUtilisateurMauvaisId();
+        testCreationUtilisateurMauvaisType();
         testRecuperationUtilisateurParticulier();
         testUpdateUtilisateur();
+        testDeleteRow();
     }
 
     function testInsertMatiereUnique(){
@@ -148,21 +149,21 @@
     }
 
     function testInsertPlusieursMatieres(){
-        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "Professeur");
-        $calculMat = new Matiere(null, "calcul matriciel", "12/01/2022", "calculMat.txt", $daniel, "mathematique", "L3");
-        $algebre = new Matiere(null, "algebre", "11/12/2012", "algebreLineraire.txt", $daniel, "mathematique", "L1");
-        $arrayMatiere = [$calculMat, $algebre];
-        foreach($arrayMatiere as $matiere){
-            MatiereDAO::insertMatiere($matiere);
-        }
-        $matieresBDD = MatiereDAO::getAll();
-        for($i = 0; $i < sizeof($arrayMatiere); $i++){
-            if (!$arrayMatiere[$i]->compareTo($matieresBDD[$i])){
-                failedTest("Insertion de plusieurs matières, $matieresBDD[$i] n'est pas dans la BDD");
-                return;
-            }
-        }
-        return;
+//        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "Professeur");
+//        $calculMat = new Matiere(null, "calcul matriciel", "12/01/2022", "calculMat.txt", $daniel, "mathematique", "L3");
+//        $algebre = new Matiere(null, "algebre", "11/12/2012", "algebreLineraire.txt", $daniel, "mathematique", "L1");
+//        $arrayMatiere = [$calculMat, $algebre];
+//        foreach($arrayMatiere as $matiere){
+//            MatiereDAO::insertMatiere($matiere);
+//        }
+//        $matieresBDD = MatiereDAO::getAll();
+//        for($i = 0; $i < sizeof($arrayMatiere); $i++){
+//            if (!$arrayMatiere[$i]->compareTo($matieresBDD[$i])){
+//                failedTest("Insertion de plusieurs matières, $matieresBDD[$i] n'est pas dans la BDD");
+//                return;
+//            }
+//        }
+//        return;
     }
 
     function testMatiereDAO(){
