@@ -39,11 +39,11 @@
          * @param Matiere $matiere
          * @return bool Renvoie false si la requête a échoué, true sinon
          */
-        public static function insertMatiere($matiere){
-            $arrayMat = [":n" => $matiere->getNom(), ":d" => $matiere->getDateCreation(), ":cont" => $matiere->getContenu(), ":crea" => $matiere->getCreateur()->getId(), ":t" => $matiere->getTags(), ":niv" => $matiere->getNiveau()];
-            if ($matiere->getId() == null){
-                return BDD::prepAndExec("INSERT INTO projet.matiere(nom, dateCreation, contenu, createur, tags, niveau) VALUES(:n, :d, :cont, :crea, :t, :niv);",$arrayMat) !== false;
-            } 
+        public static function create($matiere){
+            //$arrayMat = [":n" => $matiere->getNom(), ":d" => $matiere->getDateCreation(), ":cont" => $matiere->getContenu(), ":crea" => $matiere->getCreateur()->getId(), ":t" => $matiere->getTags(), ":niv" => $matiere->getNiveau()];
+            //if ($matiere->getId() == null){
+            //    return BDD::prepAndExec("INSERT INTO projet.matiere(nom, dateCreation, contenu, createur, tags, niveau) VALUES(:n, :d, :cont, :crea, :t, :niv);",$arrayMat) !== false;
+            //} 
             //else {
             //    array_push($arrayMat, [":i" => $matiere->getId()]);
             //    BDD::prepAndExec("INSERT INTO projet.matiere(id, nom, dateCreation, contenu, createur, tags, niveau) VALUES(:i, :n, :d, :cont, :crea, :t, :n);",$arrayMat);

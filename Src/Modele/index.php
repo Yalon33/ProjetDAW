@@ -1,5 +1,6 @@
 <?php 
     require_once("creationbase.php");
+    require_once("../Controlleur/utilisateur.php");
     define("PROJET", "projet");
     define("SERVER", new Creationbase());
 
@@ -30,7 +31,9 @@
                             new Utilisateur(null, "Jupiter", "McKinsey", "jupier@mail.com", "Emmanuel", "Macron", "Professeur"),
                             new Utilisateur(null, "Flanby", "Scooter", "flanby@mail.com", "Fançois", "Hollande", "Professeur"),
                             new Utilisateur(null, "Tempete", "Audible", "tempete@mail.com", "Nicolas", "Sarcozy", "Professeur"),
-                            new Utilisateur(null, "Resistant", "JeBousAiEntendu", "resistant@mail.com", "Charles", "deGaulle", "Professeur")
+                            new Utilisateur(null, "Resistant", "JeVousAiEntendu", "resistant@mail.com", "Charles", "deGaulle", "Professeur"),
+                            new Utilisateur(null, "Accordeon", "President", "accordeon@mail.com", "Valérie", "Giscard d'Estaing", "Professeur"),
+                            new Utilisateur(null, "xXLesPommes", "ChefFaitPourCheffer", "pommes@mail.com", "Jacques", "Chirac", "Professeur")
         ],
         "etudiants" => [
 

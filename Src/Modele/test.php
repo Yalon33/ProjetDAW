@@ -26,15 +26,12 @@
         $SUCCES++;
         echo "[<font color='blue'>SUCCES</font>] $nomTest<br>";
         reCreateTableProjet();
-
     }
 
-
-    function testInsertUtilisateurUnique(){
-        $nomTest = "Insertion d'un unique utilisateur dans la table utilisateur";
+    function testInsertUnique($nomTest){
         $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "Professeur");
-        if (UtilisateurDAO::createUtilisateur($daniel) !== false){
-            $data = UtilisateurDAO::getAllUtilisateurs();
+        if (UtilisateurDAO::create($daniel) !== false){
+            $data = UtilisateurDAO::getAll();
             $daniel->compareTo($data[0]) ? succeededTest($nomTest) : failedTest($nomTest);
         }
     }
@@ -44,9 +41,9 @@
         $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "Etudiant");
         $sasuke = new Utilisateur(null, "xX-Sasuke-Xx", "tropDark", "noir@village.com", "Clément", "Pouilly", "Etudiant");
         $arrayUtilisateur = [$daniel, $sasuke];
-        UtilisateurDAO::createUtilisateur($daniel);
-        UtilisateurDAO::createUtilisateur($sasuke);
-        $utilisateurBDD = UtilisateurDAO::getAllUtilisateurs();
+        UtilisateurDAO::create($daniel);
+        UtilisateurDAO::create($sasuke);
+        $utilisateurBDD = UtilisateurDAO::getAll();
         for($i = 0; $i < sizeof($arrayUtilisateur); $i++){
             if (!$arrayUtilisateur[$i]->compareTo($utilisateurBDD[$i])){
                 failedTest("$nomTest, $utilisateurBDD[$i] n'est pas dans la BDD ou ne correspond pas à $arrayUtilisateur[$i]");
@@ -63,7 +60,7 @@
         $nomTest = "Mise à jour d'un utilisateur avec un identifiant qui n'est pas dans l'ordre ne marche pas";
         $daniel = new Utilisateur(2, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "Professeur");
         try {
-            UtilisateurDAO::createUtilisateur($daniel);
+            UtilisateurDAO::create($daniel);
             failedTest($nomTest);
         } catch (Exception $e){
             succeededTest($nomTest);
@@ -84,20 +81,20 @@
         $nomTest = "Récupération d'un utilisateur dans la BDD qui en contient plusieurs";
         $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "Etudiant");
         $sasuke = new Utilisateur(null, "xX-Sasuke-Xx", "tropDark", "noir@village.com", "Clément", "Pouilly", "Etudiant");
-        UtilisateurDAO::createUtilisateur($daniel);
-        UtilisateurDAO::createUtilisateur($sasuke);
-        $sasukeBDD = UtilisateurDAO::getUtilisateurByLogin("xX-Sasuke-Xx")[0];
+        UtilisateurDAO::create($daniel);
+        UtilisateurDAO::create($sasuke);
+        $sasukeBDD = UtilisateurDAO::getByLogin("xX-Sasuke-Xx")[0];
         $sasuke->compareTo($sasukeBDD) ? succeededTest($nomTest) : failedTest($nomTest);
     }
 
     function testUpdateUtilisateur(){
         $nomTest = "Mise à jour d'un utilisateur dans la table";
         $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "Etudiant");
-        UtilisateurDAO::createUtilisateur($daniel);
+        UtilisateurDAO::create($daniel);
         $daniel->setId(1);
         $daniel->setMail("nouveaumail@mail.com");
-        UtilisateurDAO::createUtilisateur($daniel);
-        $danielBDD = UtilisateurDAO::getAllUtilisateurs()[0];
+        UtilisateurDAO::create($daniel);
+        $danielBDD = UtilisateurDAO::getAll()[0];
         $daniel->compareTo($danielBDD) ? succeededTest($nomTest) : failedTest($nomTest);
     }
 
@@ -105,7 +102,7 @@
         $nomTest = "Nettoyage de la table $table";
         switch ($table){
             case("utilisateur"):
-                UtilisateurDAO::deleteUtilisateurs() ? succeededTest($nomTest) : failedTest($nomTest);
+                UtilisateurDAO::deleteAll() ? succeededTest($nomTest) : failedTest($nomTest);
                 break;
             case("matiere"):
                 MatiereDAO::deleteMatieres() ? succeededTest($nomTest) : failedTest($nomTest);
@@ -119,19 +116,20 @@
         $nomTest = "Suppression d'un utilisateur parmi les autres";
         $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "Etudiant");
         $sasuke = new Utilisateur(null, "xX-Sasuke-Xx", "tropDark", "noir@village.com", "Clément", "Pouilly", "Etudiant");
-        UtilisateurDAO::createUtilisateur($daniel);
+        UtilisateurDAO::create($daniel);
         $daniel->setId(1);
-        UtilisateurDAO::createUtilisateur($sasuke);
+        UtilisateurDAO::create($sasuke);
         $sasuke->setId(2);
-        if (UtilisateurDAO::deleteUtilisateur($daniel) !== false){
-            $data = UtilisateurDAO::getAllUtilisateurs();
+        if (UtilisateurDAO::delete($daniel) !== false){
+            $data = UtilisateurDAO::getAll();
             $sasuke->compareTo($data[0]) ? succeededTest($nomTest) : failedTest($nomTest);
         }
     }
 
     function testUtilisateurDAO(){
-        testClearTable("utilisateur");
-        testInsertUtilisateurUnique();
+        testClearTable("Nettoyage de la table", "utilisateur");
+        testInsertUnique("Insertion d'un unique utilisateur dans la table utilisateur", "Utilisateur", "UtilisateurDAO");
+        testInsertUnique("Insertion d'un unique utilisateur dans la table utilisateur", "Utilisateur", "MatiereDAO");
         testInsertPlusieursUtilisateurs();
         testInsertUtilisateurMauvaisId();
         testCreationUtilisateurMauvaisType();
@@ -144,12 +142,12 @@
         $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "Professeur");
         $calculMat = new Matiere(null, "calcul matriciel", "12/01/2022", "calculMat.txt", $daniel, "mathematique", "L3");
         $nomTest = "Insertion d'une unique matière dans la table matière";
-        UtilisateurDAO::createUtilisateur($daniel);
-        if (MatiereDAO::insertMatiere($calculMat) === false){
-            failedTest("$nomTest : L'insertion de $calculMat ne s'est pas effectuée correctement");
-            return;
-        }
-        $matiereBDD = MatiereDAO::getAll();
+        //UtilisateurDAO::create($daniel);
+        //if (MatiereDAO::insertMatiere($calculMat) === false){
+        //    failedTest("$nomTest : L'insertion de $calculMat ne s'est pas effectuée correctement");
+        //    return;
+        //}
+        //$matiereBDD = MatiereDAO::getAll();
         //$matiereBDD[0]->compareTo($calculMat) ? succeededTest($nomTest) : failedTest($nomTest);
     }
 
