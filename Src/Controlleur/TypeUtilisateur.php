@@ -3,25 +3,25 @@
     //    public function toType($string) : TypeUtilisateur;
     //}
     enum TypeUtilisateur {
-        case Etudiant;
-        case Professeur;
+        case ETUDIANT;
+        case PROFESSEUR;
 
         public static function toType($string){
-            if ($string === "Etudiant"){
-                return TypeUtilisateur::Etudiant;
-            } else if ($string === "Professeur"){
-                return TypeUtilisateur::Professeur;
+            if ($string === "ETUDIANT"){
+                return TypeUtilisateur::ETUDIANT;
+            } else if ($string === "PROFESSEUR"){
+                return TypeUtilisateur::PROFESSEUR;
             } else {
                 throw new Exception("TypeUtilisateur incorrect");
             }
-            //return $string=="Etudiant" ? TypeUtilisateur::Etudiant : TypeUtilisateur::Professeur;
+            //return $string=="Etudiant" ? TypeUtilisateur::Etudiant : TypeUtilisateur::PROFESSEUR;
         }
 
         public static function toString($type){
-            if ($type === TypeUtilisateur::Etudiant){
-                return "Etudiant";
-            } else if ($type === TypeUtilisateur::Professeur){
-                return "Professeur";
+            if ($type === TypeUtilisateur::ETUDIANT){
+                return "ETUDIANT";
+            } else if ($type === TypeUtilisateur::PROFESSEUR){
+                return "PROFESSEUR";
             }
         }
     }

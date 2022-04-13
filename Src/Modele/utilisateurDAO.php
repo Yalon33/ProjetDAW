@@ -43,11 +43,11 @@
          */
         public static function create($u){
             if(!is_null($u->getId())){
-                if (empty(BDD::prepAndExec("SELECT * FROM projet.utilisateur WHERE id=:i;", [":i" => $u->getId()])->fetchAll())){
-                    throw new Exception("Identifiant Incorrect");
+                if (empty(BDD::prepAndExec("SELECT * FROM projet.utilisateur WHERE id=:i AND login=:l;", [":i" => $u->getId(), ":l" => $u->getLogin()])->fetchAll())){
+                    throw new Exception("Impossible de modifier cet utilisateur");
                 } else {
                     try{
-                        return BDD::prepAndExec("UPDATE projet.UTILISATEUR SET login=:l, mdp=:mdp, mail=:ma, prenom=:pr, nom=:n, typeUtilisateur=:tu  WHERE id=:i;", 
+                        return BDD::prepAndExec("UPDATE projet.UTILISATEUR SET login=:l, mdp=:mdp, mail=:ma, prenom=:pr, nom=:n, type=:tu  WHERE id=:i;", 
                             array(
                                 'i' => $u->getId(), 
                                 'l' => $u->getLogin(),
@@ -65,7 +65,7 @@
             }
             else{
                 try{
-                    return BDD::prepAndExec("INSERT INTO projet.utilisateur (login, mdp, mail, prenom, nom, typeUtilisateur) VALUES (:l, :mdp, :ma, :pr, :n, :tu);", 
+                    return BDD::prepAndExec("INSERT INTO projet.utilisateur (login, mdp, mail, prenom, nom, type) VALUES (:l, :mdp, :ma, :pr, :n, :tu);", 
                     array( 
                         'l' => $u->getLogin(),
                         'mdp' => $u->getMdp(),
@@ -120,7 +120,7 @@
                 $row['mail'],
                 $row['prenom'],
                 $row['nom'],
-                $row["typeUtilisateur"]
+                $row['type']
             );
         }
     }

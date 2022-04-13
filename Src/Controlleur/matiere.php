@@ -87,7 +87,7 @@
         //    
         //}
 
-        public function compare($mat){
+        public function compareTo($mat){
             return ($mat->getNom() === $this->getNom() && $mat->getDateCreation() === $this->getDateCreation()
                     && $mat->getCreateur()->compare($this->getCreateur()) && $mat->getTags() == $this->getTags() && $mat->getNiveau() === $this->getNiveau());
         }
