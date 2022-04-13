@@ -43,6 +43,7 @@
                 return self::getInstance()::$pdo->query($string);
             } catch (PDOException $e){
                 echo "Error : La requête SQL \"$string\" est eronée. Voir le message d'erreur suivant : <br><t><b>" . $e->getMessage() . "</b><br>";
+                throw $e;
             }
         }
 
@@ -55,11 +56,13 @@
             try{
                 $q = self::getInstance()::$pdo->prepare($query);
                 $q->execute($array);
-                return $q->fetchAll();
+                //return $q->fetchAll();
+                return $q;
             } catch (PDOException $e){
                 echo "Error : La requête SQL \"$query\" avec le tableau <pre>";
                 print_r($array);
                 echo "</pre>est eronée. Voir le message d'erreur suivant : <br><t><b>" . $e->getMessage() . "</b><br>";
+                throw $e;
             }
         }
     }
