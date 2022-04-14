@@ -1,11 +1,11 @@
 <?php
-    class QCMDAO {
+    class ReponseDAO {
         /**
-         * @return array[QCM] Les matières dans la base
+         * @return array[Reponse] Les matières dans la base
          */
         public static function getAll(){
             try{
-                $data = BDD::query("SELECT * FROM projet.qcm;");
+                $data = BDD::query("SELECT * FROM projet.reponse;");
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
                 return false;
@@ -21,11 +21,11 @@
         
         /**
          * @param entier $id
-         * @return QCM Le qcm de la base correspondant à l'id en paramètre
+         * @return Reponse La reponse de la base correspondant à l'id en paramètre
          */
         public static function getById($id){
             try{
-                return BDD::prepAndExec("SELECT * FROM projet.qcm WHERE id=:i;", [":i" => "$id"])->fetchALL()[0];
+                return BDD::prepAndExec("SELECT * FROM projet.reponse WHERE id=:i;", [":i" => "$id"])->fetchALL()[0];
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
                 return false;
@@ -33,19 +33,19 @@
         }
 
         /**
-         * Insère un qcm dans la base de données (mise à jour si le qcm existe déja)
+         * Insère une reponse dans la base de données (mise à jour si la reponse existe déja)
          * 
-         * @param QCM $qcm
+         * @param Reponse $m
          * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
-        public static function create($qcm){
-            if (!is_null($qcm->getId())){
+        public static function create($r){
+            if (!is_null($r->getId())){
                 try{
-                    return BDD::prepAndExec("UPDATE projet.qcm SET id_prof=:idP, questions=:q WHERE id=:i;",
+                    return BDD::prepAndExec("UPDATE projet.reponse SET id_qcm=:idQ, xml=:xml WHERE id=:i;",
                         array(
-                            "i" => $qcm->getId(),
-                            "idP" => $qcm->getIdProf(),
-                            "q" => $qcm->getQuestions()
+                            "i" => $r->getId(),
+                            "idQ" => $r->getIdQCM(),
+                            "xml" => $r->getXML()
                         ));
                 } catch (PDOException $e){
                     echo $e->getMessage() . "<br>";
@@ -53,10 +53,10 @@
                 }
             } else {
                 try{
-                    return BDD::prepAndExec("INSERT INTO projet.qcm(id_prof, questions) VALUES(:idP, :q);",
+                    return BDD::prepAndExec("INSERT INTO projet.reponse(id_qcm, xml) VALUES(:idQ, :xml);",
                     array(
-                        'idP' => $qcm->getIdProf(),
-                        'q' => $qcm->getQuestions()
+                        'idQ' => $r->getIdQCM(),
+                        'xml' => $r->getXML()
                     ));
                 } catch (PDOException $e){
                     echo $e->getMessage() . "<br>";
@@ -66,15 +66,15 @@
         }
 
         /**
-         * Supprime le qcm passée en paramètre de la base
+         * Supprime la reponse passée en paramètre de la base
          * 
-         * @param QCM $e
+         * @param Reponse $r
          * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
-        public static function delete($qcm){
-            if(!is_null($qcm->getId())){
+        public static function delete($r){
+            if(!is_null($r->getId())){
                 try{
-                    return BDD::prepAndExec("DELETE FROM projet.qcm WHERE id=:i;", array('i' => $qcm->getId()));
+                    return BDD::prepAndExec("DELETE FROM projet.qcm WHERE id=:i;", array('i' => $r->getId()));
                 } catch (PDOException $e){
                     echo $e->getMessage() . "<br>";
                     return false;
@@ -83,13 +83,13 @@
         }
 
         /**
-         * Supprime toutes les qcm de la table qcm
+         * Supprime toutes les reponses de la table reponse
          *
          * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
         public static function deleteAll(){
             try{
-                return BDD::query("DELETE FROM projet.qcm;");
+                return BDD::query("DELETE FROM projet.reponse;");
             } catch (PDOException $e){
                 echo $e->getMessage() . "<br>";
                 return false;
@@ -97,16 +97,16 @@
         }
 
         /**
-         * Fonction privée traduisant le retour de la BDD en QCM
+         * Fonction privée traduisant le retour de la BDD en reponse
          *
          * @param array[] $row
          * @return QCM
          */
         private static function fromRow($row){
-            return new QCM(
+            return new Reponse(
                 $row['id'],
-                $row['id_prof'],
-                $row['questions']
+                $row['id_qcm'],
+                $row['xml']
             );
         }
     }
