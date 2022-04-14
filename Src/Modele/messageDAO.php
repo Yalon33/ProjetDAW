@@ -1,53 +1,116 @@
 <?php
-    require_once("bdd.php");
-    require_once("../controlleur/message.php");
-    class MessageDAO{
+    class MessageDAO {
+        /**
+         * @return array[Message] Les matières dans la base
+         */
         public static function getAll(){
-            $data = BDD::query("SELECT * FROM projet.message;");
+            try{
+                $data = BDD::query("SELECT * FROM projet.message;");
+            } catch (PDOException $e){
+                echo $e->getMessage()."<br>";
+                return false;
+            }
             $res = array();
             if ($data !== false){
-                foreach($data->fetchAll() as $row){
-                    array_push($res, new Message($row[0], $row[1]));
-               }
+                foreach($data as $row){
+                    array_push($res, self::fromRow($row));
+                }
             }
             return $res;
         }
-
+        
+        /**
+         * @param entier $id
+         * @return Message Le message de la base correspondant à l'id en paramètre
+         */
         public static function getById($id){
-            $data = BDD::prepAndExec("SELECT * FROM projet.message WHERE id=:i;", [":i" => "$id"]);
-            $res = array();
-            if ($data !== false){
-                foreach($data->fetchAll() as $row){
-                    array_push($res, new Message($row[0], $row[1]));
-               }
+            try{
+                return BDD::prepAndExec("SELECT * FROM projet.message WHERE id=:i;", [":i" => "$id"])->fetchALL()[0];
+            } catch (PDOException $e){
+                echo $e->getMessage()."<br>";
+                return false;
             }
-            return $res;
         }
 
-        public static function insertMessage($message){
-            $arrayMes = [":c" => $message->getContenu()];
-            if ($message->getId() == null){
-                return BDD::prepAndExec("INSERT INTO projet.message(contenu) VALUES(:c);",$arrayMes) !== false;
-            } 
-           // else {
-           //     array_push($arrayMat, [":i" => $matiere->getId()]);
-           //     BDD::prepAndExec("INSERT INTO projet.matiere(id, nom, dateCreation, contenu, createur, tags, niveau) VALUES(:i, :n, :d, :cont, :crea, :t, :n);",$arrayMat);
-           // }
-        }
-
-        public static function insertMessages($arrayMessage){
-            $inserted = true;
-            foreach($arrayMessage as $message){
-                $inserted = MessageDAO::insertMessage($message);
-                if ($inserted === false){
+        /**
+         * Insère un message dans la base de données (mise à jour si le message existe déja)
+         * 
+         * @param Message $m
+         * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
+         */
+        public static function create($m){
+            if (!is_null($m->getId())){
+                try{
+                    return BDD::prepAndExec("UPDATE projet.message SET contenu=:c, id_canal=:idC, id_auteur=:idA WHERE id=:i;",
+                        array(
+                            "i" => $m->getId(),
+                            "c" => $m->getContenu(),
+                            "idC" => $m->getIdCanal(),
+                            "idA" => $m->getIdAuteur()
+                        ));
+                } catch (PDOException $e){
+                    echo $e->getMessage() . "<br>";
+                    return false;
+                }
+            } else {
+                try{
+                    return BDD::prepAndExec("INSERT INTO projet.message(contenu, id_canal, id_auteur) VALUES(:c, :idC, :idA);",
+                    array(
+                        'c' => $m->getContenu(),
+                        'idC' => $m->getIdCanal(),
+                        'idA' => $m->getIdAuteur()
+                    ));
+                } catch (PDOException $e){
+                    echo $e->getMessage() . "<br>";
                     return false;
                 }
             }
-            return true;
         }
 
-        public static function deleteMessages(){
-            return BDD::query("DELETE FROM projet.message") !== false;
+        /**
+         * Supprime le message passée en paramètre de la base
+         * 
+         * @param Message $e
+         * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
+         */
+        public static function delete($m){
+            if(!is_null($m->getId())){
+                try{
+                    return BDD::prepAndExec("DELETE FROM projet.message WHERE id=:i;", array('i' => $m->getId()));
+                } catch (PDOException $e){
+                    echo $e->getMessage() . "<br>";
+                    return false;
+                }
+            }
         }
-    }   
+
+        /**
+         * Supprime toutes les messages de la table message
+         *
+         * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
+         */
+        public static function deleteAll(){
+            try{
+                return BDD::query("DELETE FROM projet.message;");
+            } catch (PDOException $e){
+                echo $e->getMessage() . "<br>";
+                return false;
+            }
+        }
+
+        /**
+         * Fonction privée traduisant le retour de la BDD en Message
+         *
+         * @param array[] $row
+         * @return Message
+         */
+        private static function fromRow($row){
+            return new Message(
+                $row['id'],
+                $row['contenu'],
+                $row['id_canal'],
+                $row['id_auteur'],
+            );
+        }
+    }
 ?>

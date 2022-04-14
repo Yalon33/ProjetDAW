@@ -2,16 +2,14 @@
 
     include("Niveau.php");
 
-    class Matiere 
-    {
+    class Matiere{
         private $id;
         private $nom;
         private $dateCreation;
         private $createur;
         private $niveau;
 
-        public function __construct($id = null, $nom, $dateCreation, $createur, $niveau)
-        {
+        public function __construct($id = null, $nom, $dateCreation, $createur, $niveau){
             $this->id = $id;
             $this->nom = $nom;
             $this->dateCreation = $dateCreation;
@@ -19,46 +17,46 @@
             $this->niveau = $niveau;
             
         }
+
         //Setter
-        public function setId($id)
-        {
+        public function setId($id){
             $this->id = $id;
         }
-        public function setNom($nom)
-        {
+        
+        public function setNom($nom){
             $this->nom = $nom;
         }
-        public function setDateCreation($dateCreation)
-        {
+
+        public function setDateCreation($dateCreation){
             $this->dateCreation = $dateCreation;
         }
-        public function setCreateur($createur)
-        {
+
+        public function setCreateur($createur){
             $this->createur = $createur;
         }
-        public function setNiveau($niveau)
-        {
+
+        public function setNiveau($niveau){
             $this->niveau = $niveau;
         }
+
         //Getter
-        public function getId()
-        {
+        public function getId(){
             return $this->id;
         }
-        public function getNom()
-        {
+
+        public function getNom(){
             return $this->nom;
         }
-        public function getDateCreation()
-        {
+
+        public function getDateCreation(){
             return $this->dateCreation;
         }
-        public function getCreateur()
-        {
+
+        public function getCreateur(){
             return $this->createur;
         }
-        public function getNiveau()
-        {
+
+        public function getNiveau(){
             return $this->niveau;
         }
 
