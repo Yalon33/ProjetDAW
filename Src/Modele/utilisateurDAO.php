@@ -4,7 +4,7 @@
     class UtilisateurDAO {
 
         /**
-         * Retourne la liste de tous les utilisateurs de la base
+         * @return array[Utilisateur] Les utilisateurs dans la base
          */
         public static function getAll() {
             try{
@@ -21,14 +21,15 @@
         }
 
         /**
-         * Retourne la liste des utilisateurs de la base correspondant au login en paramètre
-         * $login = le login de l'utilisateur à rechercher
+         * @param string $login = le login de l'utilisateur à rechercher
+         * @return array[Utilisateur] Les utilisateurs ayant le login en paramètre
          */
         public static function getByLogin($login){
             try{
                 $data = BDD::prepAndExec("SELECT * FROM projet.UTILISATEUR WHERE login=:l;", array('l' => $login));
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
+                return false;
             }
             $array = array();
             foreach($data as $row){
@@ -39,28 +40,26 @@
 
         /**
          * Insère un utilisateur dans la base de données (mise à jour si l'utilisateur existe déjà)
-         * $u = l'utilisateur à insérer ou modifier
+         *
+         * @param Utilisateur $u
+         * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
         public static function create($u){
             if(!is_null($u->getId())){
-                if (empty(BDD::prepAndExec("SELECT * FROM projet.utilisateur WHERE id=:i AND login=:l;", [":i" => $u->getId(), ":l" => $u->getLogin()])->fetchAll())){
-                    throw new Exception("Impossible de modifier cet utilisateur");
-                } else {
-                    try{
-                        return BDD::prepAndExec("UPDATE projet.UTILISATEUR SET login=:l, mdp=:mdp, mail=:ma, prenom=:pr, nom=:n, type=:tu  WHERE id=:i;", 
-                            array(
-                                'i' => $u->getId(), 
-                                'l' => $u->getLogin(),
-                                'mdp' => $u->getMdp(),
-                                'ma' => $u->getMail(),
-                                'pr' => $u->getPrenom(),
-                                'n' => $u->getNom(),
-                                'tu' => TypeUtilisateur::toString($u->getType())
-                            ));
-                    } catch (PDOException $e){
-                        echo $e->getMessage() . "<br>";
-                        return false;
-                    }
+                try{
+                    return BDD::prepAndExec("UPDATE projet.utilisateur SET login=:l, mdp=:mdp, mail=:ma, prenom=:pr, nom=:n, type=:tu  WHERE id=:i;", 
+                        array(
+                            'i' => $u->getId(), 
+                            'l' => $u->getLogin(),
+                            'mdp' => $u->getMdp(),
+                            'ma' => $u->getMail(),
+                            'pr' => $u->getPrenom(),
+                            'n' => $u->getNom(),
+                            'tu' => TypeUtilisateur::toString($u->getType())
+                        ));
+                } catch (PDOException $e){
+                    echo $e->getMessage() . "<br>";
+                    return false;
                 }
             }
             else{
@@ -83,21 +82,25 @@
 
         /**
          * Supprime l'utilisateur passé en paramètre de la base
-         * $u = l'utilisateur à supprimer
+         * 
+         * @param Utilisateur $u
+         * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
         public static function delete($u){
-            if(!is_null($u->getId()))
+            if(!is_null($u->getId())){
                 try{
                     return BDD::prepAndExec("DELETE FROM projet.UTILISATEUR WHERE id=:i;", array('i' => $u->getId()));
                 } catch (PDOException $e){
                     echo $e->getMessage() . "<br>";
+                    return false;
                 }
+            }
         }
 
         /**
          * Supprime tous les utilisateurs de la table utilisateur
          *
-         * @return bool Renvoie false si la suppression n'a pas eu lieu
+         * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
         public static function deleteAll(){
             try{
@@ -109,8 +112,10 @@
         }
 
         /**
-         * Fonction privée traduisant le retour de la BDD en utilisateur
-         * $row = le résultat de la requête BDD à traduire
+         * Fonction privée traduisant le retour de la BDD en Utilisateur
+         *
+         * @param array[] $row
+         * @return Utilisateur
          */
         private static function fromRow($row){
             return new Utilisateur(

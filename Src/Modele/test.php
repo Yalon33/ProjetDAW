@@ -27,7 +27,7 @@
         BDD::query("ROLLBACK;");
     }
 
-    function testInsertUnique($nomTest){
+    function testInsertUniqueUtilisateur($nomTest){
         BDD::query("START TRANSACTION;");
         $obj1 = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "PROFESSEUR");
         if (UtilisateurDAO::create($obj1) !== false){
@@ -50,21 +50,6 @@
             }
         }
         succeededTest($nomTest);
-    }
-
-    /**
-    * Comme le serveur incrémente de lui même les identifiants, il est intéressant de voir comment il réagit si
-    * on insère un identifiant qui n'est pas dans 'bon'
-    */
-    function testInsertUtilisateurMauvaisId($nomTest){
-        BDD::query("START TRANSACTION;");
-        $daniel = new Utilisateur(2, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "PROFESSEUR");
-        try {
-            UtilisateurDAO::create($daniel);
-            failedTest($nomTest);
-        } catch (Exception $e){
-            succeededTest($nomTest);
-        }
     }
 
     function testCreationUtilisateurMauvaisType($nomTest){
@@ -112,7 +97,7 @@
         }
     }
 
-    function testDeleteRow($nomTest){
+    function testDeleteRowUtilisateur($nomTest){
         BDD::query("START TRANSACTION;");
         $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT");
         UtilisateurDAO::create($daniel);
@@ -124,13 +109,13 @@
 
     function testUtilisateurDAO(){
         testClearTable("Nettoyage de la table", "utilisateur");
-        testInsertUnique("Insertion d'un unique utilisateur dans la table utilisateur");
+        testInsertUniqueUtilisateur("Insertion d'un unique utilisateur dans la table utilisateur");
         testInsertPlusieursUtilisateurs("Insertion de plusieurs utilisateurs dans la table utilisateur");
         testInsertUtilisateurMauvaisId("Mise à jour d'un utilisateur avec un identifiant qui n'est pas dans l'ordre ne marche pas");
         testCreationUtilisateurMauvaisType("Insertion d'un utilisateur avec un type qui n'existe pas");
         testRecuperationUtilisateurParticulier("Récupération d'un utilisateur dans la BDD qui en contient plusieurs");
         testUpdateUtilisateur("Mise à jour d'un utilisateur dans la table");
-        testDeleteRow("Suppression d'un utilisateur parmi les autres");
+        testDeleteRowUtilisateur("Suppression d'un utilisateur parmi les autres");
     }
 
     function testInsertMatiereUnique(){

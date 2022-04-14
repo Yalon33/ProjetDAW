@@ -7,9 +7,7 @@
         private $id;
         private $nom;
         private $dateCreation;
-        private $contenu;
         private $createur;
-        private $tags;
         private $niveau;
 
         public function __construct($id = null, $nom, $dateCreation, $contenu, $createur, $tags, $niveau)
@@ -17,9 +15,7 @@
             $this->id = $id;
             $this->nom = $nom;
             $this->dateCreation = $dateCreation;
-            $this->contenu = $contenu;
             $this->createur = $createur;
-            $this->tags = $tags;
             $this->niveau = $niveau;
             
         }
@@ -36,17 +32,9 @@
         {
             $this->dateCreation = $dateCreation;
         }
-        public function setContenu($contenu)
-        {
-            $this->contenu = $contenu;
-        }
         public function setCreateur($createur)
         {
             $this->createur = $createur;
-        }
-        public function setTags($tags)
-        {
-            $this->tags = $tags;
         }
         public function setNiveau($niveau)
         {
@@ -65,31 +53,20 @@
         {
             return $this->dateCreation;
         }
-        public function getContenu()
-        {
-            return $this->contenu;
-        }
         public function getCreateur()
         {
             return $this->createur;
-        }
-        public function getTags()
-        {
-            return $this->tags;
         }
         public function getNiveau()
         {
             return $this->niveau;
         }
 
-        //public function getSimilar($cours): Cours
-        //{
-        //    
-        //}
-
         public function compareTo($mat){
-            return ($mat->getNom() === $this->getNom() && $mat->getDateCreation() === $this->getDateCreation()
-                    && $mat->getCreateur()->compare($this->getCreateur()) && $mat->getTags() == $this->getTags() && $mat->getNiveau() === $this->getNiveau());
+            return ($mat->getNom() === $this->getNom()
+                    && $mat->getDateCreation() === $this->getDateCreation()
+                    && $mat->getCreateur()->compare($this->getCreateur())
+                    && Niveau::toString($mat->getNiveau()) === Niveau::toString($this->getNiveau()));
         }
     }
 ?>

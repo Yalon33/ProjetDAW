@@ -1,80 +1,124 @@
 <?php
     require_once("bdd.php");
     require_once("../controlleur/matiere.php");
+    require_once("parseDate.php");
+    require_once("../controlleur/niveau.php");
 
     class MatiereDAO {
         /**
-         * Renvoie toutes les matières dans la table matiere
-         *
-         * @return array un tableau contenant toutes les matières dans la table matiere
+         * @return array[Matiere] Les matières dans la base
          */
         public static function getAll(){
-            $data = BDD::query("SELECT * FROM projet.matiere;")->fetchAll();
+            try{
+                $data = BDD::query("SELECT * FROM projet.matiere;");
+            } catch (PDOException $e){
+                echo $e->getMessage()."<br>";
+                return false;
+            }
             $res = array();
-            if ($data !== false){
-                foreach($data as $row){
-                    array_push($res, new Matiere($row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6]));
-               }
+            if ($data !== false){ foreach($data as $row){
+                    array_push($res, self::fromRow($row));
+                }
             }
             return $res;
         }
         
         /**
-         * Renvoie une matiere selon son identifiant
-         *
          * @param entier $id
-         * @return array La matière correspondant à l'identifiant si une telle matière est dans la table, faux sinon
+         * @return Matiere La matière de la base correspondant à l'id en paramètre
          */
         public static function getById($id){
-            $data = BDD::prepAndExec("SELECT * FROM projet.matiere WHERE id=:i;", [":i" => "$id"]);
-            if ($data !== false){
-                return new Matiere($data[0][0], $data[0][1], $data[0][2], $data[0][3], $data[0][4], $data[0][5], $data[0][6]);
+            try{
+                return BDD::prepAndExec("SELECT * FROM projet.matiere WHERE id=:i;", [":i" => "$id"])->fetchALL()[0];
+            } catch (PDOException $e){
+                echo $e->getMessage()."<br>";
+                return false;
             }
-            return false;
         }
 
         /**
-         * permet d'insérer dans la table une matiere
-         *
+         * Insère une matière dans la base de données (mise à jour si la matière existe déja)
+         * 
          * @param Matiere $matiere
-         * @return bool Renvoie false si la requête a échoué, true sinon
+         * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
-        public static function create($matiere){
-            if (is_null($matiere->getId())){
-                
-                if ($matiere->getId() == null){
-                    return BDD::prepAndExec("INSERT INTO projet.matiere(nom, dateCreation, contenu, createur, tags, niveau) VALUES(:n, :d, :cont, :crea, :t, :niv);",
-                        [":n" => $matiere->getNom(),
-                        ":d" => $matiere->getDateCreation(),
-                        ":cont" => $matiere->getContenu(),
-                        ":crea" => $matiere->getCreateur()->getId(),
-                        ":t" => $matiere->getTags(),
-                        ":niv" => $matiere->getNiveau()
+        public static function create($m){
+            if (!is_null($m->getId())){
+                try{
+                    return BDD::prepAndExec("UPDATE projet.matiere SET nom=:n, dateCreation=:d, contenu=:d, createur=:c, tag=:t, niveau=:niv) WHERE id=:i;",
+                        [":n" => $m->getNom(),
+                        ":d" => ParseDate::toBDD($m->getDateCreation()),
+                        ":cont" => $m->getContenu(),
+                        ":crea" => $m->getCreateur()->getId(),
+                        ":t" => $m->getTags(),
+                        ":niv" => Niveau::toString($m->getNiveau())
                         ]);
-                } 
-                else {
-                    array_push($arrayMat, [":i" => $matiere->getId()]);
-                    BDD::prepAndExec("INSERT INTO projet.matiere(id, nom, dateCreation, contenu, createur, tags, niveau) VALUES(:i, :n, :d, :cont, :crea, :t, :n);",$arrayMat);
+                } catch (PDOException $e){
+                    echo $e->getMessage() . "<br>";
+                    return false;
+                }
+            } else {
+                try{
+                    return BDD::prepAndExec("INSERT INTO projet.matiere(nom, dateCreation, createur, niveau) VALUES(:n, :d, :crea, :niv);", array(
+                        'n' => $m->getNom(),
+                        'd' => ParseDate::toBDD($m->getDateCreation()),
+                        'crea' => $m->getCreateur()->getId(),
+                        'niv' => Niveau::toString($m->getTag())
+                    ));
+                } catch (PDOException $e){
+                    echo $e->getMessage() . "<br>";
+                    return false;
                 }
             }
         }
 
         /**
-         * Supprime toutes la matières dans la table matiere
-         *
-         * @return bool Renvoie false si la suppression n'a pas eu lieu
+         * Supprime la matière passée en paramètre de la base
+         * 
+         * @param Matiere $e
+         * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
-        public static function deleteMatieres(){
-            return BDD::query("DELETE FROM projet.matiere") !== false;
+        public static function delete($m){
+            if(!is_null($m->getId())){
+                try{
+                    return BDD::prepAndExec("DELETE FROM projet.matiere WHERE id=:i;", array('i' => $m->getId()));
+                } catch (PDOException $e){
+                    echo $e->getMessage() . "<br>";
+                    return false;
+                }
+            }
         }
 
         /**
-         * Fonction privée traduisant le retour de la BDD en utilisateur
-         * $row = le résultat de la requête BDD à traduire
+         * Supprime toutes les matières de la table matiere
+         *
+         * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
-        //private static function fromRow($row){
-        //    return new Matiere(
-        //    );
-        //}
+        public static function deleteAll(){
+            try{
+                return BDD::query("DELETE FROM projet.utilisateur;");
+            } catch (PDOException $e){
+                echo $e->getMessage() . "<br>";
+                return false;
+            }
+        }
+
+        /**
+         * Fonction privée traduisant le retour de la BDD en Matiere
+         *
+         * @param array[] $row
+         * @return Matiere
+         */
+        private static function fromRow($row){
+            return new Matiere(
+                $row['id'],
+                $row['nom'],
+                $row['dateCreation'],
+                $row['contenu'],
+                $row['createur'],
+                $row['tags'],
+                $row['niveau']
+            );
+        }
     }
 ?>

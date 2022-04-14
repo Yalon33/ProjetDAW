@@ -1,38 +1,37 @@
 <?php
     include("utilisateur.php");
     include("Niveau.php");
-    class Etudiant
+    class Etudiant extends Utilisateur
     {
+        private $id;
         private $niveau;
-        private $matiereSuivies;
 
         //Constructeur
-        private function __construct($niveau, $matiereSuivies)
+        private function __construct($id = null, $niveau)
         {
+            $this->id = $id;
             $this->niveau = $niveau;
-            $this->matiereSuivies = $matiereSuivies;
         }
 
         //Setter
+        public function setId($id)
+        {
+            $this->id = $id;
+        }
         public function setNiveau($niveau)
         {
             $this->niveau = $niveau;
         }
-        public function setMatieres($matiereSuivies)
-        {
-            $this->matiereSuivies = $matiereSuivies;
-        }
 
         //Getter
+        public function getId()
+        {
+            return $this->id;
+        }
         public function getNiveau()
         {
             return $this->niveau;
         }
-        public function getMatieresSuivies()
-        {
-            return $this->matiereSuivies;
-        }
-
 
         public function suivreCours($Matiere): void
         {
