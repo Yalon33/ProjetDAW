@@ -1,11 +1,11 @@
 <?php
-    class ContenuDAO {
+    class ForumDAO {
         /**
-         * @return array[Contenu] Les matières dans la base
+         * @return array[Forum] Les matières dans la base
          */
         public static function getAll(){
             try{
-                $data = BDD::query("SELECT * FROM projet.contenu;");
+                $data = BDD::query("SELECT * FROM projet.forum;");
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
                 return false;
@@ -21,11 +21,11 @@
         
         /**
          * @param entier $id
-         * @return Contenu Le contenu de la base correspondant à l'id en paramètre
+         * @return Forum Le forum de la base correspondant à l'id en paramètre
          */
         public static function getById($id){
             try{
-                return BDD::prepAndExec("SELECT * FROM projet.contenu WHERE id=:i;", [":i" => "$id"])->fetchALL()[0];
+                return BDD::prepAndExec("SELECT * FROM projet.forum WHERE id=:i;", [":i" => "$id"])->fetchALL()[0];
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
                 return false;
@@ -33,18 +33,18 @@
         }
 
         /**
-         * Insère un contenu dans la base de données (mise à jour si le contenu existe déja)
+         * Insère un forum dans la base de données (mise à jour si le forum existe déja)
          * 
-         * @param Contenu $matiere
+         * @param Forum $f
          * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
-        public static function create($c){
-            if (!is_null($c->getId())){
+        public static function create($f){
+            if (!is_null($f->getId())){
                 try{
-                    return BDD::prepAndExec("UPDATE projet.contenu SET uri=:uri WHERE id=:i;",
+                    return BDD::prepAndExec("UPDATE projet.forum SET nom=:n WHERE id=:i;",
                         array(
-                            ":i" => $c->getId(),
-                            ":uri" => $c->getUri()
+                            ":i" => $f->getId(),
+                            ":n" => $f->getNom()
                         ));
                 } catch (PDOException $e){
                     echo $e->getMessage() . "<br>";
@@ -52,9 +52,8 @@
                 }
             } else {
                 try{
-                    return BDD::prepAndExec("INSERT INTO projet.contenu(uri) VALUES(:uri);", 
-                    array(
-                        'uri' => $c->getUri()
+                    return BDD::prepAndExec("INSERT INTO projet.forum(nom) VALUES(:n);", array(
+                        'n' => $f->getNom()
                     ));
                 } catch (PDOException $e){
                     echo $e->getMessage() . "<br>";
@@ -64,15 +63,15 @@
         }
 
         /**
-         * Supprime le contenu passée en paramètre de la base
+         * Supprime le forum passée en paramètre de la base
          * 
-         * @param Contenu $c
+         * @param Forum $f
          * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
-        public static function delete($c){
-            if(!is_null($c->getId())){
+        public static function delete($f){
+            if(!is_null($f->getId())){
                 try{
-                    return BDD::prepAndExec("DELETE FROM projet.contenu WHERE id=:i;", array('i' => $c->getId()));
+                    return BDD::prepAndExec("DELETE FROM projet.forum WHERE id=:i;", array('i' => $f->getId()));
                 } catch (PDOException $e){
                     echo $e->getMessage() . "<br>";
                     return false;
@@ -81,13 +80,13 @@
         }
 
         /**
-         * Supprime tous les contenus de la table contenu
+         * Supprime tous les forum de la table forum
          *
          * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
         public static function deleteAll(){
             try{
-                return BDD::query("DELETE FROM projet.contenu;");
+                return BDD::query("DELETE FROM projet.forum;");
             } catch (PDOException $e){
                 echo $e->getMessage() . "<br>";
                 return false;
@@ -95,15 +94,15 @@
         }
 
         /**
-         * Fonction privée traduisant le retour de la BDD en Contenu
+         * Fonction privée traduisant le retour de la BDD en Forum
          *
          * @param array[] $row
-         * @return Contenu
+         * @return Forum
          */
         private static function fromRow($row){
-            return new Contenu(
+            return new Forum(
                 $row['id'],
-                $row['uri']
+                $row['nom']
             );
         }
     }

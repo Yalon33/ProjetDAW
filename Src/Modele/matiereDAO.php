@@ -40,20 +40,19 @@
         /**
          * Insère une matière dans la base de données (mise à jour si la matière existe déja)
          * 
-         * @param Matiere $matiere
+         * @param Matiere $m
          * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
         public static function create($m){
             if (!is_null($m->getId())){
                 try{
-                    return BDD::prepAndExec("UPDATE projet.matiere SET nom=:n, dateCreation=:d, contenu=:d, createur=:c, tag=:t, niveau=:niv) WHERE id=:i;",
-                        [":n" => $m->getNom(),
-                        ":d" => ParseDate::toBDD($m->getDateCreation()),
-                        ":cont" => $m->getContenu(),
-                        ":crea" => $m->getCreateur()->getId(),
-                        ":t" => $m->getTags(),
-                        ":niv" => Niveau::toString($m->getNiveau())
-                        ]);
+                    return BDD::prepAndExec("UPDATE projet.matiere SET nom=:n, dateCreation=:d, createur=:c, niveau=:niv WHERE id=:i;",
+                        array(
+                            ":n" => $m->getNom(),
+                            ":d" => ParseDate::toBDD($m->getDateCreation()),
+                            ":crea" => $m->getCreateur()->getId(),
+                            ":niv" => Niveau::toString($m->getNiveau())
+                        ));
                 } catch (PDOException $e){
                     echo $e->getMessage() . "<br>";
                     return false;
@@ -64,7 +63,7 @@
                         'n' => $m->getNom(),
                         'd' => ParseDate::toBDD($m->getDateCreation()),
                         'crea' => $m->getCreateur()->getId(),
-                        'niv' => Niveau::toString($m->getTag())
+                        'niv' => Niveau::toString($m->getNiveau())
                     ));
                 } catch (PDOException $e){
                     echo $e->getMessage() . "<br>";
@@ -97,7 +96,7 @@
          */
         public static function deleteAll(){
             try{
-                return BDD::query("DELETE FROM projet.utilisateur;");
+                return BDD::query("DELETE FROM projet.matiere;");
             } catch (PDOException $e){
                 echo $e->getMessage() . "<br>";
                 return false;
@@ -115,9 +114,7 @@
                 $row['id'],
                 $row['nom'],
                 $row['dateCreation'],
-                $row['contenu'],
                 $row['createur'],
-                $row['tags'],
                 $row['niveau']
             );
         }

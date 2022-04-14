@@ -10,7 +10,7 @@
         private $createur;
         private $niveau;
 
-        public function __construct($id = null, $nom, $dateCreation, $contenu, $createur, $tags, $niveau)
+        public function __construct($id = null, $nom, $dateCreation, $createur, $niveau)
         {
             $this->id = $id;
             $this->nom = $nom;

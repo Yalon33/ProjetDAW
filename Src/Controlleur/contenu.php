@@ -3,7 +3,7 @@
         private $id;
         private $uri;
 
-        public function __construct($id, $uri){
+        public function __construct($id = null, $uri){
             $this->id = $id;
             $this->uri = $uri;
         }

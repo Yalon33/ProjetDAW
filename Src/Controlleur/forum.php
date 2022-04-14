@@ -3,21 +3,32 @@
 
     class Forum 
     {
-        private $canaux;
+        private $id;
+        private $nom;
 
-        private function __construct($canaux)
-        {
-            $this->canaux=$canaux;
+        private function __construct($id = null, $nom){
+            $this->id = $id;
+            $this->nom = $nom;
         }
 
-        public function getCanaux()
+        public function getId()
         {
-            return $this->canaux;
+            return $this->id;
         }
 
-        public function setCanaux($canaux)
+        public function getNom()
         {
-            $this->canaux=$canaux;
+            return $this->nom;
+        }
+
+        public function setId($id)
+        {
+            $this->id = $id;
+        }
+
+        public function setNom($nom)
+        {
+            $this->nom = $nom;
         }
     }
 ?>
