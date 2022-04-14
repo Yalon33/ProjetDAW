@@ -16,7 +16,8 @@
                 return false;
             }
             $res = array();
-            if ($data !== false){ foreach($data as $row){
+            if ($data !== false){
+                foreach($data as $row){
                     array_push($res, self::fromRow($row));
                 }
             }
