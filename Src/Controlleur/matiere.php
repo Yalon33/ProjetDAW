@@ -1,20 +1,20 @@
 <?php
 
-    include("Niveau.php");
+    include("../Controlleur/niveau.php");
 
     class Matiere{
         private $id;
         private $nom;
         private $dateCreation;
-        private $createur;
+        private $id_createur;
         private $niveau;
 
-        public function __construct($id = null, $nom, $dateCreation, $createur, $niveau){
+        public function __construct($id = null, $nom, $dateCreation, $id_createur, $niveau){
             $this->id = $id;
             $this->nom = $nom;
             $this->dateCreation = $dateCreation;
-            $this->createur = $createur;
-            $this->niveau = $niveau;
+            $this->id_createur = $id_createur;
+            $this->niveau = Niveau::toType($niveau);
             
         }
 
@@ -31,8 +31,8 @@
             $this->dateCreation = $dateCreation;
         }
 
-        public function setCreateur($createur){
-            $this->createur = $createur;
+        public function setid_createur($id_createur){
+            $this->id_createur = $id_createur;
         }
 
         public function setNiveau($niveau){
@@ -52,8 +52,8 @@
             return $this->dateCreation;
         }
 
-        public function getCreateur(){
-            return $this->createur;
+        public function getIdCreateur(){
+            return $this->id_createur;
         }
 
         public function getNiveau(){
@@ -63,7 +63,7 @@
         public function compareTo($mat){
             return ($mat->getNom() === $this->getNom()
                     && $mat->getDateCreation() === $this->getDateCreation()
-                    && $mat->getCreateur()->compare($this->getCreateur())
+                    && $mat->getIdCreateur() == $this->getIdCreateur()
                     && Niveau::toString($mat->getNiveau()) === Niveau::toString($this->getNiveau()));
         }
     }

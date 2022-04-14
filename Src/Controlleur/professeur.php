@@ -1,4 +1,5 @@
 <?php
+    // A supprimer?
     include("utilisateur.php");
     class Professeur extends Utilisateur
     {

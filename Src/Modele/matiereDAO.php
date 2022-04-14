@@ -25,12 +25,26 @@
         }
         
         /**
-         * @param entier $id
+         * @param int $id
          * @return Matiere La matière de la base correspondant à l'id en paramètre
          */
         public static function getById($id){
             try{
-                return BDD::prepAndExec("SELECT * FROM projet.matiere WHERE id=:i;", [":i" => "$id"])->fetchALL()[0];
+                $a = self::fromRow(BDD::prepAndExec("SELECT * FROM projet.matiere WHERE id=:i;", [":i" => "$id"])->fetchALL()[0]);
+                return $a;
+            } catch (PDOException $e){
+                echo $e->getMessage()."<br>";
+                return false;
+            }
+        }
+
+        /**
+         * @param string $nom
+         * @return Matiere La matière de la base correspondant au nom en paramètre
+         */
+        public static function getByNom($nom){
+            try{
+                return self::fromRow(BDD::prepAndExec("SELECT * FROM projet.matiere WHERE nom=:n;", [":n" => "$nom"])->fetchALL()[0]);
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
                 return false;
@@ -46,11 +60,11 @@
         public static function create($m){
             if (!is_null($m->getId())){
                 try{
-                    return BDD::prepAndExec("UPDATE projet.matiere SET nom=:n, dateCreation=:d, createur=:c, niveau=:niv WHERE id=:i;",
+                    return BDD::prepAndExec("UPDATE projet.matiere SET nom=:n, date_creation=:d, id_createur=:c, niveau=:niv WHERE id=:i;",
                         array(
                             ":n" => $m->getNom(),
                             ":d" => ParseDate::toBDD($m->getDateCreation()),
-                            ":crea" => $m->getCreateur()->getId(),
+                            ":crea" => $m->getIdCreateur(),
                             ":niv" => Niveau::toString($m->getNiveau())
                         ));
                 } catch (PDOException $e){
@@ -59,10 +73,10 @@
                 }
             } else {
                 try{
-                    return BDD::prepAndExec("INSERT INTO projet.matiere(nom, dateCreation, createur, niveau) VALUES(:n, :d, :crea, :niv);", array(
+                    return BDD::prepAndExec("INSERT INTO projet.matiere(nom, date_creation, id_createur, niveau) VALUES(:n, :d, :crea, :niv);", array(
                         'n' => $m->getNom(),
                         'd' => ParseDate::toBDD($m->getDateCreation()),
-                        'crea' => $m->getCreateur()->getId(),
+                        'crea' => $m->getIdCreateur(),
                         'niv' => Niveau::toString($m->getNiveau())
                     ));
                 } catch (PDOException $e){
@@ -113,8 +127,8 @@
             return new Matiere(
                 $row['id'],
                 $row['nom'],
-                $row['dateCreation'],
-                $row['createur'],
+                ParseDate::fromBDD($row['date_creation']),
+                $row['id_createur'],
                 $row['niveau']
             );
         }

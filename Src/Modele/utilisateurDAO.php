@@ -26,16 +26,14 @@
          */
         public static function getByLogin($login){
             try{
-                $data = BDD::prepAndExec("SELECT * FROM projet.UTILISATEUR WHERE login=:l;", array('l' => $login));
+                $data = BDD::prepAndExec("SELECT * FROM projet.UTILISATEUR WHERE login=:l;", array('l' => $login))->fetchAll()[0];
+                if ($data !== false){
+                    return self::fromRow($data);
+                }
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
                 return false;
             }
-            $array = array();
-            foreach($data as $row){
-                array_push($array, self::fromRow($row));
-            }
-            return $array;
         }
 
         /**
