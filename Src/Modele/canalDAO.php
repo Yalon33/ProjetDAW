@@ -1,14 +1,13 @@
 <?php
-    require_once("bdd.php");
-    require_once("../Controlleur/niveau.php");
+    require_once("../Controlleur/canal.php");
 
-    class EtudiantDAO {
+    class CanalDAO {
         /**
-         * @return array[Etudiant] Les étudiants dans la base
+         * @return array[Canal] Les étudiants dans la base
          */
         public static function getAll() {
             try{
-                $data = BDD::query("SELECT * FROM projet.etudiant");
+                $data = BDD::query("SELECT * FROM projet.canal");
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
                 return false;
@@ -22,11 +21,11 @@
 
         /**
          * @param int $id
-         * @return Etudiant L'étudiant de la base correspondant à l'id en paramètre
+         * @return Canal Le canal de la base correspondant à l'id en paramètre
          */
         public static function getById($id){
             try{
-                return BDD::prepAndExec("SELECT * FROM projet.etudiant WHERE id=:i", array('i' => $id))->fetchAll()[0];
+                return BDD::prepAndExec("SELECT * FROM projet.canal WHERE id=:i", array('i' => $id))->fetchAll()[0];
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
                 return false;
@@ -34,18 +33,20 @@
         }
 
         /**
-         * Insère un étudiant dans la base de données (mise à jour si l'étudiant existe déjà)
+         * Insère un canal dans la base de données (mise à jour si le canal existe déjà)
          *
-         * @param Etudiant $e
+         * @param Canal $c
          * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
-        public static function create($e){
-            if(!is_null($e->getId())){
+        public static function create($c){
+            if(!is_null($c->getId())){
                 try{
-                    return BDD::prepAndExec("UPDATE projet.etudiant SET niveau=:niv WHERE id=:i;", 
+                    return BDD::prepAndExec("UPDATE projet.canal SET nom=:n, id_forum=:id_f, id_createur=:id_c WHERE id=:i;", 
                         array(
-                            'i' => $e->getId(), 
-                            'niv' => Niveau::toString($e->getNiveau())
+                            'i' => $c->getId(), 
+                            'n' => $c->getNom(),
+                            'id_f' => $c->getIdForum(),
+                            'id_c' => $c->getIdCreateur()
                         ));
                 } catch (PDOException $e){
                     echo $e->getMessage() . "<br>";
@@ -54,9 +55,11 @@
             }
             else{
                 try{
-                    return BDD::prepAndExec("INSERT INTO projet.etudiant (niveau) VALUES (:niv);", 
+                    return BDD::prepAndExec("INSERT INTO projet.canal (nom, id_forum, id_createur) VALUES (:n, :id_f, :id_c);", 
                     array( 
-                        'niv' => Niveau::toString($e->getNiveau())
+                        'n' => $c->getNom(),
+                        'id_f' => $c->getIdForum(),
+                        'id_c' => $c->getIdCreateur()
                     ));
                 } catch (PDOException $e){
                     echo $e->getMessage() . "<br>";
@@ -66,30 +69,30 @@
         }
 
         /**
-         * Supprime l'étudiant passé en paramètre de la base
+         * Supprime le canal passé en paramètre de la base
          * 
-         * @param Etudiant $e
+         * @param Canal $c
          * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
-        public static function delete($e){
-            if(!is_null($e->getId())){
+        public static function delete($c){
+            if(!is_null($c->getId())){
                 try{
-                    return BDD::prepAndExec("DELETE FROM projet.etudiant WHERE id=:i;", array('i' => $e->getId()));
-                } catch (PDOException $err){
-                    echo $err->getMessage() . "<br>";
+                    return BDD::prepAndExec("DELETE FROM projet.canal WHERE id=:i;", array('i' => $c->getId()));
+                } catch (PDOException $e){
+                    echo $e->getMessage() . "<br>";
                     return false;
                 }
             }
         }
 
         /**
-         * Supprime tous les étudiants de la table etudiant
+         * Supprime tous les canaux de la table canal
          *
          * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
         public static function deleteAll(){
             try{
-                return BDD::query("DELETE FROM projet.etudiant;");
+                return BDD::query("DELETE FROM projet.canal;");
             } catch (PDOException $e){
                 echo $e->getMessage() . "<br>";
                 return false;
@@ -101,12 +104,14 @@
          * Fonction privée traduisant le retour de la BDD en étudiant
          *
          * @param array[] $row
-         * @return Etudiant
+         * @return Canal
          */
         private static function fromRow($row){
-            return new Etudiant(
+            return new Canal(
                 $row['id'],
-                $row["niveau"]
+                $row['nom'],
+                $row['id_forum'],
+                $row['id_createur']
             );
         }
     }

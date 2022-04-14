@@ -90,7 +90,7 @@
                 UtilisateurDAO::deleteAll() ? succeededTest($nomTest) : failedTest($nomTest);
                 break;
             case("matiere"):
-                MatiereDAO::deleteMatieres() ? succeededTest($nomTest) : failedTest($nomTest);
+                MatiereDAO::deleteAll() ? succeededTest($nomTest) : failedTest($nomTest);
                 break;
             default:
                 echo "Nom de table '$table' est invalide";
@@ -108,10 +108,9 @@
     }
 
     function testUtilisateurDAO(){
-        testClearTable("Nettoyage de la table", "utilisateur");
+        testClearTable("utilisateur");
         testInsertUniqueUtilisateur("Insertion d'un unique utilisateur dans la table utilisateur");
         testInsertPlusieursUtilisateurs("Insertion de plusieurs utilisateurs dans la table utilisateur");
-        testInsertUtilisateurMauvaisId("Mise à jour d'un utilisateur avec un identifiant qui n'est pas dans l'ordre ne marche pas");
         testCreationUtilisateurMauvaisType("Insertion d'un utilisateur avec un type qui n'existe pas");
         testRecuperationUtilisateurParticulier("Récupération d'un utilisateur dans la BDD qui en contient plusieurs");
         testUpdateUtilisateur("Mise à jour d'un utilisateur dans la table");
@@ -133,55 +132,61 @@
     }
 
     function testInsertPlusieursMatieres(){
-//        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "Professeur");
-//        $calculMat = new Matiere(null, "calcul matriciel", "12/01/2022", "calculMat.txt", $daniel, "mathematique", "L3");
-//        $algebre = new Matiere(null, "algebre", "11/12/2012", "algebreLineraire.txt", $daniel, "mathematique", "L1");
-//        $arrayMatiere = [$calculMat, $algebre];
-//        foreach($arrayMatiere as $matiere){
-//            MatiereDAO::insertMatiere($matiere);
-//        }
-//        $matieresBDD = MatiereDAO::getAll();
-//        for($i = 0; $i < sizeof($arrayMatiere); $i++){
-//            if (!$arrayMatiere[$i]->compareTo($matieresBDD[$i])){
-//                failedTest("Insertion de plusieurs matières, $matieresBDD[$i] n'est pas dans la BDD");
-//                return;
-//            }
-//        }
-//        return;
+        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "Professeur");
+        /*
+        $calculMat = new Matiere(null, "calcul matriciel", "12/01/2022", "calculMat.txt", $daniel, "mathematique", "L3");
+        $algebre = new Matiere(null, "algebre", "11/12/2012", "algebreLineraire.txt", $daniel, "mathematique", "L1");
+        $arrayMatiere = [$calculMat, $algebre];
+        foreach($arrayMatiere as $matiere){
+            MatiereDAO::insertMatiere($matiere);
+        }
+        $matieresBDD = MatiereDAO::getAll();
+        for($i = 0; $i < sizeof($arrayMatiere); $i++){
+            if (!$arrayMatiere[$i]->compareTo($matieresBDD[$i])){
+                failedTest("Insertion de plusieurs matières, $matieresBDD[$i] n'est pas dans la BDD");
+                return;
+            }
+        }
+        */
+        return;
     }
 
     function testMatiereDAO(){
-        //$allMatiere = MatiereDAO::getAll();
-        ////$calcMatBDD = MatiereDAO::getById(2);
-        //$algebreBDD = MatiereDAO::getById(1);
-        //echo "<pre>";
-        //print_r($allMatiere);
-        //echo "Avec l'identifiant";
-        //print_r($algebreBDD);
-        //echo "</pre>";
-        //echo MatiereDAO::deleteMatieres() ? "Suppression des éléments dans matières<br>" : "Impossible de supprimer les matières<br>";
-        //echo MatiereDAO::insertMatieres([$algebre, $calculMat]) ? "Insertion des matières en même temps réussie<br>" : "Impossible d'insérer les matières en même temps<br>";
-        //echo MatiereDAO::deleteMatieres() ? "Suppression des éléments dans matières<br>" : "Impossible de supprimer les matières<br>";
-        //echo MatiereDAO::insertMatieres($allMatiere) ? "Insertion des matières avec un identifiant en même temps réussie<br>" : "Impossible d'insérer les matières avec un identifiant en même temps<br>";
+        /*
+        $allMatiere = MatiereDAO::getAll();
+        //$calcMatBDD = MatiereDAO::getById(2);
+        $algebreBDD = MatiereDAO::getById(1);
+        echo "<pre>";
+        print_r($allMatiere);
+        echo "Avec l'identifiant";
+        print_r($algebreBDD);
+        echo "</pre>";
+        echo MatiereDAO::deleteMatieres() ? "Suppression des éléments dans matières<br>" : "Impossible de supprimer les matières<br>";
+        echo MatiereDAO::insertMatieres([$algebre, $calculMat]) ? "Insertion des matières en même temps réussie<br>" : "Impossible d'insérer les matières en même temps<br>";
+        echo MatiereDAO::deleteMatieres() ? "Suppression des éléments dans matières<br>" : "Impossible de supprimer les matières<br>";
+        echo MatiereDAO::insertMatieres($allMatiere) ? "Insertion des matières avec un identifiant en même temps réussie<br>" : "Impossible d'insérer les matières avec un identifiant en même temps<br>";
         testClearTable("matiere");
-        //testInsertMatiereUnique();
+        testInsertMatiereUnique();
+        */
     }
 
     function testMessageDAO(){
+        /*
         $question = new Message(null, "Comment on fait le DM?");
         $reponse = new Message(null, "Avec ton cerveau.");
         MessageDAO::insertMessage($question);
         MessageDAO::insertMessage($reponse);
         $allMessage = MessageDAO::getAll();
         $reponseBDD = MessageDAO::getById(2);
-        //echo "<pre>";
-        //print_r($allMessage);
-        //echo "Avec l'identifiant";
-        //print_r($reponseBDD);
-        //echo "</pre>";
+        echo "<pre>";
+        print_r($allMessage);
+        echo "Avec l'identifiant";
+        print_r($reponseBDD);
+        echo "</pre>";
         echo MessageDAO::deleteMessages() ? "Suppression des éléments dans message<br>" : "Impossible de supprimer tous les messages";
         echo MessageDAO::insertMessages([$question, $reponse]) ? "Insertion des messages en même temps réussie<br>" : "Impossible d'insérer les messages en même temps<br>";
         echo MessageDAO::deleteMessages() ? "Suppression des éléments dans message<br>" : "Impossible de supprimer tous les messages";
+        */
     }
 
     function launchTestSuite(){
@@ -190,6 +195,7 @@
     }
 
     launchTestSuite();
+
     echo "<br><b>Synthèse: Testés: <font color='blue'>". $SUCCES + $ECHEC . "</font> 
     | Réussi: <font color='green'>$SUCCES</font> 
     | Échoués: <font color='red'>$ECHEC</font></b><br>";
