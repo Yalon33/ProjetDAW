@@ -1,6 +1,6 @@
 <?php
     require_once("bdd.php");
-    require_once("../Controlleur/niveau.php");
+    require_once("../Controlleur/etudiant.php");
 
     class EtudiantDAO {
         /**
@@ -54,8 +54,10 @@
             }
             else{
                 try{
-                    return BDD::prepAndExec("INSERT INTO projet.etudiant(niveau) VALUES (:niv);", 
+                    $a = BDD::query("SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'projet' AND TABLE_NAME = 'utilisateur'")->fetchAll()[0]["AUTO_INCREMENT"] - 1;
+                    return BDD::prepAndExec("INSERT INTO projet.etudiant(id, niveau) VALUES (:i, :niv);", 
                     array( 
+                        'i' => $a,
                         'niv' => Niveau::toString($e->getNiveau())
                     ));
                 } catch (PDOException $e){

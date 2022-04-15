@@ -1,6 +1,8 @@
-<?php require_once("utilisateurDAO.php");
-    require_once("matiereDAO.php");
+<?php
     require_once("bdd.php");
+    require_once("etudiantDAO.php");
+    require_once("matiereDAO.php");
+    require_once("utilisateurDAO.php");
     $SUCCES = 0;
     $ECHEC = 0;
 
@@ -73,6 +75,9 @@
             case("matiere"):
                 MatiereDAO::deleteAll() ? succeededTest($nomTest) : failedTest($nomTest);
                 break;
+            case("etudiant"):
+                EtudiantDAO::deleteAll() ? succeededTest($nomTest) : failedTest($nomTest);
+                break;
             default:
                 echo "Nom de table '$table' est invalide";
         }
@@ -89,12 +94,28 @@
     }
 
     function testUtilisateurDAO(){
+        BDD::query("ALTER TABLE projet.utilisateur auto_increment=5");
         testClearTable("utilisateur");
         testInsertUniqueUtilisateur("Insertion d'un unique utilisateur dans la table utilisateur");
         testInsertPlusieursUtilisateurs("Insertion de plusieurs utilisateurs dans la table utilisateur");
         testCreationUtilisateurMauvaisType("Insertion d'un utilisateur avec un type qui n'existe pas");
         testUpdateUtilisateur("Mise à jour d'un utilisateur dans la table");
         testDeleteRowUtilisateur("Suppression d'un utilisateur parmi les autres");
+    }
+
+    function testInsertUniqueEtudiant($nomTest){
+        BDD::query("START TRANSACTION;");
+        $danielUser = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT");
+        UtilisateurDAO::create($danielUser);
+        $danielEtudiant = new Etudiant(null, "L3");
+        EtudiantDAO::create($danielEtudiant);
+        $ID = UtilisateurDAO::getByLogin($danielUser->getLogin())->getId();
+        $eleveDATA = EtudiantDAO::getById($ID) !== false ? succeededTest($nomTest) : failedTest($nomTest);
+    }
+
+    function testEtudiantDAO(){
+        testClearTable("etudiant");
+        testInsertUniqueEtudiant("Insertion d'un unique étudiant dans la table etudiant");
     }
 
     function testInsertUniqueMatiere($nomTest){
@@ -121,23 +142,6 @@
             $algLinBDD = MatiereDAO::getByNom($algLin->getNom());
             ($calculMat->compareTo($calculMatBDD) && $algLin->compareTo($algLinBDD)) ? succeededTest($nomTest) : failedTest($nomTest);
         }
-    }
-
-    function testCreationMatiereMauvaisType($nomTest){
-        BDD::query("START TRANSACTION;");
-        try{
-            $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT");
-            UtilisateurDAO::create($daniel);
-            $daniel = UtilisateurDAO::getByLogin($daniel->getLogin());
-            new Matiere(null, "calcul matriciel", "12-01-2022", $daniel->getId(), "l3");
-            failedTest($nomTest);
-        } catch (Exception){
-            succeededTest($nomTest);
-        }
-    }
-
-    function testCreationMatierePasIdCreateur($nomTest){
-        
     }
 
     function testUpdateMatiere($nomTest){
@@ -173,33 +177,14 @@
         testClearTable("matiere");
         testInsertUniqueMatiere("Insertion d'une unique matière dans la table matiere");
         testInsertPlusieursMatiere("Insertion de plusieurs matières dans la table matiere");
-        testCreationMatiereMauvaisType("Insertion d'une matière avec un type qui n'existe pas");
         testUpdateMatiere("Mise à jour d'une matiere dans la table");
         testDeleteRowMatiere("Suppression d'une matière parmi les autres");
-    }
-
-    function testMessageDAO(){
-        /*
-        $question = new Message(null, "Comment on fait le DM?");
-        $reponse = new Message(null, "Avec ton cerveau.");
-        MessageDAO::insertMessage($question);
-        MessageDAO::insertMessage($reponse);
-        $allMessage = MessageDAO::getAll();
-        $reponseBDD = MessageDAO::getById(2);
-        echo "<pre>";
-        print_r($allMessage);
-        echo "Avec l'identifiant";
-        print_r($reponseBDD);
-        echo "</pre>";
-        echo MessageDAO::deleteMessages() ? "Suppression des éléments dans message<br>" : "Impossible de supprimer tous les messages";
-        echo MessageDAO::insertMessages([$question, $reponse]) ? "Insertion des messages en même temps réussie<br>" : "Impossible d'insérer les messages en même temps<br>";
-        echo MessageDAO::deleteMessages() ? "Suppression des éléments dans message<br>" : "Impossible de supprimer tous les messages";
-        */
     }
 
     function launchTestSuite(){
         testUtilisateurDAO();
         testMatiereDAO();
+        testEtudiantDAO();
     }
 
     launchTestSuite();
