@@ -1,5 +1,4 @@
-<?php
-    require_once("utilisateurDAO.php");
+<?php require_once("utilisateurDAO.php");
     require_once("matiereDAO.php");
     require_once("bdd.php");
     $SUCCES = 0;
@@ -49,19 +48,9 @@
         try{
             $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "Etudian");
             failedTest($nomTest);
-        } catch (Exception $e){
+        } catch (Exception){
             succeededTest($nomTest);
         }
-    }
-
-    function testRecuperationUtilisateurParticulier($nomTest){
-        BDD::query("START TRANSACTION;");
-        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT");
-        $sasuke = new Utilisateur(null, "xX-Sasuke-Xx", "tropDark", "noir@village.com", "Clément", "Pouilly", "ETUDIANT");
-        UtilisateurDAO::create($daniel);
-        UtilisateurDAO::create($sasuke);
-        $sasukeBDD = UtilisateurDAO::getByLogin("xX-Sasuke-Xx");
-        $sasuke->compareTo($sasukeBDD) ? succeededTest($nomTest) : failedTest($nomTest);
     }
 
     function testUpdateUtilisateur($nomTest){
@@ -93,9 +82,9 @@
         BDD::query("START TRANSACTION;");
         $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT");
         UtilisateurDAO::create($daniel);
-        $daniel->setId(1);
+        $daniel = UtilisateurDAO::getByLogin($daniel->getLogin());
         if (UtilisateurDAO::delete($daniel) !== false){
-            UtilisateurDAO::getByLogin($daniel->getLogin()) !== false ? succeededTest($nomTest) : failedTest($nomTest);
+            UtilisateurDAO::getByLogin($daniel->getLogin()) === false ? succeededTest($nomTest) : failedTest($nomTest);
         }
     }
 
@@ -104,7 +93,6 @@
         testInsertUniqueUtilisateur("Insertion d'un unique utilisateur dans la table utilisateur");
         testInsertPlusieursUtilisateurs("Insertion de plusieurs utilisateurs dans la table utilisateur");
         testCreationUtilisateurMauvaisType("Insertion d'un utilisateur avec un type qui n'existe pas");
-        testRecuperationUtilisateurParticulier("Récupération d'un utilisateur dans la BDD qui en contient plusieurs");
         testUpdateUtilisateur("Mise à jour d'un utilisateur dans la table");
         testDeleteRowUtilisateur("Suppression d'un utilisateur parmi les autres");
     }
@@ -115,36 +103,75 @@
         UtilisateurDAO::create($daniel);
         $daniel = UtilisateurDAO::getByLogin("Zokey");
         $calculMat = new Matiere(null, "calcul matriciel", "12-01-2022", $daniel->getId(), "L3");
-        $nomTest = "Insertion d'une unique matière dans la table matière";
         if (MatiereDAO::create($calculMat) !== false){
             $matiereBDD = MatiereDAO::getByNom("calcul matriciel");
             $calculMat->compareTo($matiereBDD) ? succeededTest($nomTest) : failedTest($nomTest);
         }
     }
 
-    function testInsertPlusieursMatieres(){
-        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "Professeur");
-        /*
-        $calculMat = new Matiere(null, "calcul matriciel", "12/01/2022", "calculMat.txt", $daniel, "mathematique", "L3");
-        $algebre = new Matiere(null, "algebre", "11/12/2012", "algebreLineraire.txt", $daniel, "mathematique", "L1");
-        $arrayMatiere = [$calculMat, $algebre];
-        foreach($arrayMatiere as $matiere){
-            MatiereDAO::insertMatiere($matiere);
+    function testInsertPlusieursMatiere($nomTest){
+        BDD::query("START TRANSACTION;");
+        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "PROFESSEUR");
+        UtilisateurDAO::create($daniel);
+        $daniel = UtilisateurDAO::getByLogin($daniel->getLogin());
+        $calculMat = new Matiere(null, "calcul matriciel", "12-01-2022", $daniel->getId(), "L3");
+        $algLin = new Matiere(null, "algebre linéraire", "16-03-2022", $daniel->getId(), "M2");
+        if(MatiereDAO::create($calculMat) !== false && MatiereDAO::create($algLin)){
+            $calculMatBDD = MatiereDAO::getByNom($calculMat->getNom());
+            $algLinBDD = MatiereDAO::getByNom($algLin->getNom());
+            ($calculMat->compareTo($calculMatBDD) && $algLin->compareTo($algLinBDD)) ? succeededTest($nomTest) : failedTest($nomTest);
         }
-        $matieresBDD = MatiereDAO::getAll();
-        for($i = 0; $i < sizeof($arrayMatiere); $i++){
-            if (!$arrayMatiere[$i]->compareTo($matieresBDD[$i])){
-                failedTest("Insertion de plusieurs matières, $matieresBDD[$i] n'est pas dans la BDD");
-                return;
-            }
+    }
+
+    function testCreationMatiereMauvaisType($nomTest){
+        BDD::query("START TRANSACTION;");
+        try{
+            $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT");
+            UtilisateurDAO::create($daniel);
+            $daniel = UtilisateurDAO::getByLogin($daniel->getLogin());
+            new Matiere(null, "calcul matriciel", "12-01-2022", $daniel->getId(), "l3");
+            failedTest($nomTest);
+        } catch (Exception){
+            succeededTest($nomTest);
         }
-        */
-        return;
+    }
+
+    function testUpdateMatiere($nomTest){
+        BDD::query("START TRANSACTION;");
+        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT");
+        UtilisateurDAO::create($daniel);
+        $daniel = UtilisateurDAO::getByLogin($daniel->getLogin());
+        $calculMat = new Matiere(null, "calcul matriciel", "12-01-2022", $daniel->getId(), "L3");
+        MatiereDAO::create($calculMat);
+        $calculMat = MatiereDAO::getByNom($calculMat->getNom());
+        $calculMat->setNiveau("L2");
+        if(MatiereDAO::create($calculMat) !== false){
+            $calculMatBDD = MatiereDAO::getByNom("calcul matriciel");
+            $calculMat->compareTo($calculMatBDD) ? succeededTest($nomTest) : failedTest($nomTest);
+        }
+    }
+
+    function testDeleteRowMatiere($nomTest){
+        BDD::query("START TRANSACTION;");
+        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT");
+        UtilisateurDAO::create($daniel);
+        $daniel = UtilisateurDAO::getByLogin($daniel->getLogin());
+        $calculMat = new Matiere(null, "calcul matriciel", "12-01-2022", $daniel->getId(), "L3");
+        MatiereDAO::create($calculMat);
+        $calculMat = MatiereDAO::getByNom($calculMat->getNom());
+        if(MatiereDAO::delete($calculMat) !== false){
+            $a = MatiereDAO::getByNom($calculMat->getNom());
+            $a === false ? succeededTest($nomTest) : failedTest($nomTest);
+        }
     }
 
     function testMatiereDAO(){
         testClearTable("matiere");
-        testInsertUniqueMatiere("Insertion d'une unique matiere dans la table matiere");
+        testInsertUniqueMatiere("Insertion d'une unique matière dans la table matiere");
+        testInsertPlusieursMatiere("Insertion de plusieurs matières dans la table matiere");
+        testCreationMatiereMauvaisType("Insertion d'une matière avec un type qui n'existe pas");
+        testUpdateMatiere("Mise à jour d'une matiere dans la table");
+        testDeleteRowMatiere("Suppression d'une matière parmi les autres");
     }
 
     function testMessageDAO(){

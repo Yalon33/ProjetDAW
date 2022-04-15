@@ -13,9 +13,12 @@
             $this->id = $id;
             $this->nom = $nom;
             $this->dateCreation = $dateCreation;
-            $this->id_createur = $id_createur;
+            if (!is_null($id_createur)){
+                gettype($id_createur) == "integer" ? $this->id_createur = $id_createur : $this->id_createur = $id_createur->getId();
+            } else {
+                throw new Exception("Le créateur n'a pas d'identifiant");
+            }
             $this->niveau = Niveau::toType($niveau);
-            
         }
 
         //Setter
@@ -36,7 +39,7 @@
         }
 
         public function setNiveau($niveau){
-            $this->niveau = $niveau;
+            gettype($niveau) == "string" ? $this->niveau = Niveau::toType($niveau) : $this->niveau = $niveau;
         }
 
         //Getter

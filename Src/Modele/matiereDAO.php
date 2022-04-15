@@ -44,7 +44,8 @@
          */
         public static function getByNom($nom){
             try{
-                return self::fromRow(BDD::prepAndExec("SELECT * FROM projet.matiere WHERE nom=:n;", [":n" => "$nom"])->fetchALL()[0]);
+                $req = BDD::prepAndExec("SELECT * FROM projet.matiere WHERE nom=:n;", [":n" => "$nom"])->fetchAll();
+                return !empty($req) ? self::fromRow($req[0]) : false;
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
                 return false;
@@ -62,10 +63,11 @@
                 try{
                     return BDD::prepAndExec("UPDATE projet.matiere SET nom=:n, date_creation=:d, id_createur=:c, niveau=:niv WHERE id=:i;",
                         array(
-                            ":n" => $m->getNom(),
-                            ":d" => ParseDate::toBDD($m->getDateCreation()),
-                            ":crea" => $m->getIdCreateur(),
-                            ":niv" => Niveau::toString($m->getNiveau())
+                            "i" => $m->getId(),
+                            "n" => $m->getNom(),
+                            "d" => ParseDate::toBDD($m->getDateCreation()),
+                            "c" => $m->getIdCreateur(),
+                            "niv" => Niveau::toString($m->getNiveau())
                         ));
                 } catch (PDOException $e){
                     echo $e->getMessage() . "<br>";

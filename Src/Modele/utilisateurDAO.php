@@ -22,14 +22,12 @@
 
         /**
          * @param string $login = le login de l'utilisateur à rechercher
-         * @return array[Utilisateur] Les utilisateurs ayant le login en paramètre
+         * @return Utilisateur Les utilisateurs ayant le login en paramètre
          */
         public static function getByLogin($login){
             try{
-                $data = BDD::prepAndExec("SELECT * FROM projet.UTILISATEUR WHERE login=:l;", array('l' => $login))->fetchAll()[0];
-                if ($data !== false){
-                    return self::fromRow($data);
-                }
+                $req = BDD::prepAndExec("SELECT * FROM projet.UTILISATEUR WHERE login=:l;", array('l' => $login))->fetchAll();
+                return !empty($req) ? self::fromRow($req[0]) : false;
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
                 return false;
