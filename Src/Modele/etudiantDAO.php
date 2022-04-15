@@ -54,7 +54,7 @@
             }
             else{
                 try{
-                    return BDD::prepAndExec("INSERT INTO projet.etudiant (niveau) VALUES (:niv);", 
+                    return BDD::prepAndExec("INSERT INTO projet.etudiant(niveau) VALUES (:niv);", 
                     array( 
                         'niv' => Niveau::toString($e->getNiveau())
                     ));

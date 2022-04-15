@@ -136,6 +136,10 @@
         }
     }
 
+    function testCreationMatierePasIdCreateur($nomTest){
+        
+    }
+
     function testUpdateMatiere($nomTest){
         BDD::query("START TRANSACTION;");
         $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT");

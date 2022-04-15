@@ -65,7 +65,7 @@
                         array(
                             "i" => $m->getId(),
                             "n" => $m->getNom(),
-                            "d" => ParseDate::toBDD($m->getDateCreation()),
+                            "d" => ParseDate::parse($m->getDateCreation()),
                             "c" => $m->getIdCreateur(),
                             "niv" => Niveau::toString($m->getNiveau())
                         ));
@@ -77,7 +77,7 @@
                 try{
                     return BDD::prepAndExec("INSERT INTO projet.matiere(nom, date_creation, id_createur, niveau) VALUES(:n, :d, :crea, :niv);", array(
                         'n' => $m->getNom(),
-                        'd' => ParseDate::toBDD($m->getDateCreation()),
+                        'd' => ParseDate::parse($m->getDateCreation()),
                         'crea' => $m->getIdCreateur(),
                         'niv' => Niveau::toString($m->getNiveau())
                     ));
@@ -129,7 +129,7 @@
             return new Matiere(
                 $row['id'],
                 $row['nom'],
-                ParseDate::fromBDD($row['date_creation']),
+                ParseDate::parse($row['date_creation']),
                 $row['id_createur'],
                 $row['niveau']
             );

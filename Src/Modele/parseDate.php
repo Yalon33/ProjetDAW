@@ -1,12 +1,8 @@
 <?php
     class ParseDate{
-        public static function fromBDD($string){
+        public static function parse($string){
             $array = explode("-", $string);
-            return "$array[2]-$array[1]-$array[0]";
-        }
-        public static function toBDD($string){
-            $array = explode("-", $string);
-            return "$array[2]-$array[1]-$array[0]";
+            return !empty($array) ? "$array[2]-$array[1]-$array[0]" : throw new Exception("Le format de la date est incorrect");
         }
     }
 ?>
