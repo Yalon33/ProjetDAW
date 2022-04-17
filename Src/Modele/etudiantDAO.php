@@ -22,11 +22,12 @@
 
         /**
          * @param int $id
-         * @return Etudiant L'étudiant de la base correspondant à l'id en paramètre
+         * @return Etudiant/false L'étudiant de la base correspondant à l'id en paramètre et false si il n'existe pas d'étudiant avec un tel Id
          */
         public static function getById($id){
             try{
-                return BDD::prepAndExec("SELECT * FROM projet.etudiant WHERE id=:i", array('i' => $id))->fetchAll()[0];
+                $req = BDD::prepAndExec("SELECT * FROM projet.etudiant WHERE id=:i", array('i' => $id))->fetchAll();
+                return !empty($req) ? self::fromRow($req[0]) : false;
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
                 return false;
@@ -54,14 +55,13 @@
             }
             else{
                 try{
-                    $a = BDD::query("SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'projet' AND TABLE_NAME = 'utilisateur'")->fetchAll()[0]["AUTO_INCREMENT"] - 1;
                     return BDD::prepAndExec("INSERT INTO projet.etudiant(id, niveau) VALUES (:i, :niv);", 
                     array( 
-                        'i' => $a,
+                        'i' => BDD::query("SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'projet' AND TABLE_NAME = 'utilisateur'")->fetchAll()[0]["AUTO_INCREMENT"] - 1,
                         'niv' => Niveau::toString($e->getNiveau())
                     ));
                 } catch (PDOException $e){
-                    echo $e->getMessage() . "<br>";
+                    //echo $e->getMessage() . "<br>";
                     return false;
                 }
             }

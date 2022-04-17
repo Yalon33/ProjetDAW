@@ -18,7 +18,7 @@
         }
 
         public function setNiveau($niveau){
-            $this->niveau = $niveau;
+            gettype($niveau) == "string" ? $this->niveau = Niveau::toType($niveau) : $this->niveau = $niveau;
         }
 
         //Getter

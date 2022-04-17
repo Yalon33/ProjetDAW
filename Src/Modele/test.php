@@ -21,31 +21,17 @@
     }
 
     function testInsertUniqueUtilisateur($nomTest){
+        BDD::query("ALTER TABLE projet.utilisateur auto_increment=5");
         BDD::query("START TRANSACTION;");
-        $obj1 = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "PROFESSEUR");
-        if (UtilisateurDAO::create($obj1) !== false){
-            $data = UtilisateurDAO::getByLogin('Zokey');
-            $obj1->compareTo($data) ? succeededTest($nomTest) : failedTest($nomTest);
+        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "PROFESSEUR");
+        if (UtilisateurDAO::create($daniel) !== false){
+            $daniUser = UtilisateurDAO::getByLogin($daniel->getLogin());
+            $daniel->compareTo($daniUser) ? succeededTest($nomTest) : failedTest($nomTest);
         }
-    }
-
-    function testInsertPlusieursUtilisateurs($nomTest){
-        BDD::query("START TRANSACTION;");
-        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT");
-        $sasuke = new Utilisateur(null, "xX-Sasuke-Xx", "tropDark", "noir@village.com", "Clément", "Pouilly", "ETUDIANT");
-        $arrayUtilisateur = [$daniel, $sasuke];
-        UtilisateurDAO::create($daniel);
-        UtilisateurDAO::create($sasuke);
-        $utilisateurBDD = array(UtilisateurDAO::getByLogin('Zokey'), UtilisateurDAO::getByLogin('xX-Sasuke-Xx'));
-        for($i = 0; $i < sizeof($arrayUtilisateur); $i++){
-            if (!$arrayUtilisateur[$i]->compareTo($utilisateurBDD[$i])){
-                failedTest("$nomTest, $utilisateurBDD[$i] n'est pas dans la BDD ou ne correspond pas à $arrayUtilisateur[$i]");
-            }
-        }
-        succeededTest($nomTest);
     }
 
     function testCreationUtilisateurMauvaisType($nomTest){
+        BDD::query("ALTER TABLE projet.utilisateur auto_increment=5");
         BDD::query("START TRANSACTION;");
         try{
             $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "Etudian");
@@ -56,6 +42,7 @@
     }
 
     function testUpdateUtilisateur($nomTest){
+        BDD::query("ALTER TABLE projet.utilisateur auto_increment=5");
         BDD::query("START TRANSACTION;");
         $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT");
         UtilisateurDAO::create($daniel);
@@ -66,6 +53,7 @@
     }
 
     function testClearTable($table){
+        BDD::query("ALTER TABLE projet.utilisateur auto_increment=5");
         BDD::query("START TRANSACTION;");
         $nomTest = "Nettoyage de la table $table";
         switch ($table){
@@ -84,6 +72,7 @@
     }
 
     function testDeleteRowUtilisateur($nomTest){
+        BDD::query("ALTER TABLE projet.utilisateur auto_increment=5");
         BDD::query("START TRANSACTION;");
         $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT");
         UtilisateurDAO::create($daniel);
@@ -94,28 +83,57 @@
     }
 
     function testUtilisateurDAO(){
-        BDD::query("ALTER TABLE projet.utilisateur auto_increment=5");
         testClearTable("utilisateur");
         testInsertUniqueUtilisateur("Insertion d'un unique utilisateur dans la table utilisateur");
-        testInsertPlusieursUtilisateurs("Insertion de plusieurs utilisateurs dans la table utilisateur");
         testCreationUtilisateurMauvaisType("Insertion d'un utilisateur avec un type qui n'existe pas");
         testUpdateUtilisateur("Mise à jour d'un utilisateur dans la table");
         testDeleteRowUtilisateur("Suppression d'un utilisateur parmi les autres");
     }
 
     function testInsertUniqueEtudiant($nomTest){
+        BDD::query("ALTER TABLE projet.utilisateur auto_increment=5");
         BDD::query("START TRANSACTION;");
         $danielUser = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT");
         UtilisateurDAO::create($danielUser);
         $danielEtudiant = new Etudiant(null, "L3");
         EtudiantDAO::create($danielEtudiant);
-        $ID = UtilisateurDAO::getByLogin($danielUser->getLogin())->getId();
-        $eleveDATA = EtudiantDAO::getById($ID) !== false ? succeededTest($nomTest) : failedTest($nomTest);
+        try{
+            succeededTest($nomTest);
+        } catch (Exception){
+            failedTest($nomTest);
+        }
+    }
+
+    function testUpdateEtudiant($nomTest){
+        BDD::query("ALTER TABLE projet.utilisateur auto_increment=5");
+        BDD::query("START TRANSACTION;");
+        $danielUser = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT");
+        UtilisateurDAO::create($danielUser);
+        $danielEtudiant = new Etudiant(null, "L3");
+        EtudiantDAO::create($danielEtudiant);
+        $danielEtudiant->setId(UtilisateurDAO::getByLogin($danielUser->getLogin())->getId());
+        $danielEtudiant->setNiveau("M1");
+        EtudiantDAO::create($danielEtudiant);
+        EtudiantDAO::getById($danielEtudiant->getId())->getNiveau() === Niveau::M1 ? succeededTest($nomTest) : failedTest($nomTest);
+    }
+
+    function testDeleteRowEtudiant($nomTest){
+        BDD::query("ALTER TABLE projet.utilisateur auto_increment=5");
+        BDD::query("START TRANSACTION;");
+        $danielUser = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT");
+        UtilisateurDAO::create($danielUser);
+        $danielEtudiant = new Etudiant(null, "L3");
+        EtudiantDAO::create($danielEtudiant);
+        $danielEtudiant->setId(UtilisateurDAO::getByLogin($danielUser->getLogin())->getId());
+        EtudiantDAO::delete($danielEtudiant);
+        (EtudiantDAO::getById($danielEtudiant->getId()) === false) ? succeededTest($nomTest) : failedTest($nomTest);
     }
 
     function testEtudiantDAO(){
         testClearTable("etudiant");
         testInsertUniqueEtudiant("Insertion d'un unique étudiant dans la table etudiant");
+        testUpdateEtudiant("Mise à jour d'un utilisateur dans la table");
+        testDeleteRowEtudiant("Suppression d'un étudiant parmi les autres");
     }
 
     function testInsertUniqueMatiere($nomTest){

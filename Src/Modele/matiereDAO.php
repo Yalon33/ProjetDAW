@@ -30,8 +30,8 @@
          */
         public static function getById($id){
             try{
-                $a = self::fromRow(BDD::prepAndExec("SELECT * FROM projet.matiere WHERE id=:i;", [":i" => "$id"])->fetchALL()[0]);
-                return $a;
+                $req = BDD::prepAndExec("SELECT * FROM projet.matiere WHERE id=:i;", [":i" => "$id"])->fetchALL();
+                return !empty($req) ? self::fromRow($req[0]) : false;
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
                 return false;

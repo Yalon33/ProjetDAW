@@ -22,7 +22,7 @@
 
         /**
          * @param string $login = le login de l'utilisateur à rechercher
-         * @return Utilisateur Les utilisateurs ayant le login en paramètre
+         * @return Utilisateur/false Les utilisateurs ayant le login en paramètre et false si il n'y a pas d'étudiant avec un tel login
          */
         public static function getByLogin($login){
             try{
