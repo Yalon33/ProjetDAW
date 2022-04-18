@@ -6,7 +6,7 @@
         UtilisateurDAO::create($danielUser);
         $php = new Forum(null, "Langage PHP");
         ForumDAO::create($php);
-        $interface = new Canal(null, "A quoi servent les interfaces", ForumDAO::getByNom($php->getNom())->getId(), UtilisateurDAO::getByLogin($danielUser->getLogin())->getId());
+        $interface = new Canal(null, "Interface", ForumDAO::getByNom($php->getNom())->getId(), UtilisateurDAO::getByLogin($danielUser->getLogin())->getId());
         CanalDAO::create($interface);
         CanalDAO::getByNom($interface->getNom()) !== false ? succeededTest($nomTest) : failedTest($nomTest);
     }
@@ -18,7 +18,7 @@
         UtilisateurDAO::create($danielUser);
         $php = new Forum(null, "Langage PHP");
         ForumDAO::create($php);
-        $interface = new Canal(null, "A quoi servent les interfaces", ForumDAO::getByNom($php->getNom())->getId(), UtilisateurDAO::getByLogin($danielUser->getLogin())->getId());
+        $interface = new Canal(null, "Interface", ForumDAO::getByNom($php->getNom())->getId(), UtilisateurDAO::getByLogin($danielUser->getLogin())->getId());
         CanalDAO::create($interface);
         $interface->setId(CanalDAO::getByNom($interface->getNom())->getId());
         $newName = "interfaces";
@@ -34,7 +34,7 @@
         UtilisateurDAO::create($danielUser);
         $php = new Forum(null, "Langage PHP");
         ForumDAO::create($php);
-        $interface = new Canal(null, "A quoi servent les interfaces", ForumDAO::getByNom($php->getNom())->getId(), UtilisateurDAO::getByLogin($danielUser->getLogin())->getId());
+        $interface = new Canal(null, "Interface", ForumDAO::getByNom($php->getNom())->getId(), UtilisateurDAO::getByLogin($danielUser->getLogin())->getId());
         CanalDAO::create($interface);
         $interface->setId(CanalDAO::getByNom($interface->getNom())->getId());
         CanalDAO::delete($interface);

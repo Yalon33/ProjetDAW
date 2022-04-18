@@ -4,7 +4,7 @@
     require_once("etudiantDAO.php");
     require_once("forumDAO.php");
     require_once("matiereDAO.php");
-    //require_once("messageDAO.php");
+    require_once("messageDAO.php");
     //require_once("qcmDAO.php");
     //require_once("reponseDAO.php");
     require_once("utilisateurDAO.php");
@@ -13,7 +13,7 @@
     require_once("tests/testEtudiant.php");
     require_once("tests/testForum.php");
     require_once("tests/testMatiere.php");
-    //require_once("tests/testMessage.php");
+    require_once("tests/testMessage.php");
     //require_once("tests/testQCM.php");
     //require_once("tests/testReponse.php");
     require_once("tests/testUtilisateur.php");
@@ -49,9 +49,9 @@
             case("canal"):
                 (CanalDAO::deleteAll() !== false) && (empty(CanalDAO::getAll())) ? succeededTest($nomTest) : failedTest($nomTest);
                 break;
-            //case("contenu"):
-            //    (ContenuDAO::deleteAll() !== false) && (empty(Contenu::getAll())) ? succeededTest($nomTest) : failedTest($nomTest);
-            //    break;
+            case("contenu"):
+                (ContenuDAO::deleteAll() !== false) && (empty(ContenuDAO::getAll())) ? succeededTest($nomTest) : failedTest($nomTest);
+                break;
             case("etudiant"):
                 (EtudiantDAO::deleteAll() !== false) && (empty(EtudiantDAO::getAll())) ? succeededTest($nomTest) : failedTest($nomTest);
                 break;
@@ -61,9 +61,9 @@
             case("matiere"):
                 (MatiereDAO::deleteAll() !== false) && (empty(MatiereDAO::getAll())) ? succeededTest($nomTest) : failedTest($nomTest);
                 break;
-            //case("message"):
-            //    (MessageDAO::deleteAll() !== false) && (empty(Message::getAll())) ? succeededTest($nomTest) : failedTest($nomTest);
-            //    break;
+            case("message"):
+                (MessageDAO::deleteAll() !== false) && (empty(MessageDAO::getAll())) ? succeededTest($nomTest) : failedTest($nomTest);
+                break;
             //case("qcm"):
             //    (QCMDAO::deleteAll() !== false) && (empty(QCM::getAll())) ? succeededTest($nomTest) : failedTest($nomTest);
             //    break;
@@ -74,22 +74,24 @@
                 (UtilisateurDAO::deleteAll() !== false) && (empty(UtilisateurDAO::getAll())) ? succeededTest($nomTest) : failedTest($nomTest);
                 break;
             default:
-                echo "Nom de table '$table' est invalide";
+                echo "Nom de table '$table' est invalide<br>";
         }
     }
 
     function launchTestSuite(){
-        echo "========================TestCanal========================<br>";
+        echo "======================TestCanal======================<br>";
         testCanalDAO();
-        echo "========================TestContenu========================<br>";
+        echo "=====================TestContenu=====================<br>";
         testContenuDAO();
-        echo "========================TestEtudiant========================<br>";
+        echo "=====================TestEtudiant=====================<br>";
         testEtudiantDAO();
-        echo "========================TestForum========================<br>";
+        echo "======================TestForum=====================<br>";
         testForumDAO();
-        echo "========================TestMatiere========================<br>";
+        echo "=====================TestMatiere=====================<br>";
         testMatiereDAO();
-        echo "========================TestUtilisateur========================<br>";
+        echo "=====================TestMessage====================<br>";
+        testMessageDAO();
+        echo "====================TestUtilisateur====================<br>";
         testUtilisateurDAO();
         affiche_resultat();
     }

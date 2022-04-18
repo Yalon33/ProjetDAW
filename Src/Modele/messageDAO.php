@@ -1,4 +1,7 @@
 <?php
+    require_once("bdd.php");
+    require_once("../Controlleur/message.php");
+
     class MessageDAO {
         /**
          * @return array[Message] Les matières dans la base
@@ -25,7 +28,22 @@
          */
         public static function getById($id){
             try{
-                return BDD::prepAndExec("SELECT * FROM projet.message WHERE id=:i;", [":i" => "$id"])->fetchALL()[0];
+                $req = BDD::prepAndExec("SELECT * FROM projet.message WHERE id=:i;", [":i" => "$id"])->fetchALL();
+                return !empty($req) ? self::fromRow($req[0]) : false;
+            } catch (PDOException $e){
+                echo $e->getMessage()."<br>";
+                return false;
+            }
+        }
+
+        /**
+         * @param string $contenu
+         * @return Message Le message de la base correspondant au contenu en paramètre
+         */
+        public static function getByContenu($contenu){
+            try{
+                $req = BDD::prepAndExec("SELECT * FROM projet.message WHERE contenu=:c;", [":c" => "$contenu"])->fetchALL();
+                return !empty($req) ? self::fromRow($req[0]) : false;
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
                 return false;

@@ -30,9 +30,9 @@
     }
 
     function testContenuDAO(){
-        testClearTable("utilisateur");
-        testInsertUniqueContenu("Insertion d'un unique utilisateur dans la table utilisateur");
-        testUpdateContenu("Mise à jour d'un utilisateur dans la table");
-        testDeleteRowContenu("Suppression d'un utilisateur parmi les autres");
+        testClearTable("contenu");
+        testInsertUniqueContenu("Insertion d'un unique contenu dans la table contenu");
+        testUpdateContenu("Mise à jour d'un contenu dans la table");
+        testDeleteRowContenu("Suppression d'un contenu parmi les autres");
     }
 ?>
