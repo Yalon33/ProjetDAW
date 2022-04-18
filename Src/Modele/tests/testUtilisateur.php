@@ -45,7 +45,7 @@
     function testUtilisateurDAO(){
         testClearTable("utilisateur");
         testInsertUniqueUtilisateur("Insertion d'un unique utilisateur dans la table utilisateur");
-        testCreationUtilisateurMauvaisType("Insertion d'un utilisateur avec un type qui n'existe pas");
+        //testCreationUtilisateurMauvaisType("Insertion d'un utilisateur avec un type qui n'existe pas");
         testUpdateUtilisateur("Mise à jour d'un utilisateur dans la table");
         testDeleteRowUtilisateur("Suppression d'un utilisateur parmi les autres");
     }

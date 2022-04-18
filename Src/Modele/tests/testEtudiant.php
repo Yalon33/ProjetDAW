@@ -41,7 +41,7 @@
     function testEtudiantDAO(){
         testClearTable("etudiant");
         testInsertUniqueEtudiant("Insertion d'un unique étudiant dans la table etudiant");
-        testUpdateEtudiant("Mise à jour d'un utilisateur dans la table");
+        testUpdateEtudiant("Mise à jour d'un étudiant dans la table");
         testDeleteRowEtudiant("Suppression d'un étudiant parmi les autres");
     }
 ?>

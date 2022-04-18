@@ -56,10 +56,15 @@
     }
 
     function launchTestSuite(){
+        echo "========================TestUtilisateur========================<br>";
         testUtilisateurDAO();
+        echo "========================TestMatiere========================<br>";
         testMatiereDAO();
+        echo "========================TestEtudiant========================<br>";
         testEtudiantDAO();
+        echo "========================TestForum========================<br>";
         testForumDAO();
+        echo "========================TestCanal========================<br>";
         testCanalDAO();
         affiche_resultat();
     }

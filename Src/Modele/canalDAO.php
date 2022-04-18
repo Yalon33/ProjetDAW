@@ -25,7 +25,22 @@
          */
         public static function getById($id){
             try{
-                return BDD::prepAndExec("SELECT * FROM projet.canal WHERE id=:i", array('i' => $id))->fetchAll()[0];
+                $req = BDD::prepAndExec("SELECT * FROM projet.canal WHERE id=:i", array('i' => $id))->fetchAll();
+                return !empty($req) ? self::fromRow($req[0]) : false;
+            } catch (PDOException $e){
+                echo $e->getMessage()."<br>";
+                return false;
+            }
+        }
+
+        /**
+         * @param string $nom
+         * @return Canal Le canal de la base correspondant au nom en paramètre
+         */
+        public static function getByNom($nom){
+            try{
+                $req = BDD::prepAndExec("SELECT * FROM projet.canal WHERE nom=:n", array('n' => $nom))->fetchAll();
+                return !empty($req) ? self::fromRow($req[0]) : false;
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
                 return false;
