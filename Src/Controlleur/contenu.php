@@ -23,5 +23,13 @@
         public function setUri($uri){
             $this->uri = $uri;
         }
+
+        /*
+        public function compareTo($cont){
+            if(is_null($this->id) || is_null($cont))
+                return $cont->getUri() === $this->getUri();
+            return ($cont->getId() === $this->getId()) && $cont->getUri() === $this->getUri();
+        }
+        */
     }
 ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 13 avr. 2022 à 14:21
+-- Généré le : lun. 18 avr. 2022 à 15:16
 -- Version du serveur : 10.4.22-MariaDB
 -- Version de PHP : 8.1.2
 
@@ -121,7 +121,7 @@ CREATE TABLE `matiere` (
   `nom` varchar(50) NOT NULL,
   `date_creation` date NOT NULL,
   `id_createur` int(11) DEFAULT NULL,
-  `niveau` enum('6EME','5EME','4EME','2ND','1ERE','TERM','L1','L2','L3','M1','M2') DEFAULT NULL
+  `niveau` enum('6EME','5EME','4EME','3EME','2ND','1ERE','TERM','L1','L2','L3','M1','M2') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -268,8 +268,8 @@ CREATE TABLE `qcm` (
 --
 
 INSERT INTO `qcm` (`id`, `id_prof`, `questions`) VALUES
-(1, 1, '<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<questions>\n	<question obligatoire=\'oui\'>\n		<texte>Quel est votre nom ?</texte>\n	</question>\n	<question obligatoire=\'oui\'>\n		<texte>Quel est votre prenom ?</texte>\n	</question>\n	<question obligatoire=\'non\'>\n		<texte>Quel est votre glace préférée ?</texte>\n	</question>\n	<question obligatoire=\'non\'>\n		<texte>Choisissez votre ville préférée</texte>\n		<choix>\n			<item>Paris</item>\n			<item>Lyon</item>\n			<item>Dijon</item>\n			<item>Marseille</item>\n		</choix>\n	</question>\n</questions>'),
-(2, 2, '<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<questions>\n	<question obligatoire=\'oui\'>\n		<texte>Quel est le nom de votre mère ?</texte>\n	</question>\n	<question obligatoire=\'oui\'>\n		<texte>Quel est le prénom de votre père ?</texte>\n	</question>\n	<question obligatoire=\'non\'>\n		<texte>Quel est le nom de votre hamster ?</texte>\n	</question>\n	<question obligatoire=\'non\'>\n		<texte>Choisissez votre animal préféré</texte>\n		<choix>\n			<item>Chat</item>\n			<item>Chien</item>\n			<item>Lama</item>\n			<item>L\'Homme car l\'Homme est un animal avant tout ne l\'oublions pas</item>\n		</choix>\n	</question>\n</questions>');
+(1, 1, 'identite.xml'),
+(2, 2, 'reponseSecrete.xml');
 
 -- --------------------------------------------------------
 
@@ -280,17 +280,17 @@ INSERT INTO `qcm` (`id`, `id_prof`, `questions`) VALUES
 CREATE TABLE `reponse` (
   `id` int(11) NOT NULL,
   `id_qcm` int(11) DEFAULT NULL,
-  `xml` longtext NOT NULL
+  `xml_uri` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `reponse`
 --
 
-INSERT INTO `reponse` (`id`, `id_qcm`, `xml`) VALUES
-(1, 1, '<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<reponses>\n	<reponse>\n		<texte>Machin</texte>\n	</reponse>\n	<reponse>\n		<texte></texte>\n	</reponse>\n	<reponse>\n		<texte>Fraise</texte>\n	</reponse>\n	<reponse><choix>\n			<item>Paris</item>\n		</choix>\n	</reponse>\n</reponses>'),
-(2, 1, '<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<reponses>\n	<reponse>\n		<texte>Truc</texte>\n	</reponse>\n	<reponse>\n		<texte>Bidule</texte>\n	</reponse>\n	<reponse>\n		<texte>Vanille</texte>\n	</reponse>\n	<reponse>\n		<choix>\n			<item>Lyon</item>\n		</choix>\n	</reponse>\n</reponses>'),
-(3, 2, '<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<reponses>\n	<reponse>\n		<texte>Truc</texte>\n	</reponse>\n	<reponse>\n		<texte>Bidule</texte>\n	</reponse>\n	<reponse>\n		<texte>Oui</texte>\n	</reponse>\n	<reponse>\n		<choix>\n			<item>Chat</item>\n		</choix>\n	</reponse>\n</reponses>');
+INSERT INTO `reponse` (`id`, `id_qcm`, `xml_uri`) VALUES
+(1, 1, 'reponseValls.xml'),
+(2, 1, 'reponseDaniel.xml'),
+(3, 2, 'reponseMaquerongue.xml');
 
 -- --------------------------------------------------------
 
@@ -477,25 +477,25 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `canal`
 --
 ALTER TABLE `canal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `contenu`
 --
 ALTER TABLE `contenu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT pour la table `forum`
 --
 ALTER TABLE `forum`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `matiere`
 --
 ALTER TABLE `matiere`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=918;
 
 --
 -- AUTO_INCREMENT pour la table `message`
@@ -525,7 +525,7 @@ ALTER TABLE `tag`
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Contraintes pour les tables déchargées

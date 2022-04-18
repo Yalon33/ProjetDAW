@@ -25,7 +25,22 @@
          */
         public static function getById($id){
             try{
-                return BDD::prepAndExec("SELECT * FROM projet.qcm WHERE id=:i;", [":i" => "$id"])->fetchALL()[0];
+                $req = BDD::prepAndExec("SELECT * FROM projet.qcm WHERE id=:i;", [":i" => "$id"])->fetchALL();
+                return !empty($req) ? self::fromRow($req[0]) : false;
+            } catch (PDOException $e){
+                echo $e->getMessage()."<br>";
+                return false;
+            }
+        }
+
+        /**
+         * @param string $questions
+         * @return QCM Le qcm de la base correspondant aux questions en paramètre
+         */
+        public static function getByQuestions($questions){
+            try{
+                $req = BDD::prepAndExec("SELECT * FROM projet.qcm WHERE questions=:q;", [":q" => "$questions"])->fetchALL();
+                return !empty($req) ? self::fromRow($req[0]) : false;
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
                 return false;

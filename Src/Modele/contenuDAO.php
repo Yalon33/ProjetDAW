@@ -1,4 +1,6 @@
 <?php
+    require_once("bdd.php");
+    require_once("../Controlleur/contenu.php");
     class ContenuDAO {
         /**
          * @return array[Contenu] Les matières dans la base
@@ -25,7 +27,22 @@
          */
         public static function getById($id){
             try{
-                return BDD::prepAndExec("SELECT * FROM projet.contenu WHERE id=:i;", [":i" => "$id"])->fetchALL()[0];
+                $req = BDD::prepAndExec("SELECT * FROM projet.contenu WHERE id=:i;", [":i" => "$id"])->fetchALL()[0];
+                return !empty($req) ? self::fromRow($req[0]) : false;
+            } catch (PDOException $e){
+                echo $e->getMessage()."<br>";
+                return false;
+            }
+        }
+
+        /**
+         * @param string $uri
+         * @return Contenu Le contenu de la base correspondant à l'uri en paramètre
+         */
+        public static function getByUri($uri){
+            try{
+                $req = BDD::prepAndExec("SELECT * FROM projet.contenu WHERE uri=:u;", [":u" => "$uri"])->fetchALL();
+                return !empty($req) ? self::fromRow($req[0]) : false;
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
                 return false;
