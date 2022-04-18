@@ -40,8 +40,8 @@
 
     function testCanalDAO(){
         testClearTable("etudiant");
-        testInsertUniqueCanal("Insertion d'un unique étudiant dans la table etudiant");
-        testUpdateCanal("Mise à jour d'un utilisateur dans la table");
-        testDeleteRowCanal("Suppression d'un étudiant parmi les autres");
+        //testInsertUniqueCanal("Insertion d'un unique étudiant dans la table etudiant");
+        //testUpdateCanal("Mise à jour d'un utilisateur dans la table");
+        //testDeleteRowCanal("Suppression d'un étudiant parmi les autres");
     }
 ?>

@@ -31,25 +31,6 @@
         UtilisateurDAO::getByLogin($danielBDD->getLogin()) ? succeededTest($nomTest) : failedTest($nomTest);
     }
 
-    function testClearTable($table){
-        BDD::query("ALTER TABLE projet.utilisateur auto_increment=5");
-        BDD::query("START TRANSACTION;");
-        $nomTest = "Nettoyage de la table $table";
-        switch ($table){
-            case("utilisateur"):
-                UtilisateurDAO::deleteAll() ? succeededTest($nomTest) : failedTest($nomTest);
-                break;
-            case("matiere"):
-                MatiereDAO::deleteAll() ? succeededTest($nomTest) : failedTest($nomTest);
-                break;
-            case("etudiant"):
-                EtudiantDAO::deleteAll() ? succeededTest($nomTest) : failedTest($nomTest);
-                break;
-            default:
-                echo "Nom de table '$table' est invalide";
-        }
-    }
-
     function testDeleteRowUtilisateur($nomTest){
         BDD::query("ALTER TABLE projet.utilisateur auto_increment=5");
         BDD::query("START TRANSACTION;");

@@ -1,27 +1,33 @@
 <?php
-    //interface IStringToType{
-    //    public function toType($string) : TypeUtilisateur;
-    //}
     enum TypeUtilisateur {
         case ETUDIANT;
         case PROFESSEUR;
 
-        public static function toType($string){
-            if ($string === "ETUDIANT"){
-                return TypeUtilisateur::ETUDIANT;
-            } else if ($string === "PROFESSEUR"){
-                return TypeUtilisateur::PROFESSEUR;
-            } else {
-                throw new Exception("TypeUtilisateur incorrect");
+        public static function toString($type){
+            switch ($type){
+                case(TypeUtilisateur::ETUDIANT):
+                    return "ETUDIANT";
+                    break;
+                case(TypeUtilisateur::PROFESSEUR):
+                    return "PROFESSEUR";
+                    break;
+                default:
+                    throw new Exception("Ce type d'utilisateur n'existe pas");
+                    break;
             }
-            //return $string=="Etudiant" ? TypeUtilisateur::Etudiant : TypeUtilisateur::PROFESSEUR;
         }
 
-        public static function toString($type){
-            if ($type === TypeUtilisateur::ETUDIANT){
-                return "ETUDIANT";
-            } else if ($type === TypeUtilisateur::PROFESSEUR){
-                return "PROFESSEUR";
+        public static function toType($string){
+            switch ($string){
+                case("ETUDIANT"):
+                    return TypeUtilisateur::ETUDIANT;
+                    break;
+                case("PROFESSEUR"):
+                    return TypeUtilisateur::PROFESSEUR;
+                    break;
+                default:
+                    throw new Exception("TypeUtilisateur incorrect");
+                    break;
             }
         }
     }

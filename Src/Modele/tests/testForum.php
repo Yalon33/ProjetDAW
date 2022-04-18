@@ -28,7 +28,7 @@
     }
 
     function testForumDAO(){
-        testClearTable("etudiant");
+        testClearTable("forum");
         testInsertUniqueForum("Insertion d'un unique forum dans la table forum");
         testUpdateForum("Mise à jour d'un forum dans la table");
         testDeleteRowForum("Suppression d'un forum parmi les autres");
