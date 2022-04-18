@@ -1,4 +1,6 @@
 <?php
+    require_once("bdd.php");
+    require_once("../Controlleur/qcm.php");
     class QCMDAO {
         /**
          * @return array[QCM] Les matières dans la base

@@ -5,8 +5,8 @@
     require_once("forumDAO.php");
     require_once("matiereDAO.php");
     require_once("messageDAO.php");
-    //require_once("qcmDAO.php");
-    //require_once("reponseDAO.php");
+    require_once("qcmDAO.php");
+    require_once("reponseDAO.php");
     require_once("utilisateurDAO.php");
     require_once("tests/testCanal.php");
     require_once("tests/testContenu.php");
@@ -14,7 +14,7 @@
     require_once("tests/testForum.php");
     require_once("tests/testMatiere.php");
     require_once("tests/testMessage.php");
-    //require_once("tests/testQCM.php");
+    require_once("tests/testQCM.php");
     //require_once("tests/testReponse.php");
     require_once("tests/testUtilisateur.php");
     
@@ -64,12 +64,12 @@
             case("message"):
                 (MessageDAO::deleteAll() !== false) && (empty(MessageDAO::getAll())) ? succeededTest($nomTest) : failedTest($nomTest);
                 break;
-            //case("qcm"):
-            //    (QCMDAO::deleteAll() !== false) && (empty(QCM::getAll())) ? succeededTest($nomTest) : failedTest($nomTest);
-            //    break;
-            //case("reponse"):
-            //    (ReponseDAO::deleteAll() !== false) && (empty(Reponse::getAll())) ? succeededTest($nomTest) : failedTest($nomTest);
-            //    break;
+            case("qcm"):
+                (QCMDAO::deleteAll() !== false) && (empty(QCMDAO::getAll())) ? succeededTest($nomTest) : failedTest($nomTest);
+                break;
+            case("reponse"):
+                (ReponseDAO::deleteAll() !== false) && (empty(ReponseDAO::getAll())) ? succeededTest($nomTest) : failedTest($nomTest);
+                break;
             case("utilisateur"):
                 (UtilisateurDAO::deleteAll() !== false) && (empty(UtilisateurDAO::getAll())) ? succeededTest($nomTest) : failedTest($nomTest);
                 break;
@@ -91,6 +91,8 @@
         testMatiereDAO();
         echo "=====================TestMessage====================<br>";
         testMessageDAO();
+        echo "=====================TestQCM====================<br>";
+        testQCMDAO();
         echo "====================TestUtilisateur====================<br>";
         testUtilisateurDAO();
         affiche_resultat();
