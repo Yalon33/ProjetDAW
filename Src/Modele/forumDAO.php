@@ -1,4 +1,6 @@
 <?php
+    require_once("../Controlleur/forum.php");
+    require_once("bdd.php");
     class ForumDAO {
         /**
          * @return array[Forum] Les matières dans la base
@@ -25,7 +27,22 @@
          */
         public static function getById($id){
             try{
-                return BDD::prepAndExec("SELECT * FROM projet.forum WHERE id=:i;", [":i" => "$id"])->fetchALL()[0];
+                $req = BDD::prepAndExec("SELECT * FROM projet.forum WHERE id=:i;", [":i" => "$id"])->fetchALL();
+                return !empty($req) ? self::fromRow($req[0]) : false;
+            } catch (PDOException $e){
+                echo $e->getMessage()."<br>";
+                return false;
+            }
+        }
+
+        /**
+         * @param string $name
+         * @return Forum Le forum de la base correspondant aux nom en paramètre
+         */
+        public static function getByNom($nom){
+            try{
+                $req =  BDD::prepAndExec("SELECT * FROM projet.forum WHERE nom=:n;", [":n" => "$nom"])->fetchALL();
+                return !empty($req) ? self::fromRow($req[0]) : false;
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
                 return false;

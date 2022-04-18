@@ -1,6 +1,4 @@
 <?php
-    require_once("resultat.php");
-
     function testInsertUniqueEtudiant($nomTest){
         BDD::query("ALTER TABLE projet.utilisateur auto_increment=5");
         BDD::query("START TRANSACTION;");

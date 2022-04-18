@@ -3,7 +3,7 @@
         private $id;
         private $nom;
 
-        private function __construct($id = null, $nom){
+        public function __construct($id = null, $nom){
             $this->id = $id;
             $this->nom = $nom;
         }

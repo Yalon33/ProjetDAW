@@ -1,6 +1,4 @@
 <?php
-    require_once("resultat.php");
-
     function testInsertUniqueMatiere($nomTest){
         BDD::query("START TRANSACTION;");
         $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "PROFESSEUR");
