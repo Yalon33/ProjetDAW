@@ -4,6 +4,7 @@
     require_once("etudiantDAO.php");
     require_once("forumDAO.php");
     require_once("matiereDAO.php");
+    require_once("matiereSuivieDAO.php");
     require_once("messageDAO.php");
     require_once("qcmDAO.php");
     require_once("reponseDAO.php");
@@ -13,6 +14,7 @@
     require_once("tests/testEtudiant.php");
     require_once("tests/testForum.php");
     require_once("tests/testMatiere.php");
+    require_once("tests/testMatiereSuivie.php");
     require_once("tests/testMessage.php");
     require_once("tests/testQCM.php");
     require_once("tests/testReponse.php");
@@ -61,6 +63,9 @@
             case("matiere"):
                 (MatiereDAO::deleteAll() !== false) && (empty(MatiereDAO::getAll())) ? succeededTest($nomTest) : failedTest($nomTest);
                 break;
+            case("matiere_suivie"):
+                (MatiereSuivieDAO::deleteAll() !== false) && (empty(MatiereSuivieDAO::getAll())) ? succeededTest($nomTest) : failedTest($nomTest);
+                break;
             case("message"):
                 (MessageDAO::deleteAll() !== false) && (empty(MessageDAO::getAll())) ? succeededTest($nomTest) : failedTest($nomTest);
                 break;
@@ -89,6 +94,8 @@
         testForumDAO();
         echo "=====================TestMatiere=====================<br>";
         testMatiereDAO();
+        echo "====================TestMatiereSuivie==================<br>";
+        testMatiereSuivieDAO();
         echo "=====================TestMessage====================<br>";
         testMessageDAO();
         echo "=====================TestQCM====================<br>";

@@ -1,18 +1,18 @@
 <?php
-    enum StatusCours{
+    enum Avancement{
         case ENCOURS;
         case TERMINE;
 
         public static function toString($type){
             switch($type){
-                case(StatusCours::ENCOURS):
+                case(Avancement::ENCOURS):
                     return "EN COURS";
                     break;
-                case(StatusCours::TERMINE):
+                case(Avancement::TERMINE):
                     return "TERMINE";
                     break;
                 default:
-                    throw new Exception("Ce status de cours n'existe pas");
+                    throw new Exception("Ce type d'avancement n'existe pas");
                     break;
             }
         }
@@ -20,13 +20,13 @@
         public static function toType($string){
             switch($string){
                 case("EN COURS"):
-                    return StatusCours::ENCOURS;
+                    return Avancement::ENCOURS;
                     break;
                 case("TERMINE"):
-                    return StatusCours::TERMINE;
+                    return Avancement::ENCOURS;
                     break;
                 default:
-                    throw new Exception("StatusCours incorrect");
+                    throw new Exception("Avancement incorrect");
                     break;
             }
         }

@@ -52,6 +52,11 @@
             }
         }
 
+        public static function getMatiereByEtudiant(){
+            // Lien entre matiere et etudiant avec la table matiere_suivie
+            // Renvoie un tableau [Matiere => Avancement]
+        }
+
         /**
          * Insère une matière dans la base de données (mise à jour si la matière existe déja)
          * 

@@ -49,8 +49,7 @@
         MatiereDAO::create($calculMat);
         $calculMat = MatiereDAO::getByNom($calculMat->getNom());
         if(MatiereDAO::delete($calculMat) !== false){
-            $a = MatiereDAO::getByNom($calculMat->getNom());
-            $a === false ? succeededTest($nomTest) : failedTest($nomTest);
+            MatiereDAO::getByNom($calculMat->getNom()) === false ? succeededTest($nomTest) : failedTest($nomTest);
         }
     }
 
