@@ -4,7 +4,7 @@
         private $id_qcm;
         private $xml;
 
-        private function __construct($id = null, $id_qcm, $xml){
+        public function __construct($id = null, $id_qcm, $xml){
             $this->id = $id;
             $this->id_qcm = $id_qcm;
             $this->xml = $xml;

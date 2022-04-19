@@ -15,7 +15,7 @@
     require_once("tests/testMatiere.php");
     require_once("tests/testMessage.php");
     require_once("tests/testQCM.php");
-    //require_once("tests/testReponse.php");
+    require_once("tests/testReponse.php");
     require_once("tests/testUtilisateur.php");
     
     $SUCCES = 0;
@@ -93,6 +93,8 @@
         testMessageDAO();
         echo "=====================TestQCM====================<br>";
         testQCMDAO();
+        echo "=====================TestReponse====================<br>";
+        testReponseDAO();
         echo "====================TestUtilisateur====================<br>";
         testUtilisateurDAO();
         affiche_resultat();

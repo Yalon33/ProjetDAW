@@ -1,4 +1,6 @@
 <?php
+    require_once("bdd.php");
+    require_once("../Controlleur/reponse.php");
     class ReponseDAO {
         /**
          * @return array[Reponse] Les matières dans la base
@@ -25,7 +27,22 @@
          */
         public static function getById($id){
             try{
-                return BDD::prepAndExec("SELECT * FROM projet.reponse WHERE id=:i;", [":i" => "$id"])->fetchALL()[0];
+                $req = BDD::prepAndExec("SELECT * FROM projet.reponse WHERE id=:i;", [":i" => "$id"])->fetchALL();
+                return !empty($req) ? self::fromRow($req[0]) : false;
+            } catch (PDOException $e){
+                echo $e->getMessage()."<br>";
+                return false;
+            }
+        }
+
+        /**
+         * @param string $xml
+         * @return Reponse La reponse de la base correspondant à l'xml en paramètre
+         */
+        public static function getByXML($xml){
+            try{
+                $req = BDD::prepAndExec("SELECT * FROM projet.reponse WHERE xml_uri=:x;", [":x" => "$xml"])->fetchALL();
+                return !empty($req) ? self::fromRow($req[0]) : false;
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
                 return false;
@@ -41,7 +58,7 @@
         public static function create($r){
             if (!is_null($r->getId())){
                 try{
-                    return BDD::prepAndExec("UPDATE projet.reponse SET id_qcm=:idQ, xml=:xml WHERE id=:i;",
+                    return BDD::prepAndExec("UPDATE projet.reponse SET id_qcm=:idQ, xml_uri=:xml WHERE id=:i;",
                         array(
                             "i" => $r->getId(),
                             "idQ" => $r->getIdQCM(),
@@ -53,7 +70,7 @@
                 }
             } else {
                 try{
-                    return BDD::prepAndExec("INSERT INTO projet.reponse(id_qcm, xml) VALUES(:idQ, :xml);",
+                    return BDD::prepAndExec("INSERT INTO projet.reponse(id_qcm, xml_uri) VALUES(:idQ, :xml);",
                     array(
                         'idQ' => $r->getIdQCM(),
                         'xml' => $r->getXML()
@@ -74,7 +91,7 @@
         public static function delete($r){
             if(!is_null($r->getId())){
                 try{
-                    return BDD::prepAndExec("DELETE FROM projet.qcm WHERE id=:i;", array('i' => $r->getId()));
+                    return BDD::prepAndExec("DELETE FROM projet.reponse WHERE id=:i;", array('i' => $r->getId()));
                 } catch (PDOException $e){
                     echo $e->getMessage() . "<br>";
                     return false;
@@ -106,7 +123,7 @@
             return new Reponse(
                 $row['id'],
                 $row['id_qcm'],
-                $row['xml']
+                $row['xml_uri']
             );
         }
     }

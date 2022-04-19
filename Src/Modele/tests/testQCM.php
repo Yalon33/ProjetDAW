@@ -1,6 +1,6 @@
 <?php
     function testInsertUniqueQCM($nomTest){
-        BDD::query("ALTER TABLE projet.qcm auto_increment=4");
+        BDD::query("ALTER TABLE projet.qcm auto_increment=3");
         BDD::query("START TRANSACTION;");
         $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "PROFESSEUR");
         UtilisateurDAO::create($daniel);
@@ -10,7 +10,7 @@
     }
 
     function testUpdateQCM($nomTest){
-        BDD::query("ALTER TABLE projet.utilisateur auto_increment=4");
+        BDD::query("ALTER TABLE projet.qcm auto_increment=3");
         BDD::query("START TRANSACTION;");
         $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "PROFESSEUR");
         UtilisateurDAO::create($daniel);
@@ -23,7 +23,7 @@
     }
 
     function testDeleteRowQCM($nomTest){
-        BDD::query("ALTER TABLE projet.utilisateur auto_increment=4");
+        BDD::query("ALTER TABLE projet.utilisateur auto_increment=3");
         BDD::query("START TRANSACTION;");
         $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "PROFESSEUR");
         UtilisateurDAO::create($daniel);
