@@ -1,4 +1,5 @@
 <?php
+    // A supprimer?
     include("StatusCours.php");
 
     class etudiantMatiere 

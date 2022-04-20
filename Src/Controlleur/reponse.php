@@ -1,30 +1,37 @@
 <?php
-    class Reponse 
-    {
+    class Reponse {
         private $id;
-        private $reponse;
+        private $id_qcm;
+        private $xml;
 
-        private function __construct($id,$reponse)
-        {
+        public function __construct($id = null, $id_qcm, $xml){
             $this->id = $id;
-            $this->reponse = $reponse;
-            //$this->participant=list();
+            $this->id_qcm = $id_qcm;
+            $this->xml = $xml;
         }
-        public function getId()
-        {
+
+        public function getId(){
             return $this->id;
         }
-        public function setId($id)
-        {
+
+        public function getIdQCM(){
+            return $this->id_qcm;
+        }
+
+        public function getXML(){
+            return $this->xml;
+        }
+
+        public function setId($id){
             $this->id = $id;
         }
-        public function getReponse()
-        {
-            return $this->reponse;
+
+        public function setIdQCM($id_qcm){
+            $this->id_qcm = $id_qcm;
         }
-        public function setReponse($reponse)
-        {
-            $this->reponse = $reponse;
+
+        public function setXML($xml){
+            $this->xml = $xml;
         }
     }
 ?>

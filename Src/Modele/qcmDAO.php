@@ -1,14 +1,13 @@
 <?php
     require_once("bdd.php");
-    require_once("../Controlleur/message.php");
-
-    class MessageDAO {
+    require_once("../Controlleur/qcm.php");
+    class QCMDAO {
         /**
-         * @return array[Message] Les matières dans la base
+         * @return array[QCM] Les matières dans la base
          */
         public static function getAll(){
             try{
-                $data = BDD::query("SELECT * FROM projet.message;");
+                $data = BDD::query("SELECT * FROM projet.qcm;");
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
                 return false;
@@ -24,11 +23,11 @@
         
         /**
          * @param entier $id
-         * @return Message Le message de la base correspondant à l'id en paramètre
+         * @return QCM Le qcm de la base correspondant à l'id en paramètre
          */
         public static function getById($id){
             try{
-                $req = BDD::prepAndExec("SELECT * FROM projet.message WHERE id=:i;", [":i" => "$id"])->fetchALL();
+                $req = BDD::prepAndExec("SELECT * FROM projet.qcm WHERE id=:i;", [":i" => "$id"])->fetchALL();
                 return !empty($req) ? self::fromRow($req[0]) : false;
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
@@ -37,12 +36,12 @@
         }
 
         /**
-         * @param string $contenu
-         * @return Message Le message de la base correspondant au contenu en paramètre
+         * @param string $questions
+         * @return QCM Le qcm de la base correspondant aux questions en paramètre
          */
-        public static function getByContenu($contenu){
+        public static function getByQuestions($questions){
             try{
-                $req = BDD::prepAndExec("SELECT * FROM projet.message WHERE contenu=:c;", [":c" => "$contenu"])->fetchALL();
+                $req = BDD::prepAndExec("SELECT * FROM projet.qcm WHERE questions=:q;", [":q" => "$questions"])->fetchALL();
                 return !empty($req) ? self::fromRow($req[0]) : false;
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
@@ -51,20 +50,19 @@
         }
 
         /**
-         * Insère un message dans la base de données (mise à jour si le message existe déja)
+         * Insère un qcm dans la base de données (mise à jour si le qcm existe déja)
          * 
-         * @param Message $m
+         * @param QCM $qcm
          * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
-        public static function create($m){
-            if (!is_null($m->getId())){
+        public static function create($qcm){
+            if (!is_null($qcm->getId())){
                 try{
-                    return BDD::prepAndExec("UPDATE projet.message SET contenu=:c, id_canal=:idC, id_auteur=:idA WHERE id=:i;",
+                    return BDD::prepAndExec("UPDATE projet.qcm SET id_prof=:idP, questions=:q WHERE id=:i;",
                         array(
-                            "i" => $m->getId(),
-                            "c" => $m->getContenu(),
-                            "idC" => $m->getIdCanal(),
-                            "idA" => $m->getIdAuteur()
+                            "i" => $qcm->getId(),
+                            "idP" => $qcm->getIdProf(),
+                            "q" => $qcm->getQuestions()
                         ));
                 } catch (PDOException $e){
                     echo $e->getMessage() . "<br>";
@@ -72,11 +70,10 @@
                 }
             } else {
                 try{
-                    return BDD::prepAndExec("INSERT INTO projet.message(contenu, id_canal, id_auteur) VALUES(:c, :idC, :idA);",
+                    return BDD::prepAndExec("INSERT INTO projet.qcm(id_prof, questions) VALUES(:idP, :q);",
                     array(
-                        'c' => $m->getContenu(),
-                        'idC' => $m->getIdCanal(),
-                        'idA' => $m->getIdAuteur()
+                        'idP' => $qcm->getIdProf(),
+                        'q' => $qcm->getQuestions()
                     ));
                 } catch (PDOException $e){
                     echo $e->getMessage() . "<br>";
@@ -86,15 +83,15 @@
         }
 
         /**
-         * Supprime le message passée en paramètre de la base
+         * Supprime le qcm passée en paramètre de la base
          * 
-         * @param Message $e
+         * @param QCM $e
          * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
-        public static function delete($m){
-            if(!is_null($m->getId())){
+        public static function delete($qcm){
+            if(!is_null($qcm->getId())){
                 try{
-                    return BDD::prepAndExec("DELETE FROM projet.message WHERE id=:i;", array('i' => $m->getId()));
+                    return BDD::prepAndExec("DELETE FROM projet.qcm WHERE id=:i;", array('i' => $qcm->getId()));
                 } catch (PDOException $e){
                     echo $e->getMessage() . "<br>";
                     return false;
@@ -103,13 +100,13 @@
         }
 
         /**
-         * Supprime toutes les messages de la table message
+         * Supprime toutes les qcm de la table qcm
          *
          * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
         public static function deleteAll(){
             try{
-                return BDD::query("DELETE FROM projet.message;");
+                return BDD::query("DELETE FROM projet.qcm;");
             } catch (PDOException $e){
                 echo $e->getMessage() . "<br>";
                 return false;
@@ -117,17 +114,16 @@
         }
 
         /**
-         * Fonction privée traduisant le retour de la BDD en Message
+         * Fonction privée traduisant le retour de la BDD en QCM
          *
          * @param array[] $row
-         * @return Message
+         * @return QCM
          */
         private static function fromRow($row){
-            return new Message(
+            return new QCM(
                 $row['id'],
-                $row['contenu'],
-                $row['id_canal'],
-                $row['id_auteur']
+                $row['id_prof'],
+                $row['questions']
             );
         }
     }

@@ -1,14 +1,14 @@
 <?php
     require_once("bdd.php");
-    require_once("../Controlleur/message.php");
+    require_once("../Controlleur/tag.php");
 
-    class MessageDAO {
+    class TagDAO {
         /**
-         * @return array[Message] Les matières dans la base
+         * @return array[Tag] Les matières dans la base
          */
         public static function getAll(){
             try{
-                $data = BDD::query("SELECT * FROM projet.message;");
+                $data = BDD::query("SELECT * FROM projet.tag;");
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
                 return false;
@@ -24,11 +24,11 @@
         
         /**
          * @param entier $id
-         * @return Message Le message de la base correspondant à l'id en paramètre
+         * @return Tag Le tag de la base correspondant à l'id en paramètre
          */
         public static function getById($id){
             try{
-                $req = BDD::prepAndExec("SELECT * FROM projet.message WHERE id=:i;", [":i" => "$id"])->fetchALL();
+                $req = BDD::prepAndExec("SELECT * FROM projet.tag WHERE id=:i;", [":i" => "$id"])->fetchALL();
                 return !empty($req) ? self::fromRow($req[0]) : false;
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
@@ -38,11 +38,11 @@
 
         /**
          * @param string $contenu
-         * @return Message Le message de la base correspondant au contenu en paramètre
+         * @return Tag Le tag de la base correspondant au contenu en paramètre
          */
         public static function getByContenu($contenu){
             try{
-                $req = BDD::prepAndExec("SELECT * FROM projet.message WHERE contenu=:c;", [":c" => "$contenu"])->fetchALL();
+                $req = BDD::prepAndExec("SELECT * FROM projet.tag WHERE contenu=:c;", [":c" => "$contenu"])->fetchALL();
                 return !empty($req) ? self::fromRow($req[0]) : false;
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
@@ -50,21 +50,20 @@
             }
         }
 
+
         /**
-         * Insère un message dans la base de données (mise à jour si le message existe déja)
+         * Insère un tag dans la base de données (mise à jour si le tag existe déja)
          * 
-         * @param Message $m
+         * @param Tag $m
          * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
-        public static function create($m){
-            if (!is_null($m->getId())){
+        public static function create($t){
+            if (!is_null($t->getId())){
                 try{
-                    return BDD::prepAndExec("UPDATE projet.message SET contenu=:c, id_canal=:idC, id_auteur=:idA WHERE id=:i;",
+                    return BDD::prepAndExec("UPDATE projet.tag SET contenu=:c WHERE id=:i;",
                         array(
-                            "i" => $m->getId(),
-                            "c" => $m->getContenu(),
-                            "idC" => $m->getIdCanal(),
-                            "idA" => $m->getIdAuteur()
+                            "i" => $t->getId(),
+                            "c" => $t->getContenu()
                         ));
                 } catch (PDOException $e){
                     echo $e->getMessage() . "<br>";
@@ -72,11 +71,9 @@
                 }
             } else {
                 try{
-                    return BDD::prepAndExec("INSERT INTO projet.message(contenu, id_canal, id_auteur) VALUES(:c, :idC, :idA);",
+                    return BDD::prepAndExec("INSERT INTO projet.tag(contenu) VALUES(:c);",
                     array(
-                        'c' => $m->getContenu(),
-                        'idC' => $m->getIdCanal(),
-                        'idA' => $m->getIdAuteur()
+                        "c" => $t->getContenu()
                     ));
                 } catch (PDOException $e){
                     echo $e->getMessage() . "<br>";
@@ -86,15 +83,15 @@
         }
 
         /**
-         * Supprime le message passée en paramètre de la base
+         * Supprime le tag passée en paramètre de la base
          * 
-         * @param Message $e
+         * @param Tag $t
          * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
-        public static function delete($m){
-            if(!is_null($m->getId())){
+        public static function delete($t){
+            if(!is_null($t->getId())){
                 try{
-                    return BDD::prepAndExec("DELETE FROM projet.message WHERE id=:i;", array('i' => $m->getId()));
+                    return BDD::prepAndExec("DELETE FROM projet.tag WHERE id=:i;", array('i' => $t->getId()));
                 } catch (PDOException $e){
                     echo $e->getMessage() . "<br>";
                     return false;
@@ -103,13 +100,13 @@
         }
 
         /**
-         * Supprime toutes les messages de la table message
+         * Supprime toutes les tags de la table tag
          *
          * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
         public static function deleteAll(){
             try{
-                return BDD::query("DELETE FROM projet.message;");
+                return BDD::query("DELETE FROM projet.tag;");
             } catch (PDOException $e){
                 echo $e->getMessage() . "<br>";
                 return false;
@@ -117,17 +114,15 @@
         }
 
         /**
-         * Fonction privée traduisant le retour de la BDD en Message
+         * Fonction privée traduisant le retour de la BDD en reponse
          *
-         * @param array[] $row
-         * @return Message
+         * @param array[] $tow
+         * @return Tag
          */
         private static function fromRow($row){
-            return new Message(
+            return new Tag(
                 $row['id'],
-                $row['contenu'],
-                $row['id_canal'],
-                $row['id_auteur']
+                $row['contenu']
             );
         }
     }

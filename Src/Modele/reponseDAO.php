@@ -1,14 +1,13 @@
 <?php
     require_once("bdd.php");
-    require_once("../Controlleur/message.php");
-
-    class MessageDAO {
+    require_once("../Controlleur/reponse.php");
+    class ReponseDAO {
         /**
-         * @return array[Message] Les matières dans la base
+         * @return array[Reponse] Les matières dans la base
          */
         public static function getAll(){
             try{
-                $data = BDD::query("SELECT * FROM projet.message;");
+                $data = BDD::query("SELECT * FROM projet.reponse;");
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
                 return false;
@@ -24,11 +23,11 @@
         
         /**
          * @param entier $id
-         * @return Message Le message de la base correspondant à l'id en paramètre
+         * @return Reponse La reponse de la base correspondant à l'id en paramètre
          */
         public static function getById($id){
             try{
-                $req = BDD::prepAndExec("SELECT * FROM projet.message WHERE id=:i;", [":i" => "$id"])->fetchALL();
+                $req = BDD::prepAndExec("SELECT * FROM projet.reponse WHERE id=:i;", [":i" => "$id"])->fetchALL();
                 return !empty($req) ? self::fromRow($req[0]) : false;
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
@@ -37,12 +36,12 @@
         }
 
         /**
-         * @param string $contenu
-         * @return Message Le message de la base correspondant au contenu en paramètre
+         * @param string $xml
+         * @return Reponse La reponse de la base correspondant à l'xml en paramètre
          */
-        public static function getByContenu($contenu){
+        public static function getByXML($xml){
             try{
-                $req = BDD::prepAndExec("SELECT * FROM projet.message WHERE contenu=:c;", [":c" => "$contenu"])->fetchALL();
+                $req = BDD::prepAndExec("SELECT * FROM projet.reponse WHERE xml_uri=:x;", [":x" => "$xml"])->fetchALL();
                 return !empty($req) ? self::fromRow($req[0]) : false;
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
@@ -51,20 +50,19 @@
         }
 
         /**
-         * Insère un message dans la base de données (mise à jour si le message existe déja)
+         * Insère une reponse dans la base de données (mise à jour si la reponse existe déja)
          * 
-         * @param Message $m
+         * @param Reponse $m
          * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
-        public static function create($m){
-            if (!is_null($m->getId())){
+        public static function create($r){
+            if (!is_null($r->getId())){
                 try{
-                    return BDD::prepAndExec("UPDATE projet.message SET contenu=:c, id_canal=:idC, id_auteur=:idA WHERE id=:i;",
+                    return BDD::prepAndExec("UPDATE projet.reponse SET id_qcm=:idQ, xml_uri=:xml WHERE id=:i;",
                         array(
-                            "i" => $m->getId(),
-                            "c" => $m->getContenu(),
-                            "idC" => $m->getIdCanal(),
-                            "idA" => $m->getIdAuteur()
+                            "i" => $r->getId(),
+                            "idQ" => $r->getIdQCM(),
+                            "xml" => $r->getXML()
                         ));
                 } catch (PDOException $e){
                     echo $e->getMessage() . "<br>";
@@ -72,11 +70,10 @@
                 }
             } else {
                 try{
-                    return BDD::prepAndExec("INSERT INTO projet.message(contenu, id_canal, id_auteur) VALUES(:c, :idC, :idA);",
+                    return BDD::prepAndExec("INSERT INTO projet.reponse(id_qcm, xml_uri) VALUES(:idQ, :xml);",
                     array(
-                        'c' => $m->getContenu(),
-                        'idC' => $m->getIdCanal(),
-                        'idA' => $m->getIdAuteur()
+                        'idQ' => $r->getIdQCM(),
+                        'xml' => $r->getXML()
                     ));
                 } catch (PDOException $e){
                     echo $e->getMessage() . "<br>";
@@ -86,15 +83,15 @@
         }
 
         /**
-         * Supprime le message passée en paramètre de la base
+         * Supprime la reponse passée en paramètre de la base
          * 
-         * @param Message $e
+         * @param Reponse $r
          * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
-        public static function delete($m){
-            if(!is_null($m->getId())){
+        public static function delete($r){
+            if(!is_null($r->getId())){
                 try{
-                    return BDD::prepAndExec("DELETE FROM projet.message WHERE id=:i;", array('i' => $m->getId()));
+                    return BDD::prepAndExec("DELETE FROM projet.reponse WHERE id=:i;", array('i' => $r->getId()));
                 } catch (PDOException $e){
                     echo $e->getMessage() . "<br>";
                     return false;
@@ -103,13 +100,13 @@
         }
 
         /**
-         * Supprime toutes les messages de la table message
+         * Supprime toutes les reponses de la table reponse
          *
          * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
         public static function deleteAll(){
             try{
-                return BDD::query("DELETE FROM projet.message;");
+                return BDD::query("DELETE FROM projet.reponse;");
             } catch (PDOException $e){
                 echo $e->getMessage() . "<br>";
                 return false;
@@ -117,17 +114,16 @@
         }
 
         /**
-         * Fonction privée traduisant le retour de la BDD en Message
+         * Fonction privée traduisant le retour de la BDD en reponse
          *
          * @param array[] $row
-         * @return Message
+         * @return QCM
          */
         private static function fromRow($row){
-            return new Message(
+            return new Reponse(
                 $row['id'],
-                $row['contenu'],
-                $row['id_canal'],
-                $row['id_auteur']
+                $row['id_qcm'],
+                $row['xml_uri']
             );
         }
     }

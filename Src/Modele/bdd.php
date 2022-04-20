@@ -59,9 +59,9 @@
                 //return $q->fetchAll();
                 return $q;
             } catch (PDOException $e){
-                echo "Error : La requête SQL \"$query\" avec le tableau <pre>";
-                print_r($array);
-                echo "</pre>est eronée. Voir le message d'erreur suivant : <br><t><b>" . $e->getMessage() . "</b><br>";
+                //echo "Error : La requête SQL \"$query\" avec le tableau <pre>";
+                //print_r($array);
+                //echo "</pre>est eronée. Voir le message d'erreur suivant : <br><t><b>" . $e->getMessage() . "</b><br>";
                 throw $e;
             }
         }

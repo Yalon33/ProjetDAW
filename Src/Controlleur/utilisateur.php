@@ -9,9 +9,10 @@ class Utilisateur
     private $prenom;
     private $nom;
     private $type;
+    private $image;
 
 
-    public function __construct($id = null, $login, $mdp, $mail, $prenom, $nom, $stringType)
+    public function __construct($id = null, $login, $mdp, $mail, $prenom, $nom, $stringType, $image)
     {
         $this->id = $id;
         $this->login = $login;
@@ -19,11 +20,8 @@ class Utilisateur
         $this->mail = $mail;
         $this->prenom = $prenom;
         $this->nom = $nom;
-        try{
-            $this->type = TypeUtilisateur::toType($stringType);
-        } catch (Exception $e){
-            throw $e;
-        }
+        $this->type = TypeUtilisateur::toType($stringType);
+        $this->image = $image;
     }
 
     public function getId()
@@ -58,6 +56,10 @@ class Utilisateur
         return $this->type;
     }
 
+    public function getImage(){
+        return $this->image;
+    }
+
     public function setId($id)
     {
         $this->id = $id;
@@ -90,6 +92,10 @@ class Utilisateur
     public function setType($type)
     {
         $this->type = $type;
+    }
+
+    public function setImage($image){
+        $this->image = $image;
     }
 
     public function compareTo($user){

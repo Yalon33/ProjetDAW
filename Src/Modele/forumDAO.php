@@ -1,14 +1,13 @@
 <?php
+    require_once("../Controlleur/forum.php");
     require_once("bdd.php");
-    require_once("../Controlleur/message.php");
-
-    class MessageDAO {
+    class ForumDAO {
         /**
-         * @return array[Message] Les matières dans la base
+         * @return array[Forum] Les matières dans la base
          */
         public static function getAll(){
             try{
-                $data = BDD::query("SELECT * FROM projet.message;");
+                $data = BDD::query("SELECT * FROM projet.forum;");
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
                 return false;
@@ -24,11 +23,11 @@
         
         /**
          * @param entier $id
-         * @return Message Le message de la base correspondant à l'id en paramètre
+         * @return Forum Le forum de la base correspondant à l'id en paramètre
          */
         public static function getById($id){
             try{
-                $req = BDD::prepAndExec("SELECT * FROM projet.message WHERE id=:i;", [":i" => "$id"])->fetchALL();
+                $req = BDD::prepAndExec("SELECT * FROM projet.forum WHERE id=:i;", [":i" => "$id"])->fetchALL();
                 return !empty($req) ? self::fromRow($req[0]) : false;
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
@@ -37,12 +36,12 @@
         }
 
         /**
-         * @param string $contenu
-         * @return Message Le message de la base correspondant au contenu en paramètre
+         * @param string $name
+         * @return Forum Le forum de la base correspondant aux nom en paramètre
          */
-        public static function getByContenu($contenu){
+        public static function getByNom($nom){
             try{
-                $req = BDD::prepAndExec("SELECT * FROM projet.message WHERE contenu=:c;", [":c" => "$contenu"])->fetchALL();
+                $req =  BDD::prepAndExec("SELECT * FROM projet.forum WHERE nom=:n;", [":n" => "$nom"])->fetchALL();
                 return !empty($req) ? self::fromRow($req[0]) : false;
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
@@ -51,20 +50,18 @@
         }
 
         /**
-         * Insère un message dans la base de données (mise à jour si le message existe déja)
+         * Insère un forum dans la base de données (mise à jour si le forum existe déja)
          * 
-         * @param Message $m
+         * @param Forum $f
          * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
-        public static function create($m){
-            if (!is_null($m->getId())){
+        public static function create($f){
+            if (!is_null($f->getId())){
                 try{
-                    return BDD::prepAndExec("UPDATE projet.message SET contenu=:c, id_canal=:idC, id_auteur=:idA WHERE id=:i;",
+                    return BDD::prepAndExec("UPDATE projet.forum SET nom=:n WHERE id=:i;",
                         array(
-                            "i" => $m->getId(),
-                            "c" => $m->getContenu(),
-                            "idC" => $m->getIdCanal(),
-                            "idA" => $m->getIdAuteur()
+                            ":i" => $f->getId(),
+                            ":n" => $f->getNom()
                         ));
                 } catch (PDOException $e){
                     echo $e->getMessage() . "<br>";
@@ -72,11 +69,8 @@
                 }
             } else {
                 try{
-                    return BDD::prepAndExec("INSERT INTO projet.message(contenu, id_canal, id_auteur) VALUES(:c, :idC, :idA);",
-                    array(
-                        'c' => $m->getContenu(),
-                        'idC' => $m->getIdCanal(),
-                        'idA' => $m->getIdAuteur()
+                    return BDD::prepAndExec("INSERT INTO projet.forum(nom) VALUES(:n);", array(
+                        'n' => $f->getNom()
                     ));
                 } catch (PDOException $e){
                     echo $e->getMessage() . "<br>";
@@ -86,15 +80,15 @@
         }
 
         /**
-         * Supprime le message passée en paramètre de la base
+         * Supprime le forum passée en paramètre de la base
          * 
-         * @param Message $e
+         * @param Forum $f
          * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
-        public static function delete($m){
-            if(!is_null($m->getId())){
+        public static function delete($f){
+            if(!is_null($f->getId())){
                 try{
-                    return BDD::prepAndExec("DELETE FROM projet.message WHERE id=:i;", array('i' => $m->getId()));
+                    return BDD::prepAndExec("DELETE FROM projet.forum WHERE id=:i;", array('i' => $f->getId()));
                 } catch (PDOException $e){
                     echo $e->getMessage() . "<br>";
                     return false;
@@ -103,13 +97,13 @@
         }
 
         /**
-         * Supprime toutes les messages de la table message
+         * Supprime tous les forum de la table forum
          *
          * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
         public static function deleteAll(){
             try{
-                return BDD::query("DELETE FROM projet.message;");
+                return BDD::query("DELETE FROM projet.forum;");
             } catch (PDOException $e){
                 echo $e->getMessage() . "<br>";
                 return false;
@@ -117,17 +111,15 @@
         }
 
         /**
-         * Fonction privée traduisant le retour de la BDD en Message
+         * Fonction privée traduisant le retour de la BDD en Forum
          *
          * @param array[] $row
-         * @return Message
+         * @return Forum
          */
         private static function fromRow($row){
-            return new Message(
+            return new Forum(
                 $row['id'],
-                $row['contenu'],
-                $row['id_canal'],
-                $row['id_auteur']
+                $row['nom']
             );
         }
     }

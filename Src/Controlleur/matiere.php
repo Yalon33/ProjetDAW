@@ -1,95 +1,79 @@
 <?php
 
-    include("Niveau.php");
+    require_once("../Controlleur/niveau.php");
 
-    class Matiere 
-    {
+    class Matiere{
         private $id;
         private $nom;
         private $dateCreation;
-        private $contenu;
         private $createur;
-        private $tags;
         private $niveau;
+        private $image;
 
-        public function __construct($id = null, $nom, $dateCreation, $contenu, $createur, $tags, $niveau)
-        {
+        public function __construct($id = null, $nom, $dateCreation, $createur, $niveau, $image){
             $this->id = $id;
             $this->nom = $nom;
             $this->dateCreation = $dateCreation;
-            $this->contenu = $contenu;
             $this->createur = $createur;
-            $this->tags = $tags;
-            $this->niveau = $niveau;
-            
+            $this->niveau = Niveau::toType($niveau);
+            $this->image = $image;
         }
+
         //Setter
-        public function setId($id)
-        {
+        public function setId($id){
             $this->id = $id;
         }
-        public function setNom($nom)
-        {
+        
+        public function setNom($nom){
             $this->nom = $nom;
         }
-        public function setDateCreation($dateCreation)
-        {
+
+        public function setDateCreation($dateCreation){
             $this->dateCreation = $dateCreation;
         }
-        public function setContenu($contenu)
-        {
-            $this->contenu = $contenu;
-        }
-        public function setCreateur($createur)
-        {
+
+        public function setCreateur($createur){
             $this->createur = $createur;
         }
-        public function setTags($tags)
-        {
-            $this->tags = $tags;
+
+        public function setNiveau($niveau){
+            gettype($niveau) == "string" ? $this->niveau = Niveau::toType($niveau) : $this->niveau = $niveau;
         }
-        public function setNiveau($niveau)
-        {
-            $this->niveau = $niveau;
+
+        public function setImage($image){
+            $this->image = $image;
         }
+
         //Getter
-        public function getId()
-        {
+        public function getId(){
             return $this->id;
         }
-        public function getNom()
-        {
+
+        public function getNom(){
             return $this->nom;
         }
-        public function getDateCreation()
-        {
+
+        public function getDateCreation(){
             return $this->dateCreation;
         }
-        public function getContenu()
-        {
-            return $this->contenu;
-        }
-        public function getCreateur()
-        {
+
+        public function getIdCreateur(){
             return $this->createur;
         }
-        public function getTags()
-        {
-            return $this->tags;
-        }
-        public function getNiveau()
-        {
+
+        public function getNiveau(){
             return $this->niveau;
         }
 
-        //public function getSimilar($cours): Cours
-        //{
-        //    
-        //}
+        public function getImage(){
+            return $this->image;
+        }
 
         public function compareTo($mat){
-            return ($mat->getNom() === $this->getNom() && $mat->getDateCreation() === $this->getDateCreation()
-                    && $mat->getCreateur()->compare($this->getCreateur()) && $mat->getTags() == $this->getTags() && $mat->getNiveau() === $this->getNiveau());
+            return ($mat->getNom() === $this->getNom()
+                    && $mat->getDateCreation() === $this->getDateCreation()
+                    && $mat->getIdCreateur() == $this->getIdCreateur()
+                    && Niveau::toString($mat->getNiveau()) === Niveau::toString($this->getNiveau()));
         }
     }
 ?>
