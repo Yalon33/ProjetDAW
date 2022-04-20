@@ -1,6 +1,6 @@
 <?php
-    require_once("bdd.php");
-    require_once("../Controlleur/utilisateur.php");
+    require_once("Src/Modele/bdd.php");
+    require_once("Src/Controlleur/utilisateur.php");
     class UtilisateurDAO {
 
         /**

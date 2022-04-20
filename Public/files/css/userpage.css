@@ -1,0 +1,200 @@
+.userpage_contenu_inner 
+{
+    margin: 2% 5%;
+    height: 60vh;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+ul.user_coordonne{
+    list-style-type: none;
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+ul.user_coordonne li{
+    border: 1px solid rgb(207, 207, 207);
+    width: 40%;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+section
+{
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-between;
+}
+
+div.coordonne p{
+    padding-top: 15px;
+    background-color: var(--body-color) ;
+    width: 100%;
+    height: 40px;
+    color: var(--nav-primary-color);
+    text-align: center;
+    font-weight: bolder;
+}
+form.coordonne
+{
+  margin-left: 10px;
+  color:var(--body-color);
+  font-weight: bolder;
+}
+form.coordonne label
+{
+    transform: translateY(6px);
+}
+form.coordonne input
+{
+    margin-right: 10px;
+    height:25px;
+    width: 20em;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(219, 219, 219);
+    padding-left: 10px;
+}
+button
+{
+    margin-left: 30%;
+    margin-top: 2.5em;
+    width: 30em;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    color: var(--nav-primary-color);
+    background-color: rgb(236, 123, 82);
+    font-weight: bolder;
+}
+button i{
+    font-size: 30px;
+    position: absolute;
+    top:0.2em;
+    left:7.5em;
+}
+
+/* Mobile: width < 740 */
+@media only screen and (max-width:739px){
+ 
+    ul.user_coordonne
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: unset;
+    }
+    form section label
+    {
+        font-size: 10px;
+    }
+    form.coordonne section input
+    {
+       width: unset;
+    }
+    ul.user_coordonne li
+    {
+        width: unset;
+        height: unset;
+        width: 19.5em;
+        height: 13em;
+        margin-top: 50px;
+    }
+    div.userpage_contenu
+    {
+        width: unset;
+        height: unset;
+    }
+    div.userpage_contenu_inner{
+        width:unset ;
+        height: unset;
+        height: auto;
+    }
+    button
+    {
+        transform: unset;
+        width: unset;
+        margin-left: unset;
+        left: 10%;
+        width: 10em;
+        transform: translateX(38%);
+    }
+    div.image_logo
+    {
+        height:unset;
+        height:60%;
+    }
+    div.userpage_logo{
+        font-size: 15px;
+    }
+    div.user
+    {
+        display: none;
+    }
+}
+
+/* Tablet: width >=740px and width < 1024 px */
+@media only screen and (min-width:740px) and (max-width:1023px){
+
+    ul.user_coordonne
+    {
+        margin-left:5em ;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: unset;
+    }
+    form section label
+    {
+        font-size: 20px;
+    }
+    form.coordonne section input
+    {
+       width: unset;
+    }
+    ul.user_coordonne li
+    {
+        width: unset;
+        height: unset;
+        width: 30em;
+        height: 13em;
+        margin-top: 50px;
+    }
+    div.userpage_contenu
+    {
+        width: unset;
+        height: unset;
+    }
+    div.userpage_contenu_inner{
+        width:unset ;
+        height: unset;
+        height: auto;
+    }
+    button
+    {
+        left: 10%;
+        width: 20em;
+        margin-left: unset;
+        transform: translateX(38%);
+    }
+    div.image_logo
+    {
+        height:unset;
+        height:60%;
+    }
+    div.userpage_logo{
+        font-size: 15px;
+    }
+}
+
+/* PC: width >= 1024px */
+@media only screen and (min-width:1024px)
+{
+
+}
