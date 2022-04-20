@@ -2,7 +2,7 @@
     function testInsertUniqueUtilisateur($nomTest){
         BDD::query("ALTER TABLE projet.utilisateur auto_increment=5");
         BDD::query("START TRANSACTION;");
-        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "PROFESSEUR");
+        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "PROFESSEUR", "image.png");
         if (UtilisateurDAO::create($daniel) !== false){
             $daniUser = UtilisateurDAO::getByLogin($daniel->getLogin());
             $daniel->compareTo($daniUser) ? succeededTest($nomTest) : failedTest($nomTest);
@@ -13,7 +13,7 @@
         BDD::query("ALTER TABLE projet.utilisateur auto_increment=5");
         BDD::query("START TRANSACTION;");
         try{
-            $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "Etudian");
+            $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "Etudian", "image.png");
             failedTest($nomTest);
         } catch (Exception){
             succeededTest($nomTest);
@@ -23,7 +23,7 @@
     function testUpdateUtilisateur($nomTest){
         BDD::query("ALTER TABLE projet.utilisateur auto_increment=5");
         BDD::query("START TRANSACTION;");
-        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT");
+        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT", "image.png");
         UtilisateurDAO::create($daniel);
         $danielBDD = UtilisateurDAO::getByLogin($daniel->getLogin());
         $danielBDD->setMail("nouveaumail@mail.com");
@@ -34,7 +34,7 @@
     function testDeleteRowUtilisateur($nomTest){
         BDD::query("ALTER TABLE projet.utilisateur auto_increment=5");
         BDD::query("START TRANSACTION;");
-        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT");
+        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT", "image.png");
         UtilisateurDAO::create($daniel);
         $daniel = UtilisateurDAO::getByLogin($daniel->getLogin());
         if (UtilisateurDAO::delete($daniel) !== false){

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 18 avr. 2022 à 15:16
+-- Généré le : mer. 20 avr. 2022 à 10:22
 -- Version du serveur : 10.4.22-MariaDB
 -- Version de PHP : 8.1.2
 
@@ -121,16 +121,17 @@ CREATE TABLE `matiere` (
   `nom` varchar(50) NOT NULL,
   `date_creation` date NOT NULL,
   `id_createur` int(11) DEFAULT NULL,
-  `niveau` enum('6EME','5EME','4EME','3EME','2ND','1ERE','TERM','L1','L2','L3','M1','M2') DEFAULT NULL
+  `niveau` enum('6EME','5EME','4EME','3EME','2ND','1ERE','TERM','L1','L2','L3','M1','M2') DEFAULT NULL,
+  `image` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `matiere`
 --
 
-INSERT INTO `matiere` (`id`, `nom`, `date_creation`, `id_createur`, `niveau`) VALUES
-(1, 'Programmation Logique et Fonctionnelle', '2021-01-01', 1, 'L3'),
-(2, 'Programmation Java', '2022-01-01', 2, 'L2');
+INSERT INTO `matiere` (`id`, `nom`, `date_creation`, `id_createur`, `niveau`, `image`) VALUES
+(1, 'Programmation Logique et Fonctionnelle', '2021-01-01', 1, 'L3', 'imagePLF.png'),
+(2, 'Programmation Java', '2022-01-01', 2, 'L2', 'imageJava.png');
 
 -- --------------------------------------------------------
 
@@ -348,18 +349,19 @@ CREATE TABLE `utilisateur` (
   `mail` varchar(50) NOT NULL,
   `prenom` varchar(50) NOT NULL,
   `nom` varchar(50) NOT NULL,
-  `type` enum('ETUDIANT','PROFESSEUR') NOT NULL
+  `type` enum('ETUDIANT','PROFESSEUR') NOT NULL,
+  `image` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `utilisateur`
 --
 
-INSERT INTO `utilisateur` (`id`, `login`, `mdp`, `mail`, `prenom`, `nom`, `type`) VALUES
-(1, 'manuel_valls', 'moipresident', 'manuel.valls@gmail.com', 'manuel', 'valls', 'PROFESSEUR'),
-(2, 'em_maquerongue', 'republiqueenmarche', 'president@gmail.com', 'maquerongue', 'emmannuel', 'PROFESSEUR'),
-(3, 'daniel_le_bg', 'jesuisbg', 'bg@gmail.com', 'bg', 'daniel', 'ETUDIANT'),
-(4, 'vantai_le_bg', 'jesuisaussibg', 'vantai_bg@gmail.com', 'bg', 'vantai', 'ETUDIANT');
+INSERT INTO `utilisateur` (`id`, `login`, `mdp`, `mail`, `prenom`, `nom`, `type`, `image`) VALUES
+(1, 'manuel_valls', 'moipresident', 'manuel.valls@gmail.com', 'manuel', 'valls', 'PROFESSEUR', 'photoPresident.png'),
+(2, 'em_maquerongue', 'republiqueenmarche', 'president@gmail.com', 'maquerongue', 'emmannuel', 'PROFESSEUR', 'photoTShirt.png'),
+(3, 'daniel_le_bg', 'jesuisbg', 'bg@gmail.com', 'bg', 'daniel', 'ETUDIANT', 'bg.png'),
+(4, 'vantai_le_bg', 'jesuisaussibg', 'vantai_bg@gmail.com', 'bg', 'vantai', 'ETUDIANT', 'cuteTiger.png');
 
 --
 -- Index pour les tables déchargées

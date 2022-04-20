@@ -2,7 +2,7 @@
     function testInsertUniqueCanal($nomTest){
         BDD::query("ALTER TABLE projet.canal auto_increment=5");
         BDD::query("START TRANSACTION;");
-        $danielUser = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT");
+        $danielUser = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT", "image.png");
         UtilisateurDAO::create($danielUser);
         $php = new Forum(null, "Langage PHP");
         ForumDAO::create($php);
@@ -14,7 +14,7 @@
     function testUpdateCanal($nomTest){
         BDD::query("ALTER TABLE projet.canal auto_increment=5");
         BDD::query("START TRANSACTION;");
-        $danielUser = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT");
+        $danielUser = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT", "image.png");
         UtilisateurDAO::create($danielUser);
         $php = new Forum(null, "Langage PHP");
         ForumDAO::create($php);
@@ -30,7 +30,7 @@
     function testDeleteRowCanal($nomTest){
         BDD::query("ALTER TABLE projet.canal auto_increment=5");
         BDD::query("START TRANSACTION;");
-        $danielUser = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT");
+        $danielUser = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT", "image.png");
         UtilisateurDAO::create($danielUser);
         $php = new Forum(null, "Langage PHP");
         ForumDAO::create($php);

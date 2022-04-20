@@ -2,7 +2,7 @@
     function testInsertUniqueQCM($nomTest){
         BDD::query("ALTER TABLE projet.qcm auto_increment=3");
         BDD::query("START TRANSACTION;");
-        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "PROFESSEUR");
+        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "PROFESSEUR", "image.png");
         UtilisateurDAO::create($daniel);
         $exam = new QCM(null, UtilisateurDAO::getByLogin($daniel->getLogin())->getId(), "Cours/AlgebreLineaire/exam.xml");
         QCMDAO::create($exam);
@@ -12,7 +12,7 @@
     function testUpdateQCM($nomTest){
         BDD::query("ALTER TABLE projet.qcm auto_increment=3");
         BDD::query("START TRANSACTION;");
-        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "PROFESSEUR");
+        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "PROFESSEUR", "image.png");
         UtilisateurDAO::create($daniel);
         $exam = new QCM(null, UtilisateurDAO::getByLogin($daniel->getLogin())->getId(), "Cours/AlgebreLineaire/exam.xml");
         QCMDAO::create($exam);
@@ -25,7 +25,7 @@
     function testDeleteRowQCM($nomTest){
         BDD::query("ALTER TABLE projet.utilisateur auto_increment=3");
         BDD::query("START TRANSACTION;");
-        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "PROFESSEUR");
+        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "PROFESSEUR", "image.png");
         UtilisateurDAO::create($daniel);
         $exam = new QCM(null, UtilisateurDAO::getByLogin($daniel->getLogin())->getId(), "Cours/AlgebreLineaire/exam.xml");
         QCMDAO::create($exam);

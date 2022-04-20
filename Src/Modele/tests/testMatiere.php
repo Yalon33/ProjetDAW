@@ -1,10 +1,10 @@
 <?php
     function testInsertUniqueMatiere($nomTest){
         BDD::query("START TRANSACTION;");
-        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "PROFESSEUR");
+        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "PROFESSEUR", "image.png");
         UtilisateurDAO::create($daniel);
         $daniel = UtilisateurDAO::getByLogin("Zokey");
-        $calculMat = new Matiere(null, "calcul matriciel", "12-01-2022", $daniel->getId(), "L3");
+        $calculMat = new Matiere(null, "calcul matriciel", "12-01-2022", $daniel->getId(), "L3", "imageCalculMatriciel.png");
         if (MatiereDAO::create($calculMat) !== false){
             $matiereBDD = MatiereDAO::getByNom("calcul matriciel");
             $calculMat->compareTo($matiereBDD) ? succeededTest($nomTest) : failedTest($nomTest);
@@ -13,11 +13,11 @@
 
     function testInsertPlusieursMatiere($nomTest){
         BDD::query("START TRANSACTION;");
-        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "PROFESSEUR");
+        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "PROFESSEUR", "image.png");
         UtilisateurDAO::create($daniel);
         $daniel = UtilisateurDAO::getByLogin($daniel->getLogin());
-        $calculMat = new Matiere(null, "calcul matriciel", "12-01-2022", $daniel->getId(), "L3");
-        $algLin = new Matiere(null, "algebre linéraire", "16-03-2022", $daniel->getId(), "M2");
+        $calculMat = new Matiere(null, "calcul matriciel", "12-01-2022", $daniel->getId(), "L3", "imageCalculMatriciel.png");
+        $algLin = new Matiere(null, "algebre linéraire", "16-03-2022", $daniel->getId(), "M2", "imageAlgebreLineaire.png");
         if(MatiereDAO::create($calculMat) !== false && MatiereDAO::create($algLin)){
             $calculMatBDD = MatiereDAO::getByNom($calculMat->getNom());
             $algLinBDD = MatiereDAO::getByNom($algLin->getNom());
@@ -27,10 +27,10 @@
 
     function testUpdateMatiere($nomTest){
         BDD::query("START TRANSACTION;");
-        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT");
+        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT", "image.png");
         UtilisateurDAO::create($daniel);
         $daniel = UtilisateurDAO::getByLogin($daniel->getLogin());
-        $calculMat = new Matiere(null, "calcul matriciel", "12-01-2022", $daniel->getId(), "L3");
+        $calculMat = new Matiere(null, "calcul matriciel", "12-01-2022", $daniel->getId(), "L3", "imageMatiere.png");
         MatiereDAO::create($calculMat);
         $calculMat = MatiereDAO::getByNom($calculMat->getNom());
         $calculMat->setNiveau("L2");
@@ -42,10 +42,10 @@
 
     function testDeleteRowMatiere($nomTest){
         BDD::query("START TRANSACTION;");
-        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT");
+        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT", "image.png");
         UtilisateurDAO::create($daniel);
         $daniel = UtilisateurDAO::getByLogin($daniel->getLogin());
-        $calculMat = new Matiere(null, "calcul matriciel", "12-01-2022", $daniel->getId(), "L3");
+        $calculMat = new Matiere(null, "calcul matriciel", "12-01-2022", $daniel->getId(), "L3", "imageCalculMatriciel.png");
         MatiereDAO::create($calculMat);
         $calculMat = MatiereDAO::getByNom($calculMat->getNom());
         if(MatiereDAO::delete($calculMat) !== false){

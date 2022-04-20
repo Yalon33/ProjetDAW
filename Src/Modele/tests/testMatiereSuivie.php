@@ -4,7 +4,7 @@
         BDD::query("ALTER TABLE projet.matiere auto_increment=3");
         BDD::query("START TRANSACTION;");
 
-        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT");
+        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT", "image.png");
         UtilisateurDAO::create($daniel);
         $daniel = UtilisateurDAO::getByLogin($daniel->getLogin());
 
@@ -12,7 +12,7 @@
         EtudiantDAO::create($danielEtudiant);
         $danielEtudiant->setId($daniel->getId());
 
-        $calculMat = new Matiere(null, "calcul matriciel", "12-01-2022", $daniel->getId(), "L3");
+        $calculMat = new Matiere(null, "calcul matriciel", "12-01-2022", $daniel->getId(), "L3", "imageCalculMatriciel.png");
         MatiereDAO::create($calculMat);
         $calculMat = MatiereDAO::getByNom($calculMat->getNom());
 
@@ -27,7 +27,7 @@
         BDD::query("ALTER TABLE projet.matiere auto_increment=3");
         BDD::query("START TRANSACTION;");
 
-        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT");
+        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT", "image.png");
         UtilisateurDAO::create($daniel);
         $daniel = UtilisateurDAO::getByLogin($daniel->getLogin());
 
@@ -35,7 +35,7 @@
         EtudiantDAO::create($danielEtudiant);
         $danielEtudiant->setId($daniel->getId());
 
-        $calculMat = new Matiere(null, "calcul matriciel", "12-01-2022", $daniel->getId(), "L3");
+        $calculMat = new Matiere(null, "calcul matriciel", "12-01-2022", $daniel->getId(), "L3", "imageCalculMatriciel.png");
         MatiereDAO::create($calculMat);
         $calculMat = MatiereDAO::getByNom($calculMat->getNom());
 
@@ -51,7 +51,7 @@
         BDD::query("ALTER TABLE projet.matiere auto_increment=3");
         BDD::query("START TRANSACTION;");
 
-        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT");
+        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT", "image.png");
         UtilisateurDAO::create($daniel);
         $daniel = UtilisateurDAO::getByLogin($daniel->getLogin());
 
@@ -59,7 +59,7 @@
         EtudiantDAO::create($danielEtudiant);
         $danielEtudiant->setId($daniel->getId());
 
-        $calculMat = new Matiere(null, "calcul matriciel", "12-01-2022", $daniel->getId(), "L3");
+        $calculMat = new Matiere(null, "calcul matriciel", "12-01-2022", $daniel->getId(), "L3", "imageCalculMatriciel.png");
         MatiereDAO::create($calculMat);
         $calculMat = MatiereDAO::getByNom($calculMat->getNom());
 

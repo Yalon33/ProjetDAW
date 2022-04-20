@@ -8,13 +8,15 @@
         private $dateCreation;
         private $createur;
         private $niveau;
+        private $image;
 
-        public function __construct($id = null, $nom, $dateCreation, $createur, $niveau){
+        public function __construct($id = null, $nom, $dateCreation, $createur, $niveau, $image){
             $this->id = $id;
             $this->nom = $nom;
             $this->dateCreation = $dateCreation;
             $this->createur = $createur;
             $this->niveau = Niveau::toType($niveau);
+            $this->image = $image;
         }
 
         //Setter
@@ -38,6 +40,10 @@
             gettype($niveau) == "string" ? $this->niveau = Niveau::toType($niveau) : $this->niveau = $niveau;
         }
 
+        public function setImage($image){
+            $this->image = $image;
+        }
+
         //Getter
         public function getId(){
             return $this->id;
@@ -57,6 +63,10 @@
 
         public function getNiveau(){
             return $this->niveau;
+        }
+
+        public function getImage(){
+            return $this->image;
         }
 
         public function compareTo($mat){

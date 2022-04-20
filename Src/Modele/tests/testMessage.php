@@ -2,7 +2,7 @@
     function testInsertUniqueMessage($nomTest){
         BDD::query("ALTER TABLE projet.message auto_increment=8");
         BDD::query("START TRANSACTION;");
-        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT");
+        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT", "image.png");
         UtilisateurDAO::create($daniel);
         $php = new Forum(null, "Langage PHP");
         ForumDAO::create($php);
@@ -19,7 +19,7 @@
     function testUpdateMessage($nomTest){
         BDD::query("ALTER TABLE projet.message auto_increment=8");
         BDD::query("START TRANSACTION;");
-        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT");
+        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT", "image.png");
         UtilisateurDAO::create($daniel);
         $php = new Forum(null, "Langage PHP");
         ForumDAO::create($php);
@@ -38,7 +38,7 @@
     function testDeleteRowMessage($nomTest){
         BDD::query("ALTER TABLE projet.forum auto_increment=4");
         BDD::query("START TRANSACTION;");
-        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT");
+        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT", "image.png");
         UtilisateurDAO::create($daniel);
         $php = new Forum(null, "Langage PHP");
         ForumDAO::create($php);

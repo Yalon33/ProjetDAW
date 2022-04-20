@@ -43,7 +43,7 @@
         public static function create($u){
             if(!is_null($u->getId())){
                 try{
-                    return BDD::prepAndExec("UPDATE projet.utilisateur SET login=:l, mdp=:mdp, mail=:ma, prenom=:pr, nom=:n, type=:tu  WHERE id=:i;", 
+                    return BDD::prepAndExec("UPDATE projet.utilisateur SET login=:l, mdp=:mdp, mail=:ma, prenom=:pr, nom=:n, type=:tu, image=:im WHERE id=:i;", 
                         array(
                             'i' => $u->getId(), 
                             'l' => $u->getLogin(),
@@ -51,7 +51,8 @@
                             'ma' => $u->getMail(),
                             'pr' => $u->getPrenom(),
                             'n' => $u->getNom(),
-                            'tu' => TypeUtilisateur::toString($u->getType())
+                            'tu' => TypeUtilisateur::toString($u->getType()),
+                            'im' => $u->getImage()
                         ));
                 } catch (PDOException $e){
                     echo $e->getMessage() . "<br>";
@@ -60,14 +61,15 @@
             }
             else{
                 try{
-                    return BDD::prepAndExec("INSERT INTO projet.utilisateur (login, mdp, mail, prenom, nom, type) VALUES (:l, :mdp, :ma, :pr, :n, :tu);", 
+                    return BDD::prepAndExec("INSERT INTO projet.utilisateur (login, mdp, mail, prenom, nom, type, image) VALUES (:l, :mdp, :ma, :pr, :n, :tu, :im);", 
                     array( 
                         'l' => $u->getLogin(),
                         'mdp' => $u->getMdp(),
                         'ma' => $u->getMail(),
                         'pr' => $u->getPrenom(),
                         'n' => $u->getNom(),
-                        'tu' => TypeUtilisateur::toString($u->getType())
+                        'tu' => TypeUtilisateur::toString($u->getType()),
+                        'im' => $u->getImage()
                     ));
                 } catch (PDOException $e){
                     echo $e->getMessage() . "<br>";
@@ -121,7 +123,8 @@
                 $row['mail'],
                 $row['prenom'],
                 $row['nom'],
-                $row['type']
+                $row['type'],
+                $row['image']
             );
         }
     }

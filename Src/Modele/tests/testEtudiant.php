@@ -2,7 +2,7 @@
     function testInsertUniqueEtudiant($nomTest){
         BDD::query("ALTER TABLE projet.utilisateur auto_increment=5");
         BDD::query("START TRANSACTION;");
-        $danielUser = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT");
+        $danielUser = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT", "image.png");
         UtilisateurDAO::create($danielUser);
         $danielEtudiant = new Etudiant(null, "L3");
         EtudiantDAO::create($danielEtudiant);
@@ -16,7 +16,7 @@
     function testUpdateEtudiant($nomTest){
         BDD::query("ALTER TABLE projet.utilisateur auto_increment=5");
         BDD::query("START TRANSACTION;");
-        $danielUser = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT");
+        $danielUser = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT", "image.png");
         UtilisateurDAO::create($danielUser);
         $danielEtudiant = new Etudiant(null, "L3");
         EtudiantDAO::create($danielEtudiant);
@@ -29,7 +29,7 @@
     function testDeleteRowEtudiant($nomTest){
         BDD::query("ALTER TABLE projet.utilisateur auto_increment=5");
         BDD::query("START TRANSACTION;");
-        $danielUser = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT");
+        $danielUser = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT", "image.png");
         UtilisateurDAO::create($danielUser);
         $danielEtudiant = new Etudiant(null, "L3");
         EtudiantDAO::create($danielEtudiant);

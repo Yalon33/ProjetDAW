@@ -92,7 +92,7 @@
         }
 
         /**
-         * Supprime toutes les matiere_suivies de la table reponse
+         * Supprime toutes les matiere_suivies de la table matiere_suivie
          *
          * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */

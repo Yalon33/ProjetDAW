@@ -6,6 +6,7 @@
         private $id;
         private $niveau;
 
+
         //Constructeur
         public function __construct($id = null, $niveau){
             $this->id = $id;

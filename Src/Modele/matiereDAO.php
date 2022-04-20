@@ -66,13 +66,14 @@
         public static function create($m){
             if (!is_null($m->getId())){
                 try{
-                    return BDD::prepAndExec("UPDATE projet.matiere SET nom=:n, date_creation=:d, id_createur=:c, niveau=:niv WHERE id=:i;",
+                    return BDD::prepAndExec("UPDATE projet.matiere SET nom=:n, date_creation=:d, id_createur=:c, niveau=:niv, image=:im WHERE id=:i;",
                         array(
                             "i" => $m->getId(),
                             "n" => $m->getNom(),
                             "d" => ParseDate::parse($m->getDateCreation()),
                             "c" => $m->getIdCreateur(),
-                            "niv" => Niveau::toString($m->getNiveau())
+                            "niv" => Niveau::toString($m->getNiveau()),
+                            "im" => $m->getImage()
                         ));
                 } catch (PDOException $e){
                     echo $e->getMessage() . "<br>";
@@ -80,11 +81,12 @@
                 }
             } else {
                 try{
-                    return BDD::prepAndExec("INSERT INTO projet.matiere(nom, date_creation, id_createur, niveau) VALUES(:n, :d, :crea, :niv);", array(
+                    return BDD::prepAndExec("INSERT INTO projet.matiere(nom, date_creation, id_createur, niveau, image) VALUES(:n, :d, :crea, :niv, :im);", array(
                         'n' => $m->getNom(),
                         'd' => ParseDate::parse($m->getDateCreation()),
                         'crea' => $m->getIdCreateur(),
-                        'niv' => Niveau::toString($m->getNiveau())
+                        'niv' => Niveau::toString($m->getNiveau()),
+                        'im' => $m->getImage()
                     ));
                 } catch (PDOException $e){
                     echo $e->getMessage() . "<br>";
@@ -136,7 +138,8 @@
                 $row['nom'],
                 ParseDate::parse($row['date_creation']),
                 $row['id_createur'],
-                $row['niveau']
+                $row['niveau'],
+                $row['image']
             );
         }
     }

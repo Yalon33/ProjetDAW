@@ -4,7 +4,7 @@
         BDD::query("ALTER TABLE projet.qcm auto_increment=3");
         BDD::query("ALTER TABLE projet.reponse auto_increment=4");
         BDD::query("START TRANSACTION;");
-        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "PROFESSEUR");
+        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "PROFESSEUR", "image.png");
         UtilisateurDAO::create($daniel);
         $exam = new QCM(null, UtilisateurDAO::getByLogin($daniel->getLogin())->getId(), "Cours/AlgebreLineaire/exam.xml");
         QCMDAO::create($exam);
@@ -18,7 +18,7 @@
         BDD::query("ALTER TABLE projet.qcm auto_increment=3");
         BDD::query("ALTER TABLE projet.reponse auto_increment=4");
         BDD::query("START TRANSACTION;");
-        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "PROFESSEUR");
+        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "PROFESSEUR", "image.png");
         UtilisateurDAO::create($daniel);
         $exam = new QCM(null, UtilisateurDAO::getByLogin($daniel->getLogin())->getId(), "Cours/AlgebreLineaire/exam.xml");
         QCMDAO::create($exam);
@@ -37,7 +37,7 @@
         BDD::query("ALTER TABLE projet.qcm auto_increment=3");
         BDD::query("ALTER TABLE projet.reponse auto_increment=4");
         BDD::query("START TRANSACTION;");
-        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "PROFESSEUR");
+        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "PROFESSEUR", "image.png");
         UtilisateurDAO::create($daniel);
         $daniel->setId(UtilisateurDAO::getByLogin($daniel->getLogin())->getId());
         $exam = new QCM(null, $daniel->getId(), "Cours/AlgebreLineaire/exam.xml");
