@@ -1,0 +1,279 @@
+h1{
+    color:blue;
+}
+
+ul.grid_card{
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    width: 100%;
+}
+ul.grid_card li{
+    padding:3% 0 ;
+    height: 80%;
+    align-items: center;
+
+}
+p.title_homepage_card
+{
+    font-weight: bolder;
+    font-size: 20px;
+    color: var(--body-color);
+}
+ul.list_lesson
+{
+    margin-top: 20px;
+    margin-left: 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    grid-row-gap: 3%;
+}
+ul.list_lesson li.lesson 
+{
+    height: 15em;
+    width: 20em;
+    border: none;
+    border-radius: 15px;
+    background-color: rgb(53, 67, 80);
+    padding: 15px;
+    transition: 0.5s;
+    list-style-type: none;
+    
+}
+ul.list_lesson li.lesson  a{
+    width: 100%;
+    height: 100%;
+    color:white;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+ul.list_lesson li.lesson:hover{
+    height: 16em;
+    width:21em;
+}
+span.date{
+    font-size:12px ;
+}
+
+img{
+    max-width: 100%;
+    object-fit: cover;
+}
+img.image
+{
+    width: 100%;
+    height: 100%;
+}
+div.image_lesson
+{
+    width: 100%;
+    height: 50%;
+}
+.titre_lesson
+{
+    font-size: 14px;
+    text-align: center;
+
+}
+.name_lesson{
+    text-align: center;
+    font-weight: bolder;
+    font-size: 20px;
+}
+.prof{
+    font-size: 12px;
+    padding-top: 5px;
+    text-align: center;
+    color: var(--body-color)
+}
+.card_icon
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 10%;
+    
+}
+.card_icon i{
+    font-size: 17px;
+}
+/* ul.list_lesson li.lesson:hover{
+    height: 20em;
+    width: 25em;
+}
+div.header_card
+{
+    height: 5%;
+}
+ul.header_card
+{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+ul.header_option
+{
+    border: none;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    justify-content: space-between;
+    background-color: var(--body-color);
+    color: var(--nav-primary-color);
+    opacity:0;
+    border-radius: 5px;
+}
+ul.header_card li.icon{
+    display: flex;
+}
+.name_lesson{
+    text-align: center;
+    font-weight: bolder;
+    font-size: 20px;
+}
+.prof{
+    font-size: 14px;
+    text-align: center;
+    color: var(--body-color)
+}
+span.fixed{
+    text-decoration: underline;
+    font-weight: bolder;
+}
+
+.title_lesson
+{
+    height: 15%;
+    transition:0.5s;
+    margin-top:20% ;
+}
+.image_lesson
+{
+    width: 100%;
+    height: 35%;
+    display: none;
+}
+
+img.image_lesson{
+    max-width: 100%;
+    height:100%;
+    object-fit: cover;
+}
+div.descrip_lesson
+{
+    width: 50%;
+    height: 45%;
+    overflow: hidden;
+    transition: 0.5s;
+    display: none;
+}
+
+li.descrip_lesson{
+    margin-top: 10px;
+}
+
+li.icon:hover ul.header_option
+{
+    opacity: 1;
+    left:58%;
+}
+
+ul.list_lesson li.lesson:hover .title_lesson
+{
+    margin: unset;
+}
+ul.list_lesson li.lesson:hover div.descrip_lesson
+{
+    transform: translate(15%,20%);
+
+}
+ul.list_lesson li.lesson:hover ul.header_option
+{
+    margin-left: 5px;
+}
+ul.list_lesson li.lesson:hover .image_lesson, ul.list_lesson li.lesson:hover .descrip_lesson
+{
+    display: block;
+}
+ul.list_lesson li.lesson:hover
+{
+    justify-content: space-between;
+}
+.image_lesson
+{
+    width: 100%;
+    height: 30%;
+    border: 1px solid orangered;
+}
+div.descrip_lesson
+{
+    width: 17.5em;
+    height: 45%;
+    overflow: hidden;
+    transition: 0.5s;
+}
+ul.descrip_lesson
+{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+} */
+.footer
+{
+    height: 5em;
+    width: 100%;
+}
+
+@media only screen and (min-height:100%)
+{
+
+}
+
+
+/* Mobile: width < 740 */
+@media only screen and (max-width:739px)
+{   
+  
+   
+
+}
+
+/* Tablet: width >=740px and width < 1024 px */
+@media only screen and (min-width:740px) and (max-width:1023px)
+{
+    /* ul.list_lesson
+    {
+        grid-template-columns: 1fr 1fr;
+    }
+    ul.grid_card li.homepage_card:nth-child(2)
+    {
+        margin-top: 20%;
+    }
+    .homepage_contenu{
+        height: auto;
+    }
+    ul.list_lesson li.lesson
+    {
+        width: 15em;
+        height: 13em;
+    }
+    ul.list_lesson li.lesson:hover{
+        height: 18em;
+        width: 23em;
+    }
+    li .date{
+        font-size:10px ;
+    }
+  */
+}
+
+/* PC: width >= 1024px */
+@media only screen and (min-width:1024px)
+{
+
+}
