@@ -1,4 +1,7 @@
 <?php
+    require_once("bdd.php");
+    require_once("../Controlleur/tag.php");
+
     class TagDAO {
         /**
          * @return array[Tag] Les matières dans la base
@@ -25,12 +28,28 @@
          */
         public static function getById($id){
             try{
-                return BDD::prepAndExec("SELECT * FROM projet.tag WHERE id=:i;", [":i" => "$id"])->fetchALL()[0];
+                $req = BDD::prepAndExec("SELECT * FROM projet.tag WHERE id=:i;", [":i" => "$id"])->fetchALL();
+                return !empty($req) ? self::fromRow($req[0]) : false;
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
                 return false;
             }
         }
+
+        /**
+         * @param string $contenu
+         * @return Tag Le tag de la base correspondant au contenu en paramètre
+         */
+        public static function getByContenu($contenu){
+            try{
+                $req = BDD::prepAndExec("SELECT * FROM projet.tag WHERE contenu=:c;", [":c" => "$contenu"])->fetchALL();
+                return !empty($req) ? self::fromRow($req[0]) : false;
+            } catch (PDOException $e){
+                echo $e->getMessage()."<br>";
+                return false;
+            }
+        }
+
 
         /**
          * Insère un tag dans la base de données (mise à jour si le tag existe déja)

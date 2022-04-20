@@ -36,13 +36,12 @@
             }
         }
 
-
         /**
          * Insère une matiere_suivie dans la base de données (mise à jour si la matiere_suivie existe déja)
          * 
          * @param Etudiant $e
          * @param Matiere $m
-         * @param Avancement $m
+         * @param Avancement $a
          * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
         public static function create($e, $m, $a){

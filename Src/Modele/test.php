@@ -1,4 +1,5 @@
 <?php
+    require_once("associationDAO.php");
     require_once("canalDAO.php");
     require_once("contenuDAO.php");
     require_once("etudiantDAO.php");
@@ -8,7 +9,9 @@
     require_once("messageDAO.php");
     require_once("qcmDAO.php");
     require_once("reponseDAO.php");
+    require_once("tagDAO.php");
     require_once("utilisateurDAO.php");
+    require_once("tests/testAssociation.php");
     require_once("tests/testCanal.php");
     require_once("tests/testContenu.php");
     require_once("tests/testEtudiant.php");
@@ -18,6 +21,7 @@
     require_once("tests/testMessage.php");
     require_once("tests/testQCM.php");
     require_once("tests/testReponse.php");
+    require_once("tests/testTag.php");
     require_once("tests/testUtilisateur.php");
     
     $SUCCES = 0;
@@ -75,6 +79,9 @@
             case("reponse"):
                 (ReponseDAO::deleteAll() !== false) && (empty(ReponseDAO::getAll())) ? succeededTest($nomTest) : failedTest($nomTest);
                 break;
+            case("tag"):
+                (TagDAO::deleteAll() !== false) && (empty(TagDAO::getAll())) ? succeededTest($nomTest) : failedTest($nomTest);
+                break;
             case("utilisateur"):
                 (UtilisateurDAO::deleteAll() !== false) && (empty(UtilisateurDAO::getAll())) ? succeededTest($nomTest) : failedTest($nomTest);
                 break;
@@ -84,6 +91,8 @@
     }
 
     function launchTestSuite(){
+        echo "====================TestAssociation====================<br>";
+        testAssociationDAO();
         echo "======================TestCanal======================<br>";
         testCanalDAO();
         echo "=====================TestContenu=====================<br>";
@@ -102,6 +111,8 @@
         testQCMDAO();
         echo "=====================TestReponse====================<br>";
         testReponseDAO();
+        echo "====================TestTag====================<br>";
+        testTagDAO();
         echo "====================TestUtilisateur====================<br>";
         testUtilisateurDAO();
         affiche_resultat();

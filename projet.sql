@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 20 avr. 2022 à 10:22
+-- Généré le : mer. 20 avr. 2022 à 12:08
 -- Version du serveur : 10.4.22-MariaDB
 -- Version de PHP : 8.1.2
 
@@ -300,8 +300,8 @@ INSERT INTO `reponse` (`id`, `id_qcm`, `xml_uri`) VALUES
 --
 
 CREATE TABLE `reponse_utilisateur` (
-  `id_uti` int(11) DEFAULT NULL,
-  `id_rep` int(11) DEFAULT NULL
+  `id_uti` int(11) NOT NULL,
+  `id_rep` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -310,8 +310,8 @@ CREATE TABLE `reponse_utilisateur` (
 
 INSERT INTO `reponse_utilisateur` (`id_uti`, `id_rep`) VALUES
 (1, 1),
-(3, 2),
-(2, 3);
+(2, 3),
+(3, 2);
 
 -- --------------------------------------------------------
 
@@ -454,6 +454,7 @@ ALTER TABLE `reponse`
 -- Index pour la table `reponse_utilisateur`
 --
 ALTER TABLE `reponse_utilisateur`
+  ADD PRIMARY KEY (`id_uti`,`id_rep`),
   ADD KEY `id_rep` (`id_rep`),
   ADD KEY `reponses_utilisateurs_ibfk_1` (`id_uti`);
 
@@ -479,7 +480,7 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `canal`
 --
 ALTER TABLE `canal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT pour la table `contenu`
@@ -497,13 +498,13 @@ ALTER TABLE `forum`
 -- AUTO_INCREMENT pour la table `matiere`
 --
 ALTER TABLE `matiere`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=918;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT pour la table `qcm`
@@ -515,13 +516,13 @@ ALTER TABLE `qcm`
 -- AUTO_INCREMENT pour la table `reponse`
 --
 ALTER TABLE `reponse`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `tag`
 --
 ALTER TABLE `tag`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT pour la table `utilisateur`
