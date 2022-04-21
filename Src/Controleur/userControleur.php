@@ -1,6 +1,6 @@
 <?php
 
-    class UserController extends Controller
+    class UserControleur extends Controleur
     {
         public function user()
         {

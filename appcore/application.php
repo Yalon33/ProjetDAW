@@ -11,7 +11,7 @@
         private Routeur $routeur;
         private Request $request;
         private Response $response;
-        private Controller $controller;
+        private Controleur $controleur;
         private static string $dir;
 
         private function __construct()
@@ -56,14 +56,14 @@
             return self::$dir;
         }
 
-        public function getController()
+        public function getControleur()
         {
-            return $this->controller;
+            return $this->controleur;
         }
 
-        public function setController(Controller $c)
+        public function setControleur(Controleur $c)
         {
-            $this->controller = $c;
+            $this->controleur = $c;
         }
     }
 

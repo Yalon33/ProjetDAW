@@ -41,8 +41,8 @@
 
             if(is_array($func))
             {
-                Application::getInstance()->setController(new $func[0]());
-                $func[0] = Application::getInstance()->getController();
+                Application::getInstance()->setControleur(new $func[0]());
+                $func[0] = Application::getInstance()->getControleur();
             }
 
             return call_user_func($func, Application::getInstance()->request());
@@ -57,7 +57,7 @@
 
         protected function layout()
         {
-            $layout = Application::getInstance()->getController()->getLayout();
+            $layout = Application::getInstance()->getControleur()->getLayout();
             ob_start();
             include_once Application::getInstance()->currDir()."/Src/vue/layout/$layout.php";
             return ob_get_clean();

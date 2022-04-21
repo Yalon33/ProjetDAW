@@ -54,7 +54,7 @@
 <div class="menu_footer">
     <ul class="menu_footer">
             <li class="menu_logout">
-                <a href="#">
+                <a href="/logout">
                     <i class='bx bx-log-out' ></i>
                     <span class="text-mode text_opacity">Log out</span>
                 </a>

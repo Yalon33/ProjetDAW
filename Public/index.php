@@ -1,10 +1,10 @@
 <?php 
-    set_include_path('../');
+    set_include_path("../");
     require_once('appcore/application.php');
-    require_once('appcore/controller.php');
-    require_once('Src/Controlleur/homecontroller.php');
-    require_once('Src/Controlleur/authcontroller.php');
-    require_once('Src/Controlleur/usercontroller.php');
+    require_once('appcore/controleur.php');
+    require_once('Src/Controleur/homeControleur.php');
+    require_once('Src/Controleur/authControleur.php');
+    require_once('Src/Controleur/userControleur.php');
     require_once('Src/Modele/utilisateurDAO.php');
 
     if(!session_id())
@@ -21,8 +21,8 @@
             exit;
         });
 
-        $app->routeur()->get('/login', [AuthController::class, 'login']);
-        $app->routeur()->post('/login', [AuthController::class, 'handleLogin']);
+        $app->routeur()->get('/login', [AuthControleur::class, 'login']);
+        $app->routeur()->post('/login', [AuthControleur::class, 'handleLogin']);
     }
     else
     {
@@ -31,12 +31,18 @@
             exit;
         });
     
-        $app->routeur()->get('/home', [HomeController::class, 'home']);
+        $app->routeur()->get('/home', [HomeControleur::class, 'home']);
 
-        $app->routeur()->get('/user', [UserController::class, 'user']);
+        $app->routeur()->get('/home', [HomeControleur::class, 'home']);
+
+        $app->routeur()->get('/user', [UserControleur::class, 'user']);
     
-        $app->routeur()->get('/login', [AuthController::class, 'login']);
-        $app->routeur()->post('/login', [AuthController::class, 'handleLogin']);
+        $app->routeur()->get('/login', [AuthControleur::class, 'login']);
+        $app->routeur()->post('/login', [AuthControleur::class, 'handleLogin']);
+
+        $app->routeur()->get('/logout', [AuthControleur::class, 'logout']);
+
+        $app->routeur()->get('/test', [TestControleur::class, 'runTests']);
     }
 
     $app->run();
