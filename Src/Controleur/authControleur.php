@@ -18,12 +18,12 @@
                 header("Location: /login");
                 exit;
             }
-            if($u[0]->getMdp() != $data['password_form'])
+            if($u->getMdp() != $data['password_form'])
             {
                 header("Location: /login");
                 exit;
             }
-            $_SESSION["user"] = $u[0];
+            $_SESSION["user"] = $u;
             header("Location: /home");
             exit;
         }
@@ -37,6 +37,13 @@
                 exit;
             }
             return $this->render('register');
+        }
+
+        public function logout()
+        {
+            unset($_SESSION['user']);
+            header("Location: /login");
+            exit;
         }
     }
 
