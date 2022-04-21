@@ -41,6 +41,8 @@
         $app->routeur()->post('/login', [AuthControleur::class, 'handleLogin']);
 
         $app->routeur()->get('/logout', [AuthControleur::class, 'logout']);
+
+        $app->routeur()->get('/test', [TestControleur::class, 'runTests']);
     }
 
     $app->run();
