@@ -1,6 +1,6 @@
 <?php
 
-    class AuthController extends Controller
+    class AuthControleur extends Controleur
     {
 
         public function login()

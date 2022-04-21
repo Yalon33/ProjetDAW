@@ -1,6 +1,6 @@
 <?php
 
-    class Controller
+    class Controleur
     {
         private string $layout = 'main';
 
