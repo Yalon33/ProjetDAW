@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="../css/lessonpage.css">
-<body class="dark">
+
             <div class="lesson_inner">
                 <p class="titre_lesson">Titre de cours <span class="nom_prof">Nom de prof</span> </p>
                 <div class="list_diapos">
@@ -115,6 +115,3 @@
             </div>
             <div class="footer"></div>
             <script src="../javascript/lessonpage.js"></script>
-</body>
-
-</html>

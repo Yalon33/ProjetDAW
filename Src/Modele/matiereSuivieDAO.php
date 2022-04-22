@@ -11,7 +11,7 @@
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
                 return false;
-            }
+            } 
             $res = array();
             if ($data !== false){
                 foreach($data as $row){

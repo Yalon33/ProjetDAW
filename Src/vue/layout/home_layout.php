@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="files/css/userpage.css">
 <?php elseif (Application::getInstance()->request()->getPath() === '/home'): ?>
     <link rel="stylesheet" href="files/css/homepage.css">
+<?php elseif (Application::getInstance()->request()->getPath() === '/lesson_suivi'): ?>
+    <link rel="stylesheet" href="files/css/homepage.css">
+
+
 <?php endif ?>
 
 <meta name="viewport" content="width=device-width,initial-scale=1">

@@ -34,6 +34,16 @@
             }
         }
 
+        public static function getById($i){
+            try{
+                $req = BDD::prepAndExec("SELECT * FROM projet.UTILISATEUR WHERE id=:i;", array('i' => $i))->fetchAll();
+                return !empty($req) ? self::fromRow($req[0]) : false;
+            } catch (PDOException $e){
+                echo $e->getMessage()."<br>";
+                return false;
+            }
+        }
+
         /**
          * Insère un utilisateur dans la base de données (mise à jour si l'utilisateur existe déjà)
          *

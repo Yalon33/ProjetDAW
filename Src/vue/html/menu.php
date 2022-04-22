@@ -31,7 +31,7 @@
             </a>
         </li>
         <li class="menu_cours">
-            <a href="/lessons">
+            <a href="/lesson_suivi">
                     <i class='bx bx-book' ></i>
                     <span class="text_opacity">Lesson</span>
             </a>
