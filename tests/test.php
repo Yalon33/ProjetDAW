@@ -1,4 +1,5 @@
 <?php
+    set_include_path("../");
     require_once("Src/Modele/associationDAO.php");
     require_once("Src/Modele/canalDAO.php");
     require_once("Src/Modele/contenuDAO.php");
