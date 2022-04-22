@@ -21,6 +21,8 @@
         $calculMat = new Matiere(null, "calcul matriciel", "12-01-2022", $daniel->getId(), "L3", "imageCalculMatriciel.png");
         $algLin = new Matiere(null, "algebre linéraire", "16-03-2022", $daniel->getId(), "M2", "imageAlgebreLineaire.png");
         if(MatiereDAO::create($calculMat) !== false && MatiereDAO::create($algLin)){
+            print_r(MatiereDAO::getAll());
+            echo"<br>";
             $calculMatBDD = MatiereDAO::getByNom($calculMat->getNom());
             $algLinBDD = MatiereDAO::getByNom($algLin->getNom());
             ($calculMat->compareTo($calculMatBDD) && $algLin->compareTo($algLinBDD)) ? succeededTest($nomTest) : failedTest($nomTest);

@@ -1,3 +1,4 @@
+<p><?php require_once("Src/Modele/MatiereDAO.php");print_r(MatiereDAO::getAll())?></p>
 <div class="homepage_grid_card">
     <ul class="grid_card">
         <li class="homepage_card">
