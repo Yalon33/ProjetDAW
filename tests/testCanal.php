@@ -1,4 +1,6 @@
 <?php
+    require_once("Src/Modele/canalDAO.php");
+
     function testInsertUniqueCanal($nomTest){
         BDD::query("ALTER TABLE projet.canal auto_increment=5");
         BDD::query("START TRANSACTION;");

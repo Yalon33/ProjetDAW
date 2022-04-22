@@ -1,17 +1,5 @@
 <?php
     set_include_path("../");
-    require_once("Src/Modele/associationDAO.php");
-    require_once("Src/Modele/canalDAO.php");
-    require_once("Src/Modele/contenuDAO.php");
-    require_once("Src/Modele/etudiantDAO.php");
-    require_once("Src/Modele/forumDAO.php");
-    require_once("Src/Modele/matiereDAO.php");
-    require_once("Src/Modele/matiereSuivieDAO.php");
-    require_once("Src/Modele/messageDAO.php");
-    require_once("Src/Modele/qcmDAO.php");
-    require_once("Src/Modele/reponseDAO.php");
-    require_once("Src/Modele/tagDAO.php");
-    require_once("Src/Modele/utilisateurDAO.php");
     require_once("tests/testAssociation.php");
     require_once("tests/testCanal.php");
     require_once("tests/testContenu.php");

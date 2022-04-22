@@ -1,4 +1,6 @@
 <?php
+    require_once("Src/Modele/tagDAO.php");
+
     function testInsertUniqueTag($nomTest){
         BDD::query("ALTER TABLE projet.tag auto_increment=7");
         BDD::query("START TRANSACTION;");

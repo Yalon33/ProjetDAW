@@ -1,4 +1,6 @@
 <?php
+    require_once("Src/Modele/messageDAO.php");
+
     function testInsertUniqueMessage($nomTest){
         BDD::query("ALTER TABLE projet.message auto_increment=8");
         BDD::query("START TRANSACTION;");

@@ -1,4 +1,6 @@
 <?php
+    require_once("Src/Modele/forumDAO.php");
+
     function testInsertUniqueForum($nomTest){
         BDD::query("ALTER TABLE projet.forum auto_increment=4");
         BDD::query("START TRANSACTION;");

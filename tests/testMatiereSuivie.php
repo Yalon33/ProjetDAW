@@ -1,4 +1,6 @@
 <?php
+    require_once("Src/Modele/matiereSuivieDAO.php");
+
     function testInsertUniqueMatiereSuivie($nomTest){
         BDD::query("ALTER TABLE projet.utilisateur auto_increment=5");
         BDD::query("ALTER TABLE projet.matiere auto_increment=3");
