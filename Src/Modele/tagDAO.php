@@ -1,6 +1,6 @@
 <?php
-    require_once("bdd.php");
-    require_once("../Controlleur/tag.php");
+    require_once("Src/Modele/bdd.php");
+    require_once("Src/Controleur/tag.php");
 
     class TagDAO {
         /**

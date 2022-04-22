@@ -1,4 +1,6 @@
 <?php
+    require_once("Src/Modele/qcmDAO.php");
+
     function testInsertUniqueQCM($nomTest){
         BDD::query("ALTER TABLE projet.qcm auto_increment=3");
         BDD::query("START TRANSACTION;");

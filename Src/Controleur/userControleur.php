@@ -1,5 +1,4 @@
 <?php
-
     class UserControleur extends Controleur
     {
         public function user()

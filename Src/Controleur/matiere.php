@@ -1,6 +1,6 @@
 <?php
 
-    require_once("../Controlleur/niveau.php");
+    require_once("Src/Controleur/niveau.php");
 
     class Matiere{
         private $id;
@@ -15,7 +15,7 @@
             $this->nom = $nom;
             $this->dateCreation = $dateCreation;
             $this->createur = $createur;
-            $this->niveau = Niveau::toType($niveau);
+            $this->niveau = is_string($niveau) ? Niveau::toType($niveau) : $niveau;
             $this->image = $image;
         }
 

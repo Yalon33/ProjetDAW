@@ -1,4 +1,6 @@
 <?php
+    require_once("Src/Modele/utilisateurDAO.php");
+
     function testInsertUniqueUtilisateur($nomTest){
         BDD::query("ALTER TABLE projet.utilisateur auto_increment=5");
         BDD::query("START TRANSACTION;");

@@ -5,6 +5,7 @@
     require_once('Src/Controleur/homeControleur.php');
     require_once('Src/Controleur/authControleur.php');
     require_once('Src/Controleur/userControleur.php');
+    require_once('Src/Controleur/testControleur.php');
     require_once('Src/Modele/utilisateurDAO.php');
 
     if(!session_id())
@@ -42,7 +43,7 @@
 
         $app->routeur()->get('/logout', [AuthControleur::class, 'logout']);
 
-        $app->routeur()->get('/test', [TestControleur::class, 'runTests']);
+        $app->routeur()->get('/test', [TestControleur::class, 'runTest']);
     }
 
     $app->run();

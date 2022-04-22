@@ -1,4 +1,6 @@
 <?php
+    require_once("Src/Modele/contenuDAO.php");
+
     function testInsertUniqueContenu($nomTest){
         BDD::query("ALTER TABLE projet.contenu auto_increment=4");
         BDD::query("START TRANSACTION;");

@@ -1,8 +1,8 @@
 <?php
-    require_once("bdd.php");
-    require_once("../controlleur/matiere.php");
-    require_once("parseDate.php");
-    require_once("../controlleur/niveau.php");
+    require_once("Src/Modele/bdd.php");
+    require_once("Src/Modele/parseDate.php");
+    require_once("Src/Controleur/matiere.php");
+    require_once("Src/Controleur/niveau.php");
 
     class MatiereDAO {
         /**

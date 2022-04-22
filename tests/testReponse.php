@@ -1,4 +1,6 @@
 <?php
+    require_once("Src/Modele/reponseDAO.php");
+
     function testInsertUniqueReponse($nomTest){
         BDD::query("ALTER TABLE projet.utilisateur auto_increment=5");
         BDD::query("ALTER TABLE projet.qcm auto_increment=3");

@@ -1,6 +1,6 @@
 <?php
-    require_once("bdd.php");
-    require_once("../Controlleur/matiereSuivie.php");
+    require_once("Src/Modele/bdd.php");
+    require_once("Src/Controleur/matiereSuivie.php");
     class MatiereSuivieDAO {
         /**
          * @return array[Int=>Avancement] Un tableau associatif avec l'identifiant de la matière en clé et l'avancement en valeur
