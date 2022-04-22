@@ -1,5 +1,5 @@
 <?php
-    require_once("../Controlleur/canal.php");
+    require_once("Src/Controleur/canal.php");
 
     class CanalDAO {
         /**

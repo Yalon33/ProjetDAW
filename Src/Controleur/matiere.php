@@ -1,6 +1,6 @@
 <?php
 
-    require_once("../Controlleur/niveau.php");
+    require_once("Src/Controleur/niveau.php");
 
     class Matiere{
         private $id;

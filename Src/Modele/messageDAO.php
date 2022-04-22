@@ -1,6 +1,6 @@
 <?php
-    require_once("bdd.php");
-    require_once("../Controlleur/message.php");
+    require_once("Src/Modele/bdd.php");
+    require_once("Src/Controleur/message.php");
 
     class MessageDAO {
         /**

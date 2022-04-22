@@ -1,6 +1,6 @@
 <?php
-    require_once("../Controlleur/forum.php");
-    require_once("bdd.php");
+    require_once("Src/Modele/bdd.php");
+    require_once("Src/Controleur/forum.php");
     class ForumDAO {
         /**
          * @return array[Forum] Les matières dans la base

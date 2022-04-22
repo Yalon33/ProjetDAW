@@ -1,6 +1,6 @@
 <?php
-    require_once("bdd.php");
-    require_once("../Controlleur/contenu.php");
+    require_once("Src/Modele/bdd.php");
+    require_once("Src/Controleur/contenu.php");
     class ContenuDAO {
         /**
          * @return array[Contenu] Les matières dans la base

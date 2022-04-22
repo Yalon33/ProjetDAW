@@ -1,16 +1,16 @@
 <?php
-    require_once("associationDAO.php");
-    require_once("canalDAO.php");
-    require_once("contenuDAO.php");
-    require_once("etudiantDAO.php");
-    require_once("forumDAO.php");
-    require_once("matiereDAO.php");
-    require_once("matiereSuivieDAO.php");
-    require_once("messageDAO.php");
-    require_once("qcmDAO.php");
-    require_once("reponseDAO.php");
-    require_once("tagDAO.php");
-    require_once("utilisateurDAO.php");
+    require_once("Src/Modele/associationDAO.php");
+    require_once("Src/Modele/canalDAO.php");
+    require_once("Src/Modele/contenuDAO.php");
+    require_once("Src/Modele/etudiantDAO.php");
+    require_once("Src/Modele/forumDAO.php");
+    require_once("Src/Modele/matiereDAO.php");
+    require_once("Src/Modele/matiereSuivieDAO.php");
+    require_once("Src/Modele/messageDAO.php");
+    require_once("Src/Modele/qcmDAO.php");
+    require_once("Src/Modele/reponseDAO.php");
+    require_once("Src/Modele/tagDAO.php");
+    require_once("Src/Modele/utilisateurDAO.php");
     require_once("tests/testAssociation.php");
     require_once("tests/testCanal.php");
     require_once("tests/testContenu.php");
