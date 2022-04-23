@@ -55,6 +55,28 @@
         }
     }
 
+    function testRecuperationUniqueMatiereEtudiant($nomTest){
+        BDD::query("ALTER TABLE projet.utilisateur auto_increment=5");
+        BDD::query("ALTER TABLE projet.matiere auto_increment=3");
+        BDD::query("START TRANSACTION");
+
+        $danielUser = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT", "image.png");
+        UtilisateurDAO::create($danielUser);
+        $danielEtudiant = new Etudiant(null, "L3");
+        EtudiantDAO::create($danielEtudiant);
+
+        $danielUser = UtilisateurDAO::getByLogin($danielUser->getLogin());
+        $danielEtudiant = EtudiantDAO::getById($danielUser->getId());
+
+        $calculMat = new Matiere(null, "calcul matriciel", "12-01-2022", $danielUser->getId(), "L3", "imageCalculMatriciel.png");
+        MatiereDAO::create($calculMat);
+        $calculMat = MatiereDAO::getByNom($calculMat->getNom());
+
+        MatiereSuivieDAO::create($danielEtudiant, $calculMat, Avancement::ENCOURS);
+
+        MatiereDAO::getByEtudiant($danielEtudiant) == array($calculMat) ? succeededTest($nomTest) : failedTest($nomTest);
+    }
+
     function testMatiereDAO(){
         testClearTable("matiere");
         testInsertUniqueMatiere("Insertion d'une unique matière dans la table matiere");

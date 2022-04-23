@@ -50,6 +50,19 @@
         }
 
         /**
+         * Permet de récupérer les contenus d'une matière
+         *
+         * @param Matiere $m
+         * @return array[Contenu] Les contenus qui sont associés à la matière donnée en paramètre
+         */
+        public static function getByMatiere($m){
+            if(!is_null($m->getId())){
+                $req = BDD::prepAndExec("SELECT * FROM projet.matiere AS m, projet.matiere_contnu AS mc, projet.contenu AS c
+                                            WHERE m.id=mc.id_mat AND mc.id_contenuts=c.id AND mc.id_mat=:id;", array(":id" => $m->getId()));
+            }
+        }
+
+        /**
          * Insère un contenu dans la base de données (mise à jour si le contenu existe déja)
          * 
          * @param Contenu $matiere

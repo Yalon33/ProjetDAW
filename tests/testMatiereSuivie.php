@@ -20,7 +20,7 @@
 
         MatiereSuivieDAO::create($danielEtudiant, $calculMat, Avancement::ENCOURS);
 
-        empty(array_diff(MatiereSuivieDAO::getByIdEtuMat($daniel->getId(), $calculMat->getId()), [$calculMat->getId() => "EN COURS"]))
+        empty(array_diff(MatiereSuivieDAO::getAvancement($daniel->getId(), $calculMat->getId()), [$calculMat->getId() => "EN COURS"]))
         ? succeededTest($nomTest) : failedTest($nomTest);
     }
 
@@ -44,7 +44,7 @@
         MatiereSuivieDAO::create($danielEtudiant, $calculMat, Avancement::ENCOURS);
         MatiereSuivieDAO::create($danielEtudiant, $calculMat, Avancement::TERMINE);
 
-        empty(array_diff(MatiereSuivieDAO::getByIdEtuMat($daniel->getId(), $calculMat->getId()), [$calculMat->getId() => "TERMINE"]))
+        empty(array_diff(MatiereSuivieDAO::getAvancement($daniel->getId(), $calculMat->getId()), [$calculMat->getId() => "TERMINE"]))
         ? succeededTest($nomTest) : failedTest($nomTest);
     }
 
@@ -68,7 +68,7 @@
         MatiereSuivieDAO::create($danielEtudiant, $calculMat, Avancement::ENCOURS);
 
         if(MatiereSuivieDAO::delete($daniel, $calculMat) !== false){
-            MatiereSuivieDAO::getByIdEtuMat($danielEtudiant->getId(), $calculMat->getId()) === false ? succeededTest($nomTest) : failedTest($nomTest);
+            MatiereSuivieDAO::getAvancement($danielEtudiant->getId(), $calculMat->getId()) === false ? succeededTest($nomTest) : failedTest($nomTest);
         }
     }
 

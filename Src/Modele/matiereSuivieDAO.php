@@ -26,7 +26,7 @@
          * @param entier $id_mat
          * @return array[Matiere=>Avancement]/false La matiere_suivie par l'étudiant de la base correspondant à l'id en paramètre, false sinon
          */
-        public static function getByIdEtuMat($id_etu, $id_mat){
+        public static function getAvancement($id_etu, $id_mat){
             try{
                 $req = BDD::prepAndExec("SELECT * FROM projet.matiere_suivie WHERE id_etu=:idE AND id_mat=:idM;", [":idE" => $id_etu, ":idM" => $id_mat])->fetchALL();
                 return !empty($req) ? array($req[0]['id_mat']=>$req[0]['avancement']) : false;
@@ -45,7 +45,8 @@
          * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
         public static function create($e, $m, $a){
-            if (self::getByIdEtuMat($e->getId(), $m->getId()) !== false){
+            $req = self::getAvancement($e->getId(), $m->getId());
+            if (!empty($req)){
                 try{
                     return BDD::prepAndExec("UPDATE projet.matiere_suivie SET avancement=:a WHERE id_etu=:idE AND id_mat=:idM",
                         array(
@@ -80,7 +81,7 @@
          * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
         public static function delete($e, $m){
-            if(self::getByIdEtuMat($e->getId(), $m->getId()) !== false){
+            if(self::getAvancement($e->getId(), $m->getId()) !== false){
                 try{
                     return BDD::prepAndExec("DELETE FROM projet.matiere_suivie WHERE id_etu=:idE AND id_mat=:idM", array('idE'=> $e->getId(), 'idM'=>$m->getId()));
                 } catch (PDOException $e){

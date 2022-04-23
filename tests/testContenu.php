@@ -31,9 +31,22 @@
         }
     }
 
+    function testRecuperationContenuUniqueMatiere($nomTest){
+        BDD::query("ALTER TABLE projet.utilisateur auto_increment=5");
+        BDD::query("ALTER TABLE projet.matiere auto_increment=3");
+        BDD::query("ALTER TABLE projet.contenu auto_increment=8");
+        BDD::query("START TRANSACTION;");
+
+        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "PROFESSEUR", "image.png");
+        UtilisateurDAO::create($daniel);
+        $daniel = UtilisateurDAO::getByLogin("Zokey");
+
+    }
+
     function testContenuDAO(){
         testClearTable("contenu");
         testInsertUniqueContenu("Insertion d'un unique contenu dans la table contenu");
+        //testRecuperationContenuUniqueMatiere("Récupération du contenu d'une matière");
         testUpdateContenu("Mise à jour d'un contenu dans la table");
         testDeleteRowContenu("Suppression d'un contenu parmi les autres");
     }

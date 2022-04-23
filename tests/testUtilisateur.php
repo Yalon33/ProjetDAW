@@ -44,29 +44,10 @@
         }
     }
 
-    function testForumUtilisateur($nomTest){
-        BDD::query("ALTER TABLE projet.utilisateur auto_increment=5");
-        BDD::query("ALTER TABLE projet.forum auto_increment=4");
-        BDD::query("START TRANSACTION;");
-
-        $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "PROFESSEUR", "image.png");
-        UtilisateurDAO::create($daniel);
-        $daniel = UtilisateurDAO::getByLogin("Zokey");
-
-        $algebreLineaire = new Forum(null, "algebre lineaire");
-        ForumDAO::create($algebreLineaire);
-        $algebreLineaire = ForumDAO::getByNom($algebreLineaire->getNom());
-
-        AssociationDAO::createParticipantForum($daniel->getId(), $algebreLineaire->getId());
-
-        UtilisateurDAO::getForum($daniel) == array($algebreLineaire) ? succeededTest($nomTest) : failedTest($nomTest);       
-    }
-
     function testUtilisateurDAO(){
         testClearTable("utilisateur");
         testInsertUniqueUtilisateur("Insertion d'un unique utilisateur dans la table utilisateur");
         //testCreationUtilisateurMauvaisType("Insertion d'un utilisateur avec un type qui n'existe pas");
-        testForumUtilisateur("Récupération d'un forum auquel participe un étudiant");
         testUpdateUtilisateur("Mise à jour d'un utilisateur dans la table");
         testDeleteRowUtilisateur("Suppression d'un utilisateur parmi les autres");
     }
