@@ -81,6 +81,7 @@
         testClearTable("matiere");
         testInsertUniqueMatiere("Insertion d'une unique matière dans la table matiere");
         testInsertPlusieursMatiere("Insertion de plusieurs matières dans la table matiere");
+        testRecuperationUniqueMatiereEtudiant("Récupération de l'unique matière suivie par un étudiant");
         testUpdateMatiere("Mise à jour d'une matiere dans la table");
         testDeleteRowMatiere("Suppression d'une matière parmi les autres");
     }

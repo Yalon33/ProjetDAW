@@ -60,7 +60,7 @@
             if(!is_null($e->getId())){
                 $req = BDD::prepAndExec("SELECT * FROM projet.matiere AS m, projet.matiere_suivie AS ms, projet.etudiant AS e WHERE
                                             e.id=ms.id_etu ANd ms.id_mat = m.id AND e.id=:id;",
-                                        array('id' => $e->getId()))->fetchAll();
+                                            array('id' => $e->getId()))->fetchAll();
                 if(!empty($req)){
                     $res = array();
                     foreach($req as $row){

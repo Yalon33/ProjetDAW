@@ -43,7 +43,6 @@
     function testEtudiantDAO(){
         testClearTable("etudiant");
         testInsertUniqueEtudiant("Insertion d'un unique étudiant dans la table etudiant");
-        testRecuperationUniqueMatiereEtudiant("Récupération de l'unique matière suivie par un étudiant");
         testUpdateEtudiant("Mise à jour d'un étudiant dans la table");
         testDeleteRowEtudiant("Suppression d'un étudiant parmi les autres");
     }

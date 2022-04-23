@@ -57,8 +57,20 @@
          */
         public static function getByMatiere($m){
             if(!is_null($m->getId())){
-                $req = BDD::prepAndExec("SELECT * FROM projet.matiere AS m, projet.matiere_contnu AS mc, projet.contenu AS c
-                                            WHERE m.id=mc.id_mat AND mc.id_contenuts=c.id AND mc.id_mat=:id;", array(":id" => $m->getId()));
+                $req = BDD::prepAndExec("SELECT * FROM projet.matiere AS m, projet.matiere_contenu AS mc, projet.contenu AS c
+                                            WHERE m.id=mc.id_mat AND mc.id_contenus=c.id AND mc.id_mat=:id;",
+                                        array(":id" => $m->getId()))->fetchAll();
+                if (!empty($req)){
+                    $res = array();
+                    foreach($req as $row){
+                        array_push($res, new Contenu(
+                            $row['id_contenus'],
+                            $row['uri']
+                        ));
+                    }
+                    return $res;
+                }
+                return array();
             }
         }
 
