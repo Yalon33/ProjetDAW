@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="files/css/homepage.css">
 <?php elseif (Application::getInstance()->request()->getPath() === '/lesson_suivi'): ?>
     <link rel="stylesheet" href="files/css/homepage.css">
+<?php elseif (Application::getInstance()->request()->getPath() === '/lessons'): ?>
+    <link rel="stylesheet" href="files/css/lessonpage.css">
 
 
 <?php endif ?>
