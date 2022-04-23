@@ -61,6 +61,7 @@
                 return false;
             }
         }
+
         /**
          * Insère un étudiant dans la base de données (mise à jour si l'étudiant existe déjà)
          *

@@ -55,7 +55,8 @@
          * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
         public static function createParticipantForum($id_part, $id_forum){
-            if (empty(BDD::prepAndExec("SELECT * FROM projet.participer_forum WHERE id_part=:idP AND id_forum=:idF;", ["idP" => $id_part, "idF" => $id_forum])->fetchAll())){
+            $req = BDD::prepAndExec("SELECT * FROM projet.participer_forum WHERE id_part=:idP AND id_forum=:idF;", ["idP" => $id_part, "idF" => $id_forum])->fetchAll();
+            if (empty($req)){
                 try{
                     return BDD::prepAndExec("INSERT INTO projet.participer_forum (id_part, id_forum) VALUES(:idP, :idF);",[
                         'idP' => $id_part,
