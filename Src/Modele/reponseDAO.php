@@ -50,6 +50,28 @@
         }
 
         /**
+         * Récupération des réponses d'un utilisateur
+         *
+         * @param Utilisateur $u
+         * @return array[Reponse] Un tableau contenant les réponses de l'utilisateur donnée en argument
+         */
+        public static function getByUtilisateur($u){
+            if(!is_null($u->getId())){
+                $req = BDD::prepAndExec("SELECT r.id AS id, r.id_qcm AS id_qcm, r.xml_uri AS xml_uri FROM projet.reponse AS r, projet.reponse_utilisateur AS ru, projet.utilisateur AS u
+                                            WHERE r.id=ru.id_rep AND ru.id_uti=u.id AND u.id=:id;",
+                                        array("id" => $u->getId()))->fetchAll();
+                if(!empty($req)){
+                    $res = array();
+                    foreach($req as $row){
+                        array_push($res, self::fromRow($row));
+                    }
+                    return $res;
+                }
+                return $req;
+            }
+        }
+
+        /**
          * Insère une reponse dans la base de données (mise à jour si la reponse existe déja)
          * 
          * @param Reponse $m
