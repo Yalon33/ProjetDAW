@@ -58,20 +58,13 @@
          */
         public static function getByEtudiant($e){
             if(!is_null($e->getId())){
-                $req = BDD::prepAndExec("SELECT * FROM projet.matiere AS m, projet.matiere_suivie AS ms, projet.etudiant AS e WHERE
+                $req = BDD::prepAndExec("SELECT id_mat AS id, nom, date_creation, id_createur, m.niveau AS niveau, image FROM projet.matiere AS m, projet.matiere_suivie AS ms, projet.etudiant AS e WHERE
                                             e.id=ms.id_etu ANd ms.id_mat = m.id AND e.id=:id;",
                                             array('id' => $e->getId()))->fetchAll();
                 if(!empty($req)){
                     $res = array();
                     foreach($req as $row){
-                        array_push($res, new Matiere(
-                            $row['id_mat'],
-                            $row['nom'],
-                            ParseDate::parse($row['date_creation']),
-                            $row['id_createur'],
-                            Niveau::toType($row['10']),
-                            $row['image']
-                        ));
+                        array_push($res, self::fromRow($row));
                     }
                     return $res;
                 }

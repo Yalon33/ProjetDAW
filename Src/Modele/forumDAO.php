@@ -56,16 +56,13 @@
          */
         public static function getByUser($u){
             if(!is_null($u->getId())){
-                $req = BDD::prepAndExec("SELECT id_part, id_forum, f.nom FROM projet.utilisateur AS u, projet.participer_forum AS pf, projet.forum AS f
+                $req = BDD::prepAndExec("SELECT id_forum AS id, f.nom AS nom FROM projet.utilisateur AS u, projet.participer_forum AS pf, projet.forum AS f
                                             WHERE u.id=pf.id_part AND pf.id_forum=f.id AND pf.id_part=:id;",
                                         array("id" => $u->getId()))->fetchAll();
                 if(!empty($req)){
                     $res = array();
                     foreach($req  as $row){
-                        array_push($res, new Forum(
-                            $row['id_forum'],
-                            $row['nom']
-                        ));
+                        array_push($res, self::fromRow($row));
                     }
                     return $res;
                 }
