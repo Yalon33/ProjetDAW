@@ -57,7 +57,7 @@
         AssociationDAO::createParticipantForum($daniel->getId(), $algebreLineaire->getId()) !== false ? succeededTest($nomTest) : failedTest($nomTest);
     }
     
-    function terstInsertUniqueReponseUtilisateur($nomTest){
+    function testInsertUniqueReponseUtilisateur($nomTest){
         BDD::query("ALTER TABLE projet.utilisateur auto_increment=5");
         BDD::query("ALTER TABLE projet.qcm auto_increment=3");
         BDD::query("ALTER TABLE projet.reponse auto_increment=4");
@@ -81,6 +81,6 @@
         testInsertUniqueMatiereContenu("Insertion d'une association entre matière et contenu dans la table matiere_contenu");
         testInsertUniqueMatiereTag("Insertion d'une association entre matière et tag dans la table matiere_tag");
         testInsertUniqueParticipantForum("Insertion d'une participation au forum dans la table participer_forum");
-        terstInsertUniqueReponseUtilisateur("Insertion d'une reponse de la part d'un utilisateur dans la table reponse_utilisateur");
+        testInsertUniqueReponseUtilisateur("Insertion d'une reponse de la part d'un utilisateur dans la table reponse_utilisateur");
     }
 ?>

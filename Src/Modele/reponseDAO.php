@@ -72,6 +72,21 @@
         }
 
         /**
+         * Récupération de la correction du QCM
+         * 
+         * @param QCM $q
+         * @return Reponse/false Renvoie le réponse au QCM donné en paramètre et faux si il n'y en a pas
+         */
+        public static function getCorrection($q){
+            if(!is_null($q->getId())){
+                $req = BDD::prepAndExec("SELECT r.id AS id, id_qcm, xml_uri FROM projet.qcm AS q, projet.reponse_utilisateur as ru, projet.reponse AS r
+                                            WHERE q.id_prof=ru.id_uti AND ru.id_rep=r.id AND q.id=:id",
+                                        array("id" => $q->getId()))->fetchAll();
+                return !empty($req) ? self::fromRow($req[0]) : false;
+            }
+        }
+
+        /**
          * Insère une reponse dans la base de données (mise à jour si la reponse existe déja)
          * 
          * @param Reponse $m
