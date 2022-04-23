@@ -68,7 +68,7 @@
         MatiereSuivieDAO::create($danielEtudiant, $calculMat, Avancement::ENCOURS);
 
         if(MatiereSuivieDAO::delete($daniel, $calculMat) !== false){
-            MatiereSuivieDAO::getAvancement($danielEtudiant->getId(), $calculMat->getId()) === false ? succeededTest($nomTest) : failedTest($nomTest);
+            empty(MatiereSuivieDAO::getAvancement($danielEtudiant->getId(), $calculMat->getId()))? succeededTest($nomTest) : failedTest($nomTest);
         }
     }
 
