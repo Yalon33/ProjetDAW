@@ -60,14 +60,7 @@
                 $req = BDD::prepAndExec("SELECT r.id AS id, r.id_qcm AS id_qcm, r.xml_uri AS xml_uri FROM projet.reponse AS r, projet.reponse_utilisateur AS ru, projet.utilisateur AS u
                                             WHERE r.id=ru.id_rep AND ru.id_uti=u.id AND u.id=:id;",
                                         array("id" => $u->getId()))->fetchAll();
-                if(!empty($req)){
-                    $res = array();
-                    foreach($req as $row){
-                        array_push($res, self::fromRow($row));
-                    }
-                    return $res;
-                }
-                return $req;
+                return !empty($req) ? array_map("self::fromRow", $req) : $req;
             }
         }
 
@@ -80,9 +73,18 @@
         public static function getCorrection($q){
             if(!is_null($q->getId())){
                 $req = BDD::prepAndExec("SELECT r.id AS id, id_qcm, xml_uri FROM projet.qcm AS q, projet.reponse_utilisateur as ru, projet.reponse AS r
-                                            WHERE q.id_prof=ru.id_uti AND ru.id_rep=r.id AND q.id=:id",
-                                        array("id" => $q->getId()))->fetchAll();
+                                            WHERE r.id_qcm=q.id AND ru.id_rep=r.id AND q.id=:id AND ru.id_uti=:id_prof",
+                                        array("id" => $q->getId(), "id_prof" => $q->getIdProf()))->fetchAll();
                 return !empty($req) ? self::fromRow($req[0]) : false;
+            }
+        }
+
+        public static function getCopie($q){
+            if(!is_null($q->getId())){
+                $req = BDD::prepAndExec("SELECT r.id AS id, id_qcm, xml_uri FROM projet.qcm AS q, projet.reponse_utilisateur as ru, projet.reponse AS r
+                                            WHERE r.id_qcm=q.id AND ru.id_rep=r.id AND q.id=:id AND ru.id_uti!=:id_prof",
+                                        array("id" => $q->getId(), "id_prof" => $q->getIdProf()))->fetchAll();
+                return !empty($req) ? array_map("self::fromRow", $req) : $req;
             }
         }
 
