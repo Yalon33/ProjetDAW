@@ -59,14 +59,7 @@
                 $req = BDD::prepAndExec("SELECT id_forum AS id, f.nom AS nom FROM projet.utilisateur AS u, projet.participer_forum AS pf, projet.forum AS f
                                             WHERE u.id=pf.id_part AND pf.id_forum=f.id AND pf.id_part=:id;",
                                         array("id" => $u->getId()))->fetchAll();
-                if(!empty($req)){
-                    $res = array();
-                    foreach($req  as $row){
-                        array_push($res, self::fromRow($row));
-                    }
-                    return $res;
-                }
-                return array();
+                return !empty($req) ? array_map("self::fromRow", $req) : $req;
             }
         }
 

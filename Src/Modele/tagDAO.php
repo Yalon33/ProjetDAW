@@ -61,14 +61,7 @@
                 $req = BDD::prepAndExec("SELECT t.id AS id, t.contenu AS contenu FROM projet.matiere AS m, projet.matiere_tag AS mt, projet.tag AS t
                                             WHERE m.id=mt.id_mat AND mt.id_tag=t.id AND m.id=:id;",
                                         array("id" => $m->getId()))->fetchAll();
-                if(!empty($req)){
-                    $res = array();
-                    foreach($req as $row){
-                        array_push($res, self::fromRow($row));
-                    }
-                    return $res;
-                }
-                return $req;
+                return !empty($req) ? array_map("self::fromRow", $req) : $req;
             }
         }
 
