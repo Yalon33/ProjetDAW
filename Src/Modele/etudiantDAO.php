@@ -36,32 +36,6 @@
         }
 
         /**
-         * @param Etudiant $e
-         * @return array[Matiere] Renvoie toutes les matières suivient par l'étudiant
-         */
-        public static function getMatiereSuivie($e){
-            if(!is_null($e->getId())){
-                $req = BDD::prepAndExec("SELECT * FROM projet.matiere AS m, projet.matiere_suivie AS ms, projet.etudiant AS e WHERE e.id=ms.id_etu ANd ms.id_mat = m.id AND e.id=:id;", array(
-                    'id' => $e->getId()
-                ))->fetchAll();
-                if(!empty($req)){
-                    $res = array();
-                    foreach($req as $row){
-                        array_push($res, new Matiere(
-                            $row['id_mat'],
-                            $row['nom'],
-                            ParseDate::parse($row['date_creation']),
-                            $row['id_createur'],
-                            Niveau::toType($row['10']),
-                            $row['image']
-                        ));
-                    }
-                    return $res;
-                }
-                return false;
-            }
-        }
-        /**
          * Insère un étudiant dans la base de données (mise à jour si l'étudiant existe déjà)
          *
          * @param Etudiant $e

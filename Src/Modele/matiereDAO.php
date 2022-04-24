@@ -52,9 +52,17 @@
             }
         }
 
-        public static function getMatiereByEtudiant(){
-            // Lien entre matiere et etudiant avec la table matiere_suivie
-            // Renvoie un tableau [Matiere => Avancement]
+        /**
+         * @param Etudiant $e
+         * @return array[Matiere] Renvoie toutes les matières suivient par l'étudiant
+         */
+        public static function getByEtudiant($e){
+            if(!is_null($e->getId())){
+                $req = BDD::prepAndExec("SELECT id_mat AS id, nom, date_creation, id_createur, m.niveau AS niveau, image FROM projet.matiere AS m, projet.matiere_suivie AS ms, projet.etudiant AS e WHERE
+                                            e.id=ms.id_etu ANd ms.id_mat = m.id AND e.id=:id;",
+                                            array('id' => $e->getId()))->fetchAll();
+                return !empty($req) ? array_map("self::fromRow", $req) : $req;
+            }
         }
 
         /**

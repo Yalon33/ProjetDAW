@@ -1,6 +1,7 @@
 <?php
     require_once("Src/Modele/bdd.php");
-    require_once("Src/Controleur/matiereSuivie.php");
+    require_once("Src/Modele/matiereDAO.php");
+    require_once("Src/Controleur/avancement.php");
     class MatiereSuivieDAO {
         /**
          * @return array[Int=>Avancement] Un tableau associatif avec l'identifiant de la matière en clé et l'avancement en valeur
@@ -22,14 +23,14 @@
         }
 
         /**
-         * @param entier $id_etu
-         * @param entier $id_mat
-         * @return array[Matiere=>Avancement]/false La matiere_suivie par l'étudiant de la base correspondant à l'id en paramètre, false sinon
+         * @param Etudiant $id_etu
+         * @param Matiere $id_mat
+         * @return array[string=>string] Un tableau associatif avec le nom de la matière en clef et l'avancement en string en valeur
          */
-        public static function getByIdEtuMat($id_etu, $id_mat){
+        public static function getAvancement($id_etu, $id_mat){
             try{
                 $req = BDD::prepAndExec("SELECT * FROM projet.matiere_suivie WHERE id_etu=:idE AND id_mat=:idM;", [":idE" => $id_etu, ":idM" => $id_mat])->fetchALL();
-                return !empty($req) ? array($req[0]['id_mat']=>$req[0]['avancement']) : false;
+                return !empty($req) ? array(MatiereDAO::getById($req[0]['id_mat'])->getNom() => $req[0]['avancement']) : array();
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
                 return false;
@@ -45,7 +46,8 @@
          * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
         public static function create($e, $m, $a){
-            if (self::getByIdEtuMat($e->getId(), $m->getId()) !== false){
+            $req = self::getAvancement($e->getId(), $m->getId());
+            if (!empty($req)){
                 try{
                     return BDD::prepAndExec("UPDATE projet.matiere_suivie SET avancement=:a WHERE id_etu=:idE AND id_mat=:idM",
                         array(
@@ -80,7 +82,7 @@
          * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
         public static function delete($e, $m){
-            if(self::getByIdEtuMat($e->getId(), $m->getId()) !== false){
+            if(self::getAvancement($e->getId(), $m->getId()) !== false){
                 try{
                     return BDD::prepAndExec("DELETE FROM projet.matiere_suivie WHERE id_etu=:idE AND id_mat=:idM", array('idE'=> $e->getId(), 'idM'=>$m->getId()));
                 } catch (PDOException $e){

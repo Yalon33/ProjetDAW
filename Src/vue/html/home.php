@@ -1,4 +1,3 @@
-
 <div class="homepage_grid_card">
     <ul class="grid_card">
         <li class="homepage_card">
