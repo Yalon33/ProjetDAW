@@ -2,15 +2,24 @@
 
     class Request
     {
+        private int $id = -1;
+
         public function getPath()
         {
             $path = $_SERVER['REQUEST_URI'] ?? '/';
-            $pos = strpos($path, '?');
-            if($pos === false)
+            $posQuestionMark = strpos($path, '?');
+            $explodedPath = explode('/', $path);
+            if(count($explodedPath) == 3)
+            {
+                $this->id = intval($explodedPath[2]);
+                $explodedPath[2] = '{id}';
+                return implode('/', $explodedPath);
+            }
+            if($posQuestionMark === false)
             {
                 return $path;
             }
-            $path = substr($path, 0, $pos);
+            $path = substr($path, 0, $posQuestionMark);
         }
 
         public function method()
@@ -26,6 +35,11 @@
         public function isPost()
         {
             return $this->method() === 'post';
+        }
+
+        public function getId()
+        {
+            return $this->id;
         }
 
         public function getData()

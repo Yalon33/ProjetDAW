@@ -7,6 +7,7 @@
     require_once('Src/Controleur/userControleur.php');
     require_once('Src/Controleur/testControleur.php');
     require_once('Src/Modele/utilisateurDAO.php');
+    require_once('Src/Modele/matiereDAO.php');
 
     if(!session_id())
     {
