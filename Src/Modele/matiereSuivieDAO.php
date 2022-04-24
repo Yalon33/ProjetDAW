@@ -23,14 +23,16 @@
         }
 
         /**
-         * @param Etudiant $id_etu
-         * @param Matiere $id_mat
-         * @return array[string=>string] Un tableau associatif avec le nom de la matière en clef et l'avancement en string en valeur
+         * @param Etudiant $e
+         * @param Matiere $m
+         * @return Avancement/false Renvoie l'avancement de l'élève dans la matière donnée en argument et faux si il n'y a pas d'avancement
          */
-        public static function getAvancement($id_etu, $id_mat){
+        public static function getAvancement($e, $m){
             try{
-                $req = BDD::prepAndExec("SELECT * FROM projet.matiere_suivie WHERE id_etu=:idE AND id_mat=:idM;", [":idE" => $id_etu, ":idM" => $id_mat])->fetchALL();
-                return !empty($req) ? array(MatiereDAO::getById($req[0]['id_mat'])->getNom() => $req[0]['avancement']) : array();
+                $req = BDD::prepAndExec("SELECT * FROM projet.matiere_suivie
+                                            WHERE id_etu=:idE AND id_mat=:idM;",
+                                        [":idE" => $e->getId(), ":idM" => $m->getId()])->fetchALL();
+                return !empty($req) ? Avancement::toType($req[0]['avancement']) : false;
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
                 return false;
@@ -46,14 +48,14 @@
          * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
         public static function create($e, $m, $a){
-            $req = self::getAvancement($e->getId(), $m->getId());
-            if (!empty($req)){
+            $req = self::getAvancement($e, $m);
+            if ($req !== false){
                 try{
                     return BDD::prepAndExec("UPDATE projet.matiere_suivie SET avancement=:a WHERE id_etu=:idE AND id_mat=:idM",
                         array(
                             "idE" => $e->getId(),
                             "idM" => $m->getId(),
-                            "a" => Avancement::toString($a)
+                            "a" => is_string($a) ? $a :Avancement::toString($a)
                         ));
                 } catch (PDOException $e){
                     echo $e->getMessage() . "<br>";
@@ -82,7 +84,7 @@
          * @return false/PDOStatement Renvoie faux si la requête a échoué, PDOStatement de la requête sinon
          */
         public static function delete($e, $m){
-            if(self::getAvancement($e->getId(), $m->getId()) !== false){
+            if(self::getAvancement($e, $m) !== false){
                 try{
                     return BDD::prepAndExec("DELETE FROM projet.matiere_suivie WHERE id_etu=:idE AND id_mat=:idM", array('idE'=> $e->getId(), 'idM'=>$m->getId()));
                 } catch (PDOException $e){

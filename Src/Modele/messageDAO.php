@@ -50,6 +50,13 @@
             }
         }
 
+        public static function getByCanal($c){
+            $req = BDD::prepAndExec("SELECT m.id AS id, m.contenu AS contenu, c.id AS id_canal, m.id_auteur AS id_auteur FROM projet.message AS m, projet.canal AS c
+                                        WHERE m.id_canal=c.id AND c.id=:id;",
+                                    array("id" => $c->getid()))->fetchAll();
+            return !empty($req) ? array_map("self::fromRow", $req) : $req;
+        }
+
         /**
          * Insère un message dans la base de données (mise à jour si le message existe déja)
          * 
