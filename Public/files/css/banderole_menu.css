@@ -11,7 +11,7 @@
     border-radius: 25px;
     padding: 0 3%;
     overflow: hidden;
-    color:var(--primary-color);
+    /* color:var(--primary-color); */
 }
 
 .sub_sidebar
@@ -22,7 +22,9 @@
     display: flex;
     justify-content:space-between;
     border-bottom: 2px solid var(--body-color);
+
 }
+/* Css logo */
 div.logo
 {
     height: 100%;
@@ -48,8 +50,9 @@ img.image_logo{
     font-weight: bolder;
     font-size: 30px;
     font-family: "Apple Chancery";
+    color: black;
 }
-
+/* Css user (l'image et le nom d'utilisateur)*/
 .sub_sidebar .user a
 {
     display: flex;
@@ -71,3 +74,7 @@ img.image_avatar{
     object-fit: cover;
 }
 
+p.user_name
+{
+    color: black;
+}

@@ -4,7 +4,7 @@
 <title>ProjetDAW</title>
 <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 <link rel="stylesheet" href="files/css/menu.css">
-<link rel="stylesheet" href="files/css/banderole.css">
+<link rel="stylesheet" href="files/css/banderole_menu.css">
 
 <?php if (Application::getInstance()->request()->getPath() === '/user'): ?>
     <link rel="stylesheet" href="files/css/userpage.css">

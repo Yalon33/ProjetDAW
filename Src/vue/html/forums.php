@@ -22,7 +22,7 @@
                                     <li class=item_canal>
                                         <a href=/message>
                                                 <p class=contenu>".$canal->getNom()."</p>
-                                                <p class=createur_canal> Cr : ".UtilisateurDAO::getById(intval($canal->getIdCreateur()))->getNom()."</p>
+                                                <p class=createur_canal> Crée par : ".UtilisateurDAO::getById(intval($canal->getIdCreateur()))->getNom()."</p>
                                         </a>
                                     </li>
                               

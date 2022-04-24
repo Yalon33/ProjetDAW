@@ -22,7 +22,7 @@ body{
     color:var(--nav-primary-color);
     font-family:"Poppins" ,sans-serif;
 }
-
+/*Css menu*/
 nav
 {
     background-color: var(--nav-color);
@@ -41,7 +41,7 @@ header
     padding: 4px;
     height: 7.5em;
 }
-
+/*Item de menu avec des icons*/
 .menu_icon i{
     padding-left: 5px;
 }
@@ -159,7 +159,7 @@ form input
     width: 70%;
     background-color: rgb(243, 240, 240);
 }
-
+/*drak/light mode*/
 .toggle-switch
 {
     position: relative;

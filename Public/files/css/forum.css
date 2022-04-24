@@ -1,3 +1,4 @@
+/*Css de titre de page*/
 p.titre_lesson
 {
     margin-top: 0.5em;
@@ -24,7 +25,7 @@ div.forum_inner
     height: auto;
 
 }
-
+/*Css la liste des forums*/
 ul.liste_forum
 {
     list-style-type: none;
@@ -32,6 +33,14 @@ ul.liste_forum
     grid-template-columns: 1fr 1fr 1fr;
     width: 100%;
 }
+
+li.item_forum
+{
+    padding:5% 8% ;
+
+}
+
+/*Css la liste des canaux*/
 ul.liste_canal{
     list-style-type: none;
     border: 2px solid var(--body-color);
@@ -42,11 +51,7 @@ ul.liste_canal{
     border-radius: 10px;
     overflow:none;
 }
-li.item_forum
-{
-    padding:5% 8% ;
 
-}
 li.item_canal
 {
     margin: 2% 0;

@@ -10,6 +10,7 @@ p.titre_lesson
     color: rgb(199, 197, 197);
     
 }
+/*Css widget chat*/
 .window_talk
 {
     border: 1px solid red;
@@ -55,9 +56,10 @@ ul.window_talk_inner
     list-style-type: none;
     overflow-x: scroll;
     scroll-behavior: smooth;
+    /* 
     background-image: url("../image/site_logo1.png");
     background-repeat: no-repeat, repeat;
-    background-position: center;
+    background-position: center; */
     /* display: grid;
     grid-template-columns: 30em;
     grid-row-gap: 10px; */
@@ -71,6 +73,7 @@ ul.window_talk_inner
     width:100%;
     scrollbar-width: none;
 }
+/*Css l'affichage des messages*/
 ul.window_talk_inner li
 {
     margin:10px 5%;
