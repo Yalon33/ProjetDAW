@@ -35,6 +35,29 @@
         }
     }
 
+    class ForumsControleur extends Controleur
+    {
+        public function forums()
+        {
+            $params = [
+                'forums' => $_SESSION['forums']
+            ];
+            $this->setLayout('home_layout');
+            return $this->render('forums', $params);
+        }
+    }
+    class MessageControleur extends Controleur
+    {
+        public function message()
+        {
+            $params = [
+                'message' => $_SESSION['message']
+            ];
+            $this->setLayout('home_layout');
+            return $this->render('message', $params);
+        }
+    }
+
 
 
 

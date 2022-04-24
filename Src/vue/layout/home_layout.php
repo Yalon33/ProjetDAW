@@ -14,8 +14,10 @@
     <link rel="stylesheet" href="files/css/homepage.css">
 <?php elseif (Application::getInstance()->request()->getPath() === '/lessons'): ?>
     <link rel="stylesheet" href="files/css/lessonpage.css">
-
-
+<?php elseif (Application::getInstance()->request()->getPath() === '/forums'): ?>
+    <link rel="stylesheet" href="files/css/forum.css">
+<?php elseif (Application::getInstance()->request()->getPath() === '/message'): ?>
+    <link rel="stylesheet" href="files/css/message1.css">
 <?php endif ?>
 
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -34,4 +36,8 @@
     </div>
 </body>
 </html>
+
+<!-- 
+  -->
+
      

@@ -11,7 +11,7 @@
                         if(strcmp(Niveau::toString($matiere->getNiveau()),"L3")==0)
                         {
                             echo "<li class=lesson>
-                                <a href=index.php?page=lessonpage>
+                                <a href=/page=".$matiere->getNom()."/lessons>
                                     <span class=date>".$matiere->getDateCreation()."</span>
                                     <div class=image_lesson>
                                         <img src=".$matiere->getImage()."class=image>
@@ -41,7 +41,7 @@
                         if(strcmp(Niveau::toString($matiere->getNiveau()),"L2")==0)
                         {
                             echo "<li class=lesson>
-                                <a href=index.php?page=lessonpage>
+                                <a href=/page=".$matiere->getNom()."/lessons>
                                     <span class=date>".$matiere->getDateCreation()."</span>
                                     <div class=image_lesson>
                                         <img src=".$matiere->getImage()."class=image>
@@ -71,7 +71,7 @@
                         if(strcmp(Niveau::toString($matiere->getNiveau()),"L1")==0)
                         {
                             echo "<li class=lesson>
-                                <a href=index.php?page=lessonpage>
+                                <a href=/page=".$matiere->getNom()."/lessons>
                                     <span class=date>".$matiere->getDateCreation()."</span>
                                     <div class=image_lesson>
                                         <img src=".$matiere->getImage()."class=image>

@@ -15,7 +15,7 @@
                 {
                     $m = MatiereDAO::getById($x);
                     echo "<li class=lesson>
-                        <a href=index.php?page=lessonpage>
+                        <a href=/lessons?action=".$m->getId().">
                             <span class=date>".$m->getDateCreation()."</span>
                             <div class=image_lesson>
                                 <img src=".$m->getImage()."class=image>

@@ -41,8 +41,13 @@
         $app->routeur()->get('/lessons', [LessonControleur::class, 'lessons']);
 
         $app->routeur()->get('/lesson_suivi', [Lesson_SuiviControleur::class, 'lesson_suivi']);
+
+        $app->routeur()->get('/forums', [ForumsControleur::class, 'forums']);
     
+        $app->routeur()->get('/message', [MessageControleur::class, 'message']);
+
         $app->routeur()->get('/login', [AuthControleur::class, 'login']);
+
         $app->routeur()->post('/login', [AuthControleur::class, 'handleLogin']);
 
         $app->routeur()->get('/logout', [AuthControleur::class, 'logout']);

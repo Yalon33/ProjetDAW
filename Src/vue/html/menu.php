@@ -25,9 +25,9 @@
             </a>
         </li>
         <li class="menu_notif">
-            <a href="">
-                    <i class='bx bx-bell' ></i>
-                    <span class="text_opacity">Notifications</span>
+            <a href="/forums">
+                    <i class='bx bx-conversation'></i>
+                    <span class="text_opacity">Forums</span>
             </a>
         </li>
         <li class="menu_cours">
