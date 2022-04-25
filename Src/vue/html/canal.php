@@ -2,26 +2,20 @@
     <p class="titre_lesson">Form <span class="nom_prof">discusion</span> </p>
     <div class="window_talk">
             <ul class="window_talk_inner">
-                <?php 
-                    require_once("Src/Modele/messageDAO.php");
-                    require_once("Src/Modele/utilisateurDAO.php");
-                    require_once("Src/Modele/forumDAO.php");
-                    require_once("Src/Modele/canalDAO.php");
-                    foreach (MessageDAO::getAll() as $message)
-                    {
-                        echo " <li>
-                        <div class=message>
+            <?php foreach (MessageDAO::getAll() as $message): ?>
+                <li>
+                    <div class=message>
+                        <!--
+                            Les images des utilisateurs sont à afficher dans une petite icone en cercle à côté du message pour savoir qui l'a envoyé rapidement (comme sur discord)
                         <div class=message_image>
-                       <img src=".UtilisateurDAO::getById(intval($message->getIdAuteur()))->getImage().">
+                            <img src=<?php //echo UtilisateurDAO::getById(intval($message->getIdAuteur()))->getImage() ?>>
                         </div>
-                        <p class=message_text>".$message->getContenu()."</p>
-                        </div>
-                        </li> 
-                                    ";
-                    }
-                ?>
-                </ul>
-               
+                        -->
+                        <p class=message_text><?php echo $message->getContenu()?></p>
+                    </div>
+                </li> 
+            <?php endforeach ?>
+            </ul>
                 <div class="enter_message">
                         <div class="enter_message_inner">
                             <div class="widow_talk_icon">

@@ -7,6 +7,7 @@
     require_once('Src/Controleur/userControleur.php');
     require_once('Src/Controleur/testControleur.php');
     require_once('Src/Controleur/forumControleur.php');
+    require_once('Src/Controleur/canalControleur.php');
     require_once("Src/Modele/canalDAO.php");
     require_once("Src/Modele/forumDAO.php");
     require_once("Src/Modele/messageDAO.php");
@@ -46,9 +47,9 @@
 
         $app->routeur()->get('/lesson_suivi', [Lesson_SuiviControleur::class, 'lesson_suivi']);
 
-        $app->routeur()->get('/forums', [ForumsControleur::class, 'forums']);
+        $app->routeur()->get('/forums', [ForumControleur::class, 'forums']);
     
-        $app->routeur()->get('/message', [MessageControleur::class, 'message']);
+        $app->routeur()->get('/canal', [CanalControleur::class, 'canal']);
 
         $app->routeur()->get('/login', [AuthControleur::class, 'login']);
 

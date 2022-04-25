@@ -1,5 +1,5 @@
 <?php
-    class ForumsControleur extends Controleur
+    class ForumControleur extends Controleur
     {
         public function forums()
         {

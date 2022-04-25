@@ -34,20 +34,4 @@
             return $this->render('lesson_suivi', $params);
         }
     }
-
-    class MessageControleur extends Controleur
-    {
-        public function message()
-        {
-            $params = [
-                'message' => $_SESSION['message']
-            ];
-            $this->setLayout('home_layout');
-            return $this->render('message', $params);
-        }
-    }
-
-
-
-
 ?>
