@@ -54,6 +54,8 @@
     
         $app->routeur()->get('/canal', [CanalControleur::class, 'canal']);
 
+        $app->routeur()->get('/forums', [ForumControleur::class, 'forums']);
+
         $app->routeur()->get('/login', [AuthControleur::class, 'login']);
 
         $app->routeur()->post('/login', [AuthControleur::class, 'handleLogin']);
