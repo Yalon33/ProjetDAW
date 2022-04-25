@@ -50,7 +50,7 @@
 
         $app->routeur()->get('/matieres/{id}', [MatiereControleur::class, 'matiere']);
 
-        $app->routeur()->get('/lesson_suivi', [Lesson_SuiviControleur::class, 'lesson_suivi']);
+        $app->routeur()->get('/matieres', [MatieresSuiviesControleur::class, 'matieres']);
     
         $app->routeur()->get('/canal', [CanalControleur::class, 'canal']);
 

@@ -10,6 +10,4 @@
             return $this->render('user', $params);
         }
     }
-
-
 ?>
