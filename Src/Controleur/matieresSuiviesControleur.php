@@ -8,7 +8,7 @@
             $data = array();
             foreach($matieres as $m)
             {
-                array_push($data, [$m, array_values(MatiereSuivieDAO::getAvancement($_SESSION['user']->getId(), $m->getId()))[0], UtilisateurDAO::getById($m->getIdCreateur())]);
+                array_push($data, [$m, Avancement::toString(MatiereSuivieDAO::getAvancement($_SESSION['user'], $m)), UtilisateurDAO::getById($m->getIdCreateur())]);
             }
             $params = [
                 'data' => $data,    
