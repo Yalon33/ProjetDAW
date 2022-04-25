@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../files/css/homepage.css">
 <?php elseif (Application::getInstance()->request()->getPath() === '/forums'): ?>
     <link rel="stylesheet" href="../files/css/forum.css">
-<?php elseif (Application::getInstance()->request()->getPath() === '/canal'): ?>
+<?php elseif (Application::getInstance()->request()->getPath() === '/canal/{id}'): ?>
     <link rel="stylesheet" href="../files/css/message1.css">
 <?php elseif (Application::getInstance()->request()->getPath() === '/matieres'): ?>
     <link rel="stylesheet" href="../files/css/homepage.css">

@@ -9,7 +9,7 @@
                 <?php foreach (CanalDAO::getAll() as $canal): ?>
                     <?php if($canal->getIdForum() == $forum->getId()): ?>
                     <li class=item_canal>
-                            <a href=/canal>
+                            <a href=/canal/<?php echo $canal->getId() ?>>
                                 <p class=contenu><?php echo $canal->getNom() ?></p>
                                 <p class=createur_canal> Crée par : <?php echo UtilisateurDAO::getById(intval($canal->getIdCreateur()))->getNom() ?></p>
                         </a>

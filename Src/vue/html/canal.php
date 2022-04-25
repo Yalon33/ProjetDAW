@@ -2,7 +2,7 @@
     <p class="titre_lesson">Form <span class="nom_prof">discusion</span> </p>
     <div class="window_talk">
             <ul class="window_talk_inner">
-            <?php foreach (MessageDAO::getAll() as $message): ?>
+            <?php foreach ($m as $message): ?>
                 <li>
                     <div class=message>
                         <!--

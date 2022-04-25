@@ -52,7 +52,7 @@
 
         $app->routeur()->get('/matieres', [MatieresSuiviesControleur::class, 'matieres']);
     
-        $app->routeur()->get('/canal', [CanalControleur::class, 'canal']);
+        $app->routeur()->get('/canal/{id}', [CanalControleur::class, 'canal']);
 
         $app->routeur()->get('/forums', [ForumControleur::class, 'forums']);
 
