@@ -13,20 +13,15 @@
         public function updateUser(Request $request)
         {
             $data = $request->getData();
-            echo $data["nom_user"];
-            $u = new Utilisateur($data["id_user"],
-                                 $data["name_user"],
-                                 $data["password_user"],
-                                 $data["mail_user"],
-                                 $data["prenom_user"],
-                                 $data["nom_user"],
-                                 $data["type_user"],
-                                 $data["image_user"],
-                                );
-            if(UtilisateurDAO::create($u) !== false){
-                $_SESSION["user"] = $u;
-                header("Location: /home");
-                exit;
+            $u = new Utilisateur($data["id_user"], $data["name_user"], $data["password_user"], $data["mail_user"], $data["prenom_user"], $data["nom_user"], $data["type_user"], $data["image_user"]);
+            if($u != $_SESSION["user"])
+            {
+                if(UtilisateurDAO::create($u) !== false)
+                {
+                    $_SESSION["user"] = $u;
+                    header("Location: /home");
+                    exit;
+                }
             }
             header("Location: /user");
             exit;
