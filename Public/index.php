@@ -6,6 +6,10 @@
     require_once('Src/Controleur/authControleur.php');
     require_once('Src/Controleur/userControleur.php');
     require_once('Src/Controleur/testControleur.php');
+    require_once('Src/Controleur/forumControleur.php');
+    require_once("Src/Modele/canalDAO.php");
+    require_once("Src/Modele/forumDAO.php");
+    require_once("Src/Modele/messageDAO.php");
     require_once('Src/Modele/utilisateurDAO.php');
 
     if(!session_id())
