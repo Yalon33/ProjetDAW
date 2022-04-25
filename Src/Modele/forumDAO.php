@@ -1,6 +1,7 @@
 <?php
     require_once("Src/Modele/bdd.php");
     require_once("Src/Controleur/forum.php");
+    require_once("Src/Controleur/utilisateur.php");
     class ForumDAO {
         /**
          * @return array[Forum] Les matières dans la base
@@ -46,6 +47,19 @@
             } catch (PDOException $e){
                 echo $e->getMessage()."<br>";
                 return false;
+            }
+        }
+        
+        /**
+         * @param Utilisateur $u
+         * @return array[Message] Renvoie tous les forums auxquels l'étudiant participe, est vide dans le cas où l'étudiant ne participe à aucun forum
+         */
+        public static function getByUser($u){
+            if(!is_null($u->getId())){
+                $req = BDD::prepAndExec("SELECT id_forum AS id, f.nom AS nom FROM projet.utilisateur AS u, projet.participer_forum AS pf, projet.forum AS f
+                                            WHERE u.id=pf.id_part AND pf.id_forum=f.id AND pf.id_part=:id;",
+                                        array("id" => $u->getId()))->fetchAll();
+                return !empty($req) ? array_map("self::fromRow", $req) : $req;
             }
         }
 

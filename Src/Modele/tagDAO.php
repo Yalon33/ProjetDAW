@@ -50,6 +50,20 @@
             }
         }
 
+        /**
+         * Permet de récupérer les tags associés à une matière
+         *
+         * @param Matiere $m
+         * @return array[Tag] Un tableau contenant tous les tags associés à la matière donné en argument
+         */
+        public static function getByMatiere($m){
+            if(!is_null($m->getId())){
+                $req = BDD::prepAndExec("SELECT t.id AS id, t.contenu AS contenu FROM projet.matiere AS m, projet.matiere_tag AS mt, projet.tag AS t
+                                            WHERE m.id=mt.id_mat AND mt.id_tag=t.id AND m.id=:id;",
+                                        array("id" => $m->getId()))->fetchAll();
+                return !empty($req) ? array_map("self::fromRow", $req) : $req;
+            }
+        }
 
         /**
          * Insère un tag dans la base de données (mise à jour si le tag existe déja)

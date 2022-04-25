@@ -80,29 +80,29 @@
     }
 
     function launchTestSuite(){
-        echo "====================TestAssociation====================<br>";
+        echo "=============================<b>TestAssociation</b>==============================<br>";
         testAssociationDAO();
-        echo "======================TestCanal======================<br>";
+        echo "===============================<b>TestCanal</b>================================<br>";
         testCanalDAO();
-        echo "=====================TestContenu=====================<br>";
+        echo "==============================<b>TestContenu</b>===============================<br>";
         testContenuDAO();
-        echo "=====================TestEtudiant=====================<br>";
+        echo "==============================<b>TestEtudiant</b>===============================<br>";
         testEtudiantDAO();
-        echo "======================TestForum=====================<br>";
+        echo "===============================<b>TestForum</b>===============================<br>";
         testForumDAO();
-        echo "=====================TestMatiere=====================<br>";
+        echo "==============================<b>TestMatiere</b>===============================<br>";
         testMatiereDAO();
-        echo "====================TestMatiereSuivie==================<br>";
+        echo "=============================<b>TestMatiereSuivie</b>============================<br>";
         testMatiereSuivieDAO();
-        echo "=====================TestMessage====================<br>";
+        echo "==============================<b>TestMessage</b>===============================<br>";
         testMessageDAO();
-        echo "=====================TestQCM====================<br>";
+        echo "==============================<b>TestQCM</b>=================================<br>";
         testQCMDAO();
-        echo "=====================TestReponse====================<br>";
+        echo "==============================<b>TestReponse</b>==============================<br>";
         testReponseDAO();
-        echo "====================TestTag====================<br>";
+        echo "==============================<b>TestTag</b>==================================<br>";
         testTagDAO();
-        echo "====================TestUtilisateur====================<br>";
+        echo "=============================<b>TestUtilisateur</b>==============================<br>";
         testUtilisateurDAO();
         affiche_resultat();
     }

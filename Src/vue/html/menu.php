@@ -70,4 +70,4 @@
             </li>
     </ul>  
 </div>
-<script src="files/javascript/menu.js"></script>
+<script src="../files/javascript/menu.js"></script>

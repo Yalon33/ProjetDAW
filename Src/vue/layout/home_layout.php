@@ -3,21 +3,21 @@
 <head>
 <title>ProjetDAW</title>
 <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-<link rel="stylesheet" href="files/css/menu.css">
-<link rel="stylesheet" href="files/css/banderole_menu.css">
+<link rel="stylesheet" href="../files/css/menu.css">
+<link rel="stylesheet" href="../files/css/banderole.css">
 
 <?php if (Application::getInstance()->request()->getPath() === '/user'): ?>
-    <link rel="stylesheet" href="files/css/userpage.css">
+    <link rel="stylesheet" href="../files/css/userpage.css">
 <?php elseif (Application::getInstance()->request()->getPath() === '/home'): ?>
-    <link rel="stylesheet" href="files/css/homepage.css">
-<?php elseif (Application::getInstance()->request()->getPath() === '/lesson_suivi'): ?>
-    <link rel="stylesheet" href="files/css/homepage.css">
-<?php elseif (Application::getInstance()->request()->getPath() === '/lessons'): ?>
-    <link rel="stylesheet" href="files/css/lessonpage.css">
-<?php elseif (Application::getInstance()->request()->getPath() === '/forums'): ?>
-    <link rel="stylesheet" href="files/css/forum.css">
-<?php elseif (Application::getInstance()->request()->getPath() === '/message'): ?>
-    <link rel="stylesheet" href="files/css/message1.css">
+    <link rel="stylesheet" href="../files/css/homepage.css">
+<?php elseif (Application::getInstance()->request()->getPath() === '/matieres'): ?>
+    <link rel="stylesheet" href="../files/css/homepage.css">
+<?php elseif (Application::getInstance()->request()->getPath() === '/matieres/{id}'): ?>
+    <link rel="stylesheet" href="../files/css/homepage.css">
+    <link rel="stylesheet" href="../files/css/lessonpage.css">
+    <style>
+        <?php include(Application::getInstance()->currDir()."/Public/files/css/homepage.css") ?>
+    </style>
 <?php endif ?>
 
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -34,6 +34,16 @@
         <?php include('Src/vue/html/banderole.php'); ?> 
         {{content}}
     </div>
+    
+    <?php if (Application::getInstance()->request()->getPath() === '/user'): ?>
+        <script src="../files/javascript/userpage.js"></script>
+    <?php elseif (Application::getInstance()->request()->getPath() === '/home'): ?>
+        <script src="../files/javascript/homepage.js"></script>
+    <?php elseif (Application::getInstance()->request()->getPath() === '/matieres'): ?>
+        <script src="../files/javascript/homepage.js"></script>
+    <?php elseif (Application::getInstance()->request()->getPath() === '/matieres/{id}'): ?>
+        <script src="../files/javascript/lessonpage.js"></script>
+    <?php endif ?>
 </body>
 </html>
 

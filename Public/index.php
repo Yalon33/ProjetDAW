@@ -11,7 +11,12 @@
     require_once("Src/Modele/canalDAO.php");
     require_once("Src/Modele/forumDAO.php");
     require_once("Src/Modele/messageDAO.php");
+    require_once('Src/Controleur/matiereControleur.php');
+    require_once('Src/Controleur/matieresSuiviesControleur.php');
     require_once('Src/Modele/utilisateurDAO.php');
+    require_once('Src/Modele/matiereDAO.php');
+    require_once('Src/Modele/matiereSuivieDAO.php');
+    require_once('Src/Modele/contenuDAO.php');
 
     if(!session_id())
     {
@@ -43,11 +48,9 @@
 
         $app->routeur()->get('/user', [UserControleur::class, 'user']);
 
-        $app->routeur()->get('/lessons', [LessonControleur::class, 'lessons']);
+        $app->routeur()->get('/matieres/{id}', [MatiereControleur::class, 'matiere']);
 
         $app->routeur()->get('/lesson_suivi', [Lesson_SuiviControleur::class, 'lesson_suivi']);
-
-        $app->routeur()->get('/forums', [ForumControleur::class, 'forums']);
     
         $app->routeur()->get('/canal', [CanalControleur::class, 'canal']);
 
