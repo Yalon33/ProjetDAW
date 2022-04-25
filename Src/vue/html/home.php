@@ -94,4 +94,3 @@
     </ul>
 </div>
 <div class="footer"></div>
-<script src="files/javascript/homepage.js"></script>

@@ -43,4 +43,3 @@
 </div>
 
 <button><i class='bx bx-sync'></i>Update</button>  
-<script src="files/javascript/userpage.js"></script>

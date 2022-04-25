@@ -24,6 +24,11 @@
             $this->uri = $uri;
         }
 
+        public function getExt(){
+            $ext = explode('.', $this->uri);
+            return $ext[count($ext) - 1];
+        }
+
         /*
         public function compareTo($cont){
             if(is_null($this->id) || is_null($cont))

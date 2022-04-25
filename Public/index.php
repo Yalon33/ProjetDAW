@@ -6,8 +6,12 @@
     require_once('Src/Controleur/authControleur.php');
     require_once('Src/Controleur/userControleur.php');
     require_once('Src/Controleur/testControleur.php');
+    require_once('Src/Controleur/matiereControleur.php');
+    require_once('Src/Controleur/matieresSuiviesControleur.php');
     require_once('Src/Modele/utilisateurDAO.php');
     require_once('Src/Modele/matiereDAO.php');
+    require_once('Src/Modele/matiereSuivieDAO.php');
+    require_once('Src/Modele/contenuDAO.php');
 
     if(!session_id())
     {
@@ -39,9 +43,9 @@
 
         $app->routeur()->get('/user', [UserControleur::class, 'user']);
 
-        $app->routeur()->get('/lessons', [LessonControleur::class, 'lessons']);
+        $app->routeur()->get('/matieres/{id}', [MatiereControleur::class, 'matiere']);
 
-        $app->routeur()->get('/lesson_suivi', [Lesson_SuiviControleur::class, 'lesson_suivi']);
+        $app->routeur()->get('/matieres', [MatieresSuiviesControleur::class, 'matieres']);
     
         $app->routeur()->get('/login', [AuthControleur::class, 'login']);
         $app->routeur()->post('/login', [AuthControleur::class, 'handleLogin']);
