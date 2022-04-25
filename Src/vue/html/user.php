@@ -3,7 +3,7 @@
         <li>
             <div class="coordonne">
                 <p>Informations</p>
-                <form class="coordonne">
+                <form action="" method="post" class="coordonne">
                     <section>
                         <label for="id_user">ID :</label>
                         <input type="text" name="id_user" value="<?php echo $user->getId(); ?>" id="id_user" readonly="readonly">
@@ -36,11 +36,11 @@
                         <label for="image_user">Image :</label>
                         <input type="text" name="image_user" id="image_user">
                     </section>
+                    <button><i class='bx bx-sync'></i>Update</button>  
                 </form>
             </div>
         </li>
     </ul>
 </div>
 
-<button><i class='bx bx-sync'></i>Update</button>  
 <script src="files/javascript/userpage.js"></script>

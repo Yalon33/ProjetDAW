@@ -37,7 +37,8 @@
 
         $app->routeur()->get('/home', [HomeControleur::class, 'home']);
 
-        $app->routeur()->get('/user', [UserControleur::class, 'user']);
+        $app->routeur()->get('/user', [usercontroleur::class, 'user']);
+        $app->routeur()->post('/user', [usercontroleur::class, 'updateUser']);
 
         $app->routeur()->get('/lessons', [LessonControleur::class, 'lessons']);
 
