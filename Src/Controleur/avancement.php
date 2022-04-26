@@ -23,7 +23,7 @@
                     return Avancement::ENCOURS;
                     break;
                 case("TERMINE"):
-                    return Avancement::ENCOURS;
+                    return Avancement::TERMINE;
                     break;
                 default:
                     throw new Exception("Avancement incorrect");

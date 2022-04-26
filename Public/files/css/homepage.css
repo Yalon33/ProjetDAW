@@ -20,6 +20,8 @@ p.title_homepage_card
     font-size: 20px;
     color: var(--body-color);
 }
+
+/*Css la liste des cartes de matière*/
 ul.list_lesson
 {
     margin-top: 20px;
@@ -56,6 +58,9 @@ ul.list_lesson li.lesson:hover{
 span.date{
     font-size:12px ;
 }
+span.avancement{
+    font-size:12px ;
+}
 
 img{
     max-width: 100%;
@@ -85,6 +90,7 @@ div.image_lesson
 .prof{
     font-size: 12px;
     padding-top: 5px;
+    padding-bottom: 5px;
     text-align: center;
     color: var(--body-color)
 }

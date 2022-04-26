@@ -44,6 +44,7 @@ form.coordonne
   margin-left: 10px;
   color:var(--body-color);
   font-weight: bolder;
+  height: auto;
 }
 form.coordonne label
 {

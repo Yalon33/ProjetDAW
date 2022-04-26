@@ -131,7 +131,9 @@ CREATE TABLE `matiere` (
 
 INSERT INTO `matiere` (`id`, `nom`, `date_creation`, `id_createur`, `niveau`, `image`) VALUES
 (1, 'Programmation Logique et Fonctionnelle', '2021-01-01', 1, 'L3', 'imagePLF.png'),
-(2, 'Programmation Java', '2022-01-01', 2, 'L2', 'imageJava.png');
+(2, 'Programmation Java', '2022-01-01', 2, 'L2', 'imageJava.png'),
+(3, 'Développement Web', '2021-01-01', 1, 'L1', 'imageDW.png'),
+(4, 'Image Pour Web', '2022-01-01', 2, 'L3', 'imageIW.png');
 
 -- --------------------------------------------------------
 

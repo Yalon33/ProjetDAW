@@ -13,7 +13,7 @@ body
     font-family:"Poppins" ,sans-serif;
     color: rgb(73, 73, 73);
 }
-
+/*Dessin logo*/
 .logo_login
 {
    background-color:rgb(240, 145, 111) ;
@@ -41,7 +41,7 @@ body
     top:23%;
     left:50%;
 }
-
+/* Css form login*/
 .login
 {
     border: 1px solid red;
@@ -120,6 +120,7 @@ p.create a{
 form section{
     padding-top: 9%;
 }
+/*Les images autour*/
 img{
     max-width: 100%;
     object-fit:cover;

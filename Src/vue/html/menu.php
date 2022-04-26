@@ -25,13 +25,13 @@
             </a>
         </li>
         <li class="menu_notif">
-            <a href="">
-                    <i class='bx bx-bell' ></i>
-                    <span class="text_opacity">Notifications</span>
+            <a href="/forums">
+                    <i class='bx bx-conversation'></i>
+                    <span class="text_opacity">Forums</span>
             </a>
         </li>
         <li class="menu_cours">
-            <a href="/lesson_suivi">
+            <a href="/matieres">
                     <i class='bx bx-book' ></i>
                     <span class="text_opacity">Lesson</span>
             </a>
@@ -70,4 +70,4 @@
             </li>
     </ul>  
 </div>
-<script src="files/javascript/menu.js"></script>
+<script src="../files/javascript/menu.js"></script>
