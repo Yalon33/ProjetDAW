@@ -20,8 +20,6 @@ p.title_homepage_card
     font-size: 20px;
     color: var(--body-color);
 }
-
-/*Css la liste des cartes de matière*/
 ul.list_lesson
 {
     margin-top: 20px;
@@ -58,9 +56,6 @@ ul.list_lesson li.lesson:hover{
 span.date{
     font-size:12px ;
 }
-span.avancement{
-    font-size:12px ;
-}
 
 img{
     max-width: 100%;
@@ -90,7 +85,6 @@ div.image_lesson
 .prof{
     font-size: 12px;
     padding-top: 5px;
-    padding-bottom: 5px;
     text-align: center;
     color: var(--body-color)
 }
@@ -229,6 +223,68 @@ ul.descrip_lesson
     flex-direction: column;
     justify-content: space-between;
 } */
+
+
+
+.admin_part
+{
+    position:absolute;
+    top: 20%;
+    right: 3%;
+    display: flex;
+    flex-direction: column;
+    color: white;
+} 
+.btn_add button{
+    color: var(--body-color);
+    background-color: white;
+    border: none;
+    padding-right: 5px;
+    display: flex;
+    align-items: center;
+    float: right;
+
+}
+.admin_form
+{
+    padding: 2%;
+    border: 1px solid red;
+    width: 30em;
+    height: 15em;
+    background-color: var(--body-color);
+}
+.admin_form form
+{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: 0.5s linear;
+}
+section
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 20%;
+}
+section input{
+    padding: 0 2%;
+    width: 60%;
+    height: 60%;
+}
+section button
+{
+    color: white;
+    background-color:orangered;
+    border-radius: 5px ;
+    width:70px;
+}
+.form_width
+{
+    display: none;
+}
 .footer
 {
     height: 5em;
