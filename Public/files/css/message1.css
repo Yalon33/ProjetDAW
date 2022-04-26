@@ -89,6 +89,9 @@ div.message{
     transform: scaleX(-1); 
     
 }
+p.auteur_text{
+    transform: scaleX(-1);
+}
 p.message_text{
     margin-left: 1.5%;
     padding: 1% 1%;

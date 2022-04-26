@@ -38,7 +38,6 @@
         <?php include('Src/vue/html/banderole.php'); ?> 
         {{content}}
     </div>
-    
     <?php if (Application::getInstance()->request()->getPath() === '/user'): ?>
         <script src="../files/javascript/userpage.js"></script>
     <?php elseif (Application::getInstance()->request()->getPath() === '/home'): ?>

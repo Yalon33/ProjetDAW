@@ -1,16 +1,14 @@
 <div class="talkpage_inner">
-    <p class="titre_lesson">Form <span class="nom_prof">discusion</span> </p>
+    <p class="titre_lesson">Form <span class="nom_prof">discussion</span> </p>
     <div class="window_talk">
             <ul class="window_talk_inner">
             <?php foreach ($m as $message): ?>
                 <li>
                     <div class=message>
-                        <!--
-                            Les images des utilisateurs sont à afficher dans une petite icone en cercle à côté du message pour savoir qui l'a envoyé rapidement (comme sur discord)
                         <div class=message_image>
-                            <img src=<?php //echo UtilisateurDAO::getById(intval($message->getIdAuteur()))->getImage() ?>>
+                            <img src="../files/image/<?php echo $u[$message->getId()]->getImage()?>">
                         </div>
-                        -->
+                        <p class=auteur_text><?php echo $u[$message->getId()]->getLogin()?></p>
                         <p class=message_text><?php echo $message->getContenu()?></p>
                     </div>
                 </li> 
@@ -22,11 +20,14 @@
                                 <i class='bx bx-link' ></i>
                                 <i class='bx bx-photo-album' ></i>
                             </div>
-                            <input type="text" name="message" id="message" placeholder="Aa">
+                            <form class="message_box" action="" method="post">
+                                <input type="hidden" name="auteur_message" id="auteur_message" value="<?php echo $u[$message->getId()]->getLogin() ?>">
+                                <input type="hidden" name="auteur_image" id="auteur_image" value="<?php echo $u[$message->getId()]->getImage() ?>">
+                                <input type="text" name="message" id="message" placeholder="Envoyer un message dans <?php echo $c->getNom() ?>">
+                            </form> 
                             <button class="btn_send"><i class='bx bx-send' ></i></button>
                         </div>
                     </div>
                 </div>
             </div>
 </div>
-<script src="files/javascript/forums.js"></script>
