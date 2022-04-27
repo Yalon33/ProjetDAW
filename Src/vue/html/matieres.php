@@ -1,6 +1,5 @@
 <div class="homepage_grid_card">
-<p class="title_homepage_card">Les matières suivies :</p>
-
+    <p class="title_homepage_card">Les matières suivies :</p>
     <ul class="list_lesson">
         <?php foreach($data as $d): ?>
             <li class="lesson">

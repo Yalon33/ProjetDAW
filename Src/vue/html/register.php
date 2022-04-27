@@ -1,3 +1,4 @@
+<!--
 <h1>Register</h1>
 <form action="" method="post">
     <label>Login</label>
@@ -7,3 +8,4 @@
     <br>
     <input type="submit" name="submit">
 </form>
+-->
