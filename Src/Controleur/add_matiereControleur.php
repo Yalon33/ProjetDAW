@@ -12,7 +12,7 @@ class AddMatiereControleur extends Controleur
         $data = $request->getData();
         if (!empty($data['lesson_form']) and !empty($data['image_form']))
         {
-            $m = new Matiere(null,$data['lesson_form'],date("j-n-Y"),$_SESSION["user"]->getId(),$data["niveau_matiere"],$data['image_form']);
+            $m = new Matiere(null,$data['lesson_form'],date("j-n-Y"),$_SESSION["user"]->getId(),Niveau::toValue($data["niveau_matiere"]),$data['image_form']);
             if(MatiereDAO::create($m) !== false)
             {
                 header("Location: /home");

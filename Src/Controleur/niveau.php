@@ -1,4 +1,5 @@
 <?php
+
     enum Niveau {
         case SIX;
         case CINQ;
@@ -100,5 +101,49 @@
                     break;
             }
         }
+        public static function toValue($niv){
+            switch($niv){
+                case("SIX"):
+                    return "6EME";
+                    break;
+                case("CINQ"):
+                    return "5EME";
+                    break;
+                case("QUATRE"):
+                    return "4EME";
+                    break;
+                case("TROIS"):
+                    return "3EME";
+                    break;
+                case("SEC"):
+                    return "2ND";
+                    break;
+                case("PRE"):
+                    return "1ERE";
+                    break;
+                case("TERM"):
+                    return "TERM";
+                    break;
+                case("L1"):
+                    return "L1";
+                    break;
+                case("L2"):
+                    return "L2";
+                    break;
+                case("L3"):
+                    return "L3";
+                    break;
+                case("M1"):
+                    return "M1";
+                    break;
+                case("M2"):
+                    return "M2";
+                    break;
+                default:
+                    throw new Exception("Ce niveau n'existe pas");
+                    break;
+            }
+        }
+        
     }
 ?>
