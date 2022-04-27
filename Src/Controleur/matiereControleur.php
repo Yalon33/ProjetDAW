@@ -17,7 +17,6 @@
         public function matiere_all()
         {
             $mat = MatiereDAO::getAll();
-            // $createur = UtilisateurDAO::getById(intval($mat->getIdCreateur()))->getNom();
             $data = array();
             foreach ($mat as $m) 
             {
