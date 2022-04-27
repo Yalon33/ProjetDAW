@@ -26,13 +26,13 @@
         <li class="menu_notif">
             <a href="/forums">
                 <i class='bx bx-conversation'></i>
-                <span class="text_opacity">Forums</span>
+                <span class="text_opacity">Forum</span>
             </a>
         </li>
         <li class="menu_cours">
             <a href="/matieres">
                 <i class='bx bx-book' ></i>
-                <span class="text_opacity">Lesson</span>
+                <span class="text_opacity">Matiere</span>
             </a>
         </li>
         <li class="menu_like">

@@ -1,3 +1,4 @@
+/*
 const btn_add_lesson = document.querySelector("div.btn_add"),
         admin_part = document.querySelector(".admin_form"),
         icon_add = document.querySelector(".icon_add"),
@@ -111,3 +112,5 @@ icon_add.addEventListener("click",(e)=>
         alert("Complétez-vous !!");
 });
 
+
+*/

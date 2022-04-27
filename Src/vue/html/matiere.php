@@ -13,7 +13,7 @@
                         <div class="modal_pdf hidden">
                             <i class='bx bx-x icon_close'></i>
                             <div class="pdf">
-                                <iframe src="../files/docs/<?php echo $c->getUri(); ?>" height="100%" width="100%"></iframe> 
+                                <iframe src="../files/docs/<?php echo $c->getUri(); ?>"></iframe> 
                             </div>
                         </div>
                     </li>
@@ -30,17 +30,17 @@
             <div class="admin_form form_width">
                 <form>
                     <section class="checkbox">
-                        <input type="checkbox" name="diapo" id="diapo" /><label for="diapo"> Diapos </label>
+                        <input type="checkbox" name="diapo" id="diapo" /><label for="diapo">Diapos</label>
                     </section>
                     <section class="checkbox">
-                        <input type="checkbox" name="video" id="video" /><label for="video"> Videos </label>
+                        <input type="checkbox" name="video" id="video" /><label for="video">Videos</label>
                     </section>
                     <section >
-                        <label for="titre_form">Titre de diapos : </label>
+                        <label for="titre_form">Titre de diapos :</label>
                         <input type="text" name="titre_form" id="titre_form" />
                     </section>
                     <section >
-                        <label for="image_form">URL : </label>
+                        <label for="image_form">URL :</label>
                         <input type="text" name="image_form" id="image_form" />
                     </section>
                     <section >

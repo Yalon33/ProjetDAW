@@ -13,7 +13,7 @@
                                 <a href=index.php?page=lessonpage>
                                     <span class=date>".$matiere->getDateCreation()."</span>
                                     <div class=image_lesson>
-                                        <img src=".$matiere->getImage()."class=image>
+                                        <img src=files/image/".$matiere->getImage()." class=image>
                                     </div>
                                     <div class=titre_lesson>
                                         <h3>".$matiere->getNom()."</h3>
@@ -43,7 +43,7 @@
                                 <a href=index.php?page=lessonpage>
                                     <span class=date>".$matiere->getDateCreation()."</span>
                                     <div class=image_lesson>
-                                        <img src=".$matiere->getImage()."class=image>
+                                        <img src=files/image/".$matiere->getImage()." class=image>
                                     </div>
                                     <div class=titre_lesson>
                                         <h3>".$matiere->getNom()."</h3>

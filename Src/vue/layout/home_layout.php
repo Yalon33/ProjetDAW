@@ -41,9 +41,9 @@
     <?php if (Application::getInstance()->request()->getPath() === '/user'): ?>
         <script src="../files/javascript/userpage.js"></script>
     <?php elseif (Application::getInstance()->request()->getPath() === '/home'): ?>
-        <script src="../files/javascript/homepage.js"></script>
+        <script src="../files/javascript/home.js"></script>
     <?php elseif (Application::getInstance()->request()->getPath() === '/matieres'): ?>
-        <script src="../files/javascript/homepage.js"></script>
+        <script src="../files/javascript/home.js"></script>
     <?php elseif (Application::getInstance()->request()->getPath() === '/matieres/{id}'): ?>
         <script src="../files/javascript/matiere.js"></script>
     <?php endif ?>
