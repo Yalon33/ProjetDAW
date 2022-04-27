@@ -11,7 +11,7 @@
 <?php elseif (Application::getInstance()->request()->getPath() === '/home'): ?>
     <link rel="stylesheet" href="../files/css/home.css">
 <?php elseif (Application::getInstance()->request()->getPath() === '/forums'): ?>
-    <link rel="stylesheet" href="../files/css/forum.css">
+    <link rel="stylesheet" href="../files/css/forums.css">
 <?php elseif (Application::getInstance()->request()->getPath() === '/canal/{id}'): ?>
     <link rel="stylesheet" href="../files/css/message1.css">
 <?php elseif (Application::getInstance()->request()->getPath() === '/matieres'): ?>
@@ -46,6 +46,8 @@
         <script src="../files/javascript/homepage.js"></script>
     <?php elseif (Application::getInstance()->request()->getPath() === '/matieres/{id}'): ?>
         <script src="../files/javascript/lesson.js"></script>
+    <?php elseif (Application::getInstance()->request()->getPath() === '/forums'): ?>
+        <script src="../files/javascript/forum.js"></script>
     <?php endif ?>
 </body>
 </html>

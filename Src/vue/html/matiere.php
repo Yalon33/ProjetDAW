@@ -29,12 +29,12 @@
                     </div>
                     <div class="admin_form form_width">
                         <form>
-                            <section class="checkbox">
+                            <!-- <section class="checkbox">
                                 <input type="checkbox" name="diapo" id="diapo" /><label for="diapo"> Diapos </label>
                             </section>
                             <section class="checkbox">
                                 <input type="checkbox" name="video" id="video" /><label for="video"> Videos </label>
-                            </section>
+                            </section> -->
                             <section >
                                 <label for="titre_form">Titre de diapos : </label>
                                 <input type="text" name="titre_form" id="titre_form" />

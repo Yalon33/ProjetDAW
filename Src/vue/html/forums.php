@@ -16,9 +16,29 @@
                     </li>
                     <?php endif ?>
                 <?php endforeach ?>
+                    <li class="item_btn_add">
+                        <button class="btn_add_canal"><i class='bx bx-message-alt-add'></i>Ajoute un canal</button>
+                    </li>
                 </ul>
             </li>
         <?php endforeach ?>
         </ul>
+    </div>
+    <div class="admin_part">
+                    <div class="btn_add">
+                        <button class="btn_add"><i class='bx bx-folder-plus'></i><span>Ajoute un forum</span></button>
+                    </div>
+                    <div class="admin_form form_width">
+                        <form>
+                            <section class="forum" >
+                                <label for="nom_forum">Nom de forum : </label>
+                                <input type="text" name="nom_forum" id="nom_forum" />
+                            </section>
+                            <section class="bouton">
+                                <i class='bx bx-plus-circle btn_add_item'></i>
+                                <i class='bx bx-x-circle btn_close'></i>
+                            </section>
+                        </form>
+                    </div>
     </div>
 </div>

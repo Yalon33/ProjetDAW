@@ -3,21 +3,20 @@
         <li class="homepage_card">
             <p class="title_homepage_card">Licence 3 :</p>
             <ul class="list_lesson licence3">
-            <?php require_once("Src/Modele/matiereDAO.php");
-                    require_once("Src/Modele/utilisateurDAO.php");
-                    foreach (MatiereDAO::getAll() as $matiere)
+            <?php 
+                    foreach ($data as $matiere)
                     {
-                        if(strcmp(Niveau::toString($matiere->getNiveau()),"L3")==0)
+                        if(strcmp(Niveau::toString($matiere[0]->getNiveau()),"L3")==0)
                         {
                             echo "<li class=lesson>
-                                <a href=index.php?page=lessonpage>
-                                    <span class=date>".$matiere->getDateCreation()."</span>
+                                <a href=m>
+                                    <span class=date>".$matiere[0]->getDateCreation()."</span>
                                     <div class=image_lesson>
-                                        <img src=".$matiere->getImage()."class=image>
+                                        <img src=".$matiere[0]->getImage()."class=image>
                                     </div>
                                     <div class=titre_lesson>
-                                        <h3>".$matiere->getNom()."</h3>
-                                        <p class=prof>".(UtilisateurDAO::getById(intval($matiere->getIdCreateur())))->getNom()."</p>
+                                        <h3>".$matiere[0]->getNom()."</h3>
+                                        <p class=prof>".$matiere[1]->getNom()."</p>
                                     </div>
                                     <div class=card_icon>
                                         <i class='bx bx-heart'></i>
@@ -26,7 +25,6 @@
                                 </a>
                             </li>";
                         }
-                        
                     }
             ?>
             </ul>
@@ -35,19 +33,19 @@
             <p class="title_homepage_card">Licence 2 :</p>
             <ul class="list_lesson licence2">
             <?php 
-                    foreach (MatiereDAO::getAll() as $matiere)
+                    foreach ($data as $matiere)
                     {
-                        if(strcmp(Niveau::toString($matiere->getNiveau()),"L2")==0)
+                        if(strcmp(Niveau::toString($matiere[0]->getNiveau()),"L2")==0)
                         {
                             echo "<li class=lesson>
-                                <a href=index.php?page=lessonpage>
-                                    <span class=date>".$matiere->getDateCreation()."</span>
+                                <a href=m>
+                                    <span class=date>".$matiere[0]->getDateCreation()."</span>
                                     <div class=image_lesson>
-                                        <img src=".$matiere->getImage()."class=image>
+                                        <img src=".$matiere[0]->getImage()."class=image>
                                     </div>
                                     <div class=titre_lesson>
-                                        <h3>".$matiere->getNom()."</h3>
-                                        <p class=prof>".(UtilisateurDAO::getById(intval($matiere->getIdCreateur())))->getNom()."</p>
+                                        <h3>".$matiere[0]->getNom()."</h3>
+                                        <p class=prof>".$matiere[1]->getNom()."</p>
                                     </div>
                                     <div class=card_icon>
                                         <i class='bx bx-heart'></i>
@@ -56,7 +54,6 @@
                                 </a>
                             </li>";
                         }
-                        
                     }
             ?>
             </ul>
@@ -65,19 +62,19 @@
             <p class="title_homepage_card">Licence 1 :</p>
             <ul class="list_lesson licence1">
             <?php 
-                    foreach (MatiereDAO::getAll() as $matiere)
+                    foreach ($data as $matiere)
                     {
-                        if(strcmp(Niveau::toString($matiere->getNiveau()),"L1")==0)
+                        if(strcmp(Niveau::toString($matiere[0]->getNiveau()),"L1")==0)
                         {
                             echo "<li class=lesson>
-                                <a href=index.php?page=lessonpage>
-                                    <span class=date>".$matiere->getDateCreation()."</span>
+                                <a href=m>
+                                    <span class=date>".$matiere[0]->getDateCreation()."</span>
                                     <div class=image_lesson>
-                                        <img src=".$matiere->getImage()."class=image>
+                                        <img src=".$matiere[0]->getImage()."class=image>
                                     </div>
                                     <div class=titre_lesson>
-                                        <h3>".$matiere->getNom()."</h3>
-                                        <p class=prof>".(UtilisateurDAO::getById(intval($matiere->getIdCreateur())))->getNom()."</p>
+                                        <h3>".$matiere[0]->getNom()."</h3>
+                                        <p class=prof>".$matiere[1]->getNom()."</p>
                                     </div>
                                     <div class=card_icon>
                                         <i class='bx bx-heart'></i>
@@ -86,7 +83,6 @@
                                 </a>
                             </li>";
                         }
-                        
                     }
             ?>
             </ul>

@@ -40,11 +40,15 @@
         $app->routeur()->get('/', function() {
             header("Location: /home");
             exit;
+
         });
     
         $app->routeur()->get('/home', [HomeControleur::class, 'home']);
 
+
         $app->routeur()->get('/home', [HomeControleur::class, 'home']);
+
+        $app->routeur()->get('/home', [MatiereControleur::class, 'matiere_all']);
 
         $app->routeur()->get('/user', [usercontroleur::class, 'user']);
         $app->routeur()->post('/user', [usercontroleur::class, 'updateUser']);

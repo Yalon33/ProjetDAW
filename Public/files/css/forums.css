@@ -98,15 +98,6 @@ p.createur_canal
     flex-direction: column;
     color: white;
 } 
-.admin_part_2
-{
-    position:absolute;
-    top: 30%;
-    right: 3%;
-    display: flex;
-    flex-direction: column;
-    color: white;
-} 
 .btn_add button{
     color: var(--body-color);
     background-color: white;
@@ -115,7 +106,6 @@ p.createur_canal
     display: flex;
     align-items: center;
     float: right;
-
 }
 
 .admin_form
@@ -123,7 +113,7 @@ p.createur_canal
     padding: 2%;
     border: 1px solid red;
     width: 30em;
-    height: 7em;
+    height: 8em;
     background-color: var(--body-color);
 }
 .admin_form form
@@ -142,12 +132,12 @@ section
     justify-content: space-between;
     height: 20%;
 }
-section input{
+section.forum input{
     padding: 0 2%;
     width: 60%;
-    height: 60%;
+    height: 80%;
 }
-section button
+section.bouton button
 {
     color: white;
     background-color:orangered;
@@ -157,4 +147,13 @@ section button
 .form_width
 {
     display: none;
+}
+li.item_btn_add{
+    margin: 2% 0;
+}
+button.btn_add_canal
+{
+    margin: 0 auto;
+    display: flex;
+    color: red;
 }
