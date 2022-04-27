@@ -8,6 +8,7 @@
     require_once('Src/Controleur/testControleur.php');
     require_once('Src/Controleur/forumControleur.php');
     require_once('Src/Controleur/canalControleur.php');
+    require_once('Src/Controleur/add_matiereControleur.php');
     require_once("Src/Modele/canalDAO.php");
     require_once("Src/Modele/forumDAO.php");
     require_once("Src/Modele/messageDAO.php");
@@ -50,6 +51,10 @@
 
         $app->routeur()->get('/home', [MatiereControleur::class, 'matiere_all']);
 
+        // $app->routeur()->get('/home', [AddMatiereControleur::class, 'addmatiere']);
+        $app->routeur()->post('/home', [AddMatiereControleur::class, 'creematiere']);
+
+        
         $app->routeur()->get('/user', [usercontroleur::class, 'user']);
         $app->routeur()->post('/user', [usercontroleur::class, 'updateUser']);
 

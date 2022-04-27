@@ -94,10 +94,21 @@
                     <button class="btn_add"><i class='bx bx-folder-plus'></i><span>Ajoute une matière</span></button>
                 </div>
                 <div class="admin_form form_width">
-                    <form>
+                    <form action="" method="post">
                         <section>
-                            <label for="cycle">Cycle : </label>
-                            <input type="text" name="cycle" id="cycle" placeholder="Licence..."/>
+                            <label for="niveau_matiere">Cycle :</label>
+                            <select name="niveau_matiere" id ="niveau_matiere">
+                                
+                                <option value="">--Please choose an option--</option>
+                                <?php 
+                                    require_once("Src/Controleur/niveau.php");
+                                    
+                                    foreach(Niveau::cases() as $niveau)
+                                    {
+                                        echo "<option value=$niveau->name>$niveau->name</option>";
+                                    }
+                                ?> 
+                          </select>
                         </section>
                         <section>
                             <label for="image_form">URL d'image : </label>
@@ -108,14 +119,10 @@
                             <input type="text" name="lesson_form" id="lesson_form" />
                         </section>
                         <section>
-                            <label for="prof_form">Nom de professeur : </label>
-                            <input type="text" name="prof_form" id="prof_form" />
-                        </section>
-                        <section>
-                            <i class='bx bx-plus-circle icon_add'></i>
-                            <i class='bx bx-x-circle icon_close'></i>
+                            <button><i class='bx bx-plus-circle icon_add'></i></button>
                         </section>
                     </form>
+                    <!-- <button><i class='bx bx-x-circle icon_close'></i></button> -->
                 </div>
             </div>
 <div class="footer"></div>
