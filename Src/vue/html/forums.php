@@ -2,19 +2,17 @@
 <p class="titre_lesson">Forum <span class="nom_prof">discussion</span> </p>
     <div class="forum_inner">
         <ul class="liste_forum">
-        <?php foreach (ForumDAO::getAll() as $forum): ?>
+        <?php foreach ($arrayForum as $forum): ?>
             <li class=item_forum>
                 <p class=titre_forum><?php echo $forum->getNom() ?></p>
                 <ul class=liste_canal>
-                <?php foreach (CanalDAO::getAll() as $canal): ?>
-                    <?php if($canal->getIdForum() == $forum->getId()): ?>
+                <?php foreach($arrayCanal[$forum->getId()] as $canal): ?>
                     <li class=item_canal>
-                        <a href=/canal/<?php echo $canal->getId() ?>>
-                            <p class=contenu><?php echo $canal->getNom() ?></p>
-                            <p class=createur_canal> Crée par : <?php echo UtilisateurDAO::getById(intval($canal->getIdCreateur()))->getNom() ?></p>
+                        <a href=/canal/<?php echo $canal->getId(); ?>>
+                            <p class=contenu><?php echo $canal->getNom(); ?></p>
+                            <p class=createur_canal> Crée par : <?php echo $arrayCreateur[$canal->getId()]; ?></p>
                         </a>
                     </li>
-                    <?php endif ?>
                 <?php endforeach ?>
                 </ul>
             </li>
