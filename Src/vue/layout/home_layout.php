@@ -4,7 +4,7 @@
 <title>ProjetDAW</title>
 <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 <link rel="stylesheet" href="../files/css/menu.css">
-<link rel="stylesheet" href="../files/css/banderole_menu.css">
+<link rel="stylesheet" href="../files/css/banderole.css">
 
 <?php if (Application::getInstance()->request()->getPath() === '/user'): ?>
     <link rel="stylesheet" href="../files/css/userpage.css">
@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="../files/css/home.css">
     <link rel="stylesheet" href="../files/css/matiere.css">
     <style>
-        <?php include(Application::getInstance()->currDir()."/Public/files/css/lessonpage.css") ?>
+        <?php include(Application::getInstance()->currDir()."/Public/files/css/matiere.css") ?>
     </style>
 <?php endif ?>
 
@@ -45,7 +45,7 @@
     <?php elseif (Application::getInstance()->request()->getPath() === '/matieres'): ?>
         <script src="../files/javascript/homepage.js"></script>
     <?php elseif (Application::getInstance()->request()->getPath() === '/matieres/{id}'): ?>
-        <script src="../files/javascript/lesson.js"></script>
+        <script src="../files/javascript/matiere.js"></script>
     <?php endif ?>
 </body>
 </html>
