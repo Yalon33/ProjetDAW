@@ -36,7 +36,10 @@
                         <label for="image_user">Image :</label>
                         <input type="text" name="image_user" id="image_user">
                     </section>
-                    <button><i class='bx bx-sync'></i>Update</button>  
+                    <section>
+                        <button class="user"><i class='bx bx-sync'></i>Update</button>  
+                    </section>
+                    
                 </form>
             </div>
         </li>

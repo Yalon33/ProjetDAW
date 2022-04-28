@@ -56,8 +56,8 @@ const btn_add_lesson = document.querySelector("div.btn_add"),
         admin_part = document.querySelector(".admin_form"),
         btn_close = document.querySelector(".btn_close"),
         btn_add_item = document.querySelector(".btn_add_item"),
-        ul_list_diapos = document.querySelector("#diapos"),
-        ul_list_videos = document.querySelector("#videos");
+        ul_list_diapos = document.querySelector("#diapos");
+        // ul_list_videos = document.querySelector("#videos");
       
 function toggle_form()
     {
@@ -71,14 +71,14 @@ btn_add_item.addEventListener("click",(e)=>
 {
     var text_url = document.querySelector("#image_form"),
         text_titre = document.querySelector("#titre_form");
-        checkbox_diapo = document.querySelector("#diapo");
-        checkbox_video = document.querySelector("#video");
-    if(text_titre.value.length != 0 && text_titre.value.length !=0 && (checkbox_diapo.checked || checkbox_video.checked))
-    {
+        // checkbox_diapo = document.querySelector("#diapo");
+    //     // checkbox_video = document.querySelector("#video");
+    // if(text_titre.value.length != 0 && text_titre.value.length !=0 && (checkbox_diapo.checked || checkbox_video.checked))
+    // {
         li_element = document.createElement("li");
 
         div_item_element = document.createElement("div");
-        div_item_element.classList = "list_item";
+        div_item_element.classList = "list_diapos_item list_item";
         image_element = document.createElement("img");
         image_element.src = "../image/image_login_1.png";
         image_element.style.height ="100%";
@@ -109,26 +109,26 @@ btn_add_item.addEventListener("click",(e)=>
         li_element.appendChild(p_titre_element);
         li_element.appendChild(div_modal_element);
 
-        if(checkbox_diapo.checked)
-        {
+        // if(checkbox_diapo.checked)
+        // {
             ul_list_diapos.appendChild(li_element);
-        }
-        else
-        {
-            ul_list_videos.appendChild(li_element);
-        }
+        // }
+        // else
+        // {
+        //     ul_list_videos.appendChild(li_element);
+        // }
         text_titre.value="";
         text_url.value="";
-        checkbox_diapo.checked=false;
-        checkbox_video.checked=false;
+        // checkbox_diapo.checked=false;
+        // checkbox_video.checked=false;
         toggle_form();
 
 
-    }
-    else
-    {
-        alert("Complétez-vous !!");
-    }
-    console.log(e.target);
+    // }
+    // else
+    // {
+    //     alert("Complétez-vous !!");
+    // }
+    // console.log(e.target);
 
 });

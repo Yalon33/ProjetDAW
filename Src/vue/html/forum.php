@@ -14,9 +14,18 @@
                         </a>
                     </li>
                 <?php endforeach ?>
+                    <li class="item_btn_add">
+                        <button class="btn_add_canal"><?php echo "<a href=/addCanal/".$forum->getId().">" ?> <i class='bx bx-message-alt-add'></i><span>Ajoute un canal</span></a></button>
+                    </li>
                 </ul>
             </li>
         <?php endforeach ?>
         </ul>
+    </div>
+    <div class="admin_part">
+                    <div class="btn_add">
+                        <button class="btn_add"><a href="/addForum"><i class='bx bx-folder-plus'></i><span>Ajoute un forum</span></a></button>
+                    </div>
+                   
     </div>
 </div>

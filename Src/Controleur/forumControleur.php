@@ -21,5 +21,7 @@
             $this->setLayout('home_layout');
             return $this->render('forum', $params);
         }
+  
     }
+    
 ?>
