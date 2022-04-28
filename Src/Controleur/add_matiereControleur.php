@@ -4,7 +4,7 @@ class AddMatiereControleur extends Controleur
     public function addmatiere()
     {
         $this->setLayout('home_layout');
-        return $this->render('home');
+        return $this->render('addMatiere',[]);
     }
     public function creematiere(Request $request)
     {

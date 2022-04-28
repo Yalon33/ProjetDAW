@@ -16,9 +16,9 @@
                     </li>
                     <?php endif ?>
                 <?php endforeach ?>
-                    <li class="item_btn_add">
+                    <!-- <li class="item_btn_add">
                         <button class="btn_add_canal"><i class='bx bx-message-alt-add'></i>Ajoute un canal</button>
-                    </li>
+                    </li> -->
                 </ul>
             </li>
         <?php endforeach ?>
@@ -29,15 +29,42 @@
                         <button class="btn_add"><i class='bx bx-folder-plus'></i><span>Ajoute un forum</span></button>
                     </div>
                     <div class="admin_form form_width">
-                        <form>
+                        <form action="" method="post">
+                            <section class="checkbox" >
+                                    <label for="add_forum"><input type="checkbox" name="add_forum" id="add_forum" />Ajoute un forum : </label>
+                            </section>
                             <section class="forum" >
                                 <label for="nom_forum">Nom de forum : </label>
                                 <input type="text" name="nom_forum" id="nom_forum" />
                             </section>
-                            <section class="bouton">
-                                <i class='bx bx-plus-circle btn_add_item'></i>
-                                <i class='bx bx-x-circle btn_close'></i>
+                            <section class="checkbox" >
+                                    <label for="add_forum"><input type="checkbox" name="add_forum" id="add_forum" />Ajoute un canal : </label>
                             </section>
+                            <section class="select" >
+                                <label for="nom_forum">Forums : </label>
+                                <select>
+                                <option value="">--Please choose an option--</option>
+                                </select>
+                            </section>
+                            <section class="forum" >
+                                <label for="nom_forum">Nom de canal: </label>
+                                <input type="text" name="nom_forum" id="nom_forum" />
+                            </section>
+                            <section class="checkbox" >
+                                    <label for="add_forum"><input type="checkbox" name="add_forum" id="add_forum" />Ajoute un forum puis canal : </label>
+                            </section>
+                            <section class="forum" >
+                                <label for="nom_forum">Nom de forum : </label>
+                                <input type="text" name="nom_forum" id="nom_forum" />
+                            </section>
+                            <section class="forum" >
+                                <label for="nom_forum">Nom de canal: </label>
+                                <input type="text" name="nom_forum" id="nom_forum" />
+                            </section>
+                            <section class="bouton">
+                                <button><i class='bx bx-plus-circle btn_add_item'></i></button>
+                            </section>
+
                         </form>
                     </div>
     </div>

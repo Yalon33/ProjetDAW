@@ -50,10 +50,12 @@
 
         $app->routeur()->get('/home', [HomeControleur::class, 'home']);
 
+        $app->routeur()->get('/addMatiere', [AddMatiereControleur::class, 'addmatiere']);
+
         $app->routeur()->get('/home', [MatiereControleur::class, 'matiere_all']);
 
 
-        $app->routeur()->post('/home', [AddMatiereControleur::class, 'creematiere']);
+        $app->routeur()->post('/addMatiere', [AddMatiereControleur::class, 'creematiere']);
 
         
         $app->routeur()->get('/user', [usercontroleur::class, 'user']);
@@ -69,6 +71,8 @@
         $app->routeur()->post('/canal/{id}', [CanalControleur::class, 'envoiMessage']);
 
         $app->routeur()->get('/forums', [ForumControleur::class, 'forums']);
+
+        $app->routeur()->post('/forums', [ForumControleur::class, 'creeforum']);
 
         $app->routeur()->get('/login', [AuthControleur::class, 'login']);
 

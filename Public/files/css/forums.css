@@ -113,7 +113,7 @@ p.createur_canal
     padding: 2%;
     border: 1px solid red;
     width: 30em;
-    height: 8em;
+    height: 25em;
     background-color: var(--body-color);
 }
 .admin_form form
@@ -156,4 +156,8 @@ button.btn_add_canal
     margin: 0 auto;
     display: flex;
     color: red;
+}
+section.checkbox label
+{
+    display: block;
 }
