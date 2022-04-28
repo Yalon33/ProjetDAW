@@ -8,10 +8,10 @@
     require_once('Src/Controleur/testControleur.php');
     require_once('Src/Controleur/forumControleur.php');
     require_once('Src/Controleur/canalControleur.php');
-    require_once("Src/Modele/canalDAO.php");
-    require_once("Src/Modele/forumDAO.php");
     require_once("Src/Modele/messageDAO.php");
     require_once('Src/Controleur/matiereControleur.php');
+    require_once("Src/Modele/canalDAO.php");
+    require_once("Src/Modele/forumDAO.php");
     require_once('Src/Controleur/matieresSuiviesControleur.php');
     require_once('Src/Modele/utilisateurDAO.php');
     require_once('Src/Modele/matiereDAO.php');
@@ -56,7 +56,7 @@
         $app->routeur()->get('/canal/{id}', [CanalControleur::class, 'canal']);
         $app->routeur()->post('/canal/{id}', [CanalControleur::class, 'envoiMessage']);
 
-        $app->routeur()->get('/forums', [ForumControleur::class, 'forums']);
+        $app->routeur()->get('/forum', [ForumControleur::class, 'forums']);
 
         $app->routeur()->get('/login', [AuthControleur::class, 'login']);
 

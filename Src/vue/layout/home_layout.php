@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../files/css/userpage.css">
 <?php elseif (Application::getInstance()->request()->getPath() === '/home'): ?>
     <link rel="stylesheet" href="../files/css/home.css">
-<?php elseif (Application::getInstance()->request()->getPath() === '/forums'): ?>
+<?php elseif (Application::getInstance()->request()->getPath() === '/forum'): ?>
     <link rel="stylesheet" href="../files/css/forum.css">
 <?php elseif (Application::getInstance()->request()->getPath() === '/canal/{id}'): ?>
     <link rel="stylesheet" href="../files/css/message1.css">

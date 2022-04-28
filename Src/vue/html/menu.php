@@ -24,7 +24,7 @@
             </a>
         </li>
         <li class="menu_notif">
-            <a href="/forums">
+            <a href="/forum">
                 <i class='bx bx-conversation'></i>
                 <span class="text_opacity">Forum</span>
             </a>

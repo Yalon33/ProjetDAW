@@ -4,22 +4,22 @@
         public function forums()
         {
             $forums = ForumDAO::getAll();
-            $canauxForum = array();
+            $canauxForums = array();
             foreach($forums as $form){
-                $a = array();
+                $canauxForum = array();
                 foreach(CanalDAO::getByForum($form) as $canal){
-                    array_push($a, $canal);
+                    array_push($canauxForum, $canal);
                     $createurCanaux[$canal->getId()] = UtilisateurDAO::getById($canal->getIdCreateur())->getNom();
                 }
-                $canauxForum[$form->getId()] = $a;
+                $canauxForums[$form->getId()] = $canauxForum;
             }
             $params = [
                 "arrayForum" => $forums,
-                "arrayCanal" => $canauxForum,
+                "arrayCanal" => $canauxForums,
                 "arrayCreateur" => $createurCanaux
             ];
             $this->setLayout('home_layout');
-            return $this->render('forums', $params);
+            return $this->render('forum', $params);
         }
     }
 ?>
