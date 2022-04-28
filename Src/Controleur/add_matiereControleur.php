@@ -29,9 +29,9 @@ class AddMatiereControleur extends Controleur
         if (!empty($data['titre_form']) and !empty($data['url_form']))
         {
             $c = new Contenu(null,$data['url_form']);
-            if (ContenuDAO::create($c) != false)
+            if (ContenuDAO::create($c) !== false)
             {
-                if(AssociationDAO::createMatiereContenu($request->getId(),$c->getId()) != false)
+                if(AssociationDAO::createMatiereContenu($request->getId(),ContenuDAO::getByUri($data["url_form"])->getId()) !== false)
                 {
                     header("Location: /matieres/".$request->getId());
                     exit;

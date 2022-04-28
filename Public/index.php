@@ -18,6 +18,7 @@
     require_once('Src/Modele/matiereDAO.php');
     require_once('Src/Modele/matiereSuivieDAO.php');
     require_once('Src/Modele/contenuDAO.php');
+    require_once('Src/Modele/associationDAO.php');
 
     if(!session_id())
     {
@@ -51,7 +52,7 @@
 
         $app->routeur()->get('/home', [MatiereControleur::class, 'matiere_all']);
 
-        // $app->routeur()->get('/home', [AddMatiereControleur::class, 'addmatiere']);
+
         $app->routeur()->post('/home', [AddMatiereControleur::class, 'creematiere']);
 
         
