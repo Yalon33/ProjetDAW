@@ -28,24 +28,17 @@
                         <button class="btn_add"><i class='bx bx-folder-plus'></i><span>Ajoute un document</span></button>
                     </div>
                     <div class="admin_form form_width">
-                        <form>
-                            <!-- <section class="checkbox">
-                                <input type="checkbox" name="diapo" id="diapo" /><label for="diapo"> Diapos </label>
-                            </section>
-                            <section class="checkbox">
-                                <input type="checkbox" name="video" id="video" /><label for="video"> Videos </label>
-                            </section> -->
+                        <form action="" method="post">
                             <section >
                                 <label for="titre_form">Titre de diapos : </label>
                                 <input type="text" name="titre_form" id="titre_form" />
                             </section>
                             <section >
-                                <label for="image_form">URL : </label>
-                                <input type="text" name="image_form" id="image_form" />
+                                <label for="url_form">URL : </label>
+                                <input type="text" name="url_form" id="url_form" />
                             </section>
                             <section >
-                                <i class='bx bx-plus-circle btn_add_item'></i>
-                                <i class='bx bx-x-circle btn_close'></i>
+                                <button><i class='bx bx-plus-circle btn_add_item'></i></button>
                             </section>
                         </form>
                     </div>

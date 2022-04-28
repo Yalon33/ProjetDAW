@@ -60,6 +60,8 @@
 
         $app->routeur()->get('/matieres/{id}', [MatiereControleur::class, 'matiere']);
 
+        $app->routeur()->post('/matieres/{id}', [AddMatiereControleur::class, 'creedocument']);
+
         $app->routeur()->get('/matieres', [MatieresSuiviesControleur::class, 'matieres']);
     
         $app->routeur()->get('/canal/{id}', [CanalControleur::class, 'canal']);
@@ -74,6 +76,7 @@
         $app->routeur()->get('/logout', [AuthControleur::class, 'logout']);
 
         $app->routeur()->get('/test', [TestControleur::class, 'runTest']);
+        
     }
 
     $app->run();

@@ -23,6 +23,25 @@ class AddMatiereControleur extends Controleur
        
     }
 
+    public function creedocument(Request $request)
+    {
+        $data = $request->getData();
+        if (!empty($data['titre_form']) and !empty($data['url_form']))
+        {
+            $c = new Contenu(null,$data['url_form']);
+            if (ContenuDAO::create($c) != false)
+            {
+                if(AssociationDAO::createMatiereContenu($request->getId(),$c->getId()) != false)
+                {
+                    header("Location: /matieres/".$request->getId());
+                    exit;
+                }
+                header("Location: /_404");
+            }
+        }
+        header("Location: /_404");
+    }
+
 } 
 
 
