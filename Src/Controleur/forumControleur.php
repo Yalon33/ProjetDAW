@@ -1,7 +1,7 @@
 <?php
     class ForumControleur extends Controleur
     {
-        public function forums()
+        public function forum()
         {
             $forums = ForumDAO::getAll();
             $canauxForums = array();

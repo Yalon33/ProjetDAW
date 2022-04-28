@@ -6,7 +6,7 @@
                 <a href="matieres/<?php echo $d[0]->getId() ?>">
                     <span class="date"><?php echo $d[0]->getDateCreation() ?></span>
                     <div class="image_lesson">
-                        <img src="../files/image/<?php echo $d[0]->getImage();?>" class="image">
+                        <img src="files/image/<?php echo $d[0]->getImage();?>" class="image">
                     </div>
                     <div class="titre_lesson">
                         <h3><?php echo $d[0]->getNom() ?></h3>

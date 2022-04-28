@@ -80,7 +80,7 @@
         $app->routeur()->get('/canal/{id}', [CanalControleur::class, 'canal']);
         $app->routeur()->post('/canal/{id}', [CanalControleur::class, 'envoiMessage']);
 
-        $app->routeur()->get('/forum', [ForumControleur::class, 'forums']);
+        $app->routeur()->get('/forum', [ForumControleur::class, 'forum']);
 
         $app->routeur()->get('/addCanal/{id}', [AddCanalControleur::class, 'addcanal']);
 

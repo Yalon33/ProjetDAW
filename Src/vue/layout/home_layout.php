@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="../files/css/userpage.css">
     <?php elseif (Application::getInstance()->request()->getPath() === '/addForum'): ?>
     <link rel="stylesheet" href="../files/css/userpage.css">
-<?php elseif (Application::getInstance()->request()->getPath() === '/forums'): ?>
+<?php elseif (Application::getInstance()->request()->getPath() === '/forum'): ?>
     <link rel="stylesheet" href="../files/css/forums.css">
 <?php elseif (Application::getInstance()->request()->getPath() === '/canal/{id}'): ?>
     <link rel="stylesheet" href="../files/css/message1.css">
@@ -46,19 +46,10 @@
         <?php include('Src/vue/html/banderole.php'); ?> 
         {{content}}
     </div>
-    <?php if (Application::getInstance()->request()->getPath() === '/user'): ?>
-        <script src="../files/javascript/userpage.js"></script>
-    <?php elseif (Application::getInstance()->request()->getPath() === '/home'): ?>
-        <script src="../files/javascript/home.js"></script>
-    <?php elseif (Application::getInstance()->request()->getPath() === '/matieres'): ?>
-        <script src="../files/javascript/home.js"></script>
-    <?php elseif (Application::getInstance()->request()->getPath() === '/matieres/{id}'): ?>
+    <?php if (Application::getInstance()->request()->getPath() === '/matieres/{id}'): ?>
         <script src="../files/javascript/matiere.js"></script>
     <?php endif ?>
 </body>
 </html>
-
-<!-- 
-  -->
 
      

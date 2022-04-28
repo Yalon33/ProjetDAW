@@ -25,8 +25,8 @@
         </li>
         <li class="menu_notif">
             <a href="/forum">
-                <i class='bx bx-conversation'></i>
-                <span class="text_opacity">Forum</span>
+                    <i class='bx bx-conversation'></i>
+                    <span class="text_opacity">Forum</span>
             </a>
         </li>
         <li class="menu_cours">
@@ -35,6 +35,7 @@
                 <span class="text_opacity">Matiere</span>
             </a>
         </li>
+        <!--
         <li class="menu_like">
             <a href="">
                 <i class='bx bx-heart' ></i>
@@ -47,6 +48,7 @@
                 <span class="text_opacity">History</span>
             </a>
         </li>
+        -->
     </ul>
 </div>
     
