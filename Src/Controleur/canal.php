@@ -6,7 +6,7 @@
         private $id_forum;
         private $id_createur;
 
-        public function __construct($id, $nom, $id_forum, $id_createur){
+        public function __construct($id=null, $nom, $id_forum, $id_createur){
             $this->id = $id;
             $this->nom = $nom;
             $this->id_forum = $id_forum;

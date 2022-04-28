@@ -88,6 +88,17 @@ p.createur_canal
     font-style: italic;
     font-size: 12px;
 }
+.btn_add a{
+    color: var(--body-color);
+    background-color: white;
+    border: none;
+    padding-right: 5px;
+    display: flex;
+    align-items: center;
+    float: right;
+    text-decoration: none;
+
+}
 
 .admin_part
 {
@@ -153,9 +164,16 @@ li.item_btn_add{
 }
 button.btn_add_canal
 {
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+button.btn_add_canal a
+{
     margin: 0 auto;
     display: flex;
     color: red;
+    text-decoration: none;
 }
 section.checkbox label
 {

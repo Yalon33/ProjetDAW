@@ -10,6 +10,8 @@
     require_once('Src/Controleur/canalControleur.php');
     require_once('Src/Controleur/add_matiereControleur.php');
     require_once('Src/Controleur/add_documentControleur.php');
+    require_once('Src/Controleur/add_forumControleur.php');
+    require_once('Src/Controleur/add_canalControleur.php');
     require_once("Src/Modele/canalDAO.php");
     require_once("Src/Modele/forumDAO.php");
     require_once("Src/Modele/messageDAO.php");
@@ -67,6 +69,10 @@
         $app->routeur()->get('/addDocument/{id}', [AddDocumentControleur::class, 'adddocument']);
         $app->routeur()->post('/addDocument/{id}', [AddDocumentControleur::class, 'creedocument']);
 
+
+        $app->routeur()->get('/addForum', [AddForumControleur::class,'addforum']);
+        $app->routeur()->post('/addForum', [AddForumControleur::class,'creeforum']);
+        
         $app->routeur()->get('/matieres', [MatieresSuiviesControleur::class, 'matieres']);
     
         $app->routeur()->get('/canal/{id}', [CanalControleur::class, 'canal']);
@@ -74,7 +80,9 @@
 
         $app->routeur()->get('/forums', [ForumControleur::class, 'forums']);
 
-        $app->routeur()->post('/forums', [ForumControleur::class, 'creeforum']);
+        $app->routeur()->get('/addCanal/{id}', [AddCanalControleur::class, 'addcanal']);
+
+        $app->routeur()->post('/addCanal/{id}', [AddCanalControleur::class, 'creecanal']);
 
         $app->routeur()->get('/login', [AuthControleur::class, 'login']);
 

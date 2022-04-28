@@ -14,6 +14,10 @@
     <link rel="stylesheet" href="../files/css/userpage.css">
 <?php elseif (Application::getInstance()->request()->getPath() === '/addDocument/{id}'): ?>
     <link rel="stylesheet" href="../files/css/userpage.css">
+    <?php elseif (Application::getInstance()->request()->getPath() === '/addCanal/{id}'): ?>
+    <link rel="stylesheet" href="../files/css/userpage.css">
+    <?php elseif (Application::getInstance()->request()->getPath() === '/addForum'): ?>
+    <link rel="stylesheet" href="../files/css/userpage.css">
 <?php elseif (Application::getInstance()->request()->getPath() === '/forums'): ?>
     <link rel="stylesheet" href="../files/css/forums.css">
 <?php elseif (Application::getInstance()->request()->getPath() === '/canal/{id}'): ?>
