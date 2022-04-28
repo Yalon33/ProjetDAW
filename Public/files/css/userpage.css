@@ -18,7 +18,7 @@ ul.user_coordonne{
 
 ul.user_coordonne li{
     border: 1px solid rgb(207, 207, 207);
-    width: 40%;
+    width: 60%;
     height: 100%;
     border-radius: 10px;
     overflow: hidden;
@@ -41,7 +41,7 @@ div.coordonne p{
 }
 form.coordonne
 {
-  margin-left: 10px;
+  padding: 2%;
   color:var(--body-color);
   font-weight: bolder;
   height: auto;
@@ -61,6 +61,7 @@ form.coordonne input
     background-color: rgb(219, 219, 219);
     padding-left: 10px;
 }
+
 button
 {
     margin-top: 0.5em;
@@ -73,13 +74,56 @@ button
     background-color: rgb(236, 123, 82);
     font-weight: bolder;
 }
-button i{
-    font-size: 30px;
-    position: absolute;
-    top:0.2em;
-    left:7.5em;
+button.user{
+    margin-top: 5%;
+    width: 20%;
+    height:30%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
 }
-
+div.coordonne_add{
+    width: 60%;
+    margin: 0 auto;
+    border: 1px red solid;
+}
+form.coordonne_add
+{
+  color:var(--body-color);
+  font-weight: bolder;
+  height: auto;
+  width: 100%;
+}
+form.coordonne_add section
+{
+    padding: 2%;
+}
+form.coordonne_add input
+{
+    margin-right: 10px;
+    width: 60%;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(219, 219, 219);
+    padding-left: 10px;
+}
+button.add{
+    width: 20%;
+    height:4%;
+    margin: 0 auto;
+    transform: translateX(-15%);
+    display: flex;
+    align-items: center;
+}
+div.coordonne_add p{
+    padding-top: 15px;
+    background-color: var(--body-color) ;
+    width: 100%;
+    height: 40px;
+    color: var(--nav-primary-color);
+    text-align: center;
+    font-weight: bolder;
+}
 /* Mobile: width < 740 */
 @media only screen and (max-width:739px){
  

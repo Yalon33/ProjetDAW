@@ -25,23 +25,9 @@
         <div class="lessonpage_dark"></div>
         <div class="admin_part">
                     <div class="btn_add">
-                        <button class="btn_add"><i class='bx bx-folder-plus'></i><span>Ajoute un document</span></button>
+                        <button class="btn_add"><?php  echo "<a href=/addDocument/".$m->getid().">" ?><i class='bx bx-folder-plus'></i><span>Ajoute un document</span></a></button>
                     </div>
-                    <div class="admin_form form_width">
-                        <form action="" method="post">
-                            <section >
-                                <label for="titre_form">Titre de diapos : </label>
-                                <input type="text" name="titre_form" id="titre_form" />
-                            </section>
-                            <section >
-                                <label for="url_form">URL : </label>
-                                <input type="text" name="url_form" id="url_form" />
-                            </section>
-                            <section >
-                                <button><i class='bx bx-plus-circle btn_add_item'></i></button>
-                            </section>
-                        </form>
-                    </div>
+                    
                 </div>
     </div>
     

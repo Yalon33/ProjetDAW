@@ -9,6 +9,7 @@
     require_once('Src/Controleur/forumControleur.php');
     require_once('Src/Controleur/canalControleur.php');
     require_once('Src/Controleur/add_matiereControleur.php');
+    require_once('Src/Controleur/add_documentControleur.php');
     require_once("Src/Modele/canalDAO.php");
     require_once("Src/Modele/forumDAO.php");
     require_once("Src/Modele/messageDAO.php");
@@ -63,7 +64,8 @@
 
         $app->routeur()->get('/matieres/{id}', [MatiereControleur::class, 'matiere']);
 
-        $app->routeur()->post('/matieres/{id}', [AddMatiereControleur::class, 'creedocument']);
+        $app->routeur()->get('/addDocument/{id}', [AddDocumentControleur::class, 'adddocument']);
+        $app->routeur()->post('/addDocument/{id}', [AddDocumentControleur::class, 'creedocument']);
 
         $app->routeur()->get('/matieres', [MatieresSuiviesControleur::class, 'matieres']);
     

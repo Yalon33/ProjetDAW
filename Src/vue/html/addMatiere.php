@@ -1,5 +1,7 @@
-<div class="admin_form form_width">
-                    <form action="" method="post">
+<div class="userpage_contenu_inner">
+<div class="coordonne_add">
+    <p>Ajoute une matière</p>
+        <form action="" method="post" class="coordonne_add">
                         <section>
                             <label for="niveau_matiere">Cycle :</label>
                             <select name="niveau_matiere" id ="niveau_matiere">
@@ -24,8 +26,8 @@
                             <input type="text" name="lesson_form" id="lesson_form" />
                         </section>
                         <section>
-                            <button><i class='bx bx-plus-circle icon_add'></i></button>
+                        <button class="add"><i class='bx bx-plus-circle icon_add'></i><span>Ajoute</span></button>
                         </section>
                     </form>
-                    <!-- <button><i class='bx bx-x-circle icon_close'></i></button> -->
-                </div>
+    </div>
+</div>

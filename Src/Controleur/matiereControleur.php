@@ -8,7 +8,7 @@
             $params = [
                 'm' => $mat,
                 'p' => UtilisateurDAO::getById($mat->getIdCreateur()),
-                'contenus' => ContenuDAO::getByMatiere($mat)
+                'contenus' => ContenuDAO::getByMatiere($mat),
             ];
             $this->setLayout('home_layout');
             return $this->render('matiere', $params);

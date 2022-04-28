@@ -1,26 +1,10 @@
 <?php 
-class AddMatiereControleur extends Controleur
+class AddDocumentControleur extends Controleur
 {
-    public function addmatiere()
+    public function adddocument(Request $request)
     {
         $this->setLayout('home_layout');
-        return $this->render('/addMatiere',[]);
-    }
-    public function creematiere(Request $request)
-    {
-
-        $data = $request->getData();
-        if (!empty($data['lesson_form']) and !empty($data['image_form']))
-        {
-            $m = new Matiere(null,$data['lesson_form'],date("j-n-Y"),$_SESSION["user"]->getId(),Niveau::toValue($data["niveau_matiere"]),$data['image_form']);
-            if(MatiereDAO::create($m) !== false)
-            {
-                header("Location: /home");
-                exit;
-            }
-            header("Location: /home");
-        }
-       
+        return $this->render("addDocument",[]);
     }
 
     public function creedocument(Request $request)

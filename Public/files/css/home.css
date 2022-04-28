@@ -235,7 +235,7 @@ ul.descrip_lesson
     flex-direction: column;
     color: white;
 } 
-.btn_add button{
+.btn_add a{
     color: var(--body-color);
     background-color: white;
     border: none;
