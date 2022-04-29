@@ -21,8 +21,6 @@
                     <i class='bx bx-photo-album' ></i>
                 </div>
                 <form class="message_box" action="" method="post">
-                    <input type="hidden" name="auteur_message" id="auteur_message" value="<?php echo $u[$message->getId()]->getLogin() ?>">
-                    <input type="hidden" name="auteur_image" id="auteur_image" value="<?php echo $u[$message->getId()]->getImage() ?>">
                     <input type="text" name="message" id="message" placeholder="Envoyer un message dans <?php echo $c->getNom() ?>">
                 </form> 
                 <button class="btn_send"><i class='bx bx-send' ></i></button>

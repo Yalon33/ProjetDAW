@@ -23,12 +23,13 @@
         <button class="btn_list_diapos_right"><i class='bx bxs-left-arrow' ></i></button>
         <button class="btn_list_diapos_left"><i class='bx bxs-right-arrow' ></i></button>
         <div class="lessonpage_dark"></div>
-        <div class="admin_part">
+            <?php if($_SESSION['user']->getType() == TypeUtilisateur::PROFESSEUR): ?>
+                <div class="admin_part">
                     <div class="btn_add">
                         <button class="btn_add"><?php  echo "<a href=/addDocument/".$m->getid().">" ?><i class='bx bx-folder-plus'></i><span>Ajoute un document</span></a></button>
                     </div>
-                    
-                </div>
+            <?php endif; ?>
+        </div>
     </div>
 <div class="footer"></div>
 

@@ -14,19 +14,23 @@
                                 <p class=createur_canal> Crée par : <?php echo UtilisateurDAO::getById(intval($canal->getIdCreateur()))->getNom() ?></p>
                             </a>
                         </li>
-                        <?php endif ?>
-                    <?php endforeach ?>
-                    <li class="item_btn_add">
-                        <button class="btn_add_canal"><?php echo "<a href=/addCanal/".$forum->getId().">" ?> <i class='bx bx-message-alt-add'></i><span>Ajoute un canal</span></a></button>
-                    </li>
+                        <?php endif;
+                    endforeach;
+                    if($_SESSION['user']->getType() == TypeUtilisateur::PROFESSEUR): ?>
+                        <li class="item_btn_add">
+                            <button class="btn_add_canal"><?php echo "<a href=/addCanal/".$forum->getId().">" ?> <i class='bx bx-message-alt-add'></i><span>Ajoute un canal</span></a></button>
+                        </li>
+                    <?php endif; ?>
                 </ul>
             </li>
-        <?php endforeach ?>
+        <?php endforeach; ?>
         </ul>
     </div>
-    <div class="admin_part">
-        <div class="btn_add">
-            <button class="btn_add"><a href="/addForum"><i class='bx bx-folder-plus'></i><span>Ajoute un forum</span></a></button>
+    <?php if($_SESSION['user']->getType() == TypeUtilisateur::PROFESSEUR): ?>
+        <div class="admin_part">
+            <div class="btn_add">
+                <button class="btn_add"><a href="/addForum"><i class='bx bx-folder-plus'></i><span>Ajoute un forum</span></a></button>
+            </div>
         </div>
-    </div>
+    <?php endif; ?>
 </div>

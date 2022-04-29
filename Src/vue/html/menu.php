@@ -32,7 +32,7 @@
         <li class="menu_cours">
             <a href="/matieres">
                 <i class='bx bx-book' ></i>
-                <span class="text_opacity">Matiere</span>
+                <span class="text_opacity">Matieres</span>
             </a>
         </li>
         <!--

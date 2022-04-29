@@ -19,9 +19,9 @@
     <?php elseif (Application::getInstance()->request()->getPath() === '/addForum'): ?>
     <link rel="stylesheet" href="../files/css/userpage.css">
 <?php elseif (Application::getInstance()->request()->getPath() === '/forum'): ?>
-    <link rel="stylesheet" href="../files/css/forums.css">
+    <link rel="stylesheet" href="../files/css/forum.css">
 <?php elseif (Application::getInstance()->request()->getPath() === '/canal/{id}'): ?>
-    <link rel="stylesheet" href="../files/css/message1.css">
+    <link rel="stylesheet" href="../files/css/canal.css">
 <?php elseif (Application::getInstance()->request()->getPath() === '/matieres'): ?>
     <link rel="stylesheet" href="../files/css/home.css">
 <?php elseif (Application::getInstance()->request()->getPath() === '/matieres/{id}'): ?>

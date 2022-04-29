@@ -29,9 +29,4 @@
         <?php endforeach ?>
     </ul>
 </div>
-<div class="admin_part">
-    <div class="btn_add">
-        <button class="btn_add"><a href="/addMatiere"><i class='bx bx-folder-plus'></i><span>Ajoute une matière</span></a></button>
-    </div>
-</div>
 <div class="footer"></div>
