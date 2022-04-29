@@ -4,7 +4,7 @@ class AddDocumentControleur extends Controleur
     public function adddocument(Request $request)
     {
         $this->setLayout('home_layout');
-        return $this->render("addDocument",[]);
+        return $this->render("addDocument",["error" => false]);
     }
 
     public function creedocument(Request $request)
@@ -17,13 +17,15 @@ class AddDocumentControleur extends Controleur
             {
                 if(AssociationDAO::createMatiereContenu($request->getId(),ContenuDAO::getByUri($data["url_form"])->getId()) !== false)
                 {
+                    $_SESSION["newDocument"] = true;
                     header("Location: /matieres/".$request->getId());
                     exit;
                 }
-                header("Location: /_404");
             }
         }
-        header("Location: /_404");
+        $_SESSION["newDocument"] = false;
+        header("Location: /addDocument/".$request->getId());
+        exit;
     }
 
 } 

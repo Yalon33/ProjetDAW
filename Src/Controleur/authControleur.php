@@ -6,7 +6,7 @@
         public function login()
         {
             $this->setLayout('login_layout');
-            return $this->render('login');
+            return $this->render('login', ['error' => '']);
         }
 
         public function handleLogin(Request $request)
@@ -15,13 +15,13 @@
             $u = UtilisateurDAO::getByLogin($data['login_form']);
             if(empty($u))
             {
-                header("Location: /login");
-                exit;
+                $this->setLayout('login_layout');
+                return $this->render('login', ['error' => "Cet identifiant n'existe pas"]);
             }
             if($u->getMdp() != $data['password_form'])
             {
-                header("Location: /login");
-                exit;
+                $this->setLayout('login_layout');
+                return $this->render('login', ['error' => 'Identifiants Incorrects']);
             }
             $_SESSION["user"] = $u;
             header("Location: /home");

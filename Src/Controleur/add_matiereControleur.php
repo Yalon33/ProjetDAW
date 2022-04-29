@@ -13,15 +13,23 @@
             {
                 try{
                     $m = new Matiere(null,$data['lesson_form'],date("j-n-Y"),$_SESSION["user"]->getId(),Niveau::toType($data["niveau_matiere"]),$data['image_form']);
-                } catch (Exception $e){
+                    if(MatiereDAO::create($m) !== false)
+                    {
+                        $_SESSION["newMatiere"] = true;
+                        header("Location: /matieres");
+                        exit;
+                    }
+                } catch(Exception $e){
+                    $_SESSION["newMatiere"] = false;
                     header("Location: /addMatiere");
-                }
-                if(MatiereDAO::create($m) !== false)
-                {
-                    header("Location: /matieres");
                     exit;
                 }
-                header("Location: /matieres");
+            }
+            else
+            {
+                $_SESSION["newMatiere"] = false;
+                header("Location: /addMatiere");
+                exit;
             }
         }
 

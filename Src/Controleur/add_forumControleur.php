@@ -14,6 +14,7 @@
             {
                 if (ForumDAO::create($f) !== false and !empty($data["nom_form"]))
                 {
+                    $_SESSION['newForum'] = true;
                     header("Location: /addCanal/".ForumDAO::getByNom($f->getNom())->getId());
                     exit;
                 }

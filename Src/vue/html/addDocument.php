@@ -14,5 +14,8 @@
                 <button class="add"><i class='bx bx-plus-circle btn_add_item'></i><span>Ajouter</span></button>
             </section>
         </form>
+        <?php if(array_key_exists("newDocument", $_SESSION) and $_SESSION["newDocument"] == false): ?>
+            <p>Impossible d'ajouter ce document, veuillez vérifier tous les champs</p>
+        <?php endif; ?>
     </div>
 </div>

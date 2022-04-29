@@ -15,6 +15,7 @@
             {
                 if (CanalDAO::create($c) !== false)
                 {
+                    $_SESSION["newCanal"] = true;
                     header("Location: /forum");
                     exit;
                 }

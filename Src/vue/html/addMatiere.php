@@ -19,8 +19,11 @@
                 <label for="lesson_form">Nom de la matière : </label>
                 <input type="text" name="lesson_form" id="lesson_form" />
             </section>
+            <?php if(array_key_exists("newMatiere", $_SESSION) and $_SESSION["newMatiere"] == false): ?>
+                <section>Impossible de créer cette matière, veuillez vérifier les champs</section>
+            <?php unset($_SESSION["newMatiere"]); endif; ?>
             <section>
-            <button class="add"><i class='bx bx-plus-circle icon_add'></i><span>Ajouter</span></button>
+                <button class="add"><i class='bx bx-plus-circle icon_add'></i><span>Ajouter</span></button>
             </section>
         </form>
     </div>

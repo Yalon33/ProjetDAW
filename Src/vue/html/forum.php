@@ -1,5 +1,11 @@
 <div class="forum_contenu">
 <p class="titre_lesson">Forum</p>
+<?php if(array_key_exists('newCanal', $_SESSION)): ?>
+    <p class="titre_lesson">Nouveau canal créé</p>
+<?php unset($_SESSION['newCanal']); endif; ?>
+<?php if(array_key_exists('newForum', $_SESSION)): ?>
+    <p class="titre_lesson">Nouveau forum créé</p>
+<?php unset($_SESSION['newForum']); endif; ?>
     <div class="forum_inner">
         <ul class="liste_forum">
         <?php foreach ($arrayForum as $forum): ?>

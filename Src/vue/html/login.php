@@ -23,6 +23,11 @@
                     <label for="password_form">Mot de passe: </label>
                     <input type="password" name="password_form" id="password_form">
                 </section>
+                <?php if(!empty($error)): ?>
+                    <section>
+                        <?php echo "$error"; ?>:
+                    </section>
+                <?php endif; ?>
                 <section class="option_form">
                     <label for="option_form"> <input type="checkbox" id="option_form" name="option_form">Se souvenir de moi.</label>
                     <a href="#">Mot de passe oublié.</a>
@@ -33,5 +38,4 @@
         </div>
     </div>
 </div>
-<div class="modal_create">
-</div>
+<div class="modal_create"></div>

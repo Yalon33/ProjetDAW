@@ -1,5 +1,8 @@
 <div class="homepage_grid_card">
     <p class="title_homepage_card">Les matières suivies :</p>
+    <?php if(array_key_exists('newMatiere', $_SESSION)): ?>
+        <p class="title_homepage_card">Matière créée</p>
+    <?php unset($_SESSION['newMatiere']); endif; ?>
     <ul class="list_lesson">
         <?php foreach($data as $d): ?>
             <li class="lesson">

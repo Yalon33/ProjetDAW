@@ -40,6 +40,9 @@
                         <button class="user"><i class='bx bx-sync'></i>Update</button>  
                     </section>
                 </form>
+                <?php if(array_key_exists("newUser", $_SESSION)): ?>
+                    <p>Updated!</p>
+                <?php unset($_SESSION["newUser"]); endif; ?>
             </div>
         </li>
     </ul>
