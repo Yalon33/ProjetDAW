@@ -1,6 +1,6 @@
 <div class="userpage_contenu_inner">
     <div class="coordonne_add">
-        <p>Ajoute un Forum</p>
+        <p>Ajouter un forum</p>
         <form action="" method="post" class="coordonne_add">
             <section>
                 <label for="nom_form">Nom de forum : </label>

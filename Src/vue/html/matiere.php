@@ -26,7 +26,7 @@
             <?php if($_SESSION['user']->getType() == TypeUtilisateur::PROFESSEUR): ?>
                 <div class="admin_part">
                     <div class="btn_add">
-                        <button class="btn_add"><?php  echo "<a href=/addDocument/".$m->getid().">" ?><i class='bx bx-folder-plus'></i><span>Ajoute un document</span></a></button>
+                        <button class="btn_add"><?php  echo "<a href=/addDocument/".$m->getid().">" ?><i class='bx bx-folder-plus'></i><span>Ajouter un document</span></a></button>
                     </div>
             <?php endif; ?>
         </div>

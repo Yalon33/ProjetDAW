@@ -20,7 +20,7 @@
                 }
                 header("Location: /_404");
             }
-            header("Location: /addCanal".$request->getId());
+            header("Location: /addCanal/".$request->getId());
         }
     }
 ?>

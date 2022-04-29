@@ -1,9 +1,9 @@
 <div class="userpage_contenu_inner">
     <div class="coordonne_add">
         <form action="" method="post" class="coordonne_add">
-            <p>Ajoute un document</p>
+            <p>Ajouter un document</p>
             <section >
-                <label for="titre_form">Titre de diapos : </label>
+                <label for="titre_form">Titre du document : </label>
                 <input type="text" name="titre_form" id="titre_form" />
             </section>
             <section >

@@ -1,5 +1,5 @@
 <div class="forum_contenu">
-<p class="titre_lesson">Forum <span class="nom_prof">discussion</span> </p>
+<p class="titre_lesson">Forum</p>
     <div class="forum_inner">
         <ul class="liste_forum">
         <?php foreach (ForumDAO::getAll() as $forum): ?>

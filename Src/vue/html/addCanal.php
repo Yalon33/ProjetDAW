@@ -1,9 +1,9 @@
 <div class="userpage_contenu_inner">
     <div class="coordonne_add">
-        <p>Ajoute un Forum</p>
+        <p>Ajouter un canal</p>
         <form action="" method="post" class="coordonne_add">
             <section>
-                <label for="nom_form">Nom de canal : </label>
+                <label for="nom_form">Nom du canal :</label>
                 <input type="text" name="nom_form" id="nom_form" />
             </section>
             <section>
