@@ -11,7 +11,11 @@
             $data = $request->getData();
             if (!empty($data['lesson_form']) and !empty($data['image_form']))
             {
-                $m = new Matiere(null,$data['lesson_form'],date("j-n-Y"),$_SESSION["user"]->getId(),Niveau::toValue($data["niveau_matiere"]),$data['image_form']);
+                try{
+                    $m = new Matiere(null,$data['lesson_form'],date("j-n-Y"),$_SESSION["user"]->getId(),Niveau::toType($data["niveau_matiere"]),$data['image_form']);
+                } catch (Exception $e){
+                    header("Location: /addMatiere");
+                }
                 if(MatiereDAO::create($m) !== false)
                 {
                     header("Location: /matieres");

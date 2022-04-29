@@ -29,7 +29,7 @@
     <?php if($_SESSION['user']->getType() == TypeUtilisateur::PROFESSEUR): ?>
         <div class="admin_part">
             <div class="btn_add">
-                <button class="btn_add"><a href="/addForum"><i class='bx bx-folder-plus'></i><span>Ajoute un forum</span></a></button>
+                <button class="btn_add"><a href="/addForum"><i class='bx bx-folder-plus'></i><span>Ajouter un forum</span></a></button>
             </div>
         </div>
     <?php endif; ?>

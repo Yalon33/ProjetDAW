@@ -7,7 +7,7 @@
                 <input type="text" name="nom_form" id="nom_form" />
             </section>
             <section>
-                <button class="add"><i class='bx bx-plus-circle icon_add'></i><span>Ajoute</span></button>
+                <button class="add"><i class='bx bx-plus-circle icon_add'></i><span>Ajouter</span></button>
             </section>
         </form>
     </div>

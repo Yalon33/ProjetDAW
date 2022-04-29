@@ -55,35 +55,31 @@
 
         $app->routeur()->get('/home', [HomeControleur::class, 'home']);
 
-        $app->routeur()->get('/addMatiere', [AddMatiereControleur::class, 'addmatiere']);
 
         $app->routeur()->get('/home', [MatiereControleur::class, 'matiere_all']);
 
-
-        $app->routeur()->post('/addMatiere', [AddMatiereControleur::class, 'creematiere']);
-
-        
         $app->routeur()->get('/user', [usercontroleur::class, 'user']);
         $app->routeur()->post('/user', [usercontroleur::class, 'updateUser']);
-
-        $app->routeur()->get('/matieres/{id}', [MatiereControleur::class, 'matiere']);
-
-        $app->routeur()->get('/addDocument/{id}', [AddDocumentControleur::class, 'adddocument']);
-        $app->routeur()->post('/addDocument/{id}', [AddDocumentControleur::class, 'creedocument']);
-
 
         $app->routeur()->get('/addForum', [AddForumControleur::class,'addforum']);
         $app->routeur()->post('/addForum', [AddForumControleur::class,'creeforum']);
         
         $app->routeur()->get('/matieres', [MatieresSuiviesControleur::class, 'matieres']);
     
+        $app->routeur()->get('/addMatiere', [AddMatiereControleur::class, 'addmatiere']);
+        $app->routeur()->post('/addMatiere', [AddMatiereControleur::class, 'creematiere']);
+
+        $app->routeur()->get('/matieres/{id}', [MatiereControleur::class, 'matiere']);
+
+        $app->routeur()->get('/addDocument/{id}', [AddDocumentControleur::class, 'adddocument']);
+        $app->routeur()->post('/addDocument/{id}', [AddDocumentControleur::class, 'creedocument']);
+
         $app->routeur()->get('/canal/{id}', [CanalControleur::class, 'canal']);
         $app->routeur()->post('/canal/{id}', [CanalControleur::class, 'envoiMessage']);
 
         $app->routeur()->get('/forum', [ForumControleur::class, 'forum']);
 
         $app->routeur()->get('/addCanal/{id}', [AddCanalControleur::class, 'addcanal']);
-
         $app->routeur()->post('/addCanal/{id}', [AddCanalControleur::class, 'creecanal']);
 
         $app->routeur()->get('/login', [AuthControleur::class, 'login']);

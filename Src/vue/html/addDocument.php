@@ -11,7 +11,7 @@
                 <input type="text" name="url_form" id="url_form" />
             </section>
             <section >
-                <button class="add"><i class='bx bx-plus-circle btn_add_item'></i><span>Ajoute</span></button>
+                <button class="add"><i class='bx bx-plus-circle btn_add_item'></i><span>Ajouter</span></button>
             </section>
         </form>
     </div>
