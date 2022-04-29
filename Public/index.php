@@ -53,6 +53,10 @@
 
         $app->routeur()->get('/home', [HomeControleur::class, 'home']);
 
+        $app->routeur()->post('/home', [HomeControleur::class, 'pageattend1']);
+
+        $app->routeur()->get('/pageattend', [HomeControleur::class, 'pageattend']);
+
         $app->routeur()->get('/addMatiere', [AddMatiereControleur::class, 'addmatiere']);
 
         $app->routeur()->get('/home', [MatiereControleur::class, 'matiere_all']);

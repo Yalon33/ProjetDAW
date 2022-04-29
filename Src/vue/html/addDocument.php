@@ -2,6 +2,15 @@
 <div class="coordonne_add">
     <form action="" method="post" class="coordonne_add">
         <p>Ajoute un document</p>
+
+                            <section >
+                                <label for="nom_form">Nom de matière: </label>
+                                <input type="text" name="titre_form" id="titre_form" value="<?php echo $m ?>" readonly="readonly" />
+                            </section>
+                            <section >
+                                <label for="createur_form">Créateur: </label>
+                                <input type="text" name="createur_form" id="createur_form" value="<?php echo $u ?>" readonly="readonly" />
+                            </section>
                             <section >
                                 <label for="titre_form">Titre de diapos : </label>
                                 <input type="text" name="titre_form" id="titre_form" />

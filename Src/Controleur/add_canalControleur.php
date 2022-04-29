@@ -2,9 +2,13 @@
 class AddCanalControleur extends Controleur
 {
     public function addcanal(Request $request)
-    {
+    {   
+        $f = ForumDAO::getById($request->getId());
+        $params =[
+            "f" => $f->getNom(),
+        ];
         $this->setLayout('home_layout');
-        return $this->render("addCanal",[]);
+        return $this->render("addCanal",$params);
     }
 
     public function creecanal(Request $request)

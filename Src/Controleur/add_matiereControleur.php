@@ -37,6 +37,7 @@ class AddMatiereControleur extends Controleur
                     exit;
                 }
                 header("Location: /_404");
+                exit;
             }
         }
         header("Location: /_404");

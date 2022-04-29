@@ -3,8 +3,15 @@ class AddDocumentControleur extends Controleur
 {
     public function adddocument(Request $request)
     {
+        $data = $request->getData();
+        $m = MatiereDAO::getById($request->getId()); 
+        $params = [
+            "m" => $m->getNom(),
+            "u" => UtilisateurDAO::getById($m->getIdCreateur())->getNom(),
+
+        ];
         $this->setLayout('home_layout');
-        return $this->render("addDocument",[]);
+        return $this->render("addDocument",$params);
     }
 
     public function creedocument(Request $request)

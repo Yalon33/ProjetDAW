@@ -99,132 +99,6 @@ div.image_lesson
 .card_icon i{
     font-size: 17px;
 }
-/* ul.list_lesson li.lesson:hover{
-    height: 20em;
-    width: 25em;
-}
-div.header_card
-{
-    height: 5%;
-}
-ul.header_card
-{
-    list-style-type: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-ul.header_option
-{
-    border: none;
-    list-style-type: none;
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    justify-content: space-between;
-    background-color: var(--body-color);
-    color: var(--nav-primary-color);
-    opacity:0;
-    border-radius: 5px;
-}
-ul.header_card li.icon{
-    display: flex;
-}
-.name_lesson{
-    text-align: center;
-    font-weight: bolder;
-    font-size: 20px;
-}
-.prof{
-    font-size: 14px;
-    text-align: center;
-    color: var(--body-color)
-}
-span.fixed{
-    text-decoration: underline;
-    font-weight: bolder;
-}
-
-.title_lesson
-{
-    height: 15%;
-    transition:0.5s;
-    margin-top:20% ;
-}
-.image_lesson
-{
-    width: 100%;
-    height: 35%;
-    display: none;
-}
-
-img.image_lesson{
-    max-width: 100%;
-    height:100%;
-    object-fit: cover;
-}
-div.descrip_lesson
-{
-    width: 50%;
-    height: 45%;
-    overflow: hidden;
-    transition: 0.5s;
-    display: none;
-}
-
-li.descrip_lesson{
-    margin-top: 10px;
-}
-
-li.icon:hover ul.header_option
-{
-    opacity: 1;
-    left:58%;
-}
-
-ul.list_lesson li.lesson:hover .title_lesson
-{
-    margin: unset;
-}
-ul.list_lesson li.lesson:hover div.descrip_lesson
-{
-    transform: translate(15%,20%);
-
-}
-ul.list_lesson li.lesson:hover ul.header_option
-{
-    margin-left: 5px;
-}
-ul.list_lesson li.lesson:hover .image_lesson, ul.list_lesson li.lesson:hover .descrip_lesson
-{
-    display: block;
-}
-ul.list_lesson li.lesson:hover
-{
-    justify-content: space-between;
-}
-.image_lesson
-{
-    width: 100%;
-    height: 30%;
-    border: 1px solid orangered;
-}
-div.descrip_lesson
-{
-    width: 17.5em;
-    height: 45%;
-    overflow: hidden;
-    transition: 0.5s;
-}
-ul.descrip_lesson
-{
-    list-style-type: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-} */
-
-
 
 .admin_part
 {
@@ -288,48 +162,46 @@ section button
     width: 100%;
 }
 
-@media only screen and (min-height:100%)
-{
-
-}
-
+/* La partie de Resposibility*/
 
 /* Mobile: width < 740 */
 @media only screen and (max-width:739px)
 {   
   
-   
+    ul.list_lesson
+    {
+        grid-template-columns: unset;
+        grid-template-columns: 1fr;
+        margin-left: unset;
+    }
+    ul.list_lesson li.lesson
+    {
+        margin:0 auto;
+        height: 13em;
+        width: 18em;
+    }
+    ul.list_lesson li.lesson:hover{
+        height: 14em;
+        width:19em;
+    }
+
 
 }
 
 /* Tablet: width >=740px and width < 1024 px */
 @media only screen and (min-width:740px) and (max-width:1023px)
 {
-    /* ul.list_lesson
+    ul.list_lesson
     {
         grid-template-columns: 1fr 1fr;
     }
-    ul.grid_card li.homepage_card:nth-child(2)
+    .admin_part
     {
-        margin-top: 20%;
+        top:15%;
     }
-    .homepage_contenu{
-        height: auto;
-    }
-    ul.list_lesson li.lesson
-    {
-        width: 15em;
-        height: 13em;
-    }
-    ul.list_lesson li.lesson:hover{
-        height: 18em;
-        width: 23em;
-    }
-    li .date{
-        font-size:10px ;
-    }
-  */
 }
+ 
+
 
 /* PC: width >= 1024px */
 @media only screen and (min-width:1024px)

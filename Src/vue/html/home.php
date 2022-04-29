@@ -19,11 +19,11 @@
                                         <h3>".$matiere[0]->getNom()."</h3>
                                         <p class=prof>".$matiere[1]->getNom()."</p>
                                     </div>
-                                    <div class=card_icon>
-                                        <i class='bx bx-heart'></i>
-                                        <i class='bx bx-layer-plus' ></i>
-                                    </div>
-                                </a>
+                                    </a>
+                                    <form action= method=post>
+                                        <button><i class='bx bx-layer-plus' ></i><button>
+                                    </form>
+                                    
                             </li>";
                         }
                     }

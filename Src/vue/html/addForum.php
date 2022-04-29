@@ -7,6 +7,10 @@
                             <input type="text" name="nom_form" id="nom_form" />
                         </section>
                         <section>
+                            <label for="createur_form">Nom de créateur : </label>
+                            <input type="text" name="createur_form" id="createur_form" value="<?php echo $_SESSION['user']->getNom() ?>" readonly="readonly"/>
+                        </section>
+                        <section>
                             <button class="add"><i class='bx bx-plus-circle icon_add'></i><span>Ajoute</span></button>
                         </section>
                        
