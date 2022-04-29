@@ -14,7 +14,7 @@
             {
                 if (ForumDAO::create($f) !== false and !empty($data["nom_form"]))
                 {
-                    header("Location: /forum");
+                    header("Location: /addCanal/".ForumDAO::getByNom($f->getNom())->getId());
                     exit;
                 }
                 header("Location: /_404");
