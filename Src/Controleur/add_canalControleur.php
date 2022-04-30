@@ -11,25 +11,18 @@ class AddCanalControleur extends Controleur
         return $this->render("addCanal",$params);
     }
 
-    public function creecanal(Request $request)
-    {
-        $data = $request->getData();
-        $c = new Canal(null,$data["nom_form"],$request->getId(),$_SESSION["user"]->getId());
-        if (!empty($data["nom_form"]))
+        public function creecanal(Request $request)
         {
-            if (CanalDAO::create($c) !== false)
+            $data = $request->getData();
+            $c = new Canal(null,$data["nom_form"],$request->getId(),$_SESSION["user"]->getId());
+            if (!empty($data["nom_form"]) and CanalDAO::create($c) !== false)
             {
-                header("Location: /forums");
+                $_SESSION["newCanal"] = true;
+                header("Location: /forum");
                 exit;
             }
-            header("Location: /_404");
+            $_SESSION["newCanal"] = false;
+            header("Location: /addCanal/".$request->getId());
         }
-        header("Location: /addCanal".$request->getId());
     }
-
-}
-
-
-
-
 ?>
