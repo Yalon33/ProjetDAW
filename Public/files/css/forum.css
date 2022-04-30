@@ -158,3 +158,45 @@ section button
 {
     display: none;
 }
+
+
+/* Mobile: width < 740 */
+@media only screen and (max-width:739px)
+{   
+    ul.liste_forum {
+
+        grid-template-columns: 1fr;
+    }
+    li.item_canal {
+
+        height: 5vh;
+    }
+
+    li.item_forum {
+        padding: 5% 8%;
+        width: 70%;
+        margin: 0 auto;
+    }
+
+}
+
+/* Tablet: width >=740px and width < 1024 px */
+@media only screen and (min-width:740px) and (max-width:1023px)
+{
+    ul.liste_forum {
+
+        grid-template-columns: 1fr 1fr;
+
+    }
+    li.item_canal {
+
+        height: 5vh;
+    }
+}
+
+/* PC: width >= 1024px */
+@media only screen and (min-width:1024px)
+{
+
+
+}

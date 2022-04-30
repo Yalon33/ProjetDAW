@@ -145,3 +145,62 @@ button
     }
     
 }  
+
+
+/* Mobile: width < 740 */
+@media only screen and (max-width:739px)
+{   
+    p.message_text_paralle, p.message_text
+    {
+        font-size: 10px;
+    }
+    p.auteur_text_paralle, p.auteur_text
+    {
+        font-size: 7px;
+    }
+    div.message_image{
+        width: 15%;
+    }
+    button
+    {
+        width: 20px;
+        height: 20px;
+    }
+    .window_talk input
+    {
+        height: 20px;
+    }
+}
+
+/* Tablet: width >=740px and width < 1024 px */
+@media only screen and (min-width:740px) and (max-width:1023px)
+{
+    p.message_text_paralle, p.message_text
+    {
+        font-size: 12px;
+    }
+    p.auteur_text_paralle, p.auteur_text
+    {
+        font-size: 9px;
+    }
+    div.message_image{
+        width: 11%;
+    }
+    button
+    {
+        width: 20px;
+        height: 20px;
+    }
+    .window_talk input
+    {
+        height: 20px;
+    }
+}
+
+/* PC: width >= 1024px */
+@media only screen and (min-width:1024px)
+{
+
+
+}
+

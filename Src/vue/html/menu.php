@@ -3,7 +3,7 @@
         <i class='bx bx-menu icon_toggle'></i>
     </div>
     <div class="menu_search">
-        <form>
+        <form class="menu_search"> 
             <i class='bx bx-search-alt-2' ></i>
             <input type="text" name="menu_search" id="menu_search" placeholder="Search..">
         </form>

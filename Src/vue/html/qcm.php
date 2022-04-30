@@ -8,7 +8,7 @@
             <!-- <p id="intituleQuestion"></p> -->
         </div>
         <div class="propositionReponse">
-            <form action="" method="">
+            <form action="" method="" class="qcm">
                 <section>
                     <input type="checkbox" />
                     <label for="q1">AHJZBDHJHJBZDJHBZADHJzadazdzadBAZDHJAZBDHJBAZDHJBAZDHJBZDJHBZADHJ</label>
@@ -20,6 +20,9 @@
                 <section>
                     <input type="checkbox"/>
                     <label for="q1">Rep1</label>
+                </section>
+                <section>
+                    <button>Valider <i class='bx bx-right-arrow-alt'></i></button>
                 </section>
             </form>
         </div>

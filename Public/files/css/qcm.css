@@ -16,7 +16,7 @@
     flex-direction: column; */
     margin-top: 3%;
     /* justify-content: space-between; */
-    color: var(--primary-color);
+    color: white;
 }
 
 p.titre_lesson
@@ -39,9 +39,10 @@ div.propositionReponse
     height: 80%;
     width: 100%;
 }
-form
+form.qcm
 {
-    height:80%;
+    padding: 1% 0;
+    height:100%;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -57,10 +58,7 @@ section
     word-break: break-all;
     font-size: 13px;
 }
-.change_Question
-{
-    margin-top: 1%;
-}
+
 section label{
     width: 92%;
 }
@@ -75,3 +73,51 @@ i[class='bx bxs-left-arrow']{
 i[class='bx bxs-right-arrow']{
     float: right;
 }
+button{
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding: 0 1%;
+    background-color: white;
+    border: none;
+    height: 2em;
+    color: var(--body-color);
+    border-radius: 7px;
+    margin-bottom: 2%;
+}
+/* Mobile: width < 740 */
+@media only screen and (max-width:739px)
+{   
+    div.labelQuestion p 
+    {
+        font-size: 12px;
+    }
+
+    section label {
+        font-size: 10px;
+    }
+    div.propositionReponse {
+
+        height: 80%;
+    }
+
+    .qcm_vue {
+
+        height: 85%;
+  
+    }
+}
+
+/* Tablet: width >=740px and width < 1024 px */
+@media only screen and (min-width:740px) and (max-width:1023px)
+{
+
+}
+
+/* PC: width >= 1024px */
+@media only screen and (min-width:1024px)
+{
+
+
+}
+

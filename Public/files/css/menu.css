@@ -139,20 +139,20 @@ header form
     padding: 5px;
 }
 
-.menu_search
+div.menu_search
 {
     margin-top: 20px;
     width: 100%;
 }
 
-form i
+form.menu_search i
 {
     min-width: 40px;
     color: rgb(82, 82, 82);
     padding-left: 0.2em;
 }
 
-form input.menu_search
+form.menu_search input
 {
     border: none;
     outline: none;
