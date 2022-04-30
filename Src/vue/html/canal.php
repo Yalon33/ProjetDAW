@@ -8,7 +8,7 @@
                         <div class=message_paralle>
                             <div class=message_image>
                                 <p class=auteur_text_paralle><?php echo $u[$message->getId()]->getLogin()?></p>
-                                <img src="../files/image/cuteduck.jpg">
+                                <img src="../files/image/cuteduck.jpg" class="avt_user">
                                 <!-- <img src="../files/image/<?php echo $u[$message->getId()]->getImage()?>"> -->
                             </div>
                             <p class=message_text_paralle><?php echo $message->getContenu()?></p>
@@ -19,7 +19,7 @@
                         <div class=message>
                             <div class=message_image>
                                 <p class="auteur_text"><?php echo $u[$message->getId()]->getLogin()?></p>
-                                <img src="../files/image/cuteduck.jpg">
+                                <img src="../files/image/cuteduck.jpg"class="avt_user">
                                 <!-- <img src="../files/image/<?php echo $u[$message->getId()]->getImage()?>"> -->
                             </div>
                             <p class=message_text><?php echo $message->getContenu()?></p>
@@ -42,17 +42,5 @@
                     </div>
                 </div>
             </ul>
-        <div class="enter_message">
-            <div class="enter_message_inner">
-                <div class="widow_talk_icon">
-                    <i class='bx bx-link' ></i>
-                    <i class='bx bx-photo-album' ></i>
-                </div>
-                <form class="message_box" action="" method="post">
-                    <input type="text" name="message" id="message" placeholder="Envoyer un message dans <?php echo $c->getNom() ?>">
-                </form> 
-                <button class="btn_send"><i class='bx bx-send' ></i></button>
-            </div>
-        </div>
     </div>
 </div>
