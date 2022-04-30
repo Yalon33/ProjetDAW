@@ -12,6 +12,7 @@
     require_once('Src/Controleur/add_documentControleur.php');
     require_once('Src/Controleur/add_forumControleur.php');
     require_once('Src/Controleur/add_canalControleur.php');
+    require_once('Src/Controleur/qcmControleur.php');
     require_once("Src/Modele/canalDAO.php");
     require_once("Src/Modele/forumDAO.php");
     require_once("Src/Modele/messageDAO.php");
@@ -87,6 +88,8 @@
         $app->routeur()->get('/addCanal/{id}', [AddCanalControleur::class, 'addcanal']);
 
         $app->routeur()->post('/addCanal/{id}', [AddCanalControleur::class, 'creecanal']);
+
+        $app->routeur()->get('/qcm', [QCMControleur::class, 'qcm']);
 
         $app->routeur()->get('/login', [AuthControleur::class, 'login']);
 

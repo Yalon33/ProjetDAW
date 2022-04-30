@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="../files/css/message1.css">
 <?php elseif (Application::getInstance()->request()->getPath() === '/matieres'): ?>
     <link rel="stylesheet" href="../files/css/home.css">
+<?php elseif (Application::getInstance()->request()->getPath() === '/qcm'): ?>
+    <link rel="stylesheet" href="../files/css/qcm.css">
 <?php elseif (Application::getInstance()->request()->getPath() === '/matieres/{id}'): ?>
     <link rel="stylesheet" href="../files/css/home.css">
     <link rel="stylesheet" href="../files/css/matiere.css">

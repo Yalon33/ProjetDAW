@@ -29,7 +29,8 @@ div.enter_message_inner
 {
     background-color: rgb(228, 228, 228);
     height:50px;
-     display: flex;
+    width: 100%;
+    display: flex;
     align-items: center;
     justify-content: space-between; 
     padding:0 5%;
@@ -43,7 +44,7 @@ div.enter_message_inner
     outline: none;
     border: none;
     border-radius: 15px;
-    width: 80%;
+    width: 100%;
     font-size: 15px;
 }
 
@@ -56,13 +57,7 @@ ul.window_talk_inner
     list-style-type: none;
     overflow-x: scroll;
     scroll-behavior: smooth;
-    /* 
-    background-image: url("../image/site_logo1.png");
-    background-repeat: no-repeat, repeat;
-    background-position: center; */
-    /* display: grid;
-    grid-template-columns: 30em;
-    grid-row-gap: 10px; */
+
 }
 ul.window_talk_inner::-webkit-scrollbar{
     display:none;
@@ -80,35 +75,46 @@ ul.window_talk_inner li
     height: auto;
 }
 div.message{
-    width: 100%;
-    height: auto;
-    display: flex;
-    align-items: center;
-    animation: opacity 0.5s 1 linear;
      -webkit-transform: scaleX(-1);
     transform: scaleX(-1); 
     
 }
+div.message_paralle , div.message{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    animation: opacity 0.5s 1 linear; 
+}
+
 p.auteur_text{
     transform: scaleX(-1);
+    font-size: 12px;
+}
+p.auteur_text_paralle{
+    font-size: 12px;
 }
 p.message_text{
+    transform: scaleX(-1); 
+    
+} 
+p.message_text_paralle, p.message_text{
     margin-left: 1.5%;
     padding: 1% 1%;
     font-size:0.8em;
-    background-color: aqua;
-    color: red;
+    background-color: rgb(243, 240, 240);
+    color: black;
     height: auto;
     width: auto;
     max-width: 80%;
     word-wrap: break-word;
     border-radius: 5px;
-    transform: scaleX(-1); 
-    
 } 
 div.message_image
 {
     height: 2em;
+    display: grid;
+    grid-template-columns: 1fr;
 }
 img{
     max-width: 100%;

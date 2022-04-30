@@ -152,7 +152,7 @@ form i
     padding-left: 0.2em;
 }
 
-form input
+form input.menu_search
 {
     border: none;
     outline: none;

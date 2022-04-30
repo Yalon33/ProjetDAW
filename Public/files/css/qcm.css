@@ -1,0 +1,77 @@
+.qcm_contenu{
+    width: 100%;
+    height: 70vh;
+
+}
+.qcm_vue{
+    background-color: var(--body-color);
+    border: 4px dashed rgb(255, 255, 255);
+    border-radius: 25px;
+    line-height: 40px;
+    padding: 20px;
+    margin: 0 auto;
+    height: 90%;
+    width: 60%;
+    /* display: flex;
+    flex-direction: column; */
+    margin-top: 3%;
+    /* justify-content: space-between; */
+    color: var(--primary-color);
+}
+
+p.titre_lesson
+{
+    margin-top: 0.5em;
+    font-size: 40px;
+    color:var(--body-color);
+}
+.nom_prof
+{
+    font-size: 20px;
+    color: var(--primary-color);
+}
+div.labelQuestion p{
+    word-break: break-all;
+}
+div.propositionReponse
+{
+    border: 2px solid rgb(255, 255, 255);
+    height: 80%;
+    width: 100%;
+}
+form
+{
+    height:80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+section
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:0 3%;
+    word-break: break-all;
+    font-size: 13px;
+}
+.change_Question
+{
+    margin-top: 1%;
+}
+section label{
+    width: 92%;
+}
+i:hover{
+    cursor: pointer;
+}
+
+i[class='bx bxs-left-arrow']{
+    float: left;
+}
+
+i[class='bx bxs-right-arrow']{
+    float: right;
+}
