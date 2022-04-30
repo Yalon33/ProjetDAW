@@ -43,7 +43,7 @@ div.menu_search
 header
 {
     
-    height: 15%;
+    /* height: 25%; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -56,9 +56,9 @@ header
 
 .menu_body
 {
-    height: 70%;
-    border-top: 0.5px solid gray;
-    border-bottom: 0.5px solid gray;
+    height: 60%;
+    /* border-top: 0.5px solid gray;
+    border-bottom: 0.5px solid gray; */
 }
 
 ul.menu_body{
@@ -101,7 +101,7 @@ i{
 
 .menu_footer
 {
-    height:15%;
+    /* height:25%; */
 }
 
 ul.menu_footer{
@@ -120,7 +120,7 @@ ul.menu_footer li{
     height: 40px;
     border-radius: 5px;
     padding:  0.5em;
-    margin-top: 0.5em;
+    margin-top: 2em;
 }
 ul.menu_footer li a{
     display: flex;
