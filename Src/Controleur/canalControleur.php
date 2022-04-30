@@ -5,14 +5,25 @@
         {
             $canal = CanalDAO::getById($request->getId());
             $arrayMessage = MessageDAO::getByCanal($canal);
-            $arrayUtilisateur = [];
-            foreach($arrayMessage as $m){
-                $arrayUtilisateur[$m->getId()] = UtilisateurDAO::getById($m->getIdAuteur());
+            $f = ForumDAO::getById($canal->getIdForum());
+            if($arrayMessage != false)
+            {
+                $arrayUtilisateur = [];
+                foreach($arrayMessage as $m)
+                {
+                    $arrayUtilisateur[$m->getId()] = UtilisateurDAO::getById($m->getIdAuteur());
+                }
+            }
+            else
+            {
+                $arrayMessage = [];
+                $arrayUtilisateur = [];
             }
             $param = [
                 'c' => $canal,
                 'm' => $arrayMessage,
-                'u' => $arrayUtilisateur
+                'u' => $arrayUtilisateur,
+                'f' => $f,
             ];
             $this->setLayout('home_layout');
             return $this->render('canal', $param);

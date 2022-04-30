@@ -48,6 +48,20 @@
         }
 
         /**
+         * @param Forum $f Un Forum
+         * @return array[Canal] Un tableau contenant tous les canaux associé au forum donné en argument
+         */
+        public static function getByForum($f){
+            try{
+                $req = BDD::prepAndExec("SELECT c.id AS id, c.nom AS nom, f.id AS id_forum, c.id_createur AS id_createur FROM projet.canal AS c, projet.forum AS f
+                                            WHERE c.id_forum=f.id AND f.id=:id", array('id' => $f->getId()))->fetchAll();
+                return !empty($req) ? array_map("self::fromRow", $req) : false;
+            } catch (PDOException $e){
+                echo $e->getMessage()."<br>";
+                return false;
+            }
+        }
+        /**
          * Insère un canal dans la base de données (mise à jour si le canal existe déjà)
          *
          * @param Canal $c

@@ -1,4 +1,5 @@
 <?php
+
     enum Niveau {
         case SIX;
         case CINQ;
@@ -99,6 +100,23 @@
                     throw new Exception("Niveau incorrect");
                     break;
             }
+        }
+
+        public static function allNiveau(){
+            return array(
+                Niveau::SIX,
+                Niveau::CINQ,
+                Niveau::QUATRE,
+                Niveau::TROIS,
+                Niveau::SEC,
+                Niveau::PRE,
+                Niveau::TERM,
+                Niveau::L1,
+                Niveau::L2,
+                Niveau::L3,
+                Niveau::M1,
+                Niveau::M2
+            );
         }
     }
 ?>

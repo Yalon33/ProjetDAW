@@ -4,23 +4,33 @@
 <title>ProjetDAW</title>
 <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 <link rel="stylesheet" href="../files/css/menu.css">
-<link rel="stylesheet" href="../files/css/banderole_menu.css">
+<link rel="stylesheet" href="../files/css/banderole.css">
 
 <?php if (Application::getInstance()->request()->getPath() === '/user'): ?>
     <link rel="stylesheet" href="../files/css/userpage.css">
 <?php elseif (Application::getInstance()->request()->getPath() === '/home'): ?>
-    <link rel="stylesheet" href="../files/css/homepage.css">
-<?php elseif (Application::getInstance()->request()->getPath() === '/forums'): ?>
+    <link rel="stylesheet" href="../files/css/home.css">
+<?php elseif (Application::getInstance()->request()->getPath() === '/addMatiere'): ?>
+    <link rel="stylesheet" href="../files/css/userpage.css">
+<?php elseif (Application::getInstance()->request()->getPath() === '/addDocument/{id}'): ?>
+    <link rel="stylesheet" href="../files/css/userpage.css">
+    <?php elseif (Application::getInstance()->request()->getPath() === '/addCanal/{id}'): ?>
+    <link rel="stylesheet" href="../files/css/userpage.css">
+    <?php elseif (Application::getInstance()->request()->getPath() === '/addForum'): ?>
+    <link rel="stylesheet" href="../files/css/userpage.css">
+<?php elseif (Application::getInstance()->request()->getPath() === '/forum'): ?>
     <link rel="stylesheet" href="../files/css/forum.css">
 <?php elseif (Application::getInstance()->request()->getPath() === '/canal/{id}'): ?>
-    <link rel="stylesheet" href="../files/css/message1.css">
+    <link rel="stylesheet" href="../files/css/canal.css">
 <?php elseif (Application::getInstance()->request()->getPath() === '/matieres'): ?>
-    <link rel="stylesheet" href="../files/css/homepage.css">
+    <link rel="stylesheet" href="../files/css/home.css">
+<?php elseif (Application::getInstance()->request()->getPath() === '/qcm'): ?>
+    <link rel="stylesheet" href="../files/css/qcm.css">
 <?php elseif (Application::getInstance()->request()->getPath() === '/matieres/{id}'): ?>
-    <link rel="stylesheet" href="../files/css/homepage.css">
-    <link rel="stylesheet" href="../files/css/lessonpage.css">
+    <link rel="stylesheet" href="../files/css/home.css">
+    <link rel="stylesheet" href="../files/css/matiere.css">
     <style>
-        <?php include(Application::getInstance()->currDir()."/Public/files/css/homepage.css") ?>
+        <?php include(Application::getInstance()->currDir()."/Public/files/css/matiere.css") ?>
     </style>
 <?php endif ?>
 
@@ -38,19 +48,10 @@
         <?php include('Src/vue/html/banderole.php'); ?> 
         {{content}}
     </div>
-    <?php if (Application::getInstance()->request()->getPath() === '/user'): ?>
-        <script src="../files/javascript/userpage.js"></script>
-    <?php elseif (Application::getInstance()->request()->getPath() === '/home'): ?>
-        <script src="../files/javascript/homepage.js"></script>
-    <?php elseif (Application::getInstance()->request()->getPath() === '/matieres'): ?>
-        <script src="../files/javascript/homepage.js"></script>
-    <?php elseif (Application::getInstance()->request()->getPath() === '/matieres/{id}'): ?>
-        <script src="../files/javascript/lessonpage.js"></script>
+    <?php if (Application::getInstance()->request()->getPath() === '/matieres/{id}'): ?>
+        <script src="../files/javascript/matiere.js"></script>
     <?php endif ?>
 </body>
 </html>
-
-<!-- 
-  -->
 
      

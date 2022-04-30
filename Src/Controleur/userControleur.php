@@ -4,7 +4,7 @@
         public function user()
         {
             $params = [
-                'user' => $_SESSION['user']
+                'user' => $_SESSION['user'],
             ];
             $this->setLayout('home_layout');
             return $this->render('user', $params);
@@ -19,8 +19,12 @@
                 if(UtilisateurDAO::create($u) !== false)
                 {
                     $_SESSION["user"] = $u;
-                    header("Location: /home");
-                    exit;
+                    $_SESSION["newUser"] = true;
+                    $params = [
+                        'user' => $_SESSION['user']
+                    ];
+                    $this->setLayout('home_layout');
+                    return $this->render('user', $params);
                 }
             }
             header("Location: /user");
