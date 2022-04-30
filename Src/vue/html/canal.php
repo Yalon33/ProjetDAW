@@ -9,7 +9,8 @@
                         <div class=message_paralle>
                             <div class=message_image>
                                 <p class=auteur_text_paralle><?php echo $u[$message->getId()]->getLogin()?></p>
-                                <img src="../files/image/<?php echo $u[$message->getId()]->getImage()?>">
+                                <img src="../files/image/cuteduck.jpg">
+                                <!-- <img src="../files/image/<?php echo $u[$message->getId()]->getImage()?>"> -->
                             </div>
                             <p class=message_text_paralle><?php echo $message->getContenu()?></p>
                         </div>
@@ -18,8 +19,9 @@
                     <li class="inverse">
                         <div class=message>
                             <div class=message_image>
-                                <p class=auteur_text><?php echo $u[$message->getId()]->getLogin()?></p>
-                                <img src="../files/image/<?php echo $u[$message->getId()]->getImage()?>">
+                                <p class="auteur_text"><?php echo $u[$message->getId()]->getLogin()?></p>
+                                <img src="../files/image/cuteduck.jpg">
+                                <!-- <img src="../files/image/<?php echo $u[$message->getId()]->getImage()?>"> -->
                             </div>
                             <p class=message_text><?php echo $message->getContenu()?></p>
                         </div>
