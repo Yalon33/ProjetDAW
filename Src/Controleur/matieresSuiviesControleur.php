@@ -11,7 +11,7 @@
                 array_push($data, [$m, Avancement::toString(MatiereSuivieDAO::getAvancement($_SESSION['user'], $m)), UtilisateurDAO::getById($m->getIdCreateur())]);
             }
             $params = [
-                'data' => $data,    
+                'data' => $data
             ];
             $this->setLayout('home_layout');
             return $this->render('matieres', $params);

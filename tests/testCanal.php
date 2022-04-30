@@ -43,10 +43,26 @@
         (CanalDAO::getById($interface->getId()) === false) ? succeededTest($nomTest) : failedTest($nomTest);
     }
 
+    function testCanalByForum($nomTest){
+        BDD::query("ALTER TABLE projet.canal auto_increment=5");
+        BDD::query("START TRANSACTION;");
+        $danielUser = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT", "image.png");
+        UtilisateurDAO::create($danielUser);
+        $php = new Forum(null, "Langage PHP");
+        ForumDAO::create($php);
+        $php = ForumDAO::getByNom($php->getNom());
+        $interface = new Canal(null, "Interface", ForumDAO::getByNom($php->getNom())->getId(), UtilisateurDAO::getByLogin($danielUser->getLogin())->getId());
+        CanalDAO::create($interface);
+        $interface = CanalDAO::getByNom($interface->getNom());
+
+        CanalDAO::getByForum($php)[0] == $interface ? succeededTest($nomTest) : failedTest($nomTest);
+    }
+
     function testCanalDAO(){
         testClearTable("canal");
         testInsertUniqueCanal("Insertion d'un unique canal dans la table canal");
         testUpdateCanal("Mise à jour d'un canal dans la table");
         testDeleteRowCanal("Suppression d'un canal parmi les autres");
+        testCanalByForum("Récupération d'un canal à partir du forum dans lequel il est");
     }
 ?>

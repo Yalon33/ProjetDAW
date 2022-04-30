@@ -24,13 +24,15 @@ class AddDocumentControleur extends Controleur
             {
                 if(AssociationDAO::createMatiereContenu($request->getId(),ContenuDAO::getByUri($data["url_form"])->getId()) !== false)
                 {
+                    $_SESSION["newDocument"] = true;
                     header("Location: /matieres/".$request->getId());
                     exit;
                 }
-                header("Location: /_404");
             }
         }
-        header("Location: /_404");
+        $_SESSION["newDocument"] = false;
+        header("Location: /addDocument/".$request->getId());
+        exit;
     }
 
 } 

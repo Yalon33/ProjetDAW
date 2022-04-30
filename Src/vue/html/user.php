@@ -34,16 +34,16 @@
                     </section>
                     <section>
                         <label for="image_user">Image :</label>
-                        <input type="text" name="image_user" id="image_user">
+                        <input type="text" name="image_user" value="<?php echo $user->getImage(); ?>" id="image_user">
                     </section>
                     <section>
                         <button class="user"><i class='bx bx-sync'></i>Update</button>  
                     </section>
-                    
                 </form>
+                <?php if(array_key_exists("newUser", $_SESSION)): ?>
+                    <p>Updated!</p>
+                <?php unset($_SESSION["newUser"]); endif; ?>
             </div>
         </li>
     </ul>
 </div>
-
-<script src="files/javascript/userpage.js"></script>

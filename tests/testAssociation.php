@@ -18,7 +18,9 @@
         ContenuDAO::create($CM4);
         $CM4 = ContenuDAO::getByUri($CM4->getUri());
 
-        AssociationDAO::createMatiereContenu($calculMat->getId(), $CM4->getId()) !== false ? succeededTest($nomTest) : failedTest($nomTest);
+        AssociationDAO::createMatiereContenu($calculMat->getId(), $CM4->getId());
+        $res = BDD::prepAndExec("SELECT * FROM projet.matiere_contenu WHERE id_mat=:idM AND id_contenus=:idC;", ["idM" => $calculMat->getId(), "idC" => $CM4->getId()])->fetchAll();
+        ($res[0]['id_mat'] == $calculMat->getId() && $res[0]['id_contenus'] == $CM4->getId()) == true ? succeededTest($nomTest) : failedTest($nomTest);
     }
 
     function testInsertUniqueMatiereTag($nomTest){
