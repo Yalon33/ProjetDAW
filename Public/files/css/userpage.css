@@ -1,3 +1,4 @@
+/*CSS pour le contenu dans la page USER*/
 .userpage_contenu_inner 
 {
     margin: 2% 5%;
@@ -39,6 +40,8 @@ div.coordonne p{
     text-align: center;
     font-weight: bolder;
 }
+
+/*CSS la formule qui rempli des coordonnes de l'utilisateur*/
 form.coordonne
 {
   padding: 2%;
@@ -62,26 +65,22 @@ form.coordonne input
     padding-left: 10px;
 }
 
-button
-{
-    margin-top: 0.5em;
-    width: 400px;
-    height: 40px;
-    border: none;
-    border-radius: 10px;
-    font-size: 20px;
+button.user{
+
     color: var(--nav-primary-color);
     background-color: rgb(236, 123, 82);
-    font-weight: bolder;
-}
-button.user{
-    margin-top: 5%;
     width: 20%;
-    height:30%;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
+    height: 30%;
+    margin-top: 5%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    font-size: 15px;
+    font-weight: bolder;
+    border-radius: 10px;
+
 }
+
+/* CSS pour les boutons addMatiere/addDocument/addCanal/addForum */
 div.coordonne_add{
     width: 60%;
     margin: 0 auto;
@@ -111,9 +110,9 @@ button.add{
     width: 20%;
     height:4%;
     margin: 0 auto;
-    transform: translateX(-15%);
-    display: flex;
+    background-color: rgb(236, 123, 82);
     align-items: center;
+    border-radius: 10px;
 }
 div.coordonne_add p{
     padding-top: 15px;

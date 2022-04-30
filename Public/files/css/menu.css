@@ -35,11 +35,19 @@ nav
     top:0;
     transition: 0.5s;
 }
+div.menu_search
+{
+    padding-bottom: 1em;
+}
 
 header
 {
+    
+    height: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding: 4px;
-    height: 7.5em;
 }
 /*Item de menu avec des icons*/
 .menu_icon i{
@@ -48,7 +56,7 @@ header
 
 .menu_body
 {
-    height: 36em;
+    height: 70%;
     border-top: 0.5px solid gray;
     border-bottom: 0.5px solid gray;
 }
@@ -93,12 +101,17 @@ i{
 
 .menu_footer
 {
-    height: 6.5em;
+    height:15%;
 }
 
 ul.menu_footer{
     list-style-type: none;
-    padding-left: 4px;
+    padding-left: 3px;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
 }
 
 ul.menu_footer li{
@@ -106,7 +119,7 @@ ul.menu_footer li{
     align-items: center;
     height: 40px;
     border-radius: 5px;
-    padding: 0.5em;;
+    padding:  0.5em;
     margin-top: 0.5em;
 }
 ul.menu_footer li a{

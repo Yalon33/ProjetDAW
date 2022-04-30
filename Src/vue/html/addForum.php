@@ -11,7 +11,7 @@
                 <input type="text" name="createur_form" id="createur_form" value="<?php echo $_SESSION['user']->getNom() ?>" readonly="readonly"/>
             </section>
             <section>
-                <button class="add"><i class='bx bx-plus-circle icon_add'></i><span>Ajouter</span></button>
+                <button class="add"><span>Ajouter</span></button>
             </section>
         </form>
         <?php if(array_key_exists("newForum", $_SESSION) and $_SESSION["newForum"] == false): ?>

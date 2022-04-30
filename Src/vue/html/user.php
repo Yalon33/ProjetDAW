@@ -36,9 +36,7 @@
                         <label for="image_user">Image :</label>
                         <input type="text" name="image_user" value="<?php echo $user->getImage(); ?>" id="image_user">
                     </section>
-                    <section>
-                        <button class="user"><i class='bx bx-sync'></i>Update</button>  
-                    </section>
+                        <button class="user">Update</button>  
                 </form>
                 <?php if(array_key_exists("newUser", $_SESSION)): ?>
                     <p>Updated!</p>

@@ -88,7 +88,7 @@ p.createur_canal
     font-style: italic;
     font-size: 12px;
 }
-
+/* CSS pour la partie des boutons d'ajoute des élements*/
 .admin_part
 {
     position:absolute;
@@ -107,17 +107,31 @@ p.createur_canal
     flex-direction: column;
     color: white;
 } 
-.btn_add button{
+div.btn_add button{
     color: var(--body-color);
     background-color: white;
-    border: none;
     padding-right: 5px;
-    display: flex;
-    align-items: center;
+    border: none;
     float: right;
 
 }
-
+div.btn_add button a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--body-color);
+}
+.btn_add_canal 
+{
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+.btn_add_canal a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: red;
+}
 .admin_form
 {
     padding: 2%;

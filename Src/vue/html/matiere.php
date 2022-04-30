@@ -34,5 +34,8 @@
             <?php endif; ?>
         </div>
     </div>
-<div class="footer"></div>
+    
+<div class="footer">
+    <a href="/qcm">Entraîne cette matière avec QCM >> </a>
+</div>
 

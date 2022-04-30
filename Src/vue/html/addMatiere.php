@@ -23,7 +23,7 @@
                 <section>Impossible de créer cette matière, veuillez vérifier les champs</section>
             <?php unset($_SESSION["newMatiere"]); endif; ?>
             <section>
-                <button class="add"><i class='bx bx-plus-circle icon_add'></i><span>Ajouter</span></button>
+                <button class="add"><span>Ajouter</span></button>
             </section>
         </form>
     </div>

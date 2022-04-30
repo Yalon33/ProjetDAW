@@ -1,3 +1,4 @@
+/* CSS contenu de la page matiere*/
 p.titre_lesson
 {
     margin-top: 0.5em;
@@ -30,6 +31,7 @@ ul.list_diapos,ul.list_videos
     justify-content: space-between;
 
 }
+
 div.list_diapos_item,div.list_videos_item
 {
     margin-right: 7em;
@@ -74,6 +76,20 @@ button
 button i{
     font-size: 25px;
 }
+.footer
+{
+    height: 10em;
+    margin-top: 15%;
+}
+.footer a{    
+    border: 2px dashed red;
+    align-items: center;
+    height: 10em;
+    color:var(--body-color);
+    padding: 1em;
+
+}
+/* CSS pour le modal qui affiche un document de matière*/
 .modal_pdf
 {
     position: absolute;

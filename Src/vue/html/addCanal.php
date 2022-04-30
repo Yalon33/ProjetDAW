@@ -15,7 +15,7 @@
                 <input type="text" name="nom_form" id="nom_form" />
             </section>
             <section>
-                <button class="add"><i class='bx bx-plus-circle icon_add'></i><span>Ajouter</span></button>
+                <button class="add"><span>Ajouter</span></button>
             </section>
         </form>
         <?php if(array_key_exists("newCanal", $_SESSION) and $_SESSION['newCanal'] == false): ?>

@@ -6,7 +6,7 @@
         <p class="titre">Prépa Cours</p>
     </div>
     <div class="user">
-        <a href="">
+        <a href="/user">
             <div class="user_avatar">
                 <img src="../files/image/<?php echo $_SESSION['user']->getImage() ?>" alt="" class="image_avatar"> 
             </div>
