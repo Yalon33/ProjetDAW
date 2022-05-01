@@ -4,11 +4,11 @@
     </div>
     <p hidden class="qcm"><?php echo "../files/XML/QCM/".$q->getQuestions(); ?></p>
     <p hidden class="reponse"><?php echo "../files/XML/Reponse/".$r->getXML(); ?></p>
-    <div class="qcm_vue">
+    <form action="" method="post" class="qcm_vue">
         <questions>
         </questions>
         <button id='validButton' onclick="verifReponses()">Valider</button>
-    </div>
+    </form>
 </div>
 <script src="../files/javascript/jquery.js"></script>
 <script src="../files/javascript/qcm.js"></script>

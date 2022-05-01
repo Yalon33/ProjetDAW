@@ -91,6 +91,7 @@
         $app->routeur()->post('/addCanal/{id}', [AddCanalControleur::class, 'creecanal']);
 
         $app->routeur()->get('/qcm/{id}', [QCMControleur::class, 'qcm']);
+        $app->routeur()->post('/qcm/{id}', [QCMControleur::class, 'reponseEleve']);
 
         $app->routeur()->get('/login', [AuthControleur::class, 'login']);
 

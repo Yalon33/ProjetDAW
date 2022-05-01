@@ -73,9 +73,13 @@ function verifReponses(){
                             var idrep = $(this).attr('id');
 
                             $(`#${idrep}`).css("color","green");
-
+                            console.log("idrep="+idrep);
+                            console.log("idquest="+idquest);
+                            console.log(document.getElementById(`${idquest}.${idrep}`).checked);
                             if(document.getElementById(`${idquest}.${idrep}`).checked == false){
+                                console.log("wrong");
                                 touteReponseBonne = false;
+                            } else {
                             }
                         }
                     )
