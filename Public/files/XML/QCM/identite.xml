@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<questions>
+	<question id="1">
+		<intitulee>Combien vaut 1+1?</intitulee>
+		<reponses>
+			<reponse id="11">2</reponse>
+			<reponse id="12">4</reponse>
+			<reponse id="13">1</reponse>
+			<reponse id="14">0</reponse>
+		</reponses>
+	</question>
+	<question id="2">
+		<intitulee>Quelle est la ville de France la plus peuplée?</intitulee>
+		<reponses>
+			<reponse id="21">Paris</reponse>
+			<reponse id="22">Lyon</reponse>
+			<reponse id="23">Dijon</reponse>
+			<reponse id="24">Marseille</reponse>
+		</reponses>
+	</question>
+</questions>

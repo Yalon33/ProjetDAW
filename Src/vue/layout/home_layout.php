@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="../files/css/canal.css">
 <?php elseif (Application::getInstance()->request()->getPath() === '/matieres'): ?>
     <link rel="stylesheet" href="../files/css/home.css">
-<?php elseif (Application::getInstance()->request()->getPath() === '/qcm'): ?>
+<?php elseif (Application::getInstance()->request()->getPath() === '/qcm/{id}'): ?>
     <link rel="stylesheet" href="../files/css/qcm.css">
 <?php elseif (Application::getInstance()->request()->getPath() === '/matieres/{id}'): ?>
     <link rel="stylesheet" href="../files/css/home.css">
