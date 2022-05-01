@@ -63,7 +63,7 @@
         <li class="menu_mode">
             <a href="#">
                 <i class='bx bx-moon'></i>
-                <span class="text-mode text_opacity">Dark Mode</span>
+                <span class="text-mode text_opacity vision_mode">Light Mode</span>
             </a>
             <div class="toggle-switch  text_opacity">
                 <span class="switch"></span>
