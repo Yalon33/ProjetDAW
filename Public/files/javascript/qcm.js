@@ -1,53 +1,96 @@
 let numQuest = 0;
 let nbQuest = 0;
+const reponse = $(".reponse").text();
+const questions = $(".qcm").text();
 
 $(document).ready(() => {
-    chargeQuestion();
-    changeQuestion();
-
+    chargeQuestionXML();
 });
 
-function suppReponses(){
-    $(".reponses").remove();
-}
+function chargeQuestionXML(){
+    $.ajax({
+        //chargement du fichier xml
+        type: "GET",
+        async: false,
+        url: questions,
+        datatype: "xml",
+        success: function(xml){
+            //recuperation des informations
+            $(xml).find('question').each(
+                function(){
+                    //var contenu = $(this).text();
+                    //$("questions").html(contenu);
 
-function chargeQuestion(){
-    $.getJSON('../javascript/questions.json', (data) => {
-        nbQuest = data.Questions.length;
-        let q = data.Questions[numQuest];
+                    var idquest = $(this).attr('id');
+                    $("questions").append(`<question id="${idquest}">`);
+                    var intit = $(this).find('intitulee').text();
+                    //ecriture dans html
+                    $(`question`).append(`<intitulee>`);
+                    $(`question#${idquest} intitulee`).append(intit);
+                    $(`question`).append(`</intitulee>`);
+                    
+                    $(`question`).append(`<reponses>`);
 
-        console.log(q);
+                    $(xml).find(`question#${idquest} reponses reponse`).each(
+                        function(){
+                            var idrep = $(this).attr('id');
+                            var correct = $(this).attr('correct');
+                            var rep = $(this).text();
 
-        $("#numQuestion").text(q.numero);
-        $("#intituleQuestion").text(q.intitulee);
-
-        // console.log(q.Reponses.length);
-
-        for(let i=0; i<q.Reponses.length; i++){
-            const reponse = $(`<li class="reponses"><input type="checkbox">${i+1} : ${q.Reponses[i].reponse}</li>`);
-            if(i%2 == 0){
-                $(".reponsesimpair").append(reponse);
-            }
-            else{
-                $(".reponsespair").append(reponse);
-            }
+                            var reponse = $(`<reponse id="${idrep}"><input id="${idquest}.${idrep}" type="checkbox">${rep}</reponse>`);
+                            $(`question#${idquest} reponses`).append(reponse);
+                        }
+                    )
+                    $(`question`).append(`</reponses>`);
+                    $("questions").append(`</question>`);
+                }
+            )
         }
     });
 }
 
-function changeQuestion(){
-    $("i[class='bx bxs-right-arrow']").click(() =>{
-        if(numQuest<nbQuest-1){
-            numQuest++;
-            suppReponses();
-            chargeQuestion();
+function verifReponses(){
+    var score = 0;
+    var nbQuest = 0;
+    $(`reponse`).css("color","red");
+    $.ajax({
+        //chargement du fichier xml
+        type: "GET",
+        async: false,
+        url: reponse,
+        datatype: 'xml',
+        success: function(xml){
+            //recuperation des informations
+            $(xml).find('question').each(
+                function(){
+                    nbQuest++;
+
+                    var touteReponseBonne = true;
+                    var idquest = $(this).attr('id');
+
+                    $(this).find(`reponse`).each(
+                        function(){
+                            var idrep = $(this).attr('id');
+
+                            $(`#${idrep}`).css("color","green");
+                            
+                            if(document.getElementById(`${idquest}.${idrep}`).checked == false){
+                                touteReponseBonne = false;
+                            } else {
+                            }
+                        }
+                    )
+                    if(touteReponseBonne == true){
+                        score++;
+                    }
+                }
+            )
+        },
+        error: function(a, error){
+            console.log(a);
+            console.log(error);
         }
     });
-    $("i[class='bx bxs-left-arrow']").click(() =>{
-        if(numQuest>0){
-            numQuest--;
-            suppReponses();
-            chargeQuestion();
-        }
-    });
+    $(`.qcm_vue`).append(`<h2>Note : ${score}/${nbQuest}</h2>`);
+    $(`#validButton`).prop("disabled",true);
 }

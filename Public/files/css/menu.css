@@ -1,28 +1,4 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-:root{
-    --body-color:rgb(43, 42, 42);
-    --nav-color:rgb(32, 32, 32);
-    --nav-primary-color:white;
-    --primary-color:white;
-    --hover-color: rgb(95, 94, 94);
-    --value-opacity : 1;
-    --value-primary-height : 100vh ;
-    --value-primary-wight : 13em;
-    --value-wight-submenu : 100%;
-    --value-display:visible;
-}
-
-body{
-    background-color: var(--body-color);
-    color:var(--nav-primary-color);
-    font-family:"Poppins" ,sans-serif;
-}
-/*Css menu*/
+/*Gestion du nav ---------------------------------------------------------------------------------------*/
 nav
 {
     background-color: var(--nav-color);
@@ -36,16 +12,81 @@ nav
     transition: 0.5s;
 }
 
+/*Si le nav contient la classe menu_sidebar_complete*/
+nav.menu_sidebar_complete{
+    --value-opacity : 1;
+    --value-primary-height : 100vh ;
+    --value-primary-wight : 13em;
+    --value-wight-submenu : 100%;
+    --value-display:visible;
+}
+/*Si le nav contient la classe menu_sidebar*/
+nav.menu_sidebar
+{
+    --value-opacity :0;
+    --value-primary-height :100vh;
+    --value-primary-wight :2.9em;
+    --value-wight-submenu:10em;
+    --value-display:none;
+}
+
+/*Fin de gestion du nav -------------------------------------------------------------------------------*/
+/*Gestion du menu -------------------------------------------------------------------------------------*/
+
+i{
+    font-size: 20px; 
+}
+/*Gestion Menu Header ---------------------------------------------------------------------------------*/
 header
 {
     padding: 4px;
+    padding-top: 15px;
     height: 7.5em;
 }
+
 /*Item de menu avec des icons*/
 .menu_icon i{
     padding-left: 5px;
 }
 
+.menu_icon {
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+/*Affichage du bouton de recherche*/
+.menu_search
+{
+    padding-top: 5px;
+    width: 100%;
+}
+form i
+{
+    min-width: 40px;
+    color: rgb(82, 82, 82);
+    padding-left: 0.2em;
+}
+form input
+{
+    border: none;
+    outline: none;
+    width: 70%;
+    background-color: rgb(243, 240, 240);
+}
+header form
+{
+    margin-top: 4px;
+    display: flex;
+    overflow: hidden;
+    background-color: rgb(243, 240, 240);
+    align-items: center;
+    height: 50px;
+    border-radius: 5px ;
+    padding: 5px;
+}
+
+/*Fin de gestion du Menu header -----------------------------------------------------------------------*/
+/*Gestion du Menu body --------------------------------------------------------------------------------*/
 .menu_body
 {
     height: 36em;
@@ -91,6 +132,10 @@ i{
     font-size: 20px; 
 }
 
+
+
+/*Fin de gestion du Menu body -------------------------------------------------------------------------*/
+/*Gestion du Menu footer ------------------------------------------------------------------------------*/
 .menu_footer
 {
     height: 6.5em;
@@ -118,48 +163,11 @@ ul.menu_footer li a{
 ul.menu_footer li i{
     min-width: 40px;
 }
-
 .text-mode{
     display: var(--value-display);
     transform: translateY(10%);
     min-width:90px;
 }
-
-
-
-header form
-{
-    margin-top: 4px;
-    display: flex;
-    overflow: hidden;
-    background-color: rgb(243, 240, 240);
-    align-items: center;
-    height: 50px;
-    border-radius: 5px ;
-    padding: 5px;
-}
-
-.menu_search
-{
-    margin-top: 20px;
-    width: 100%;
-}
-
-form i
-{
-    min-width: 40px;
-    color: rgb(82, 82, 82);
-    padding-left: 0.2em;
-}
-
-form input.menu_search
-{
-    border: none;
-    outline: none;
-    width: 70%;
-    background-color: rgb(243, 240, 240);
-}
-/*drak/light mode*/
 .toggle-switch
 {
     position: relative;
@@ -171,7 +179,6 @@ form input.menu_search
     cursor: pointer;
     transition: 0.2s;
 }
-
 .switch
 {
     height: 16px;
@@ -182,31 +189,11 @@ form input.menu_search
     background-color:rgb(255, 255, 255);
     border-radius: 8px;
     transition: all 0.2s ease;
-    left: 31px;
-}
-body.dark
-{
-    --body-color: rgb(241, 172, 146);
-    --nav-color: rgb(241, 172, 146);
-    --nav-primary-color: white;
-    --hover-color: rgb(247, 206, 192);
-    --primary-color:black;
-}
-body.dark .switch
-{
-    left:2px;
+    left: var(--position-switch);
 }
 
-nav.menu_sidebar
-{
-    --value-opacity :0;
-    --value-primary-height :100vh;
-    --value-primary-wight :2.9em;
-    --value-wight-submenu:10em;
-    --value-display:none;
-}
 
- ul.menu_body li:hover .text_opacity, ul.menu_footer li:hover .text_opacity
+ul.menu_body li:hover .text_opacity, ul.menu_footer li:hover .text_opacity
 {
     display: inline;
 }

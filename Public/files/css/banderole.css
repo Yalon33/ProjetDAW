@@ -1,3 +1,4 @@
+/*css du body sans le menu à gauche*/
 .page_contenu
 {
     min-height: 98vh;
@@ -7,13 +8,14 @@
     margin-right: 0.5em;
     margin-left: 2.9em;
     margin-bottom: 0.5em;
-    background-color: white;
+    background-color: var(--pageContenu-color);
     border-radius: 25px;
     padding: 0 3%;
     overflow: hidden;
-    /* color:var(--primary-color); */
+    color:var(--primary-color);
 }
 
+/*Barre du haut*/
 .sub_sidebar
 {
     height:7.6em;
@@ -22,9 +24,9 @@
     display: flex;
     justify-content:space-between;
     border-bottom: 2px solid var(--body-color);
-
 }
-/* Css logo */
+
+/*Logo à Gauche*/
 div.logo
 {
     height: 100%;
@@ -43,16 +45,14 @@ img.image_logo{
     height:100%;
     object-fit: cover;
 }
-
-
 .sub_sidebar p.titre{
  
     font-weight: bolder;
     font-size: 30px;
     font-family: "Apple Chancery";
-    color: black;
 }
-/* Css user (l'image et le nom d'utilisateur)*/
+
+/*Icon utilisateur à droite*/
 .sub_sidebar .user a
 {
     display: flex;
@@ -60,7 +60,6 @@ img.image_logo{
     text-decoration: none;
     color: var(--primary-color);
 }
-
 .user_avatar
 {
     height: 50px;
@@ -74,7 +73,3 @@ img.image_avatar{
     object-fit: cover;
 }
 
-p.user_name
-{
-    color: black;
-}

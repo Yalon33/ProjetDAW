@@ -1,0 +1,36 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/*Gestion du body -------------------------------------------------------------------------------*/
+body{
+    background-color: var(--body-color);
+    color:var(--nav-primary-color);
+    font-family:"Poppins" ,sans-serif;
+}
+
+/*Si le body contient la classe light*/
+body.light
+{
+    --body-color: rgb(241, 172, 146);
+    --pageContenu-color: white;
+    --nav-color: rgb(241, 172, 146);
+    --nav-primary-color: white;
+    --primary-color:black;
+    --hover-color: rgb(247, 206, 192);
+    --position-switch: 3px;
+}
+
+/*Si le body contient la classe dark*/
+body.dark
+{
+    --body-color:rgb(43, 42, 42);
+    --pageContenu-color: rgb(95, 94, 94);
+    --nav-color:rgb(32, 32, 32);
+    --nav-primary-color:white;
+    --primary-color:white;
+    --hover-color: rgb(95, 94, 94);
+    --position-switch: 31px;
+}

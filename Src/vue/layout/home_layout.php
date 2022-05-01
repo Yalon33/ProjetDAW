@@ -3,6 +3,7 @@
 <head>
 <title>ProjetDAW</title>
 <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="../files/css/body.css">
 <link rel="stylesheet" href="../files/css/menu.css">
 <link rel="stylesheet" href="../files/css/banderole.css">
 
@@ -24,7 +25,7 @@
     <link rel="stylesheet" href="../files/css/canal.css">
 <?php elseif (Application::getInstance()->request()->getPath() === '/matieres'): ?>
     <link rel="stylesheet" href="../files/css/home.css">
-<?php elseif (Application::getInstance()->request()->getPath() === '/qcm'): ?>
+<?php elseif (Application::getInstance()->request()->getPath() === '/qcm/{id}'): ?>
     <link rel="stylesheet" href="../files/css/qcm.css">
 <?php elseif (Application::getInstance()->request()->getPath() === '/matieres/{id}'): ?>
     <link rel="stylesheet" href="../files/css/home.css">
@@ -38,7 +39,7 @@
 <meta charset="UTF-8">
 </head>
 
-<body class="dark">
+<body class="light">
     <nav class="menu_sidebar">
         <?php 
             include('Src/vue/html/menu.php');

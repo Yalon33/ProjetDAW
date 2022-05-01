@@ -22,6 +22,8 @@
     require_once('Src/Controleur/matieresSuiviesControleur.php');
     require_once('Src/Modele/utilisateurDAO.php');
     require_once('Src/Modele/matiereDAO.php');
+    require_once('Src/Modele/ReponseDAO.php');
+    require_once('Src/Modele/QCMDAO.php');
     require_once('Src/Modele/matiereSuivieDAO.php');
     require_once('Src/Modele/contenuDAO.php');
     require_once('Src/Modele/associationDAO.php');
@@ -88,7 +90,8 @@
         $app->routeur()->get('/addCanal/{id}', [AddCanalControleur::class, 'addcanal']);
         $app->routeur()->post('/addCanal/{id}', [AddCanalControleur::class, 'creecanal']);
 
-        $app->routeur()->get('/qcm', [QCMControleur::class, 'qcm']);
+        $app->routeur()->get('/qcm/{id}', [QCMControleur::class, 'qcm']);
+        $app->routeur()->post('/qcm/{id}', [QCMControleur::class, 'reponseEleve']);
 
         $app->routeur()->get('/login', [AuthControleur::class, 'login']);
 
