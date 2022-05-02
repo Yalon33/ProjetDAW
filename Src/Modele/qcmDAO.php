@@ -50,6 +50,15 @@
         }
 
         /**
+         * @param Etudiant $e
+         * @return array[QCM] Un tableau contenant les QCM à faire
+         */
+        public static function getQCMRecommende($e){
+            $matiereSuivie = MatiereDAO::getByEtudiant($e);
+            $e->getNiveau();
+        }
+
+        /**
          * Insère un qcm dans la base de données (mise à jour si le qcm existe déja)
          * 
          * @param QCM $qcm

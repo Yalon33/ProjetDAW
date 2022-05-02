@@ -2,6 +2,8 @@
     require_once("Src/Modele/matiereDAO.php");
 
     function testInsertUniqueMatiere($nomTest){
+        BDD::query("ALTER TABLE projet.utilisateur auto_increment=5");
+        BDD::query("ALTER TABLE projet.matiere auto_increment=5");
         BDD::query("START TRANSACTION;");
         $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "PROFESSEUR", "image.png");
         UtilisateurDAO::create($daniel);
@@ -14,6 +16,8 @@
     }
 
     function testInsertPlusieursMatiere($nomTest){
+        BDD::query("ALTER TABLE projet.utilisateur auto_increment=5");
+        BDD::query("ALTER TABLE projet.matiere auto_increment=5");
         BDD::query("START TRANSACTION;");
         $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "PROFESSEUR", "image.png");
         UtilisateurDAO::create($daniel);
@@ -28,6 +32,8 @@
     }
 
     function testUpdateMatiere($nomTest){
+        BDD::query("ALTER TABLE projet.utilisateur auto_increment=5");
+        BDD::query("ALTER TABLE projet.matiere auto_increment=5");
         BDD::query("START TRANSACTION;");
         $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT", "image.png");
         UtilisateurDAO::create($daniel);
@@ -43,6 +49,8 @@
     }
 
     function testDeleteRowMatiere($nomTest){
+        BDD::query("ALTER TABLE projet.utilisateur auto_increment=5");
+        BDD::query("ALTER TABLE projet.matiere auto_increment=5");
         BDD::query("START TRANSACTION;");
         $daniel = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT", "image.png");
         UtilisateurDAO::create($daniel);
@@ -57,7 +65,7 @@
 
     function testRecuperationUniqueMatiereEtudiant($nomTest){
         BDD::query("ALTER TABLE projet.utilisateur auto_increment=5");
-        BDD::query("ALTER TABLE projet.matiere auto_increment=3");
+        BDD::query("ALTER TABLE projet.matiere auto_increment=5");
         BDD::query("START TRANSACTION");
 
         $danielUser = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT", "image.png");
@@ -77,11 +85,28 @@
         MatiereDAO::getByEtudiant($danielEtudiant) == array($calculMat) ? succeededTest($nomTest) : failedTest($nomTest);
     }
 
+    function testRecuperationNiveauMatiere($nomTest){
+        BDD::query("ALTER TABLE projet.utilisateur auto_increment=5");
+        BDD::query("ALTER TABLE projet.matiere auto_increment=5");
+        BDD::query("START TRANSACTION");
+
+        $danielUser = new Utilisateur(null, "Zokey", "1234", "mail@mail.com", "Daniel", "Pinson", "ETUDIANT", "image.png");
+        UtilisateurDAO::create($danielUser);
+        $danielUser = UtilisateurDAO::getByLogin($danielUser->getLogin());
+
+        $calculMat = new Matiere(null, "calcul matriciel", "12-01-2022", $danielUser->getId(), "M1", "imageCalculMatriciel.png");
+        MatiereDAO::create($calculMat);
+        $calculMat = MatiereDAO::getByNom($calculMat->getNom());
+
+        MatiereDAO::getByNiveau(Niveau::M1) == array($calculMat) ? succeededTest($nomTest) : failedTest($nomTest);
+    }
+
     function testMatiereDAO(){
         testClearTable("matiere");
         testInsertUniqueMatiere("Insertion d'une unique matière dans la table matiere");
         testInsertPlusieursMatiere("Insertion de plusieurs matières dans la table matiere");
         testRecuperationUniqueMatiereEtudiant("Récupération de l'unique matière suivie par un étudiant");
+        testRecuperationNiveauMatiere("Répcupération d'une matière selon son niveau");
         testUpdateMatiere("Mise à jour d'une matiere dans la table");
         testDeleteRowMatiere("Suppression d'une matière parmi les autres");
     }

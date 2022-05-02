@@ -1,7 +1,7 @@
 <?php
     class TestControleur extends Controleur {
         public function runTest(){
-            include ("tests/testAssociation.php");
+            include ("tests/test.php");
         }
     }
 ?>

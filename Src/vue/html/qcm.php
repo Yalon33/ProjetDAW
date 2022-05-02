@@ -2,8 +2,8 @@
     <div id="title">
         <p class="titre_lesson">Titre de cours <span class="nom_prof">Nom de prof</span> </p>
     </div>
-    <p hidden class="qcm"><?php echo "../files/XML/QCM/".$q->getQuestions(); ?></p>
-    <p hidden class="reponse"><?php echo "../files/XML/Reponse/".$r->getXML(); ?></p>
+    <p hidden class="qcm"><?php echo "../files/QCM/Question/".$q->getQuestions(); ?></p>
+    <p hidden class="reponse"><?php echo "../files/QCM/Reponse/".$r->getXML(); ?></p>
     <form action="" method="post" class="qcm_vue">
         <questions>
         </questions>
