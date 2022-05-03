@@ -28,7 +28,6 @@ toggle_switch.addEventListener("click",() =>
         body.classList.add('dark');
         labelMode.innerHTML = "Dark Mode";
     }else{
-
         body.classList.remove('dark');
         body.classList.add('light');
         labelMode.innerHTML = "Light Mode";

@@ -1,13 +1,10 @@
 let numQuest = 0;
 let nbQuest = 0;
-const reponse = $(".reponse").text();
-const questions = $(".qcm").text();
 
 $(document).ready(() => {
-    chargeQuestionXML();
 });
 
-function chargeQuestionXML(){
+function chargeQuestionXML(questions){
     $.ajax({
         //chargement du fichier xml
         type: "GET",
@@ -28,16 +25,16 @@ function chargeQuestionXML(){
                     $(`question`).append(`<intitulee>`);
                     $(`question#${idquest} intitulee`).append(intit);
                     $(`question`).append(`</intitulee>`);
+
                     
                     $(`question`).append(`<reponses>`);
 
                     $(xml).find(`question#${idquest} reponses reponse`).each(
                         function(){
                             var idrep = $(this).attr('id');
-                            var correct = $(this).attr('correct');
                             var rep = $(this).text();
 
-                            var reponse = $(`<reponse id="${idrep}"><input id="${idquest}.${idrep}" type="checkbox">${rep}</reponse>`);
+                            var reponse = $(`<reponse id="${idrep}"><input id="${idquest}.${idrep}" name="${idquest}.${idrep}" value="${rep}" type="checkbox">${rep}</reponse>`);
                             $(`question#${idquest} reponses`).append(reponse);
                         }
                     )
@@ -45,19 +42,54 @@ function chargeQuestionXML(){
                     $("questions").append(`</question>`);
                 }
             )
+        },
+        error: function(a, b){
+            console.log("Une erreur est survenue");
+            console.log(a);
+            console.log(b);
         }
     });
 }
 
-function verifReponses(){
+function verifReponses(bonneReponse, reponse){
     var score = 0;
     var nbQuest = 0;
     $(`reponse`).css("color","red");
+
+    $.ajax({
+        type: "GET",
+        async: false,
+        url: reponse,
+        datatype: 'xml',
+        success: function(xml){
+            //recuperation des informations
+            console.log("Par là");
+            $('#1.11').prop("checked", true);
+            console.log("Par ici");
+            $(xml).find('question').each(
+                function(){
+                    console.log("dans les questions")
+                    var idquest = $(this).attr('id');
+                    $(this).find(`reponse`).each(
+                        function(){
+                            var idrep = $(this).attr('id');
+                            console.log("Check ici");
+                        }
+                    )
+                }
+            )
+        },
+        error: function(a, b){
+            console.log("Une erreur est survenue");
+            console.log(a);
+            console.log(b);
+        }
+    });
     $.ajax({
         //chargement du fichier xml
         type: "GET",
         async: false,
-        url: reponse,
+        url: bonneReponse,
         datatype: 'xml',
         success: function(xml){
             //recuperation des informations
@@ -73,10 +105,9 @@ function verifReponses(){
                             var idrep = $(this).attr('id');
 
                             $(`#${idrep}`).css("color","green");
-                            
+
                             if(document.getElementById(`${idquest}.${idrep}`).checked == false){
                                 touteReponseBonne = false;
-                            } else {
                             }
                         }
                     )
@@ -86,9 +117,10 @@ function verifReponses(){
                 }
             )
         },
-        error: function(a, error){
+        error: function(a, b){
+            console.log("Une erreur est survenue");
             console.log(a);
-            console.log(error);
+            console.log(b);
         }
     });
     $(`.qcm_vue`).append(`<h2>Note : ${score}/${nbQuest}</h2>`);

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<questions>
+	<question id="1">
+		<intitulee>Quelle est la formule correcte?</intitulee>
+		<reponses>
+			<reponse id="11">g=m/P</reponse>
+			<reponse id="12">P=mg</reponse>
+			<reponse id="13">m=P/g</reponse>
+			<reponse id="14">g=Pm</reponse>
+		</reponses>
+	</question>
+	<question id="2">
+		<intitulee>Quels sont 4 premiers éléments du tableau périodique des éléments de Mendeleïev</intitulee>
+		<reponses>
+			<reponse id="21">Uranium, Fer, Or, Platine (U, Fr, Au, Pt)</reponse>
+			<reponse id="22">Carbone, Azote, Oxygène, Fluor (C, N, O, F)</reponse>
+			<reponse id="23">Hydrogène, Helium, Lithium, Beryllium (H, He, Li, Be)</reponse>
+			<reponse id="24">Helium, Néon, ARgon, Krypoton (He, Ne, Ar, Kr)</reponse>
+		</reponses>
+	</question>
+	<question id="3">
+		<intitulee>Quelle est la formule de l'énergie cinétique</intitulee>
+		<reponses>
+			<reponse id="31">E=(1/2)mv²</reponse>
+			<reponse id="32">E=mgh</reponse>
+			<reponse id="33">E=Pt</reponse>
+			<reponse id="34">E=mc²</reponse>
+		</reponses>
+	</question>
+</questions>

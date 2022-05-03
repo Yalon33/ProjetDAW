@@ -2,13 +2,13 @@
     <div id="title">
         <p class="titre_lesson">Titre de cours <span class="nom_prof">Nom de prof</span> </p>
     </div>
-    <p hidden class="qcm"><?php echo "../files/QCM/Question/".$q->getQuestions(); ?></p>
-    <p hidden class="reponse"><?php echo "../files/QCM/Reponse/".$r->getXML(); ?></p>
-    <form action="" method="post" class="qcm_vue">
+    <script>chargeQuestionXML(<?php echo "'../files/QCM/Question/".$qcm->getQuestions()."'"; ?>);</script>
+    <?php if(!is_null($reponse)): ?>
+        <script>verifReponses(<?php echo "../files/QCM/Reponse/".$correction->getXML().", ../files/QCM/Reponse/".$reponse->getXML(); ?>);</script>
+    <?php endif; ?>
+    <form method="post" class="qcm_vue">
         <questions>
         </questions>
-        <button id='validButton' onclick="verifReponses()">Valider</button>
+        <button id='validButton' onclick="verifReponses(<?php echo $correction->getXML().','.$reponse->getXML(); ?>)">Valider</button>
     </form>
 </div>
-<script src="../files/javascript/jquery.js"></script>
-<script src="../files/javascript/qcm.js"></script>

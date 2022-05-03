@@ -79,12 +79,17 @@
             }
         }
 
-        public static function getCopie($q){
-            if(!is_null($q->getId())){
+        /**
+         * @param QCM $q
+         * @param Utilisateur $u
+         * @return Reponse Un tableau contenant la réponse d'un utilisateur à un QMC
+         */
+        public static function getCopie($q, $u){
+            if(!is_null($q->getId()) and !is_null($u->getId())){
                 $req = BDD::prepAndExec("SELECT r.id AS id, id_qcm, xml_uri FROM projet.qcm AS q, projet.reponse_utilisateur as ru, projet.reponse AS r
-                                            WHERE r.id_qcm=q.id AND ru.id_rep=r.id AND q.id=:id AND ru.id_uti!=:id_prof",
-                                        array("id" => $q->getId(), "id_prof" => $q->getIdProf()))->fetchAll();
-                return !empty($req) ? array_map("self::fromRow", $req) : $req;
+                                            WHERE r.id_qcm=q.id AND ru.id_rep=r.id AND q.id=:id AND ru.id_uti=:id_uti",
+                                        array("id" => $q->getId(), "id_uti" => $u->getId()))->fetchAll();
+                return !empty($req) ? self::fromRow($req[0]) : $req;
             }
         }
 

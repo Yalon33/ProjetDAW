@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 20 avr. 2022 à 12:08
+-- Généré le : mar. 03 mai 2022 à 15:20
 -- Version du serveur : 10.4.22-MariaDB
 -- Version de PHP : 8.1.2
 
@@ -271,8 +271,8 @@ CREATE TABLE `qcm` (
 --
 
 INSERT INTO `qcm` (`id`, `id_prof`, `questions`) VALUES
-(1, 1, 'identite.xml'),
-(2, 2, 'reponseSecrete.xml');
+(1, 1, 'cultureGenerale.xml\r\n'),
+(2, 2, 'controlePhysique.xml');
 
 -- --------------------------------------------------------
 
@@ -500,7 +500,7 @@ ALTER TABLE `forum`
 -- AUTO_INCREMENT pour la table `matiere`
 --
 ALTER TABLE `matiere`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `message`

@@ -5,10 +5,6 @@
                 <p>Informations</p>
                 <form action="" method="post" class="coordonne">
                     <section>
-                        <label for="id_user">ID :</label>
-                        <input type="text" name="id_user" value="<?php echo $user->getId(); ?>" id="id_user" readonly="readonly">
-                    </section>
-                    <section>
                         <label for="login_user">Login :</label>
                         <input type="text" name="name_user" value="<?php echo $user->getLogin(); ?>" id="name_user">
                     </section>
@@ -30,7 +26,7 @@
                     </section>
                     <section>
                         <label for="type_user">Type :</label>
-                        <input type="text" name="type_user" value="<?php echo TypeUtilisateur::toString($user->getType()); ?>" id="type_user">
+                        <input type="text" name="type_user" value="<?php echo TypeUtilisateur::toString($user->getType()); ?>" id="type_user" readonly="readonly">
                     </section>
                     <section>
                         <label for="image_user">Image :</label>

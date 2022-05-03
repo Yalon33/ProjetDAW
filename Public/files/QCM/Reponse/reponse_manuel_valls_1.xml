@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questions>
+    <question id="1">
+        <reponse id="11">1 Année lumière</reponse>
+        <reponse id="12">9 460 528 405 000 Kilomètres</reponse>
+    </question>
+    <question id="2">
+        <reponse id="21">Paris</reponse>
+    </question>
+    <question id="3">
+			<reponse id="33">La Loire</reponse>
+    </question>
+    <question id="4">
+			<reponse id="43">Cela dépend</reponse>
+    </question>
+    <question id="5">
+        <reponse id="51">Dans un triangle ABC rectangle en A, a² = b² + c² avec a la longeur de l hypothénuse</reponse>
+        <reponse id="54">Dans un triangle ABC rectangle en A, a = sqrt(b² + c²) avec a la longeur de l hypothénuse</reponse>
+    </question>
+</questions>
