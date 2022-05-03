@@ -44,6 +44,9 @@
 
         $app->routeur()->get('/login', [AuthControleur::class, 'login']);
         $app->routeur()->post('/login', [AuthControleur::class, 'handleLogin']);
+
+        $app->routeur()->get('/register', [AuthControleur::class, 'register']);
+        $app->routeur()->post('/register', [AuthControleur::class, 'handleRegister']);
     }
     else
     {
