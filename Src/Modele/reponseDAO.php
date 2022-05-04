@@ -89,7 +89,7 @@
                 $req = BDD::prepAndExec("SELECT r.id AS id, id_qcm, xml_uri FROM projet.qcm AS q, projet.reponse_utilisateur as ru, projet.reponse AS r
                                             WHERE r.id_qcm=q.id AND ru.id_rep=r.id AND q.id=:id AND ru.id_uti=:id_uti",
                                         array("id" => $q->getId(), "id_uti" => $u->getId()))->fetchAll();
-                return !empty($req) ? self::fromRow($req[0]) : $req;
+                return !empty($req) ? self::fromRow($req[0]) : false;
             }
         }
 

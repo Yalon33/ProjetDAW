@@ -8,6 +8,7 @@
             $param = [
                 'qcm' => $qcm,
                 'correction' => $reponse,
+                'prof' => UtilisateurDAO::getById($qcm->getIdProf()),
                 'reponse' => null
             ];
             $r = ReponseDAO::getCopie($qcm, $_SESSION["user"]);
@@ -20,17 +21,19 @@
 
         public function reponseEleve(Request $request)
         {
-            $data = $request->getData();
-            $reponse = new Reponse(null, $request->getId(), "reponse_".$_SESSION['user']->getPrenom()."_".$_SESSION["user"]->getNom()."_".$request->getId().".xml");
-            //ReponseDAO::create($reponse);
+            $reponse = new Reponse(null, $request->getId(), $_SESSION['user']->getPrenom()."_".$_SESSION["user"]->getNom()."_".$request->getId().".xml");
+            ReponseDAO::create($reponse);
+            AssociationDAO::createReponseUtilisateur($_SESSION['user']->getId(), ReponseDAO::getByXML($reponse->getXML())->getId());
+            $fd = fopen("files/QCM/Reponse/".$reponse->getXML(), "w");
+            fclose($fd);
             $writer = new XMLWriter();
             $writer->openUri($_SERVER['DOCUMENT_ROOT']. "/files/QCM/Reponse/" . $reponse->getXML());
             $writer->startDocument("1.0", "UTF-8");
             $writer->setIndent(true);
             $writer->setIndentString("    ");
             $writer->startElement("questions");
-            foreach($data as $key => $value){
-                $arrayQR = explode('_', $key);
+            foreach($request->getData() as $key => $value){
+                $arrayQR = explode('-', $key);
                 $writer->startElement("question");
                 $writer->writeAttribute('id', $arrayQR[0]);
                 $writer->startElement("reponse");
@@ -41,10 +44,12 @@
             }
             $writer->endElement();
             $writer->endDocument();
+
             $qcm = QCMDAO::getById($request->getId());
             $param = [
                 'qcm' => $qcm,
                 'correction' => ReponseDAO::getCorrection($qcm),
+                'prof' => UtilisateurDAO::getById($qcm->getIdProf()),
                 'reponse' => $reponse
             ];
             $this->setLayout('home_layout');

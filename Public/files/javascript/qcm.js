@@ -1,23 +1,18 @@
-let numQuest = 0;
-let nbQuest = 0;
-
 $(document).ready(() => {
+    chargeQuestionXML()
 });
 
-function chargeQuestionXML(questions){
+function chargeQuestionXML(){
     $.ajax({
         //chargement du fichier xml
         type: "GET",
         async: false,
-        url: questions,
+        url: $(".qcm").text(),
         datatype: "xml",
         success: function(xml){
             //recuperation des informations
             $(xml).find('question').each(
                 function(){
-                    //var contenu = $(this).text();
-                    //$("questions").html(contenu);
-
                     var idquest = $(this).attr('id');
                     $("questions").append(`<question id="${idquest}">`);
                     var intit = $(this).find('intitulee').text();
@@ -25,16 +20,12 @@ function chargeQuestionXML(questions){
                     $(`question`).append(`<intitulee>`);
                     $(`question#${idquest} intitulee`).append(intit);
                     $(`question`).append(`</intitulee>`);
-
-                    
                     $(`question`).append(`<reponses>`);
-
                     $(xml).find(`question#${idquest} reponses reponse`).each(
                         function(){
                             var idrep = $(this).attr('id');
                             var rep = $(this).text();
-
-                            var reponse = $(`<reponse id="${idrep}"><input id="${idquest}.${idrep}" name="${idquest}.${idrep}" value="${rep}" type="checkbox">${rep}</reponse>`);
+                            var reponse = $(`<reponse id="${idrep}"><input id="${idquest}-${idrep}" name="${idquest}-${idrep}" value="${rep}" type="checkbox">${rep}</reponse>`);
                             $(`question#${idquest} reponses`).append(reponse);
                         }
                     )
@@ -49,71 +40,58 @@ function chargeQuestionXML(questions){
             console.log(b);
         }
     });
+    if($(".reponse").length != 0){
+        $.ajax({
+            type: "GET",
+            async: false,
+            url: $(".reponse").text(),
+            datatype: 'xml',
+            success: function(xml){
+                //recuperation des informations
+                $(xml).find('question').each(
+                    function(){
+                        var idquest = $(this).attr('id');
+                        $(this).find(`reponse`).each(
+                            function(){
+                                var idrep = $(this).attr('id');
+                                $(`#${idquest}-${idrep}:checkbox`).prop("checked", true);
+                            }
+                        )
+                    }
+                )
+                verifReponses("ok");
+            },
+            error: function(a, b){
+                console.log("Une erreur est survenue");
+                console.log(a);
+                console.log(b);
+            }
+        });
+    }
 }
 
-function verifReponses(bonneReponse, reponse){
+function verifReponses(reponse){
     var score = 0;
     var nbQuest = 0;
     $(`reponse`).css("color","red");
-
-    $.ajax({
-        type: "GET",
-        async: false,
-        url: reponse,
-        datatype: 'xml',
-        success: function(xml){
-            //recuperation des informations
-            console.log("Par là");
-            $('#1.11').prop("checked", true);
-            console.log("Par ici");
-            $(xml).find('question').each(
-                function(){
-                    console.log("dans les questions")
-                    var idquest = $(this).attr('id');
-                    $(this).find(`reponse`).each(
-                        function(){
-                            var idrep = $(this).attr('id');
-                            console.log("Check ici");
-                        }
-                    )
-                }
-            )
-        },
-        error: function(a, b){
-            console.log("Une erreur est survenue");
-            console.log(a);
-            console.log(b);
-        }
-    });
+    //Coloration des bonnes réponses
     $.ajax({
         //chargement du fichier xml
         type: "GET",
         async: false,
-        url: bonneReponse,
+        url: $(".correction").text(),
         datatype: 'xml',
         success: function(xml){
             //recuperation des informations
             $(xml).find('question').each(
                 function(){
-                    nbQuest++;
-
-                    var touteReponseBonne = true;
                     var idquest = $(this).attr('id');
-
                     $(this).find(`reponse`).each(
                         function(){
                             var idrep = $(this).attr('id');
-
                             $(`#${idrep}`).css("color","green");
-
-                            if(document.getElementById(`${idquest}.${idrep}`).checked == false){
-                                touteReponseBonne = false;
-                            }
                         }
                     )
-                    if(touteReponseBonne == true){
-                        score++;
-                    }
                 }
             )
         },
@@ -123,6 +101,30 @@ function verifReponses(bonneReponse, reponse){
             console.log(b);
         }
     });
-    $(`.qcm_vue`).append(`<h2>Note : ${score}/${nbQuest}</h2>`);
+    //Attribution des points si la réponse est correct
+    $(".form_qcm").find('question').each(
+        function(){
+            var correct = true;
+            nbQuest++;
+            var idQ = $(this).attr("id");
+            $(this).find("reponse").each(
+                function(){
+                    var idrep = $(this).attr('id');
+                    if($(`#${idQ}-${idrep}`).is(":checked") == true && $(this).css("color") == "rgb(255, 0, 0)"){
+                        correct = false;
+                        console.log("Mauvaise réponse cochée");
+                    } else if($(`#${idQ}-${idrep}`).is(":checked") == false && $(this).css("color") == "rgb(0, 128, 0)"){
+                        correct = false;
+                        console.log("Bonne réponse non cochée")
+                    }
+                }
+            )
+            if(correct){
+                console.log("Question correctement répondue");
+                score++;
+            }
+        }
+    )
+    $(`.form_qcm`).append(`<h2>Note : ${score}/${nbQuest}</h2>`);
     $(`#validButton`).prop("disabled",true);
 }

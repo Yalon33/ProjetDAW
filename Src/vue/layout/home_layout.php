@@ -40,20 +40,21 @@
     </head>
 
     <body class="light">
-        <script src="../files/javascript/jquery.js"></script>
-        <script src="../files/javascript/qcm.js"></script>
         <nav class="menu_sidebar">
             <?php 
                 include('Src/vue/html/menu.php');
             ?>
         </nav>
+        <script src="../files/javascript/jquery.js"></script>
+        <?php if (Application::getInstance()->request()->getPath() === '/matieres/{id}'): ?>
+            <script src="../files/javascript/matiere.js"></script>
+        <?php elseif (Application::getInstance()->request()->getPath() === '/qcm/{id}'): ?>
+            <script src="../files/javascript/qcm.js"></script>
+        <?php endif; ?>
         <div class="page_contenu">
             <?php include('Src/vue/html/banderole.php'); ?> 
             {{content}}
         </div>
-        <?php if (Application::getInstance()->request()->getPath() === '/matieres/{id}'): ?>
-            <script src="../files/javascript/matiere.js"></script>
-        <?php endif; ?>
     </body>
 </html>
 
