@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mar. 03 mai 2022 à 15:20
+-- Généré le : mer. 04 mai 2022 à 17:13
 -- Version du serveur : 10.4.22-MariaDB
 -- Version de PHP : 8.1.2
 
@@ -291,9 +291,10 @@ CREATE TABLE `reponse` (
 --
 
 INSERT INTO `reponse` (`id`, `id_qcm`, `xml_uri`) VALUES
-(1, 1, 'reponseValls.xml'),
-(2, 1, 'reponseDaniel.xml'),
-(3, 2, 'reponseMaquerongue.xml');
+(1, 1, 'manuel_valls_1.xml'),
+(2, 1, 'bg_daniel_1.xml'),
+(3, 2, 'maquerongue_emmannuel_2.xml'),
+(5, 2, 'bg_daniel_2.xml');
 
 -- --------------------------------------------------------
 
@@ -313,7 +314,8 @@ CREATE TABLE `reponse_utilisateur` (
 INSERT INTO `reponse_utilisateur` (`id_uti`, `id_rep`) VALUES
 (1, 1),
 (2, 3),
-(3, 2);
+(3, 2),
+(3, 5);
 
 -- --------------------------------------------------------
 
@@ -518,7 +520,7 @@ ALTER TABLE `qcm`
 -- AUTO_INCREMENT pour la table `reponse`
 --
 ALTER TABLE `reponse`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `tag`

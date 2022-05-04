@@ -110,17 +110,12 @@ function verifReponses(reponse){
             $(this).find("reponse").each(
                 function(){
                     var idrep = $(this).attr('id');
-                    if($(`#${idQ}-${idrep}`).is(":checked") == true && $(this).css("color") == "rgb(255, 0, 0)"){
+                    if(($(`#${idQ}-${idrep}`).is(":checked") == true && $(this).css("color") == "rgb(255, 0, 0)") || ($(`#${idQ}-${idrep}`).is(":checked") == false && $(this).css("color") == "rgb(0, 128, 0)")){
                         correct = false;
-                        console.log("Mauvaise réponse cochée");
-                    } else if($(`#${idQ}-${idrep}`).is(":checked") == false && $(this).css("color") == "rgb(0, 128, 0)"){
-                        correct = false;
-                        console.log("Bonne réponse non cochée")
                     }
                 }
             )
             if(correct){
-                console.log("Question correctement répondue");
                 score++;
             }
         }
