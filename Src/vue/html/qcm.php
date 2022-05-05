@@ -4,12 +4,14 @@
     </div>
     <p hidden class="qcm"><?php echo '../files/QCM/Question/'.$qcm->getQuestions()?></p>
     <p hidden class="correction"><?php echo '../files/QCM/Reponse/'.$correction->getXML()?></p>
+    <p hidden class="idUtilisateur"><?php echo $_SESSION['user']->getId();?></p>
+    <p hidden class="idCreateur"><?php echo $qcm->getIdProf()?></p>
     <?php if(!is_null($reponse)): ?>
         <p hidden class="reponse"><?php echo '../files/QCM/Reponse/'.$reponse->getXML()?></p>
     <?php endif; ?>
     <form action="" method="post" class="form_qcm">
         <questions>
         </questions>
-        <button id='validButton' onclick="verifReponses(<?php echo $correction->getXML();?>)">Valider</button>
+        <button id='validButton' onclick="verifReponses(null)">Valider</button>
     </form>
 </div>

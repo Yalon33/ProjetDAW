@@ -18,7 +18,7 @@
             ];
             $r = ReponseDAO::getCopie($qcm, $_SESSION["user"]);
             if($r !== false){
-                $param["reponse"] = $r;                
+                $param["reponse"] = $r;
             }
             $this->setLayout('home_layout');
             return $this->render('/qcm', $param);
@@ -27,6 +27,7 @@
         public function reponseEleve(Request $request)
         {
             //Mise dans la base de données de la réponse du QCM
+            $qcm = QCMDAO::getById($request->getId());
             $reponse = new Reponse(null, $request->getId(), $_SESSION['user']->getPrenom()."_".$_SESSION["user"]->getNom()."_".$request->getId().".xml");
             ReponseDAO::create($reponse);
             AssociationDAO::createReponseUtilisateur($_SESSION['user']->getId(), ReponseDAO::getByXML($reponse->getXML())->getId());
@@ -51,11 +52,13 @@
                 $writer->startElement("reponse");
                 $writer->writeAttribute("id", $arrayQR[1]);
                 $writer->text($value);
-                if($arrayQR[0] == 1){
-                    array_push($arrayTag, TagDAO::getByContenu($value));
-                }
-                if($arrayQR[0] == 2){
-                    array_push($arrayNiveau, Niveau::toType($value));
+                if($qcm->getQuestions() == 'evaluation.xml'){
+                    if($arrayQR[0] == 1){
+                        array_push($arrayTag, TagDAO::getByContenu($value));
+                    }
+                    if($arrayQR[0] == 2){
+                        array_push($arrayNiveau, Niveau::toType($value));
+                    }
                 }
                 $writer->endElement();
                 $writer->endElement();
@@ -63,8 +66,6 @@
             $writer->endElement();
             $writer->endDocument();
 
-            var_dump($arrayTag);
-            $qcm = QCMDAO::getById($request->getId());
             //Redirection sur home si le qcm effectué était l'évaluation
             if($qcm->getQuestions() == "evaluation.xml"){
                 $recommend = [];

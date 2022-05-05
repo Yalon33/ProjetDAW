@@ -40,6 +40,7 @@ function chargeQuestionXML(){
             console.log(b);
         }
     });
+    console.log($('.reponse').length);
     if($(".reponse").length != 0){
         $.ajax({
             type: "GET",
@@ -70,7 +71,7 @@ function chargeQuestionXML(){
     }
 }
 
-function verifReponses(reponse){
+function verifReponses(text){
     var score = 0;
     var nbQuest = 0;
     if($('.qcm').text() != "../files/QCM/Question/evaluation.xml"){
@@ -123,5 +124,7 @@ function verifReponses(reponse){
         )
         $(`.form_qcm`).append(`<h2>Note : ${score}/${nbQuest}</h2>`);
     }
-    $(`#validButton`).prop("disabled",true);
+    if($('.idUtilisateur').text() != $('.idCreateur').text()){
+        $(`#validButton`).prop("disabled",true);
+    }
 }
