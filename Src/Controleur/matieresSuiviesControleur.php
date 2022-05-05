@@ -9,20 +9,28 @@
             {
                 array_push($data, [$m, Avancement::toString(MatiereSuivieDAO::getAvancement($_SESSION['user'], $m)), UtilisateurDAO::getById($m->getIdCreateur())]);
             }
-            $suivi = MatiereDAO::getByEtudiant($_SESSION['user']);
-            $recommend = [];
-            foreach($suivi as $matS)
-            {
-                $tagMat = TagDAO::getByMatiere($matS);
-                foreach($tagMat as $tag)
+            if(array_key_exists("matiereRecommendee", $_SESSION) and !empty($_SESSION["matiereRecommendee"])){
+                $recommend=[];
+                $arrayMat = $_SESSION["matiereRecommendee"];
+                foreach($arrayMat as $mat){
+                    array_push($recommend, [$mat, UtilisateurDAO::getById($mat->getIdCreateur())]);
+                }
+            } else {
+                $suivi = MatiereDAO::getByEtudiant($_SESSION['user']);
+                $recommend = [];
+                foreach($suivi as $matS)
                 {
-                    $matTag = MatiereDAO::getByTag($tag);
-                    foreach($matTag as $matT)
+                    $tagMat = TagDAO::getByMatiere($matS);
+                    foreach($tagMat as $tag)
                     {
-                        $prof = UtilisateurDAO::getById($matT->getIdCreateur());
-                        if(!in_array([$matT, $prof], $recommend) && !in_array($matT, $suivi))
+                        $matTag = MatiereDAO::getByTag($tag);
+                        foreach($matTag as $matT)
                         {
-                            array_push($recommend, [$matT, $prof]);
+                            $prof = UtilisateurDAO::getById($matT->getIdCreateur());
+                            if(!in_array([$matT, $prof], $recommend) && !in_array($matT, $suivi))
+                            {
+                                array_push($recommend, [$matT, $prof]);
+                            }
                         }
                     }
                 }
