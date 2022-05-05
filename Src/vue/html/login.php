@@ -33,7 +33,7 @@
                     <a href="#">Mot de passe oublié.</a>
                 </section>
                 <button>Connexion</button>
-                <p class="create">Vous n'avez pas encore un compte? <a href="">S'inscrire</a></p>
+                <p class="create">Vous n'avez pas encore un compte? <a href="/register">S'inscrire</a></p>
             </form>
         </div>
     </div>

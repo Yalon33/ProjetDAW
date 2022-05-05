@@ -30,5 +30,12 @@
                     break;
             }
         }
+
+        public static function allTypeUtilisateur(){
+            return array(
+                TypeUtilisateur::ETUDIANT,
+                TypeUtilisateur::PROFESSEUR
+            );
+        }
     }
 ?>
