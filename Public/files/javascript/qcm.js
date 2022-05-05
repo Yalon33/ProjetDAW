@@ -73,53 +73,55 @@ function chargeQuestionXML(){
 function verifReponses(reponse){
     var score = 0;
     var nbQuest = 0;
-    $(`reponse`).css("color","red");
-    //Coloration des bonnes réponses
-    $.ajax({
-        //chargement du fichier xml
-        type: "GET",
-        async: false,
-        url: $(".correction").text(),
-        datatype: 'xml',
-        success: function(xml){
-            //recuperation des informations
-            $(xml).find('question').each(
-                function(){
-                    var idquest = $(this).attr('id');
-                    $(this).find(`reponse`).each(
-                        function(){
-                            var idrep = $(this).attr('id');
-                            $(`#${idrep}`).css("color","green");
-                        }
-                    )
-                }
-            )
-        },
-        error: function(a, b){
-            console.log("Une erreur est survenue");
-            console.log(a);
-            console.log(b);
-        }
-    });
-    //Attribution des points si la réponse est correct
-    $(".form_qcm").find('question').each(
-        function(){
-            var correct = true;
-            nbQuest++;
-            var idQ = $(this).attr("id");
-            $(this).find("reponse").each(
-                function(){
-                    var idrep = $(this).attr('id');
-                    if(($(`#${idQ}-${idrep}`).is(":checked") == true && $(this).css("color") == "rgb(255, 0, 0)") || ($(`#${idQ}-${idrep}`).is(":checked") == false && $(this).css("color") == "rgb(0, 128, 0)")){
-                        correct = false;
+    if($('.qcm').text() != "../files/QCM/Question/evaluation.xml"){
+        $(`reponse`).css("color","red");
+        //Coloration des bonnes réponses
+        $.ajax({
+            //chargement du fichier xml
+            type: "GET",
+            async: false,
+            url: $(".correction").text(),
+            datatype: 'xml',
+            success: function(xml){
+                //recuperation des informations
+                $(xml).find('question').each(
+                    function(){
+                        var idquest = $(this).attr('id');
+                        $(this).find(`reponse`).each(
+                            function(){
+                                var idrep = $(this).attr('id');
+                                $(`#${idrep}`).css("color","green");
+                            }
+                        )
                     }
-                }
-            )
-            if(correct){
-                score++;
+                )
+            },
+            error: function(a, b){
+                console.log("Une erreur est survenue");
+                console.log(a);
+                console.log(b);
             }
-        }
-    )
-    $(`.form_qcm`).append(`<h2>Note : ${score}/${nbQuest}</h2>`);
+        });
+        //Attribution des points si la réponse est correct
+        $(".form_qcm").find('question').each(
+            function(){
+                var correct = true;
+                nbQuest++;
+                var idQ = $(this).attr("id");
+                $(this).find("reponse").each(
+                    function(){
+                        var idrep = $(this).attr('id');
+                        if(($(`#${idQ}-${idrep}`).is(":checked") == true && $(this).css("color") == "rgb(255, 0, 0)") || ($(`#${idQ}-${idrep}`).is(":checked") == false && $(this).css("color") == "rgb(0, 128, 0)")){
+                            correct = false;
+                        }
+                    }
+                )
+                if(correct){
+                    score++;
+                }
+            }
+        )
+        $(`.form_qcm`).append(`<h2>Note : ${score}/${nbQuest}</h2>`);
+    }
     $(`#validButton`).prop("disabled",true);
 }

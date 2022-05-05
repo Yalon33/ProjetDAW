@@ -54,12 +54,6 @@ header
     cursor: pointer;
 }
 
-/*Affichage du bouton de recherche*/
-.menu_search
-{
-    padding-top: 5px;
-    width: 100%;
-}
 form i
 {
     min-width: 40px;

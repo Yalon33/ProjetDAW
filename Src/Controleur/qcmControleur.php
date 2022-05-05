@@ -1,6 +1,11 @@
 <?php 
     class QCMControleur extends Controleur
     {
+        public function qcms(){
+            $this->setLayout('home_layout');
+            return $this->render('/qcms', ["qcm" => QCMDAO::getAll()]);
+        }
+
         public function qcm(Request $request)
         {
             $qcm = QCMDAO::getById($request->getId());
@@ -46,6 +51,10 @@
             $writer->endDocument();
 
             $qcm = QCMDAO::getById($request->getId());
+            if($qcm->getQuestions() == "evaluation.xml"){
+                header("Location: /home");
+                exit;
+            }
             $param = [
                 'qcm' => $qcm,
                 'correction' => ReponseDAO::getCorrection($qcm),

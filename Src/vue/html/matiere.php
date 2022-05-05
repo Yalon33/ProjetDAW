@@ -1,5 +1,5 @@
 <div class="lesson_inner">
-    <p class="titre_lesson"><?php echo $m->getNom(); ?><span class="nom_prof"><?php echo $p->getPrenom()." ".$p->getNom(); ?></span> </p>
+    <p class="titre_lesson"><?php echo $m->getNom(); ?><span class="nom_prof"><?php echo " ".$p->getPrenom()." ".$p->getNom(); ?></span> </p>
     <?php if(array_key_exists("newDocument", $_SESSION) and $_SESSION["newDocument"]): ?>
     <p class="titre_lesson">document créée</p>
     <?php unset($_SESSION["newDocument"]); endif; ?>

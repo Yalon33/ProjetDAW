@@ -36,7 +36,6 @@
             MessageDAO::create($message);
             header("Location: /canal/".$request->getId());
             exit;
-            //header("Location: /home");
         }
     }
 ?>

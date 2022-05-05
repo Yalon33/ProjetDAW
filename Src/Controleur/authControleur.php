@@ -64,7 +64,7 @@
                     $target_file = $target_dir . $u->getImage();
                     move_uploaded_file($_FILES["image_form"]["tmp_name"], $target_file);
                     $_SESSION["user"] = $u;
-                    header("Location: /home");
+                    header("Location: /qcm/3");
                     exit;
                 }
                 else

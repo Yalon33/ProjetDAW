@@ -2,38 +2,31 @@
 
 <questions>
 	<question id="1">
-		<intitulee>Quelle est votre matière préférée?</intitulee>
+		<intitulee>Quelles sont les matières que vous souhaitez étudier?</intitulee>
 		<reponses>
-			<reponse id="11">Mathématiques</reponse>
-			<reponse id="12">Français</reponse>
-			<reponse id="13">Informatique</reponse>
-			<reponse id="14">SVT</reponse>
+			<reponse id="11">Informatique</reponse>
+			<reponse id="12">Quantique</reponse>
+			<reponse id="13">Maths</reponse>
+			<reponse id="14">Physique</reponse>
+			<reponse id="15">Sociologie</reponse>
+			<reponse id="16">Philosophie du règne animal</reponse>
 		</reponses>
 	</question>
 	<question id="2">
-		<intitulee>Quel est votre niveau dans cette matière</intitulee>
+		<intitulee>Quel est votre niveau scolaire?</intitulee>
 		<reponses>
-			<reponse id="21">Mauvais</reponse>
-			<reponse id="22">Bon</reponse>
-			<reponse id="23">Très Bon</reponse>
-			<reponse id="24">Excellent</reponse>
-		</reponses>
-	</question>
-	<question id="3">
-		<intitulee>Comment estimeriez-vous votre niveau scolaire?</intitulee>
-		<reponses>
-			<reponse id="31">6eme</reponse>
-			<reponse id="32">5eme</reponse>
-			<reponse id="33">4eme</reponse>
-			<reponse id="34">3eme</reponse>
-			<reponse id="35">2nd</reponse>
-			<reponse id="36">1ere</reponse>
-			<reponse id="37">Terminale</reponse>
-			<reponse id="38">L1</reponse>
-			<reponse id="39">L2</reponse>
-			<reponse id="310">L3</reponse>
-			<reponse id="311">M1</reponse>
-			<reponse id="312">M2</reponse>
+			<reponse id="21">6eme</reponse>
+			<reponse id="22">5eme</reponse>
+			<reponse id="23">4eme</reponse>
+			<reponse id="24">3eme</reponse>
+			<reponse id="25">2nd</reponse>
+			<reponse id="26">1ere</reponse>
+			<reponse id="27">Terminale</reponse>
+			<reponse id="28">L1</reponse>
+			<reponse id="29">L2</reponse>
+			<reponse id="210">L3</reponse>
+			<reponse id="211">M1</reponse>
+			<reponse id="212">M2</reponse>
 		</reponses>
 	</question>
 </questions>

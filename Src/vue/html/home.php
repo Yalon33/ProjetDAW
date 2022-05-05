@@ -20,7 +20,7 @@
                         <form action= method=post>
                             <button><i class='bx bx-layer-plus' ></i><button>
                         </form>
-                        </li>
+                    </li>
                 <?php endif;
             endforeach ?>
             </ul>
