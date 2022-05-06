@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml ven="1.0" encoding="UTF-8"?>
 <questions>
     <question id="1">
         <reponse id="11">1 Année lumière</reponse>
@@ -8,9 +8,6 @@
     </question>
     <question id="2">
         <reponse id="21">Paris</reponse>
-    </question>
-    <question id="3">
-        <reponse id="32">La Seine</reponse>
     </question>
     <question id="3">
         <reponse id="33">La Loire</reponse>

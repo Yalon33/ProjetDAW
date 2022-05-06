@@ -50,6 +50,8 @@
         <script src="../files/javascript/jquery.js"></script>
         <?php if (Application::getInstance()->request()->getPath() === '/matieres/{id}'): ?>
             <script src="../files/javascript/matiere.js"></script>
+        <?php elseif (Application::getInstance()->request()->getPath() === '/addQcm'): ?>
+            <script src="../files/javascript/addQcm.js"></script>
         <?php elseif (Application::getInstance()->request()->getPath() === '/qcm/{id}'): ?>
             <script src="../files/javascript/qcm.js"></script>
         <?php endif; ?>
