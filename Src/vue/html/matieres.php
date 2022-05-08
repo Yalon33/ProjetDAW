@@ -54,7 +54,7 @@
         <div class="btn_add">
             <button class="btn_add"><a href="/addMatiere"><i class='bx bx-folder-plus'></i><span>Ajoute une matière</span></a></button>
         </div>
-        <div class="btn_del">
+        <div class="btn_add">
             <button class="btn_del"><a href="/delMatiere"><i class='bx bx-folder-minus'></i><span>Supprimer une matière</span></a></button>
         </div>
     </div>

@@ -103,14 +103,19 @@ div.image_lesson
 .admin_part
 {
     position:absolute;
-    top: 20%;
+    top: 18%;
     right: 3%;
     display: flex;
     flex-direction: column;
     color: white;
 } 
+div.btn_add
+{
+    margin-bottom: 10px;
+}
 .btn_add a{
     color: var(--body-color);
+
     background-color: white;
     border: none;
     padding-right: 5px;

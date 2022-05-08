@@ -103,7 +103,7 @@ li.item_btn_add a{
 .admin_part
 {
     position:absolute;
-    top: 20%;
+    top: 18%;
     right: 3%;
     display: flex;
     flex-direction: column;
@@ -126,7 +126,7 @@ li.item_btn_add a{
     display: flex;
     align-items: center;
     float: right;
-    margin-top: 5px;
+    margin-bottom: 10px;
 
 }
 .btn_add button a, .btn_del button a{
