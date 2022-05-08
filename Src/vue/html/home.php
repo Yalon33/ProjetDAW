@@ -17,9 +17,11 @@
                                 <p class=prof><?php echo $matiere[1]->getNom(); ?></p>
                             </div>
                         </a>
-                        <form action= method=post>
-                            <button><i class='bx bx-layer-plus' ></i><button>
-                        </form>
+                        <?php if($_SESSION['user']->getType() == TypeUtilisateur::ETUDIANT): ?>
+                            <form action="" method=post>
+                                <button name="matiere" value=<?php echo $matiere[0]->getId(); ?>><i class='bx bx-layer-plus' ></i><button>
+                            </form>
+                        <?php endif; ?>
                     </li>
                 <?php endif;
             endforeach ?>

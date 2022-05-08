@@ -77,6 +77,7 @@
         $app->routeur()->post('/delForum', [DelForumControleur::class, 'supprimerForum']);
 
         $app->routeur()->get('/home', [HomeControleur::class, 'home']);
+        $app->routeur()->post('/home', [HomeControleur::class, 'suivre']);
 
         $app->routeur()->get('/login', [AuthControleur::class, 'login']);
         $app->routeur()->post('/login', [AuthControleur::class, 'handleLogin']);

@@ -23,12 +23,14 @@
                     <span class="text_opacity">Forum</span>
             </a>
         </li>
-        <li class="menu_cours">
-            <a href="/matieres">
-                <i class='bx bx-book' ></i>
-                <span class="text_opacity">Matieres</span>
-            </a>
-        </li>
+        <?php if($_SESSION['user']->getType() == TypeUtilisateur::ETUDIANT): ?>
+            <li class="menu_cours">
+                <a href="/matieres">
+                    <i class='bx bx-book' ></i>
+                    <span class="text_opacity">Matieres</span>
+                </a>
+            </li>
+        <?php endif; ?>
         <li class="menu_qcm">
             <a href="/qcm">
                 <i class='bx bx-question-mark'></i>
