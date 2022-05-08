@@ -41,5 +41,47 @@
                 <?php unset($_SESSION["newUser"]); endif; ?>
             </div>
         </li>
+        <?php if($_SESSION['user']->getType() == TypeUtilisateur::PROFESSEUR and $all != null): ?>
+                <button class="btn_suppr"><a href=/delUser><i class='bx bx-folder-minus'></i><span>Supprimer un utilisateur</span></a></button>
+            <?php foreach($all as $user): ?>
+                <li>
+                    <div class="coordonne">
+                        <p>Informations de <?php echo $user->getPrenom() . " " . $user->getNom(); ?></p>
+                        <form action="" method="post" class="coordonne">
+                            <section>
+                                <label for="login_user">Login :</label>
+                                <input type="text" name="name_user" value="<?php echo $user->getLogin(); ?>" id="name_user">
+                            </section>
+                            <section>
+                                <label for="password_user">Mot de passe :</label>
+                                <input type="password" name="password_user" value="<?php echo $user->getMdp(); ?>" id="password_user">
+                            </section>
+                            <section>
+                                <label for="mail_user">Mail :</label>
+                                <input type="text" name="mail_user" value="<?php echo $user->getMail(); ?>" id="mail_user">
+                            </section>
+                            <section>
+                                <label for="prenom_user">Prenom :</label>
+                                <input type="text" name="prenom_user" value="<?php echo $user->getPrenom(); ?>" id="prenom_user">
+                            </section>
+                            <section>
+                                <label for="nom_user">Nom :</label>
+                                <input type="text" name="nom_user" value="<?php echo $user->getNom(); ?>" id="nom_user">
+                            </section>
+                            <section>
+                                <label for="type_user">Type :</label>
+                                <input type="text" name="type_user" value="<?php echo TypeUtilisateur::toString($user->getType()); ?>" id="type_user" readonly="readonly">
+                            </section>
+                            <section>
+                                <label for="image_user">Image :</label>
+                                <input type="text" name="image_user" value="<?php echo $user->getImage(); ?>" id="image_user">
+                            </section>
+                            <section>
+                                <button class="user"><i class='bx bx-sync'></i>Update</button>  
+                            </section>
+                        </form>
+                    </div>
+                </li>
+        <?php endforeach; endif; ?>
     </ul>
 </div>

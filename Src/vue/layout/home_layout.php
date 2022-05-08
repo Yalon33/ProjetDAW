@@ -19,6 +19,14 @@
             <link rel="stylesheet" href="../files/css/userpage.css">
             <?php elseif (Application::getInstance()->request()->getPath() === '/addForum'): ?>
             <link rel="stylesheet" href="../files/css/userpage.css">
+            <?php elseif (Application::getInstance()->request()->getPath() === '/delForum'): ?>
+            <link rel="stylesheet" href="../files/css/userpage.css">
+            <?php elseif (Application::getInstance()->request()->getPath() === '/delCanal'): ?>
+            <link rel="stylesheet" href="../files/css/userpage.css">
+            <?php elseif (Application::getInstance()->request()->getPath() === '/delMatiere'): ?>
+            <link rel="stylesheet" href="../files/css/userpage.css">
+            <?php elseif (Application::getInstance()->request()->getPath() === '/delDocument'): ?>
+            <link rel="stylesheet" href="../files/css/userpage.css">
             <?php elseif (Application::getInstance()->request()->getPath() === '/addQcm'): ?>
             <link rel="stylesheet" href="../files/css/userpage.css">
         <?php elseif (Application::getInstance()->request()->getPath() === '/forum'): ?>

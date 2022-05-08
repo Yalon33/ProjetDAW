@@ -13,7 +13,12 @@
     require_once('Src/Controleur/add_forumControleur.php');
     require_once('Src/Controleur/add_canalControleur.php');
     require_once('Src/Controleur/qcmControleur.php');
-    require_once('Src/Controleur/del_QcmControleur.php');
+    require_once('Src/Controleur/del_qcmControleur.php');
+    require_once('Src/Controleur/del_userControleur.php');
+    require_once('Src/Controleur/del_forumControleur.php');
+    require_once('Src/Controleur/del_matiereControleur.php');
+    require_once('Src/Controleur/del_canalControleur.php');
+    require_once('Src/Controleur/del_documentControleur.php');
     require_once('Src/Controleur/add_qcmControleur.php');
     require_once("Src/Modele/canalDAO.php");
     require_once("Src/Modele/forumDAO.php");
@@ -60,31 +65,34 @@
 
         $app->routeur()->get('/addCanal/{id}', [AddCanalControleur::class, 'addcanal']);
         $app->routeur()->post('/addCanal/{id}', [AddCanalControleur::class, 'creecanal']);
-
-        $app->routeur()->get('/addDocument/{id}', [AddDocumentControleur::class, 'adddocument']);
-        $app->routeur()->post('/addDocument/{id}', [AddDocumentControleur::class, 'creedocument']);
+        $app->routeur()->get('/canal/{id}', [CanalControleur::class, 'canal']);
+        $app->routeur()->post('/canal/{id}', [CanalControleur::class, 'envoiMessage']);
+        $app->routeur()->get('/delCanal/{id}', [DelCanalControleur::class, 'delCanal']);
+        $app->routeur()->post('/delCanal/{id}', [DelCanalControleur::class, 'supprimerCanal']);
 
         $app->routeur()->get('/addForum', [AddForumControleur::class,'addforum']);
         $app->routeur()->post('/addForum', [AddForumControleur::class,'creeforum']);
-
-        $app->routeur()->get('/addMatiere', [AddMatiereControleur::class, 'addmatiere']);
-        $app->routeur()->post('/addMatiere', [AddMatiereControleur::class, 'creematiere']);
-
-
-        $app->routeur()->get('/canal/{id}', [CanalControleur::class, 'canal']);
-        $app->routeur()->post('/canal/{id}', [CanalControleur::class, 'envoiMessage']);
-
         $app->routeur()->get('/forum', [ForumControleur::class, 'forum']);
+        $app->routeur()->get('/delForum', [DelForumControleur::class, 'delForum']);
+        $app->routeur()->post('/delForum', [DelForumControleur::class, 'supprimerForum']);
 
         $app->routeur()->get('/home', [HomeControleur::class, 'home']);
 
         $app->routeur()->get('/login', [AuthControleur::class, 'login']);
         $app->routeur()->post('/login', [AuthControleur::class, 'handleLogin']);
         $app->routeur()->get('/logout', [AuthControleur::class, 'logout']);
+
+        $app->routeur()->get('/addDocument/{id}', [AddDocumentControleur::class, 'adddocument']);
+        $app->routeur()->post('/addDocument/{id}', [AddDocumentControleur::class, 'creedocument']);
+        $app->routeur()->get('/delDocument/{id}', [DelDocumentControleur::class, 'delDocument']);
+        $app->routeur()->post('/delDocument/{id}', [DelDocumentControleur::class, 'supprimerDocument']);
         
+        $app->routeur()->get('/addMatiere', [AddMatiereControleur::class, 'addmatiere']);
+        $app->routeur()->post('/addMatiere', [AddMatiereControleur::class, 'creematiere']);
         $app->routeur()->get('/matieres', [MatieresSuiviesControleur::class, 'matieres']);
-    
         $app->routeur()->get('/matieres/{id}', [MatiereControleur::class, 'matiere']);
+        $app->routeur()->get('/delMatiere', [DelMatiereControleur::class, 'delMatiere']);
+        $app->routeur()->post('/delMatiere', [DelMatiereControleur::class, 'supprimerMatiere']);
 
         $app->routeur()->get('/addQcm', [AddQcmControleur::class, 'addQcm']);
         $app->routeur()->post('/addQcm', [AddQcmControleur::class, 'ajoutQCM']);
@@ -96,6 +104,8 @@
 
         $app->routeur()->get('/test', [TestControleur::class, 'runTest']);
 
+        $app->routeur()->get('/delUser', [DelUserControleur::class, 'delUser']);
+        $app->routeur()->post('/delUser', [DelUserControleur::class, 'suppressionUtilisateur']);
         $app->routeur()->get('/user', [Usercontroleur::class, 'user']);
         $app->routeur()->post('/user', [Usercontroleur::class, 'updateUser']);
     }

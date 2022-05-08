@@ -31,6 +31,9 @@
                     <div class="btn_add">
                         <button class="btn_add"><?php  echo "<a href=/addDocument/".$m->getid().">" ?><i class='bx bx-folder-plus'></i><span>Ajouter un document</span></a></button>
                     </div>
+                    <div class="btn_add">
+                        <button class="btn_add"><?php  echo "<a href=/delDocument/".$m->getid().">" ?><i class='bx bx-folder-minus'></i><span>Supprimer un document</span></a></button>
+                    </div>
             <?php endif; ?>
         </div>
     </div>

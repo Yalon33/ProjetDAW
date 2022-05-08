@@ -1,7 +1,9 @@
 <div class="qcms">
-    <div class="btn_add">
-        <button class="btn_add"><a href="/addQcm"><i class='bx bx-folder-plus'></i><span>Ajouter un QCM</span></a></button>
-    </div>
+    <?php if($_SESSION['user']->getType() == TypeUtilisateur::PROFESSEUR): ?>
+        <div class="btn_add">
+            <button class="btn_add"><a href="/addQcm"><i class='bx bx-folder-plus'></i><span>Ajouter un QCM</span></a></button>
+        </div>
+    <?php endif; ?>
     <p class="titre_lesson">QCM</p>
     <ul>
         <?php foreach($qcm as $q):?>
