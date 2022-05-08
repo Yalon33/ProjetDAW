@@ -8,7 +8,10 @@
                     <div class=message_paralle>
                         <div class=message_image>
                             <p class=auteur_text_paralle><?php echo $u[$message->getId()]->getLogin()?></p>
-                            <img src="../files/image/<?php echo $u[$message->getId()]->getImage()?>">
+                            <div class="image_sender">
+                                <img src="../files/image/<?php echo $u[$message->getId()]->getImage()?>">
+                            </div>
+
                         </div>
                         <p class=message_text_paralle><?php echo $message->getContenu()?></p>
                     </div>
@@ -16,9 +19,12 @@
             <?php else : ?>  
                 <li class="inverse">
                     <div class=message>
-                        <div class=message_image>
+                        <div class="message_image_inverse message_image">
                             <p class=auteur_text><?php echo $u[$message->getId()]->getLogin()?></p>
-                            <img src="../files/image/<?php echo $u[$message->getId()]->getImage()?>">
+                            <div class="image_sender img_inverse">
+                                <img src="../files/image/<?php echo $u[$message->getId()]->getImage()?> " class="">
+                                <div></div>
+                            </div>
                         </div>
                         <p class=message_text><?php echo $message->getContenu()?></p>
                     </div>
