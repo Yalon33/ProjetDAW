@@ -8,7 +8,7 @@
 
         public function supprimerForum(Request $request){
             $data = $request->getData();
-            $forum = ForumDAO::getByNom($data["nom_form"]);
+            $forum = ForumDAO::getByNom($data["nom_forum"]);
             if($forum !== false){
                 ForumDAO::delete($forum);
                 header("Location: /forum");

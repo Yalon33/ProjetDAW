@@ -21,7 +21,7 @@
             <link rel="stylesheet" href="../files/css/userpage.css">
             <?php elseif (Application::getInstance()->request()->getPath() === '/delForum'): ?>
             <link rel="stylesheet" href="../files/css/userpage.css">
-            <?php elseif (Application::getInstance()->request()->getPath() === '/delCanal'): ?>
+            <?php elseif (Application::getInstance()->request()->getPath() === '/delCanal/{id}'): ?>
             <link rel="stylesheet" href="../files/css/userpage.css">
             <?php elseif (Application::getInstance()->request()->getPath() === '/delMatiere'): ?>
             <link rel="stylesheet" href="../files/css/userpage.css">

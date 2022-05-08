@@ -1,4 +1,4 @@
-<div class="userpage_contenu_inner">
+<!-- <div class="userpage_contenu_inner">
     <div class="coordonne_add">
         <p>Supprimer un forum</p>
         <form action="" method="post" class="coordonne_add">
@@ -27,5 +27,25 @@
                 </li>
             <?php endforeach; ?>
         </ul>
+    </div>
+</div> -->
+
+<div class="userpage_contenu_inner">
+    <div class="coordonne_add">
+        <p>Supprimer un forum</p>
+        <form action="" method="post" class="coordonne_add">
+            <section>
+                <label for="nom_forum">Forums :</label>
+                <select name="nom_forum" id ="nom_forum">
+                    <option value="">--Veuillez sélectionner un forum--</option>
+                    <?php foreach($forums as $forum): ?>
+                            <option value="<?php echo $forum->getNom(); ?>"> <?php echo $forum->getNom(); ?> </option>
+                    <?php endforeach; ?> 
+                </select>
+            </section>
+            <section>
+                <button class="add"><i class='bx bx-plus-circle icon_add'></i><span>Delete</span></button>
+            </section>
+        </form>
     </div>
 </div>

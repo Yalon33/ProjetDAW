@@ -13,7 +13,7 @@
 
         public function supprimerCanal(Request $request){
             $data = $request->getData();
-            $c = CanalDAO::getByNom($data);
+            $c = CanalDAO::getByNom($data["nom_canal"]);
             if($c !== false){
                 CanalDAO::delete($c);
                 header("Location: /forum");

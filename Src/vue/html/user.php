@@ -41,8 +41,11 @@
                 <?php unset($_SESSION["newUser"]); endif; ?>
             </div>
         </li>
+    </ul>
         <?php if($_SESSION['user']->getType() == TypeUtilisateur::PROFESSEUR and $all != null): ?>
+            <ul class="admin_part user_coordonne">
             <?php foreach($all as $user): if($user != $_SESSION["user"]):?>
+        
                 <li>
                     <div class="coordonne">
                         <p>Informations de <?php echo $user->getPrenom() . " " . $user->getNom(); ?></p>
@@ -79,9 +82,12 @@
                                 <button class="user"><i class='bx bx-sync'></i>Update</button>  
                             </section>
                         </form>
-                        <button class="user"><a href="delUser/<?php echo $user->getId(); ?>"><i class='bx bx-x'></i></a>Supprimer</button>  
+                        <section class="btn_dell">
+                                <button class="user"><a href="delUser/<?php echo $user->getId(); ?>"><i class='bx bx-x'></i></a>Supprimer</button>  
+                        </section>
+                        
                     </div>
                 </li>
-        <?php endif; endforeach; endif; ?>
-    </ul>
+            <?php endif; endforeach; endif; ?>
+     </ul>
 </div>
