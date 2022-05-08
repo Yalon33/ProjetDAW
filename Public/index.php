@@ -70,7 +70,6 @@
         $app->routeur()->get('/addMatiere', [AddMatiereControleur::class, 'addmatiere']);
         $app->routeur()->post('/addMatiere', [AddMatiereControleur::class, 'creematiere']);
 
-        $app->routeur()->get('/addQcm', [AddQcmControleur::class, 'addQcm']);
 
         $app->routeur()->get('/canal/{id}', [CanalControleur::class, 'canal']);
         $app->routeur()->post('/canal/{id}', [CanalControleur::class, 'envoiMessage']);
@@ -87,6 +86,8 @@
     
         $app->routeur()->get('/matieres/{id}', [MatiereControleur::class, 'matiere']);
 
+        $app->routeur()->get('/addQcm', [AddQcmControleur::class, 'addQcm']);
+        $app->routeur()->post('/addQcm', [AddQcmControleur::class, 'ajoutQCM']);
         $app->routeur()->get('/qcm', [QCMControleur::class, 'qcms']);
         $app->routeur()->get('/qcm/{id}', [QCMControleur::class, 'qcm']);
         $app->routeur()->post('/qcm/{id}', [QCMControleur::class, 'reponseEleve']);

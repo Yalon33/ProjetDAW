@@ -19,6 +19,8 @@
             <link rel="stylesheet" href="../files/css/userpage.css">
             <?php elseif (Application::getInstance()->request()->getPath() === '/addForum'): ?>
             <link rel="stylesheet" href="../files/css/userpage.css">
+            <?php elseif (Application::getInstance()->request()->getPath() === '/addQcm'): ?>
+            <link rel="stylesheet" href="../files/css/userpage.css">
         <?php elseif (Application::getInstance()->request()->getPath() === '/forum'): ?>
             <link rel="stylesheet" href="../files/css/forum.css">
         <?php elseif (Application::getInstance()->request()->getPath() === '/canal/{id}'): ?>
@@ -50,8 +52,6 @@
         <script src="../files/javascript/jquery.js"></script>
         <?php if (Application::getInstance()->request()->getPath() === '/matieres/{id}'): ?>
             <script src="../files/javascript/matiere.js"></script>
-        <?php elseif (Application::getInstance()->request()->getPath() === '/addQcm'): ?>
-            <script src="../files/javascript/addQcm.js"></script>
         <?php elseif (Application::getInstance()->request()->getPath() === '/qcm/{id}'): ?>
             <script src="../files/javascript/qcm.js"></script>
         <?php endif; ?>

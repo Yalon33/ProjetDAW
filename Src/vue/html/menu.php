@@ -5,12 +5,6 @@
 </header>
 <div class="menu_body">
     <ul class="menu_body">
-        <li class="menu_qcm">
-            <a href="/qcm">
-                <i class='bx bx-qcm'></i>
-                <span class="text_opacity">QCM</span>
-            </a>
-        </li>
         <li class="menu_home">
             <a href="/home">
                 <i class='bx bx-home' ></i>
@@ -33,6 +27,12 @@
             <a href="/matieres">
                 <i class='bx bx-book' ></i>
                 <span class="text_opacity">Matieres</span>
+            </a>
+        </li>
+        <li class="menu_qcm">
+            <a href="/qcm">
+                <i class='bx bx-question-mark'></i>
+                <span class="text_opacity">QCM</span>
             </a>
         </li>
     </ul>

@@ -10,18 +10,24 @@
         {
             $qcm = QCMDAO::getById($request->getId());
             $reponse = ReponseDAO::getCorrection($qcm);
-            $param = [
-                'qcm' => $qcm,
-                'correction' => $reponse,
-                'prof' => UtilisateurDAO::getById($qcm->getIdProf()),
-                'reponse' => null
-            ];
-            $r = ReponseDAO::getCopie($qcm, $_SESSION["user"]);
-            if($r !== false){
-                $param["reponse"] = $r;
+            if($qcm !== false and $reponse !== false){
+                $param = [
+                    'qcm' => $qcm,
+                    'correction' => $reponse,
+                    'prof' => UtilisateurDAO::getById($qcm->getIdProf()),
+                    'reponse' => null
+                ];
+                $r = ReponseDAO::getCopie($qcm, $_SESSION["user"]);
+                if($r !== false){
+                    $param["reponse"] = $r;
+                }
+                $this->setLayout('home_layout');
+                return $this->render('/qcm', $param);
             }
-            $this->setLayout('home_layout');
-            return $this->render('/qcm', $param);
+            else{
+                header("Location: /404");
+                exit;
+            }
         }
 
         public function reponseEleve(Request $request)

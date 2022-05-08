@@ -1,20 +1,17 @@
 <div class="userpage_contenu_inner">
-    <p>Veuillez Entrer les questions et leurs réponses possible. Le corrigé se fera lorsque vous effectuerez le QCM</p>
-    <form action="" method="post" class="formQCM">
-        <ul class="listQuestion">
-            <li id="1">
-                <label>Question1 :</label>
-                <input type="text" id="1">
-                <ul class="listReponse">
-                    <li id="11">
-                        <label>Reponse1 :</label>
-                        <input type="text" id="1-11">
-                    </li>
-                </ul>
-                <button type="button" onclick="ajoutReponse()">Ajouter une réponse</button>
-            </li>
-        </ul>
-        <button type="button" onclick="ajoutQuestion()">Ajouter une question</button>
-        <input type="submit" value="Valider">
-    </form>
+    <div class="coordonne_add">
+        <p>Ajouter un QCM</p>
+        <form action="" method="post" class="coordonne_add">
+            <section>
+                <label for="qcm_form">QCM</label>
+                <input type="file" name="qcm_form" id="qcm_form" accept=".xml" required>   
+            </section>
+            <?php if(array_key_exists("newQcm", $_SESSION) and $_SESSION["newQcm"] == false): ?>
+                <section>Impossible de créer ce qcm, veuillez vérifier les champs</section>
+            <?php unset($_SESSION["newQcm"]); endif; ?>
+            <section>
+                <button class="add"><i class='bx bx-plus-circle icon_add'></i><span>Ajouter</span></button>
+            </section>
+        </form>
+    </div>
 </div>
