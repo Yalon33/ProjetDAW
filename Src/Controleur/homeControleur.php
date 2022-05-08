@@ -14,7 +14,6 @@
                 {
                 array_push($liste_cycle,Niveau::toString($m->getNiveau()));
                 }
-
             }
             $params = [
                 'data' => $data,

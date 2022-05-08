@@ -21,11 +21,11 @@
                                 </a>
                             </li>
                         <?php endforeach;
-                    endif;
-                    if($_SESSION['user']->getType() == TypeUtilisateur::PROFESSEUR): ?>
+                    endif; ?>
                         <li class="item_btn_add">
                             <button class="btn_add_canal"><?php echo "<a href=/addCanal/".$forum->getId().">" ?> <i class='bx bx-message-alt-add'></i><span>Ajoute un canal</span></a></button>
                         </li>
+                    <?php if($_SESSION['user']->getType() == TypeUtilisateur::PROFESSEUR): ?>
                         <li class="item_btn_del">
                             <button class="btn_del_canal"><?php echo "<a href=/delCanal/".$forum->getId().">" ?> <i class='bx bx-message-alt-x'></i><span>Supprimer un canal</span></a></button>
                         </li>

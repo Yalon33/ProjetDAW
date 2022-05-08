@@ -104,8 +104,8 @@
 
         $app->routeur()->get('/test', [TestControleur::class, 'runTest']);
 
-        $app->routeur()->get('/delUser', [DelUserControleur::class, 'delUser']);
-        $app->routeur()->post('/delUser', [DelUserControleur::class, 'suppressionUtilisateur']);
+        $app->routeur()->get('/delUser/{id}', [DelUserControleur::class, 'delUser']);
+        $app->routeur()->post('/delUser/{id}', [DelUserControleur::class, 'suppressionUtilisateur']);
         $app->routeur()->get('/user', [Usercontroleur::class, 'user']);
         $app->routeur()->post('/user', [Usercontroleur::class, 'updateUser']);
     }

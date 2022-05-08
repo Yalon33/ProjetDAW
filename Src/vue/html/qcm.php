@@ -3,7 +3,7 @@
         <p class="titre_lesson"><?php echo explode(".", $qcm->getQuestions())[0]?><span class="nom_prof"><?php echo " ".$prof->getPrenom()." ".$prof->getNom(); ?></span> </p>
     </div>
     <p hidden class="qcm"><?php echo '../files/QCM/Question/'.$qcm->getQuestions()?></p>
-    <p hidden class="correction"><?php echo '../files/QCM/Reponse/'.$correction->getXML()?></p>
+    <p hidden class="correction"><?php if($correction !== false): echo '../files/QCM/Reponse/'.$correction->getXML(); endif;?></p>
     <p hidden class="idUtilisateur"><?php echo $_SESSION['user']->getId();?></p>
     <p hidden class="idCreateur"><?php echo $qcm->getIdProf()?></p>
     <?php if($qcm->getIdProf() == $_SESSION['user']->getID()): ?>

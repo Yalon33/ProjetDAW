@@ -10,7 +10,7 @@
         {
             $qcm = QCMDAO::getById($request->getId());
             $reponse = ReponseDAO::getCorrection($qcm);
-            if($qcm !== false and $reponse !== false){
+            if($qcm !== false){
                 $param = [
                     'qcm' => $qcm,
                     'correction' => $reponse,

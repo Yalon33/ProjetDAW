@@ -1,9 +1,4 @@
 <div class="homepage_grid_card">
-    <?php if($_SESSION['user']->getType() == TypeUtilisateur::PROFESSEUR): ?>
-        <div class="btn_del">
-            <button class="btn_del"><a href="/delMatiere"><i class='bx bx-folder-minus'></i><span>Supprimer une matière</span></a></button>
-        </div>
-    <?php endif; ?>
     <ul class="grid_card">
         <?php foreach ($liste_cycle as $cycle): ?>
         <li class="homepage_card">
