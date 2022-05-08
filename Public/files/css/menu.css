@@ -39,9 +39,8 @@ i{
 /*Gestion Menu Header ---------------------------------------------------------------------------------*/
 header
 {
-    padding: 4px;
     padding-top: 15px;
-    height: 7.5em;
+    height: 10%;
 }
 
 /*Item de menu avec des icons*/
@@ -50,7 +49,7 @@ header
 }
 
 .menu_icon {
-    padding-left: 10px;
+    padding-left: 6px;
     cursor: pointer;
 }
 
@@ -83,7 +82,7 @@ header form
 /*Gestion du Menu body --------------------------------------------------------------------------------*/
 .menu_body
 {
-    height: 36em;
+    height: 70%;
     border-top: 0.5px solid gray;
     border-bottom: 0.5px solid gray;
 }
@@ -132,12 +131,15 @@ i{
 /*Gestion du Menu footer ------------------------------------------------------------------------------*/
 .menu_footer
 {
-    height: 6.5em;
+    height: 20%;
 }
 
 ul.menu_footer{
+    transform: translateY(30%);
+    height: 80%;
     list-style-type: none;
     padding-left: 4px;
+
 }
 
 ul.menu_footer li{
@@ -146,7 +148,7 @@ ul.menu_footer li{
     height: 40px;
     border-radius: 5px;
     padding: 0.5em;;
-    margin-top: 0.5em;
+    margin-bottom: 2em;
 }
 ul.menu_footer li a{
     display: flex;

@@ -8,14 +8,15 @@
 
         public function supprimerMatiere(Request $request){
             $data = $request->getData();
-            $m = MatiereDAO::getByNom($data["nom_form"]);
+            $m = MatiereDAO::getByNom($data["nom_matiere"]);
+            
             if($m !== false){
                 MatiereDAO::delete($m);
                 header("Location: /home");
                 exit;
             }
             else{
-                $_SESSION["delMatiere"];
+                
                 header("Location: delMatiere");
                 exit;
             }

@@ -46,8 +46,9 @@ p.titre_item
     color: var(--body-color);
     font-weight: bolder;
 }
-div.list_diapos,div.list_videos
+div.list_diapos
 {
+    margin-top: 5%;
     display: flex;
     width: 100%;
     justify-content: space-between;

@@ -25,7 +25,7 @@
             <link rel="stylesheet" href="../files/css/userpage.css">
             <?php elseif (Application::getInstance()->request()->getPath() === '/delMatiere'): ?>
             <link rel="stylesheet" href="../files/css/userpage.css">
-            <?php elseif (Application::getInstance()->request()->getPath() === '/delDocument'): ?>
+            <?php elseif (Application::getInstance()->request()->getPath() === '/delDocument/{id}'): ?>
             <link rel="stylesheet" href="../files/css/userpage.css">
             <?php elseif (Application::getInstance()->request()->getPath() === '/addQcm'): ?>
             <link rel="stylesheet" href="../files/css/userpage.css">

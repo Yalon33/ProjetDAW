@@ -16,12 +16,12 @@
                                 <h3><?php echo $matiere[0]->getNom(); ?></h3>
                                 <p class=prof><?php echo $matiere[1]->getNom(); ?></p>
                             </div>
-                        </a>
-                        <?php if($_SESSION['user']->getType() == TypeUtilisateur::ETUDIANT): ?>
+                            <?php if($_SESSION['user']->getType() == TypeUtilisateur::ETUDIANT): ?>
                             <form action="" method=post>
                                 <button name="matiere" value=<?php echo $matiere[0]->getId(); ?>><i class='bx bx-layer-plus' ></i><button>
                             </form>
                         <?php endif; ?>
+                        </a>
                     </li>
                 <?php endif;
             endforeach ?>
