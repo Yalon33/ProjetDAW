@@ -23,8 +23,6 @@
                 <?php endforeach ?>
             </ul>
         </div>
-        <button class="btn_list_diapos_right"><i class='bx bxs-left-arrow' ></i></button>
-        <button class="btn_list_diapos_left"><i class='bx bxs-right-arrow' ></i></button>
         <div class="lessonpage_dark"></div>
             <?php if($_SESSION['user']->getType() == TypeUtilisateur::PROFESSEUR): ?>
                 <div class="admin_part">
