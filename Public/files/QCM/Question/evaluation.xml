@@ -15,13 +15,13 @@
 	<question id="2">
 		<intitulee>Quel est votre niveau scolaire?</intitulee>
 		<reponses>
-			<reponse id="21">6eme</reponse>
-			<reponse id="22">5eme</reponse>
-			<reponse id="23">4eme</reponse>
-			<reponse id="24">3eme</reponse>
-			<reponse id="25">2nd</reponse>
-			<reponse id="26">1ere</reponse>
-			<reponse id="27">Terminale</reponse>
+			<reponse id="21">6EME</reponse>
+			<reponse id="22">5EME</reponse>
+			<reponse id="23">4EME</reponse>
+			<reponse id="24">3EME</reponse>
+			<reponse id="25">2ND</reponse>
+			<reponse id="26">1ERE</reponse>
+			<reponse id="27">TERM</reponse>
 			<reponse id="28">L1</reponse>
 			<reponse id="29">L2</reponse>
 			<reponse id="210">L3</reponse>
