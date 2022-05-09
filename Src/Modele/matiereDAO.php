@@ -39,6 +39,20 @@
         }
 
         /**
+         * @param Tag $t
+         * @return array[Matiere] Renvoie toutes les matières ayant le même tag que celui passé en paramètre
+         */
+        public static function getByTag($t){
+            if(!is_null($t->getId())){
+                $req = BDD::prepAndExec("SELECT m.id AS id, m.nom AS nom, m.date_creation AS date_creation, m.id_createur AS id_createur, m.niveau AS niveau, m.image AS image
+                                            FROM projet.matiere AS m, projet.matiere_tag AS mt, projet.tag AS t
+                                            WHERE m.id=mt.id_mat AND mt.id_tag=t.id AND t.id=:id",
+                                        array("id" => $t->getId()))->fetchAll();
+                return !empty($req) ? array_map("self::fromRow", $req) : $req;
+            }
+        }
+
+        /**
          * @param string $nom
          * @return Matiere La matière de la base correspondant au nom en paramètre
          */
@@ -50,6 +64,18 @@
                 echo $e->getMessage()."<br>";
                 return false;
             }
+        }
+
+        /**
+         * @param Niveau $n
+         * @return array[Matiere] Les matières qui ont ce niveau
+         */
+        public static function getByNiveau($n){
+            if(!is_string($n)){
+                $n = Niveau::toString($n);
+            }
+            $req = BDD::prepAndExec("SELECT * FROM projet.matiere AS m WHERE m.niveau=:n", array("n" => $n))->fetchAll();
+            return !empty($req) ? array_map("self::fromRow", $req) : $req;
         }
 
         /**

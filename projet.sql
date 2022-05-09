@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 20 avr. 2022 à 12:08
+-- Généré le : jeu. 05 mai 2022 à 13:22
 -- Version du serveur : 10.4.22-MariaDB
 -- Version de PHP : 8.1.2
 
@@ -199,7 +199,9 @@ CREATE TABLE `matiere_tag` (
 INSERT INTO `matiere_tag` (`id_mat`, `id_tag`) VALUES
 (1, 1),
 (1, 3),
-(2, 1);
+(2, 1),
+(3, 1),
+(4, 1);
 
 -- --------------------------------------------------------
 
@@ -271,8 +273,9 @@ CREATE TABLE `qcm` (
 --
 
 INSERT INTO `qcm` (`id`, `id_prof`, `questions`) VALUES
-(1, 1, 'identite.xml'),
-(2, 2, 'reponseSecrete.xml');
+(1, 1, 'cultureGenerale.xml\r\n'),
+(2, 2, 'controlePhysique.xml'),
+(3, 2, 'evaluation.xml');
 
 -- --------------------------------------------------------
 
@@ -291,9 +294,10 @@ CREATE TABLE `reponse` (
 --
 
 INSERT INTO `reponse` (`id`, `id_qcm`, `xml_uri`) VALUES
-(1, 1, 'reponseValls.xml'),
-(2, 1, 'reponseDaniel.xml'),
-(3, 2, 'reponseMaquerongue.xml');
+(1, 1, 'manuel_valls_1.xml'),
+(2, 1, 'bg_daniel_1.xml'),
+(3, 2, 'maquerongue_emmannuel_2.xml'),
+(4, 3, 'correction_vide_evaluation.xml');
 
 -- --------------------------------------------------------
 
@@ -313,6 +317,7 @@ CREATE TABLE `reponse_utilisateur` (
 INSERT INTO `reponse_utilisateur` (`id_uti`, `id_rep`) VALUES
 (1, 1),
 (2, 3),
+(2, 4),
 (3, 2);
 
 -- --------------------------------------------------------
@@ -500,7 +505,7 @@ ALTER TABLE `forum`
 -- AUTO_INCREMENT pour la table `matiere`
 --
 ALTER TABLE `matiere`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `message`
@@ -518,7 +523,7 @@ ALTER TABLE `qcm`
 -- AUTO_INCREMENT pour la table `reponse`
 --
 ALTER TABLE `reponse`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT pour la table `tag`
@@ -530,7 +535,7 @@ ALTER TABLE `tag`
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Contraintes pour les tables déchargées

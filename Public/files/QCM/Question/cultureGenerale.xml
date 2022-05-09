@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<questions>
+	<question id="1">
+		<intitulee>Quelle est la distance que parcours la lumière en une année?</intitulee>
+		<reponses>
+			<reponse id="11">1 Année lumière</reponse>
+			<reponse id="12">9 460 528 405 000 Kilomètres</reponse>
+			<reponse id="13">3000 fois le tour de la Terre</reponse>
+			<reponse id="14">La distance Terre Soleil</reponse>
+		</reponses>
+	</question>
+	<question id="2">
+		<intitulee>Quelle est la ville de France la plus peuplée?</intitulee>
+		<reponses>
+			<reponse id="21">Paris</reponse>
+			<reponse id="22">Lyon</reponse>
+			<reponse id="23">Dijon</reponse>
+			<reponse id="24">Marseille</reponse>
+		</reponses>
+	</question>
+	<question id="3">
+		<intitulee>Quelle est le plus grand fleuve de France?</intitulee>
+		<reponses>
+			<reponse id="31">La Meuse</reponse>
+			<reponse id="32">La Seine</reponse>
+			<reponse id="33">La Loire</reponse>
+			<reponse id="34">Le Rhône</reponse>
+		</reponses>
+	</question>
+	<question id="4">
+		<intitulee>Si on laisse tomber 1 kilos de plume et 1 kilos de fer en même temps à partir de la même hauteur, lequel touche le sol en premier?</intitulee>
+		<reponses>
+			<reponse id="41">Le kilo de plume</reponse>
+			<reponse id="42">Le kilo de fer</reponse>
+			<reponse id="43">Cela dépend</reponse>
+			<reponse id="44">Ils tombent en même temps</reponse>
+		</reponses>
+	</question>
+	<question id="5">
+		<intitulee>Quel est le théorème de Pythagore?</intitulee>
+		<reponses>
+			<reponse id="51">Dans un triangle ABC rectangle en A, a² = b² + c² avec a la longeur de l hypothénuse</reponse>
+			<reponse id="52">Dans un triangle ABC isocèle en A, a² = b² + c² avec a la longeur de l hypothénuse</reponse>
+			<reponse id="53">Dans un triangle ABC, a² = b² + c² avec a la longeur de l hypothénuse</reponse>
+			<reponse id="54">Dans un triangle ABC rectangle en A, a = sqrt(b² + c²) avec a la longeur de l hypothénuse</reponse>
+		</reponses>
+	</question>
+</questions>

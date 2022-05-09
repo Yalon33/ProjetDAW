@@ -1,5 +1,5 @@
 <div class="lesson_inner">
-    <p class="titre_lesson"><?php echo $m->getNom(); ?><span class="nom_prof"><?php echo $p->getPrenom()." ".$p->getNom(); ?></span> </p>
+    <p class="titre_lesson"><?php echo $m->getNom(); ?><span class="nom_prof"><?php echo " ".$p->getPrenom()." ".$p->getNom(); ?></span> </p>
     <?php if(array_key_exists("newDocument", $_SESSION) and $_SESSION["newDocument"]): ?>
     <p class="titre_lesson">document créée</p>
     <?php unset($_SESSION["newDocument"]); endif; ?>
@@ -23,13 +23,14 @@
                 <?php endforeach ?>
             </ul>
         </div>
-        <button class="btn_list_diapos_right"><i class='bx bxs-left-arrow' ></i></button>
-        <button class="btn_list_diapos_left"><i class='bx bxs-right-arrow' ></i></button>
         <div class="lessonpage_dark"></div>
             <?php if($_SESSION['user']->getType() == TypeUtilisateur::PROFESSEUR): ?>
                 <div class="admin_part">
                     <div class="btn_add">
                         <button class="btn_add"><?php  echo "<a href=/addDocument/".$m->getid().">" ?><i class='bx bx-folder-plus'></i><span>Ajouter un document</span></a></button>
+                    </div>
+                    <div class="btn_add">
+                        <button class="btn_add"><?php  echo "<a href=/delDocument/".$m->getid().">" ?><i class='bx bx-folder-minus'></i><span>Supprimer un document</span></a></button>
                     </div>
             <?php endif; ?>
         </div>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questions>
+	<question id="1">
+		<reponse id="12">P=mg</reponse>
+		<reponse id="13">m=P/g</reponse>
+	</question>
+	<question id="2">
+		<reponse id="23">Hydrogène, Helium, Lithium, Beryllium (H, He, Li, Be)</reponse>
+	</question>
+	<question id="3">
+		<reponse id="31">E=(1/2)mv²</reponse>
+	</question>
+</questions>

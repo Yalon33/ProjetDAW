@@ -88,11 +88,22 @@ p.createur_canal
     font-style: italic;
     font-size: 12px;
 }
-
+li.item_btn_add
+{
+    padding: 2% 2%;
+    display: flex;
+    justify-content: space-between;
+    /* margin-left :50%;
+    transform:translateX(-50%) ; */
+}
+li.item_btn_add a{
+    color: red;
+    display: flex;
+}
 .admin_part
 {
     position:absolute;
-    top: 20%;
+    top: 18%;
     right: 3%;
     display: flex;
     flex-direction: column;
@@ -107,7 +118,7 @@ p.createur_canal
     flex-direction: column;
     color: white;
 } 
-.btn_add button{
+.btn_add button, .btn_del button{
     color: var(--body-color);
     background-color: white;
     border: none;
@@ -115,7 +126,11 @@ p.createur_canal
     display: flex;
     align-items: center;
     float: right;
+    margin-bottom: 10px;
 
+}
+.btn_add button a, .btn_del button a{
+    color: var(--body-color);
 }
 
 .admin_form

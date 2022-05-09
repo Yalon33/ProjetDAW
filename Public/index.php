@@ -13,6 +13,13 @@
     require_once('Src/Controleur/add_forumControleur.php');
     require_once('Src/Controleur/add_canalControleur.php');
     require_once('Src/Controleur/qcmControleur.php');
+    require_once('Src/Controleur/del_qcmControleur.php');
+    require_once('Src/Controleur/del_userControleur.php');
+    require_once('Src/Controleur/del_forumControleur.php');
+    require_once('Src/Controleur/del_matiereControleur.php');
+    require_once('Src/Controleur/del_canalControleur.php');
+    require_once('Src/Controleur/del_documentControleur.php');
+    require_once('Src/Controleur/add_qcmControleur.php');
     require_once("Src/Modele/canalDAO.php");
     require_once("Src/Modele/forumDAO.php");
     require_once("Src/Modele/messageDAO.php");
@@ -23,6 +30,7 @@
     require_once('Src/Modele/utilisateurDAO.php');
     require_once('Src/Modele/matiereDAO.php');
     require_once('Src/Modele/ReponseDAO.php');
+    require_once('Src/Modele/TagDAO.php');
     require_once('Src/Modele/QCMDAO.php');
     require_once('Src/Modele/matiereSuivieDAO.php');
     require_once('Src/Modele/contenuDAO.php');
@@ -44,64 +52,63 @@
 
         $app->routeur()->get('/login', [AuthControleur::class, 'login']);
         $app->routeur()->post('/login', [AuthControleur::class, 'handleLogin']);
+
+        $app->routeur()->get('/register', [AuthControleur::class, 'register']);
+        $app->routeur()->post('/register', [AuthControleur::class, 'handleRegister']);
     }
     else
     {
         $app->routeur()->get('/', function() {
             header("Location: /home");
             exit;
-
         });
-    
-        $app->routeur()->get('/home', [HomeControleur::class, 'home']);
-
-
-        $app->routeur()->get('/home', [HomeControleur::class, 'home']);
-
-        $app->routeur()->post('/home', [HomeControleur::class, 'pageattend1']);
-
-        $app->routeur()->get('/pageattend', [HomeControleur::class, 'pageattend']);
-
-        $app->routeur()->get('/addMatiere', [AddMatiereControleur::class, 'addmatiere']);
-
-        $app->routeur()->get('/home', [MatiereControleur::class, 'matiere_all']);
-
-        $app->routeur()->get('/user', [usercontroleur::class, 'user']);
-        $app->routeur()->post('/user', [usercontroleur::class, 'updateUser']);
-
-        $app->routeur()->get('/addForum', [AddForumControleur::class,'addforum']);
-        $app->routeur()->post('/addForum', [AddForumControleur::class,'creeforum']);
-        
-        $app->routeur()->get('/matieres', [MatieresSuiviesControleur::class, 'matieres']);
-    
-        $app->routeur()->get('/addMatiere', [AddMatiereControleur::class, 'addmatiere']);
-        $app->routeur()->post('/addMatiere', [AddMatiereControleur::class, 'creematiere']);
-
-        $app->routeur()->get('/matieres/{id}', [MatiereControleur::class, 'matiere']);
-
-        $app->routeur()->get('/addDocument/{id}', [AddDocumentControleur::class, 'adddocument']);
-        $app->routeur()->post('/addDocument/{id}', [AddDocumentControleur::class, 'creedocument']);
-
-        $app->routeur()->get('/canal/{id}', [CanalControleur::class, 'canal']);
-        $app->routeur()->post('/canal/{id}', [CanalControleur::class, 'envoiMessage']);
-
-        $app->routeur()->get('/forum', [ForumControleur::class, 'forum']);
 
         $app->routeur()->get('/addCanal/{id}', [AddCanalControleur::class, 'addcanal']);
         $app->routeur()->post('/addCanal/{id}', [AddCanalControleur::class, 'creecanal']);
+        $app->routeur()->get('/canal/{id}', [CanalControleur::class, 'canal']);
+        $app->routeur()->post('/canal/{id}', [CanalControleur::class, 'envoiMessage']);
+        $app->routeur()->get('/delCanal/{id}', [DelCanalControleur::class, 'delCanal']);
+        $app->routeur()->post('/delCanal/{id}', [DelCanalControleur::class, 'supprimerCanal']);
 
-        $app->routeur()->get('/qcm/{id}', [QCMControleur::class, 'qcm']);
-        $app->routeur()->post('/qcm/{id}', [QCMControleur::class, 'reponseEleve']);
+        $app->routeur()->get('/addForum', [AddForumControleur::class,'addforum']);
+        $app->routeur()->post('/addForum', [AddForumControleur::class,'creeforum']);
+        $app->routeur()->get('/forum', [ForumControleur::class, 'forum']);
+        $app->routeur()->get('/delForum', [DelForumControleur::class, 'delForum']);
+        $app->routeur()->post('/delForum', [DelForumControleur::class, 'supprimerForum']);
+
+        $app->routeur()->get('/home', [HomeControleur::class, 'home']);
+        $app->routeur()->post('/home', [HomeControleur::class, 'suivre']);
 
         $app->routeur()->get('/login', [AuthControleur::class, 'login']);
-
         $app->routeur()->post('/login', [AuthControleur::class, 'handleLogin']);
-
         $app->routeur()->get('/logout', [AuthControleur::class, 'logout']);
 
-        $app->routeur()->get('/test', [TestControleur::class, 'runTest']);
+        $app->routeur()->get('/addDocument/{id}', [AddDocumentControleur::class, 'adddocument']);
+        $app->routeur()->post('/addDocument/{id}', [AddDocumentControleur::class, 'creedocument']);
+        $app->routeur()->get('/delDocument/{id}', [DelDocumentControleur::class, 'delDocument']);
+        $app->routeur()->post('/delDocument/{id}', [DelDocumentControleur::class, 'supprimerDocument']);
         
-    }
+        $app->routeur()->get('/addMatiere', [AddMatiereControleur::class, 'addmatiere']);
+        $app->routeur()->post('/addMatiere', [AddMatiereControleur::class, 'creematiere']);
+        $app->routeur()->get('/matieres', [MatieresSuiviesControleur::class, 'matieres']);
+        $app->routeur()->get('/matieres/{id}', [MatiereControleur::class, 'matiere']);
+        $app->routeur()->get('/delMatiere', [DelMatiereControleur::class, 'delMatiere']);
+        $app->routeur()->post('/delMatiere', [DelMatiereControleur::class, 'supprimerMatiere']);
 
+        $app->routeur()->get('/addQcm', [AddQcmControleur::class, 'addQcm']);
+        $app->routeur()->post('/addQcm', [AddQcmControleur::class, 'ajoutQCM']);
+        $app->routeur()->get('/qcm', [QCMControleur::class, 'qcms']);
+        $app->routeur()->get('/qcm/{id}', [QCMControleur::class, 'qcm']);
+        $app->routeur()->post('/qcm/{id}', [QCMControleur::class, 'reponseEleve']);
+        $app->routeur()->get('/delQCM/{id}', [DelQCMControleur::class, 'delQCM']);
+        $app->routeur()->post('/delQCM/{id}', [DelQCMControleur::class, 'valid']);
+
+        $app->routeur()->get('/test', [TestControleur::class, 'runTest']);
+
+        $app->routeur()->get('/delUser/{id}', [DelUserControleur::class, 'delUser']);
+        $app->routeur()->post('/delUser/{id}', [DelUserControleur::class, 'suppressionUtilisateur']);
+        $app->routeur()->get('/user', [Usercontroleur::class, 'user']);
+        $app->routeur()->post('/user', [Usercontroleur::class, 'updateUser']);
+    }
     $app->run();
 ?>

@@ -1,6 +1,6 @@
 <div class="userpage_contenu_inner">
-<div class="coordonne_add">
-    <p>Ajouter une matière</p>
+    <div class="coordonne_add">
+        <p>Ajouter une matière</p>
         <form action="" method="post" class="coordonne_add">
             <section>
                 <label for="niveau_matiere">Cycle :</label>

@@ -27,6 +27,7 @@ ul.list_lesson
     display: grid;
     grid-template-columns: 1fr 1fr 1fr ;
     grid-row-gap: 3%;
+    list-style-type: none;
 }
 ul.list_lesson li.lesson 
 {
@@ -35,7 +36,7 @@ ul.list_lesson li.lesson
     border: none;
     border-radius: 15px;
     background-color: rgb(53, 67, 80);
-    padding: 15px;
+    padding: 10px;
     transition: 0.5s;
     list-style-type: none;
     
@@ -103,14 +104,19 @@ div.image_lesson
 .admin_part
 {
     position:absolute;
-    top: 20%;
+    top: 18%;
     right: 3%;
     display: flex;
     flex-direction: column;
     color: white;
 } 
+div.btn_add
+{
+    margin-bottom: 10px;
+}
 .btn_add a{
     color: var(--body-color);
+
     background-color: white;
     border: none;
     padding-right: 5px;
@@ -161,7 +167,10 @@ section button
     height: 5em;
     width: 100%;
 }
+form button{
+    color: red;
 
+}
 /* La partie de Resposibility*/
 
 /* Mobile: width < 740 */

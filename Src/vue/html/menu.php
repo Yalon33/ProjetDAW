@@ -2,12 +2,6 @@
     <div class="menu_icon">
         <i class='bx bx-menu icon_toggle'></i>
     </div>
-    <div class="menu_search">
-        <form>
-            <i class='bx bx-search-alt-2' ></i>
-            <input type="text" name="menu_search" id="menu_search" placeholder="Search..">
-        </form>
-    </div>
 </header>
 <div class="menu_body">
     <ul class="menu_body">
@@ -29,26 +23,20 @@
                     <span class="text_opacity">Forum</span>
             </a>
         </li>
-        <li class="menu_cours">
-            <a href="/matieres">
-                <i class='bx bx-book' ></i>
-                <span class="text_opacity">Matieres</span>
+        <?php if($_SESSION['user']->getType() == TypeUtilisateur::ETUDIANT): ?>
+            <li class="menu_cours">
+                <a href="/matieres">
+                    <i class='bx bx-book' ></i>
+                    <span class="text_opacity">Matieres</span>
+                </a>
+            </li>
+        <?php endif; ?>
+        <li class="menu_qcm">
+            <a href="/qcm">
+                <i class='bx bx-question-mark'></i>
+                <span class="text_opacity">QCM</span>
             </a>
         </li>
-        <!--
-        <li class="menu_like">
-            <a href="">
-                <i class='bx bx-heart' ></i>
-                <span class="text_opacity">Like</span>
-            </a>
-        </li>
-        <li class="menu_history">
-            <a href="">
-                <i class='bx bx-history' ></i>
-                <span class="text_opacity">History</span>
-            </a>
-        </li>
-        -->
     </ul>
 </div>
     

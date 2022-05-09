@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>8</zoom_level>
+  <zoom_level>12</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>232</x>
-      <y>512</y>
-      <w>184</w>
-      <h>88</h>
+      <x>252</x>
+      <y>288</y>
+      <w>276</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>BDD
 --
@@ -21,87 +21,28 @@ layer=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>280</x>
-      <y>328</y>
-      <w>248</w>
-      <h>160</h>
+      <x>576</x>
+      <y>576</y>
+      <w>300</w>
+      <h>120</h>
     </coordinates>
-    <panel_attributes>ProfesseurDAO
+    <panel_attributes>MatiereDAO
 --
 --
-+ getAllProfesseur() : list&lt;Professeur&gt;
-+ getProfesseurById(id : int) : Professeur
-+ createProfesseur(p : Professeur) : void
-+ updateProfesseur(p : Professeur) : void
-+ deleteProfesseur(p : Professeur) : void
-layer=1</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>224</x>
-      <y>136</y>
-      <w>200</w>
-      <h>160</h>
-    </coordinates>
-    <panel_attributes>EtudiantDAO
---
---
-+ getAllEtudiant() : list&lt;Etudiant&gt;
-+ getEtudiantById(id : int) : Etudiant
-+ createEtudiant(e : Etudiant) : void
-+ updateEtudiant(e : Etudiant) : void
-+ deleteEtudiant(e : Etudiant) : void
-layer=1</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>512</x>
-      <y>152</y>
-      <w>256</w>
-      <h>112</h>
-    </coordinates>
-    <panel_attributes>UtilisateurDAO
-
---
---
-+ getAllUtilisateurs() : list&lt;Utilisateur&gt;
-+ getUtilisateurById(id : int) : Utilisateur
-+ createUtilisateur(u : Utilisateur) : void
-+ updateUtilisateur(u : Utilisateur) : void
-+ deleteUtilisateur(u : Utilisateur) : void
-layer=1</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>584</x>
-      <y>408</y>
-      <w>248</w>
-      <h>160</h>
-    </coordinates>
-    <panel_attributes>CoursDAO
---
---
-+ getAllCours() : list&lt;Cours&gt;
-+ getCoursById(id : int) : Cours
-+ createCours(c : Cours) : void
-+ updateCours(c : Cours) : void
-+ deleteCours(c : Cours) : void
++ create(): boolean
++ get(): list&lt;Matiere&gt;
++ update(): boolean
++ delete(): boolean
 layer=1</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>80</x>
-      <y>40</y>
-      <w>992</w>
-      <h>728</h>
+      <x>60</x>
+      <y>0</y>
+      <w>1488</w>
+      <h>1092</h>
     </coordinates>
     <panel_attributes>Diagramme modèle
 halign=left
@@ -111,13 +52,191 @@ bg=#21c4cd</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>128</x>
-      <y>528</y>
-      <w>120</w>
-      <h>72</h>
+      <x>96</x>
+      <y>312</y>
+      <w>180</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;instantiate&gt;&gt;</panel_attributes>
     <additional_attributes>130.0;70.0;10.0;70.0;10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1032</x>
+      <y>336</y>
+      <w>300</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>QCMDAO
+--
+--
++ create(): boolean
++ get(): list&lt;QCM&gt;
++ update(): boolean
++ delete(): boolean
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>144</x>
+      <y>72</y>
+      <w>300</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>AssociationDAO
+--
+--
++ create(): boolean
++ update(): boolean
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>96</x>
+      <y>552</y>
+      <w>300</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>CanalDAO
+--
+--
++ create(): boolean
++ get(): list&lt;Canal&gt;
++ update(): boolean
++ delete(): boolean
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>108</x>
+      <y>804</y>
+      <w>300</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>ContenuDAO
+--
+--
++ create(): boolean
++ get(): list&lt;Contenu&gt;
++ update(): boolean
++ delete(): boolean
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>624</x>
+      <y>312</y>
+      <w>300</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>ForumDAO
+--
+--
++ create(): boolean
++ get(): list&lt;Forum&gt;
++ update(): boolean
++ delete(): boolean
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>600</x>
+      <y>108</y>
+      <w>300</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>EtudiantDAO
+--
+--
++ create(): boolean
++ get(): list&lt;Etudiant&gt;
++ update(): boolean
++ delete(): boolean
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>612</x>
+      <y>828</y>
+      <w>300</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>MatieresSuiviesDAO
+--
+--
++ create(): boolean
++ get(): list&lt;MatieresSuivies&gt;
++ update(): boolean
++ delete(): boolean
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1032</x>
+      <y>108</y>
+      <w>300</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>MessageDAO
+--
+--
++ create(): boolean
++ get(): list&lt;MatieresSuivies&gt;
++ update(): boolean
++ delete(): boolean
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1056</x>
+      <y>564</y>
+      <w>300</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>TagDAO
+--
+--
++ create(): boolean
++ get(): list&lt;Tag&gt;
++ update(): boolean
++ delete(): boolean
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1068</x>
+      <y>864</y>
+      <w>300</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>UtilisateurDAO
+--
+--
++ create(): boolean
++ get(): list&lt;Utilisateur&gt;
++ update(): boolean
++ delete(): boolean
+layer=1</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
