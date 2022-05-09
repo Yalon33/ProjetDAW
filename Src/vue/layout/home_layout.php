@@ -23,6 +23,8 @@
             <link rel="stylesheet" href="../files/css/userpage.css">
             <?php elseif (Application::getInstance()->request()->getPath() === '/delCanal/{id}'): ?>
             <link rel="stylesheet" href="../files/css/userpage.css">
+            <?php elseif (Application::getInstance()->request()->getPath() === '/delQCM/{id}'): ?>
+            <link rel="stylesheet" href="../files/css/userpage.css">
             <?php elseif (Application::getInstance()->request()->getPath() === '/delMatiere'): ?>
             <link rel="stylesheet" href="../files/css/userpage.css">
             <?php elseif (Application::getInstance()->request()->getPath() === '/delDocument/{id}'): ?>
