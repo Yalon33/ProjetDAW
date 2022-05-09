@@ -3,7 +3,14 @@
     {
         public function qcms(){
             $this->setLayout('home_layout');
-            return $this->render('/qcms', ["qcm" => QCMDAO::getAll()]);
+            $data = array();
+            $qcm =  QCMDAO::getAll();
+            foreach ($qcm as $q) 
+            {
+                $createur = UtilisateurDAO::getById(intval($q->getIdProf()));
+                array_push($data,[$q,$createur]);
+            }
+            return $this->render('/qcms', ["data" =>$data]);
         }
 
         public function qcm(Request $request)

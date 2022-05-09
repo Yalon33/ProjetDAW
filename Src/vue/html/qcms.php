@@ -5,12 +5,15 @@
         </div>
     <?php endif; ?>
     <p class="titre_lesson">QCM</p>
-    <ul>
-        <?php foreach($qcm as $q):?>
-            <li class="lesson">
-                <a href="qcm/<?php echo $q->getId() ?>">
+    <ul class="liste_qcm">
+        <?php foreach($data as $q):?>
+            <li class="qcm">
+                <a href="qcm/<?php echo $q[0]->getId() ?>">
                     <div class="nomQCM">
-                        <p class="nom"><?php echo explode(".", $q->getQuestions())[0]; ?></p>
+                        <p class="nom"><?php echo explode(".", $q[0]->getQuestions())[0]; ?></p>
+                    </div>
+                    <div class="nomCreateur">
+                        <p class="nomCreateur">Créateur : <?php echo $q[1]->getNom();?></p>
                     </div>
                 </a>
             </li>

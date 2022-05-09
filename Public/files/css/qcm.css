@@ -43,14 +43,66 @@ reponses{
     display: block;
 }
 reponse{
-    display: block;
+    display: flex;
+    align-items: center;
     line-height: 2em;
 }
-button{
+reponse  input
+{
+    width: 10%;
+    height: 50%;
+}
+button {
     float: right;
     border: 1px;
     border-radius: 10px;
     padding: 1%;
     cursor: pointer;
     background-color: var(--pageContenu-color);
+}
+button a{
+    display: flex;
+    color: var(--body-color);
+}
+.liste_qcm{
+    width: 100%;
+    margin-top: 2%;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 22%;
+}
+ul.liste_qcm li{
+    margin-top: 5%;
+    width: 15em;
+    height:10em;
+    background-color: var(--body-color);
+}
+li.qcm a
+{
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    height: 100%;
+}
+li.qcm .nomQCM
+{
+    height: 2em;
+    text-align: center;
+    padding: 5%;
+    color:var(--body-color);
+    font-weight: bolder;
+    font-size: 1.2em;
+    background-color: rgb(223, 223, 223);
+}
+div.nomCreateur
+{
+    height: 7.6em;
+}
+p.nomCreateur
+{
+    margin-top: 25%;
+    transform: translateY(-50%);
+    text-align: center;
+    color:white;
 }
