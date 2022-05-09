@@ -42,3 +42,6 @@ Include etc/extra/httpd-vhosts.conf
 Redémarrez votre serveur XAMPP, vous devriez pouvoir accéder au site à l'adresse `127.0.0.1:80/login`.
 ### Configuration de la base de données
 Vous trouverez à la racine du projet un fichier nommé `projet.sql`, ce fichier contient les instructions SQL permettant la création des tables et l'insertion des données dans la base de données. Veuillez lancer `phpMyAdmin` et créer une base de données nommée "projet". Cliquez sur cette base et allez dans l'onglet "Importer", vous avez la possibilité d'importer un fichier. Importez le fichier `projet.sql` et cliquez sur "Exécuter" en bas de la page. Les tables et les données sont créées, à partir de ce moment là le site est entièrement opérationnel.
+
+## Se connecter à l'application
+Une fois l'application lancée, vous accéderez à la page de login. Pour se connecter en tant que professeur, vous pouvez utiliser le login : `manuel_valls` et le mot de passe `moipresident`. Pour se connecter en tant qu'étudiant apprenant, vous pouvez utiliser le login : `daniel_le_bg` et le mot de passe `jesuisbg`. Vous pouvez retrouver toutes les informations concernant les utilsateurs dans la table "Utilisateur" de la base de données.
