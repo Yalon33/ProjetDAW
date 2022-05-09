@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 05 mai 2022 à 13:22
+-- Généré le : lun. 09 mai 2022 à 17:14
 -- Version du serveur : 10.4.22-MariaDB
 -- Version de PHP : 8.1.2
 
@@ -41,7 +41,7 @@ CREATE TABLE `canal` (
 INSERT INTO `canal` (`id`, `nom`, `id_forum`, `id_createur`) VALUES
 (1, 'HELP je ne comprends RIEN', 1, 3),
 (2, 'A quoi sert OCAML ?', 1, 3),
-(3, 'C++ > Prolog', 1, 4),
+(3, 'C++ meilleur que Prolog??', 1, 4),
 (4, 'Comment créer une classe en Java ?', 2, 3),
 (5, 'Les interfaces ne servent à rien...', 2, 3),
 (6, 'Don de PC', 3, 1),
@@ -178,6 +178,7 @@ CREATE TABLE `matiere_suivie` (
 INSERT INTO `matiere_suivie` (`id_etu`, `id_mat`, `avancement`) VALUES
 (3, 1, 'EN COURS'),
 (3, 2, 'TERMINE'),
+(3, 3, 'EN COURS'),
 (4, 1, 'TERMINE'),
 (4, 2, 'EN COURS');
 
@@ -297,7 +298,8 @@ INSERT INTO `reponse` (`id`, `id_qcm`, `xml_uri`) VALUES
 (1, 1, 'manuel_valls_1.xml'),
 (2, 1, 'bg_daniel_1.xml'),
 (3, 2, 'maquerongue_emmannuel_2.xml'),
-(4, 3, 'correction_vide_evaluation.xml');
+(4, 3, 'correction_vide_evaluation.xml'),
+(38, 1, 'manuel_valls_1.xml');
 
 -- --------------------------------------------------------
 
@@ -523,7 +525,7 @@ ALTER TABLE `qcm`
 -- AUTO_INCREMENT pour la table `reponse`
 --
 ALTER TABLE `reponse`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT pour la table `tag`
