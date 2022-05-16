@@ -47,7 +47,7 @@
          </li>
     </ul>
 </div>
-<?php if($_SESSION['user']->getType() == TypeUtilisateur::PROFESSEUR): ?>
+<!-- <?php if($_SESSION['user']->getType() == TypeUtilisateur::PROFESSEUR): ?>
     <div class="admin_part">
         <div class="btn_add">
             <button class="btn_add"><a href="/addMatiere"><i class='bx bx-folder-plus'></i><span>Ajoute une matière</span></a></button>
@@ -56,5 +56,5 @@
             <button class="btn_del"><a href="/delMatiere"><i class='bx bx-folder-minus'></i><span>Supprimer une matière</span></a></button>
         </div>
     </div>
-<?php endif; ?>
+<?php endif; ?> -->
 <div class="footer"></div>
